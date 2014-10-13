@@ -1,0 +1,233 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Convert color TIFF to a 24-bit System.Drawing.Bitmap</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="4f1836a4-ed48-48f0-9c2d-5cf81ffb9303" /><meta name="Description" content="This sample shows how to convert a TIFF image to the 24-bit color System.Drawing.Bitmap." /><meta name="Microsoft.Help.ContentType" content="Samples" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Convert color TIFF to a 24-bit System.Drawing.Bitmap</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>This sample shows how to convert a TIFF image to the 24-bit color System.Drawing.Bitmap.</p><p></p><p>The code also shows how to flip and convert raster returned by ReadRGBAImage method from RGBA to BGR format.</p></div><div id="ID0EBAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EBAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EBAAAAA_tabimgleft"></div><div id="ID0EBAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EBAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EBAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EBAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EBAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EBAAAAA_tabimgright"></div></div><div id="ID0EBAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EBAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EBAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EBAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EBAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EBAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EBAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EBAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> System.Drawing;
+<span class="highlight-keyword">using</span> System.Drawing.Imaging;
+
+<span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> BitMiracle.LibTiff.Samples
+{
+    <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">class</span> TiffTo24BitBitmap
+    {
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main()
+        {
+            <span class="highlight-keyword">using</span> (Tiff tif = Tiff.Open(<span class="highlight-literal">@"Sample data\dscf0013.tif"</span>, <span class="highlight-literal">"r"</span>))
+            {
+                <span class="highlight-comment">// Find the width and height of the image</span>
+                FieldValue[] <span class="highlight-keyword">value</span> = tif.GetField(TiffTag.IMAGEWIDTH);
+                <span class="highlight-keyword">int</span> width = <span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToInt();
+
+                <span class="highlight-keyword">value</span> = tif.GetField(TiffTag.IMAGELENGTH);
+                <span class="highlight-keyword">int</span> height = <span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToInt();
+
+                <span class="highlight-comment">// Read the image into the memory buffer</span> 
+                <span class="highlight-keyword">int</span>[] raster = <span class="highlight-keyword">new</span> <span class="highlight-keyword">int</span>[height * width];
+                <span class="highlight-keyword">if</span> (!tif.ReadRGBAImage(width, height, raster))
+                {
+                    System.Windows.Forms.MessageBox.Show(<span class="highlight-literal">"Could not read image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">using</span> (Bitmap bmp = <span class="highlight-keyword">new</span> Bitmap(width, height, PixelFormat.Format24bppRgb))
+                {
+                    Rectangle rect = <span class="highlight-keyword">new</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, bmp.Width, bmp.Height);
+
+                    BitmapData bmpdata = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+                    <span class="highlight-keyword">byte</span>[] bits = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[bmpdata.Stride * bmpdata.Height];
+
+                    <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> y = <span class="highlight-number">0</span>; y &lt; bmp.Height; y++)
+                    {
+                        <span class="highlight-keyword">int</span> rasterOffset = y * bmp.Width;
+                        <span class="highlight-keyword">int</span> bitsOffset = (bmp.Height - y - <span class="highlight-number">1</span>) * bmpdata.Stride;
+
+                        <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> x = <span class="highlight-number">0</span>; x &lt; bmp.Width; x++)
+                        {
+                            <span class="highlight-keyword">int</span> rgba = raster[rasterOffset++];
+                            bits[bitsOffset++] = (<span class="highlight-keyword">byte</span>)((rgba &gt;&gt; <span class="highlight-number">16</span>) &amp; <span class="highlight-number">0xff</span>);
+                            bits[bitsOffset++] = (<span class="highlight-keyword">byte</span>)((rgba &gt;&gt; <span class="highlight-number">8</span>) &amp; <span class="highlight-number">0xff</span>);
+                            bits[bitsOffset++] = (<span class="highlight-keyword">byte</span>)(rgba &amp; <span class="highlight-number">0xff</span>);
+                        }
+                    }
+
+                    System.Runtime.InteropServices.Marshal.Copy(bits, <span class="highlight-number">0</span>, bmpdata.Scan0, bits.Length);
+                    bmp.UnlockBits(bmpdata);
+
+                    bmp.Save(<span class="highlight-literal">"TiffTo24BitBitmap.bmp"</span>);
+                    System.Diagnostics.Process.Start(<span class="highlight-literal">"TiffTo24BitBitmap.bmp"</span>);
+                }
+            }
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using System.Drawing;
+using System.Drawing.Imaging;
+
+using BitMiracle.LibTiff.Classic;
+
+namespace BitMiracle.LibTiff.Samples
+{
+    public static class TiffTo24BitBitmap
+    {
+        public static void Main()
+        {
+            using (Tiff tif = Tiff.Open(@"Sample data\dscf0013.tif", "r"))
+            {
+                // Find the width and height of the image
+                FieldValue[] value = tif.GetField(TiffTag.IMAGEWIDTH);
+                int width = value[0].ToInt();
+
+                value = tif.GetField(TiffTag.IMAGELENGTH);
+                int height = value[0].ToInt();
+
+                // Read the image into the memory buffer 
+                int[] raster = new int[height * width];
+                if (!tif.ReadRGBAImage(width, height, raster))
+                {
+                    System.Windows.Forms.MessageBox.Show("Could not read image");
+                    return;
+                }
+
+                using (Bitmap bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb))
+                {
+                    Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+
+                    BitmapData bmpdata = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+                    byte[] bits = new byte[bmpdata.Stride * bmpdata.Height];
+
+                    for (int y = 0; y &lt; bmp.Height; y++)
+                    {
+                        int rasterOffset = y * bmp.Width;
+                        int bitsOffset = (bmp.Height - y - 1) * bmpdata.Stride;
+
+                        for (int x = 0; x &lt; bmp.Width; x++)
+                        {
+                            int rgba = raster[rasterOffset++];
+                            bits[bitsOffset++] = (byte)((rgba &gt;&gt; 16) &amp; 0xff);
+                            bits[bitsOffset++] = (byte)((rgba &gt;&gt; 8) &amp; 0xff);
+                            bits[bitsOffset++] = (byte)(rgba &amp; 0xff);
+                        }
+                    }
+
+                    System.Runtime.InteropServices.Marshal.Copy(bits, 0, bmpdata.Scan0, bits.Length);
+                    bmp.UnlockBits(bmpdata);
+
+                    bmp.Save("TiffTo24BitBitmap.bmp");
+                    System.Diagnostics.Process.Start("TiffTo24BitBitmap.bmp");
+                }
+            }
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EBAAAAA');</script><div id="ID0EAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAAAAAA_tabimgleft"></div><div id="ID0EAAAAAA_tab1" class="OH_CodeSnippetContainerTabDisabled" EnableCopyCode="true" disabled="true"><a>C#</a></div><div id="ID0EAAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0EAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAAAAAA_tabimgright"></div></div><div id="ID0EAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="highlight-keyword">Imports</span> System.Drawing
+<span class="highlight-keyword">Imports</span> System.Drawing.Imaging
+
+<span class="highlight-keyword">Imports</span> BitMiracle.LibTiff.Classic
+
+<span class="highlight-keyword">Namespace</span> BitMiracle.LibTiff.Samples
+    <span class="highlight-keyword">Public</span> <span class="highlight-keyword">NotInheritable</span> <span class="highlight-keyword">Class</span> TiffTo24BitBitmap
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> <span class="highlight-keyword">New</span>()
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> Main()
+            <span class="highlight-keyword">Using</span> tif <span class="highlight-keyword">As</span> Tiff = Tiff.Open(<span class="highlight-literal">"Sample data\dscf0013.tif"</span>, <span class="highlight-literal">"r"</span>)
+                <span class="highlight-comment">' Find the width and height of the image</span> 
+                <span class="highlight-keyword">Dim</span> value <span class="highlight-keyword">As</span> FieldValue() = tif.GetField(TiffTag.IMAGEWIDTH)
+                <span class="highlight-keyword">Dim</span> width <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = value(<span class="highlight-number">0</span>).ToInt()
+
+                value = tif.GetField(TiffTag.IMAGELENGTH)
+                <span class="highlight-keyword">Dim</span> height <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = value(<span class="highlight-number">0</span>).ToInt()
+
+                <span class="highlight-comment">' Read the image into the memory buffer</span> 
+                <span class="highlight-keyword">Dim</span> raster <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Integer</span>(height * width - <span class="highlight-number">1</span>) {}
+                <span class="highlight-keyword">If</span> <span class="highlight-keyword">Not</span> tif.ReadRGBAImage(width, height, raster) <span class="highlight-keyword">Then</span>
+                    System.Windows.Forms.MessageBox.Show(<span class="highlight-literal">"Could not read image"</span>)
+                    <span class="highlight-keyword">Return</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Using</span> bmp <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Bitmap(width, height, PixelFormat.Format24bppRgb)
+                    <span class="highlight-keyword">Dim</span> rect <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, bmp.Width, bmp.Height)
+
+                    <span class="highlight-keyword">Dim</span> bmpdata <span class="highlight-keyword">As</span> BitmapData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb)
+                    <span class="highlight-keyword">Dim</span> bits <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(bmpdata.Stride * bmpdata.Height - <span class="highlight-number">1</span>) {}
+
+                    <span class="highlight-keyword">For</span> y <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> bmp.Height - <span class="highlight-number">1</span> 
+                        <span class="highlight-keyword">Dim</span> rasterOffset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = y * bmp.Width
+                        <span class="highlight-keyword">Dim</span> bitsOffset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = (bmp.Height - y - <span class="highlight-number">1</span>) * bmpdata.Stride
+
+                        <span class="highlight-keyword">For</span> x <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> bmp.Width - <span class="highlight-number">1</span> 
+                            <span class="highlight-keyword">Dim</span> rgba <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = raster(rasterOffset)
+                            rasterOffset = rasterOffset + <span class="highlight-number">1</span>
+                            bits(bitsOffset) = <span class="highlight-keyword">CByte</span>((rgba &gt;&gt; <span class="highlight-number">16</span>) <span class="highlight-keyword">And</span> <span class="highlight-number">&amp;HFF</span>)
+                            bits(bitsOffset + <span class="highlight-number">1</span>) = <span class="highlight-keyword">CByte</span>((rgba &gt;&gt; <span class="highlight-number">8</span>) <span class="highlight-keyword">And</span> <span class="highlight-number">&amp;HFF</span>)
+                            bits(bitsOffset + <span class="highlight-number">2</span>) = <span class="highlight-keyword">CByte</span>(rgba <span class="highlight-keyword">And</span> <span class="highlight-number">&amp;HFF</span>)
+                            bitsOffset = bitsOffset + <span class="highlight-number">3</span> 
+                        <span class="highlight-keyword">Next</span> 
+                    <span class="highlight-keyword">Next</span>
+
+                    System.Runtime.InteropServices.Marshal.Copy(bits, <span class="highlight-number">0</span>, bmpdata.Scan0, bits.Length)
+                    bmp.UnlockBits(bmpdata)
+
+                    bmp.Save(<span class="highlight-literal">"TiffTo24BitBitmap.bmp"</span>)
+                    System.Diagnostics.Process.Start(<span class="highlight-literal">"TiffTo24BitBitmap.bmp"</span>)
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Class</span> 
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Namespace</span></pre></div><div id="ID0EAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Imports System.Drawing
+Imports System.Drawing.Imaging
+
+Imports BitMiracle.LibTiff.Classic
+
+Namespace BitMiracle.LibTiff.Samples
+    Public NotInheritable Class TiffTo24BitBitmap
+        Private Sub New()
+        End Sub 
+        Public Shared Sub Main()
+            Using tif As Tiff = Tiff.Open("Sample data\dscf0013.tif", "r")
+                ' Find the width and height of the image 
+                Dim value As FieldValue() = tif.GetField(TiffTag.IMAGEWIDTH)
+                Dim width As Integer = value(0).ToInt()
+
+                value = tif.GetField(TiffTag.IMAGELENGTH)
+                Dim height As Integer = value(0).ToInt()
+
+                ' Read the image into the memory buffer 
+                Dim raster As Integer() = New Integer(height * width - 1) {}
+                If Not tif.ReadRGBAImage(width, height, raster) Then
+                    System.Windows.Forms.MessageBox.Show("Could not read image")
+                    Return 
+                End If 
+
+                Using bmp As New Bitmap(width, height, PixelFormat.Format24bppRgb)
+                    Dim rect As New Rectangle(0, 0, bmp.Width, bmp.Height)
+
+                    Dim bmpdata As BitmapData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb)
+                    Dim bits As Byte() = New Byte(bmpdata.Stride * bmpdata.Height - 1) {}
+
+                    For y As Integer = 0 To bmp.Height - 1 
+                        Dim rasterOffset As Integer = y * bmp.Width
+                        Dim bitsOffset As Integer = (bmp.Height - y - 1) * bmpdata.Stride
+
+                        For x As Integer = 0 To bmp.Width - 1 
+                            Dim rgba As Integer = raster(rasterOffset)
+                            rasterOffset = rasterOffset + 1
+                            bits(bitsOffset) = CByte((rgba &gt;&gt; 16) And &amp;HFF)
+                            bits(bitsOffset + 1) = CByte((rgba &gt;&gt; 8) And &amp;HFF)
+                            bits(bitsOffset + 2) = CByte(rgba And &amp;HFF)
+                            bitsOffset = bitsOffset + 3 
+                        Next 
+                    Next
+
+                    System.Runtime.InteropServices.Marshal.Copy(bits, 0, bmpdata.Scan0, bits.Length)
+                    bmp.UnlockBits(bmpdata)
+
+                    bmp.Save("TiffTo24BitBitmap.bmp")
+                    System.Diagnostics.Process.Start("TiffTo24BitBitmap.bmp")
+                End Using 
+            End Using 
+        End Sub 
+    End Class 
+End Namespace</pre></div><div id="ID0EAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAAAAAA');</script></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Convert+color+TIFF+to+a+24-bit+System.Drawing.Bitmap+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

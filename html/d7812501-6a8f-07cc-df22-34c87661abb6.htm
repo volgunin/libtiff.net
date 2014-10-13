@@ -1,0 +1,99 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tiff.WriteTile Method (Byte[], Int32, Int32, Int32, Int32, Int16)</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="M:BitMiracle.LibTiff.Classic.Tiff.WriteTile(System.Byte[],System.Int32,System.Int32,System.Int32,System.Int32,System.Int16)" /><meta name="Description" content="Encodes and writes a tile of data to an open TIFF file/stream." /><meta name="Microsoft.Help.ContentType" content="Reference" /><meta name="BrandingAware" content="'true'" /><meta name="container" content="BitMiracle.LibTiff.Classic" /><meta name="file" content="d7812501-6a8f-07cc-df22-34c87661abb6" /><meta name="guid" content="d7812501-6a8f-07cc-df22-34c87661abb6" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Tiff<span id="ID0EFBABAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EFBABAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>WriteTile Method (<span id="ID0EDBABAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDBABAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBBABAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBBABAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32, Int32, Int32, Int16)</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="summary">
+            Encodes and writes a tile of data to an open TIFF file/stream.
+            </div><p></p><b>Namespace:</b> <a href="9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" target="">BitMiracle.LibTiff.Classic</a><br /><b>Assembly:</b> <span sdata="assembly">BitMiracle.LibTiff.NET</span> (in BitMiracle.LibTiff.NET.dll) Version: 2.4.499.0 (2.4.499.0)<div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Syntax</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div id="snippetGroup_Syntax" class="code"><div id="ID0ECIDAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0ECIDAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0ECIDAAAAA_tabimgleft"></div><div id="ID0ECIDAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECIDAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0ECIDAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECIDAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0ECIDAAAAA_tab3" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECIDAAAAA','Visual C++','3','4');return false;">C++</a></div><div id="ID0ECIDAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0ECIDAAAAA_tabimgright"></div></div><div id="ID0ECIDAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0ECIDAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0ECIDAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0ECIDAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0ECIDAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0ECIDAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0ECIDAAAAA','4')" title="Print">Print</a></div></div><div id="ID0ECIDAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="keyword">public</span> <span class="identifier">int</span> <span class="identifier">WriteTile</span>(
+	<span class="identifier">byte</span>[] <span class="parameter">buffer</span>,
+	<span class="identifier">int</span> <span class="parameter">offset</span>,
+	<span class="identifier">int</span> <span class="parameter">x</span>,
+	<span class="identifier">int</span> <span class="parameter">y</span>,
+	<span class="identifier">int</span> <span class="parameter">z</span>,
+	<span class="identifier">short</span> <span class="parameter">plane</span>
+)</pre></div><div id="ID0ECIDAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public int WriteTile(
+	byte[] buffer,
+	int offset,
+	int x,
+	int y,
+	int z,
+	short plane
+)</pre></div><div id="ID0ECIDAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="keyword">Public</span> <span class="keyword">Function</span> <span class="identifier">WriteTile</span> ( 
+	<span class="parameter">buffer</span> <span class="keyword">As</span> <span class="identifier">Byte</span>(),
+	<span class="parameter">offset</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">x</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">y</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">z</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">plane</span> <span class="keyword">As</span> <span class="identifier">Short</span>
+) <span class="keyword">As</span> <span class="identifier">Integer</span></pre></div><div id="ID0ECIDAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Public Function WriteTile ( 
+	buffer As Byte(),
+	offset As Integer,
+	x As Integer,
+	y As Integer,
+	z As Integer,
+	plane As Short
+) As Integer</pre></div><div id="ID0ECIDAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="keyword">public</span>:
+<span class="identifier">int</span> <span class="identifier">WriteTile</span>(
+	<span class="keyword">array</span>&lt;<span class="identifier">unsigned char</span>&gt;^ <span class="parameter">buffer</span>, 
+	<span class="identifier">int</span> <span class="parameter">offset</span>, 
+	<span class="identifier">int</span> <span class="parameter">x</span>, 
+	<span class="identifier">int</span> <span class="parameter">y</span>, 
+	<span class="identifier">int</span> <span class="parameter">z</span>, 
+	<span class="identifier">short</span> <span class="parameter">plane</span>
+)</pre></div><div id="ID0ECIDAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public:
+int WriteTile(
+	array&lt;unsigned char&gt;^ buffer, 
+	int offset, 
+	int x, 
+	int y, 
+	int z, 
+	short plane
+)</pre></div><div id="ID0ECIDAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECIDAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0ECIDAAAAA');</script></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="buffer"><dt><span class="parameter">buffer</span></dt><dd>Type: <span id="ID0EEAFHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EEAFHDAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/yyb1w04y" target="_blank">System<span id="ID0EBDAFHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBDAFHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Byte</a><span id="ID0ECAFHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0ECAFHDAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script><br /><span>The buffer with image data to be encoded and written.</span></dd></dl><dl paramName="offset"><dt><span class="parameter">offset</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCAEHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAEHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The zero-based byte offset in <span class="parameter">buffer</span> at which
+            to begin reading bytes to be encoded and written.</span></dd></dl><dl paramName="x"><dt><span class="parameter">x</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCADHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCADHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The x-coordinate of the pixel within a tile to be encoded and written.</span></dd></dl><dl paramName="y"><dt><span class="parameter">y</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCACHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCACHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The y-coordinate of the pixel within a tile to be encoded and written.</span></dd></dl><dl paramName="z"><dt><span class="parameter">z</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCABHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCABHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The z-coordinate of the pixel within a tile to be encoded and written.</span></dd></dl><dl paramName="plane"><dt><span class="parameter">plane</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/e07e6fds" target="_blank">System<span id="ID0EBCAAHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAAHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int16</a><br /><span>The zero-based index of the sample plane.</span></dd></dl></div><h4 class="subHeading">Return Value</h4>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">Int32</a><br />The number of encoded and written bytes or <span class="code">-1</span> if an error occurred.<div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Remarks</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><p>
+            The tile to place encoded data is selected by the (x, y, z, plane) coordinates (i.e.
+            <b>WriteTile</b> writes data to the tile containing the specified coordinates.
+            <b>WriteTile</b> (potentially) encodes the data <span class="parameter">buffer</span> and writes
+            it to open file/stream. The buffer must contain an entire tile of data. Applications
+            should call the <a href="07058663-1c98-9f73-88f6-d990ec96bdd3.htm" target="">TileSize<span id="ID0EAVBCAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAVBCAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a> to find out the size (in bytes) of a tile buffer.
+            The <span class="parameter">x</span> and <span class="parameter">y</span> parameters are always used by
+            <b>WriteTile</b>. The <span class="parameter">z</span> parameter is used if the image is deeper
+            than 1 slice (a value of <a href="004b29cb-3828-19ac-b924-95671b477f08.htm" target="">IMAGEDEPTH</a> &gt; 1). In other cases the
+            value of <span class="parameter">z</span> is ignored. The <span class="parameter">plane</span> parameter is
+            used only if data are organized in separate planes
+            (<a href="004b29cb-3828-19ac-b924-95671b477f08.htm" target="">PLANARCONFIG</a> = <a href="d2e12021-da72-b32f-b558-dc23d914d698.htm" target="">PlanarConfig</a>.SEPARATE). In other
+            cases the value of <span class="parameter">plane</span> is ignored.
+            </p><p>
+            A correct value for the <a href="004b29cb-3828-19ac-b924-95671b477f08.htm" target="">IMAGELENGTH</a> tag must be setup before
+            writing; <b>WriteTile</b> does not support automatically growing the image on
+            each write (as <a href="db0aa987-8e75-5a3e-5fec-1af1e2749968.htm" target="">WriteScanline<span id="ID0EABACAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EABACAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a> does).
+            </p><a name="seeAlsoSection"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">See Also</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div class="seeAlsoStyle"><a href="f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" target="">Tiff Class</a></div><div class="seeAlsoStyle"><a href="7371583f-43ad-c57e-08e4-439c740f29fa.htm" target="">Tiff Members</a></div><div class="seeAlsoStyle"><a href="b175a081-3be0-b4f8-f39b-d99be1ce5b27.htm" target="">WriteTile Overload</a></div><div class="seeAlsoStyle"><a href="9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" target="">BitMiracle.LibTiff.Classic Namespace</a></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Tiff.WriteTile+Method+(Byte%5b%5d%2c+Int32%2c+Int32%2c+Int32%2c+Int32%2c+Int16)+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

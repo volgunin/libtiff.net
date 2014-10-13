@@ -1,0 +1,371 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Convert System.Drawing.Bitmap to a 32-bit color TIFF</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="753aa95f-9715-4b89-9a78-2982756d0a2c" /><meta name="Description" content="This sample shows how to convert a System.Drawing.Bitmap to the 32-bit color LZW compressed TIFF image." /><meta name="Microsoft.Help.ContentType" content="Samples" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Convert System.Drawing.Bitmap to a 32-bit color TIFF</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>This sample shows how to convert a System.Drawing.Bitmap to the 32-bit color LZW compressed TIFF image.</p><p></p><p>The code also shows how to retrieve bits of a System.Drawing.Bitmap and convert them from BGRA to RGBA format.</p></div><div id="ID0EBAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EBAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EBAAAAA_tabimgleft"></div><div id="ID0EBAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EBAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EBAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EBAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EBAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EBAAAAA_tabimgright"></div></div><div id="ID0EBAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EBAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EBAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EBAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EBAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EBAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EBAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EBAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> System.Drawing;
+<span class="highlight-keyword">using</span> System.Drawing.Imaging;
+
+<span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> BitMiracle.LibTiff.Samples
+{
+    <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">class</span> BitmapTo32BitColorTiff
+    {
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main()
+        {
+            <span class="highlight-keyword">using</span> (Bitmap bmp = <span class="highlight-keyword">new</span> Bitmap(<span class="highlight-literal">@"Sample Data\rgb.jpg"</span>))
+            {
+                <span class="highlight-keyword">using</span> (Tiff tif = Tiff.Open(<span class="highlight-literal">"BitmapTo32BitColorTiff.tif"</span>, <span class="highlight-literal">"w"</span>))
+                {
+                    <span class="highlight-keyword">byte</span>[] raster = getImageRasterBytes(bmp, PixelFormat.Format32bppArgb);
+                    tif.SetField(TiffTag.IMAGEWIDTH, bmp.Width);
+                    tif.SetField(TiffTag.IMAGELENGTH, bmp.Height);
+                    tif.SetField(TiffTag.COMPRESSION, Compression.LZW);
+                    tif.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
+
+                    tif.SetField(TiffTag.ROWSPERSTRIP, bmp.Height);
+
+                    tif.SetField(TiffTag.XRESOLUTION, bmp.HorizontalResolution);
+                    tif.SetField(TiffTag.YRESOLUTION, bmp.VerticalResolution);
+
+                    tif.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">8</span>);
+                    tif.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">4</span>);
+
+                    tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+                    <span class="highlight-keyword">int</span> stride = raster.Length / bmp.Height;
+                    convertSamples(raster, bmp.Width, bmp.Height);
+
+                    <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> i = <span class="highlight-number">0</span>, offset = <span class="highlight-number">0</span>; i &lt; bmp.Height; i++)
+                    {
+                        tif.WriteScanline(raster, offset, i, <span class="highlight-number">0</span>);
+                        offset += stride;
+                    }
+                }
+
+                System.Diagnostics.Process.Start(<span class="highlight-literal">"BitmapTo32BitColorTiff.tif"</span>);
+            }
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">byte</span>[] getImageRasterBytes(Bitmap bmp, PixelFormat format)
+        {
+            Rectangle rect = <span class="highlight-keyword">new</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, bmp.Width, bmp.Height);
+            <span class="highlight-keyword">byte</span>[] bits = <span class="highlight-keyword">null</span>;
+
+            <span class="highlight-keyword">try</span>
+            {
+                <span class="highlight-comment">// Lock the managed memory</span>
+                BitmapData bmpdata = bmp.LockBits(rect, ImageLockMode.ReadWrite, format);
+
+                <span class="highlight-comment">// Declare an array to hold the bytes of the bitmap.</span>
+                bits = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[bmpdata.Stride * bmpdata.Height];
+
+                <span class="highlight-comment">// Copy the values into the array.</span>
+                System.Runtime.InteropServices.Marshal.Copy(bmpdata.Scan0, bits, <span class="highlight-number">0</span>, bits.Length);
+
+                <span class="highlight-comment">// Release managed memory</span>
+                bmp.UnlockBits(bmpdata);
+            }
+            <span class="highlight-keyword">catch</span>
+            {
+                <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+            }
+
+            <span class="highlight-keyword">return</span> bits;
+        }
+
+        <span class="highlight-comment">/// &lt;summary&gt;</span> 
+        <span class="highlight-comment">/// Converts BGRA samples into RGBA samples</span> 
+        <span class="highlight-comment">/// &lt;/summary&gt;</span> 
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> convertSamples(<span class="highlight-keyword">byte</span>[] data, <span class="highlight-keyword">int</span> width, <span class="highlight-keyword">int</span> height)
+        {
+            <span class="highlight-keyword">int</span> stride = data.Length / height;
+            <span class="highlight-keyword">const</span> <span class="highlight-keyword">int</span> samplesPerPixel = <span class="highlight-number">4</span>;
+
+            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> y = <span class="highlight-number">0</span>; y &lt; height; y++)
+            {
+                <span class="highlight-keyword">int</span> offset = stride * y;
+                <span class="highlight-keyword">int</span> strideEnd = offset + width * samplesPerPixel;
+
+                <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> i = offset; i &lt; strideEnd; i += samplesPerPixel)
+                {
+                    <span class="highlight-keyword">byte</span> temp = data[i + <span class="highlight-number">2</span>];
+                    data[i + <span class="highlight-number">2</span>] = data[i];
+                    data[i] = temp;
+                }
+            }
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using System.Drawing;
+using System.Drawing.Imaging;
+
+using BitMiracle.LibTiff.Classic;
+
+namespace BitMiracle.LibTiff.Samples
+{
+    public static class BitmapTo32BitColorTiff
+    {
+        public static void Main()
+        {
+            using (Bitmap bmp = new Bitmap(@"Sample Data\rgb.jpg"))
+            {
+                using (Tiff tif = Tiff.Open("BitmapTo32BitColorTiff.tif", "w"))
+                {
+                    byte[] raster = getImageRasterBytes(bmp, PixelFormat.Format32bppArgb);
+                    tif.SetField(TiffTag.IMAGEWIDTH, bmp.Width);
+                    tif.SetField(TiffTag.IMAGELENGTH, bmp.Height);
+                    tif.SetField(TiffTag.COMPRESSION, Compression.LZW);
+                    tif.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
+
+                    tif.SetField(TiffTag.ROWSPERSTRIP, bmp.Height);
+
+                    tif.SetField(TiffTag.XRESOLUTION, bmp.HorizontalResolution);
+                    tif.SetField(TiffTag.YRESOLUTION, bmp.VerticalResolution);
+
+                    tif.SetField(TiffTag.BITSPERSAMPLE, 8);
+                    tif.SetField(TiffTag.SAMPLESPERPIXEL, 4);
+
+                    tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+                    int stride = raster.Length / bmp.Height;
+                    convertSamples(raster, bmp.Width, bmp.Height);
+
+                    for (int i = 0, offset = 0; i &lt; bmp.Height; i++)
+                    {
+                        tif.WriteScanline(raster, offset, i, 0);
+                        offset += stride;
+                    }
+                }
+
+                System.Diagnostics.Process.Start("BitmapTo32BitColorTiff.tif");
+            }
+        }
+
+        private static byte[] getImageRasterBytes(Bitmap bmp, PixelFormat format)
+        {
+            Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            byte[] bits = null;
+
+            try
+            {
+                // Lock the managed memory
+                BitmapData bmpdata = bmp.LockBits(rect, ImageLockMode.ReadWrite, format);
+
+                // Declare an array to hold the bytes of the bitmap.
+                bits = new byte[bmpdata.Stride * bmpdata.Height];
+
+                // Copy the values into the array.
+                System.Runtime.InteropServices.Marshal.Copy(bmpdata.Scan0, bits, 0, bits.Length);
+
+                // Release managed memory
+                bmp.UnlockBits(bmpdata);
+            }
+            catch
+            {
+                return null;
+            }
+
+            return bits;
+        }
+
+        /// &lt;summary&gt; 
+        /// Converts BGRA samples into RGBA samples 
+        /// &lt;/summary&gt; 
+        private static void convertSamples(byte[] data, int width, int height)
+        {
+            int stride = data.Length / height;
+            const int samplesPerPixel = 4;
+
+            for (int y = 0; y &lt; height; y++)
+            {
+                int offset = stride * y;
+                int strideEnd = offset + width * samplesPerPixel;
+
+                for (int i = offset; i &lt; strideEnd; i += samplesPerPixel)
+                {
+                    byte temp = data[i + 2];
+                    data[i + 2] = data[i];
+                    data[i] = temp;
+                }
+            }
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EBAAAAA');</script><div id="ID0EAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAAAAAA_tabimgleft"></div><div id="ID0EAAAAAA_tab1" class="OH_CodeSnippetContainerTabDisabled" EnableCopyCode="true" disabled="true"><a>C#</a></div><div id="ID0EAAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0EAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAAAAAA_tabimgright"></div></div><div id="ID0EAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="highlight-keyword">Imports</span> System.Drawing
+<span class="highlight-keyword">Imports</span> System.Drawing.Imaging
+
+<span class="highlight-keyword">Imports</span> BitMiracle.LibTiff.Classic
+
+<span class="highlight-keyword">Namespace</span> BitMiracle.LibTiff.Samples
+    <span class="highlight-keyword">Public</span> <span class="highlight-keyword">NotInheritable</span> <span class="highlight-keyword">Class</span> BitmapTo32BitColorTiff
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> <span class="highlight-keyword">New</span>()
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> Main()
+            <span class="highlight-keyword">Using</span> bmp <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Bitmap(<span class="highlight-literal">"Sample Data\rgb.jpg"</span>)
+                <span class="highlight-keyword">Using</span> tif <span class="highlight-keyword">As</span> Tiff = Tiff.Open(<span class="highlight-literal">"BitmapTo32BitColorTiff.tif"</span>, <span class="highlight-literal">"w"</span>)
+                    <span class="highlight-keyword">Dim</span> raster <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = getImageRasterBytes(bmp, PixelFormat.Format32bppArgb)
+                    tif.SetField(TiffTag.IMAGEWIDTH, bmp.Width)
+                    tif.SetField(TiffTag.IMAGELENGTH, bmp.Height)
+                    tif.SetField(TiffTag.COMPRESSION, Compression.LZW)
+                    tif.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB)
+
+                    tif.SetField(TiffTag.ROWSPERSTRIP, bmp.Height)
+
+                    tif.SetField(TiffTag.XRESOLUTION, bmp.HorizontalResolution)
+                    tif.SetField(TiffTag.YRESOLUTION, bmp.VerticalResolution)
+
+                    tif.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">8</span>)
+                    tif.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">4</span>)
+
+                    tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG)
+
+                    <span class="highlight-keyword">Dim</span> stride <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = raster.Length \ bmp.Height
+                    convertSamples(raster, bmp.Width, bmp.Height)
+
+                    <span class="highlight-keyword">Dim</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span>, offset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+                    <span class="highlight-keyword">While</span> i &lt; bmp.Height
+                        tif.WriteScanline(raster, offset, i, <span class="highlight-number">0</span>)
+                        offset += stride
+                        i += <span class="highlight-number">1</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">While</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+
+                System.Diagnostics.Process.Start(<span class="highlight-literal">"BitmapTo32BitColorTiff.tif"</span>)
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> getImageRasterBytes(<span class="highlight-keyword">ByVal</span> bmp <span class="highlight-keyword">As</span> Bitmap, <span class="highlight-keyword">ByVal</span> format <span class="highlight-keyword">As</span> PixelFormat) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>()
+            <span class="highlight-keyword">Dim</span> rect <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, bmp.Width, bmp.Height)
+            <span class="highlight-keyword">Dim</span> bits <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">Nothing</span> 
+
+            <span class="highlight-keyword">Try</span> 
+                <span class="highlight-comment">' Lock the managed memory</span> 
+                <span class="highlight-keyword">Dim</span> bmpdata <span class="highlight-keyword">As</span> BitmapData = bmp.LockBits(rect, ImageLockMode.ReadWrite, format)
+
+                <span class="highlight-comment">' Declare an array to hold the bytes of the bitmap.</span>
+                bits = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(bmpdata.Stride * bmpdata.Height - <span class="highlight-number">1</span>) {}
+
+                <span class="highlight-comment">' Copy the values into the array.</span>
+                System.Runtime.InteropServices.Marshal.Copy(bmpdata.Scan0, bits, <span class="highlight-number">0</span>, bits.Length)
+
+                <span class="highlight-comment">' Release managed memory</span>
+                bmp.UnlockBits(bmpdata)
+            <span class="highlight-keyword">Catch</span> 
+                <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span> 
+
+            <span class="highlight-keyword">Return</span> bits
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+
+        <span class="highlight-comment">''' &lt;summary&gt;</span> 
+        <span class="highlight-comment">''' Converts BGRA samples into RGBA samples</span> 
+        <span class="highlight-comment">''' &lt;/summary&gt;</span> 
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> convertSamples(<span class="highlight-keyword">ByVal</span> data <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>(), <span class="highlight-keyword">ByVal</span> width <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>, <span class="highlight-keyword">ByVal</span> height <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>)
+            <span class="highlight-keyword">Dim</span> stride <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = data.Length \ height
+            <span class="highlight-keyword">Const</span> samplesPerPixel <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">4</span> 
+
+            <span class="highlight-keyword">For</span> y <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> height - <span class="highlight-number">1</span> 
+                <span class="highlight-keyword">Dim</span> offset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = stride * y
+                <span class="highlight-keyword">Dim</span> strideEnd <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = offset + width * samplesPerPixel
+
+                <span class="highlight-keyword">Dim</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = offset
+                <span class="highlight-keyword">While</span> i &lt; strideEnd
+                    <span class="highlight-keyword">Dim</span> temp <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span> = data(i + <span class="highlight-number">2</span>)
+                    data(i + <span class="highlight-number">2</span>) = data(i)
+                    data(i) = temp
+                    i += samplesPerPixel
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">While</span> 
+            <span class="highlight-keyword">Next</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Class</span> 
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Namespace</span></pre></div><div id="ID0EAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Imports System.Drawing
+Imports System.Drawing.Imaging
+
+Imports BitMiracle.LibTiff.Classic
+
+Namespace BitMiracle.LibTiff.Samples
+    Public NotInheritable Class BitmapTo32BitColorTiff
+        Private Sub New()
+        End Sub 
+        Public Shared Sub Main()
+            Using bmp As New Bitmap("Sample Data\rgb.jpg")
+                Using tif As Tiff = Tiff.Open("BitmapTo32BitColorTiff.tif", "w")
+                    Dim raster As Byte() = getImageRasterBytes(bmp, PixelFormat.Format32bppArgb)
+                    tif.SetField(TiffTag.IMAGEWIDTH, bmp.Width)
+                    tif.SetField(TiffTag.IMAGELENGTH, bmp.Height)
+                    tif.SetField(TiffTag.COMPRESSION, Compression.LZW)
+                    tif.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB)
+
+                    tif.SetField(TiffTag.ROWSPERSTRIP, bmp.Height)
+
+                    tif.SetField(TiffTag.XRESOLUTION, bmp.HorizontalResolution)
+                    tif.SetField(TiffTag.YRESOLUTION, bmp.VerticalResolution)
+
+                    tif.SetField(TiffTag.BITSPERSAMPLE, 8)
+                    tif.SetField(TiffTag.SAMPLESPERPIXEL, 4)
+
+                    tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG)
+
+                    Dim stride As Integer = raster.Length \ bmp.Height
+                    convertSamples(raster, bmp.Width, bmp.Height)
+
+                    Dim i As Integer = 0, offset As Integer = 0 
+                    While i &lt; bmp.Height
+                        tif.WriteScanline(raster, offset, i, 0)
+                        offset += stride
+                        i += 1 
+                    End While 
+                End Using
+
+                System.Diagnostics.Process.Start("BitmapTo32BitColorTiff.tif")
+            End Using 
+        End Sub 
+
+        Private Shared Function getImageRasterBytes(ByVal bmp As Bitmap, ByVal format As PixelFormat) As Byte()
+            Dim rect As New Rectangle(0, 0, bmp.Width, bmp.Height)
+            Dim bits As Byte() = Nothing 
+
+            Try 
+                ' Lock the managed memory 
+                Dim bmpdata As BitmapData = bmp.LockBits(rect, ImageLockMode.ReadWrite, format)
+
+                ' Declare an array to hold the bytes of the bitmap.
+                bits = New Byte(bmpdata.Stride * bmpdata.Height - 1) {}
+
+                ' Copy the values into the array.
+                System.Runtime.InteropServices.Marshal.Copy(bmpdata.Scan0, bits, 0, bits.Length)
+
+                ' Release managed memory
+                bmp.UnlockBits(bmpdata)
+            Catch 
+                Return Nothing 
+            End Try 
+
+            Return bits
+        End Function 
+
+        ''' &lt;summary&gt; 
+        ''' Converts BGRA samples into RGBA samples 
+        ''' &lt;/summary&gt; 
+        Private Shared Sub convertSamples(ByVal data As Byte(), ByVal width As Integer, ByVal height As Integer)
+            Dim stride As Integer = data.Length \ height
+            Const samplesPerPixel As Integer = 4 
+
+            For y As Integer = 0 To height - 1 
+                Dim offset As Integer = stride * y
+                Dim strideEnd As Integer = offset + width * samplesPerPixel
+
+                Dim i As Integer = offset
+                While i &lt; strideEnd
+                    Dim temp As Byte = data(i + 2)
+                    data(i + 2) = data(i)
+                    data(i) = temp
+                    i += samplesPerPixel
+                End While 
+            Next 
+        End Sub 
+    End Class 
+End Namespace</pre></div><div id="ID0EAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAAAAAA');</script></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Convert+System.Drawing.Bitmap+to+a+32-bit+color+TIFF+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

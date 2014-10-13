@@ -1,0 +1,477 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Rotate TIFF data (in a viewer-agnostic way)</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="39c566d1-98fa-4b46-aa7a-e03ee2eada8c" /><meta name="Description" content="This sample shows how to rotate a TIFF image by 90, 180 and 270 degrees. Rotated images are to be properly displayed by any TIFF viewer." /><meta name="Microsoft.Help.ContentType" content="Samples" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Rotate TIFF data (in a viewer-agnostic way)</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>This sample shows how to rotate a TIFF image by 90, 180 and 270 degrees. Rotated images are to be properly displayed by any TIFF viewer.</p><p></p><p>To rotate an image one might just set the value of TiffTag.ORIENTATION tag. Unfortunately, not all of TIFF viewers respect the value of</p><p>this tag when displaying an image. In fact, most of the viewers don't respect the value of orientation tag.</p><p></p><p>This sample shows how to rotate image data in a viewer-agnostic way.</p></div><div id="ID0EBAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EBAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EBAAAAA_tabimgleft"></div><div id="ID0EBAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EBAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EBAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EBAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EBAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EBAAAAA_tabimgright"></div></div><div id="ID0EBAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EBAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EBAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EBAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EBAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EBAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EBAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EBAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> System;
+<span class="highlight-keyword">using</span> System.Diagnostics;
+<span class="highlight-keyword">using</span> System.Drawing;
+<span class="highlight-keyword">using</span> System.IO;
+
+<span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> BitMiracle.LibTiff.Samples
+{
+    <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">class</span> RotateTiff
+    {
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main()
+        {
+            <span class="highlight-keyword">int</span>[] rotateAngles = <span class="highlight-keyword">new</span> <span class="highlight-keyword">int</span>[] { <span class="highlight-number">90</span>, <span class="highlight-number">180</span>, <span class="highlight-number">270</span> };
+
+            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> angleIndex = <span class="highlight-number">0</span>; angleIndex &lt; rotateAngles.Length; angleIndex++)
+            {
+                <span class="highlight-keyword">string</span> outputFileName = <span class="highlight-keyword">string</span>.Format(<span class="highlight-literal">"Rotated-{0}-degrees.tif"</span>, rotateAngles[angleIndex]);
+
+                <span class="highlight-keyword">using</span> (Tiff input = Tiff.Open(<span class="highlight-literal">@"Sample Data\flag_t24.tif"</span>, <span class="highlight-literal">"r"</span>))
+                {
+                    <span class="highlight-keyword">using</span> (Tiff output = Tiff.Open(outputFileName, <span class="highlight-literal">"w"</span>))
+                    {
+                        <span class="highlight-keyword">for</span> (<span class="highlight-keyword">short</span> page = <span class="highlight-number">0</span>; page &lt; input.NumberOfDirectories(); page++)
+                        {
+                            input.SetDirectory(page);
+                            output.SetDirectory(page);
+
+                            <span class="highlight-keyword">int</span> width = input.GetField(TiffTag.IMAGEWIDTH)[<span class="highlight-number">0</span>].ToInt();
+                            <span class="highlight-keyword">int</span> height = input.GetField(TiffTag.IMAGELENGTH)[<span class="highlight-number">0</span>].ToInt();
+                            <span class="highlight-keyword">int</span> samplesPerPixel = input.GetField(TiffTag.SAMPLESPERPIXEL)[<span class="highlight-number">0</span>].ToInt();
+                            <span class="highlight-keyword">int</span> bitsPerSample = input.GetField(TiffTag.BITSPERSAMPLE)[<span class="highlight-number">0</span>].ToInt();
+                            <span class="highlight-keyword">int</span> photo = input.GetField(TiffTag.PHOTOMETRIC)[<span class="highlight-number">0</span>].ToInt();
+
+                            <span class="highlight-keyword">int</span>[] raster = <span class="highlight-keyword">new</span> <span class="highlight-keyword">int</span>[width * height];
+                            input.ReadRGBAImageOriented(width, height, raster, Orientation.TOPLEFT);
+
+                            raster = rotate(raster, rotateAngles[angleIndex], <span class="highlight-keyword">ref</span> width, <span class="highlight-keyword">ref</span> height);
+
+                            output.SetField(TiffTag.IMAGEWIDTH, width);
+                            output.SetField(TiffTag.IMAGELENGTH, height);
+                            output.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">3</span>);
+                            output.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">8</span>);
+                            output.SetField(TiffTag.ROWSPERSTRIP, height);
+                            output.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
+                            output.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+                            output.SetField(TiffTag.COMPRESSION, Compression.DEFLATE);
+
+                            <span class="highlight-keyword">byte</span>[] strip = rasterToRgbBuffer(raster);
+                            output.WriteEncodedStrip(<span class="highlight-number">0</span>, strip, strip.Length);
+
+                            output.WriteDirectory();
+                        }
+                    }
+                }
+
+                Process.Start(outputFileName);
+            }
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">byte</span>[] rasterToRgbBuffer(<span class="highlight-keyword">int</span>[] raster)
+        {
+            <span class="highlight-keyword">byte</span>[] buffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[raster.Length * <span class="highlight-number">3</span>];
+            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> i = <span class="highlight-number">0</span>; i &lt; raster.Length; i++)
+                Buffer.BlockCopy(raster, i * <span class="highlight-number">4</span>, buffer, i * <span class="highlight-number">3</span>, <span class="highlight-number">3</span>);
+
+            <span class="highlight-keyword">return</span> buffer;
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">int</span>[] rotate(<span class="highlight-keyword">int</span>[] buffer, <span class="highlight-keyword">int</span> angle, <span class="highlight-keyword">ref</span> <span class="highlight-keyword">int</span> width, <span class="highlight-keyword">ref</span> <span class="highlight-keyword">int</span> height)
+        {
+            <span class="highlight-keyword">int</span> rotatedWidth = width;
+            <span class="highlight-keyword">int</span> rotatedHeight = height;
+            <span class="highlight-keyword">int</span> numberOf90s = angle / <span class="highlight-number">90</span>;
+            <span class="highlight-keyword">if</span> (numberOf90s % <span class="highlight-number">2</span> != <span class="highlight-number">0</span>)
+            {
+                <span class="highlight-keyword">int</span> tmp = rotatedWidth;
+                rotatedWidth = rotatedHeight;
+                rotatedHeight = tmp;
+            }
+
+            <span class="highlight-keyword">int</span>[] rotated = <span class="highlight-keyword">new</span> <span class="highlight-keyword">int</span>[rotatedWidth * rotatedHeight];
+
+            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> h = <span class="highlight-number">0</span>; h &lt; height; ++h)
+            {
+                <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> w = <span class="highlight-number">0</span>; w &lt; width; ++w)
+                {
+                    <span class="highlight-keyword">int</span> item = buffer[h * width + w];
+                    <span class="highlight-keyword">int</span> x = <span class="highlight-number">0</span>;
+                    <span class="highlight-keyword">int</span> y = <span class="highlight-number">0</span>;
+                    <span class="highlight-keyword">switch</span> (numberOf90s % <span class="highlight-number">4</span>)
+                    {
+                        <span class="highlight-keyword">case</span> <span class="highlight-number">0</span>:
+                            x = w;
+                            y = h;
+                            <span class="highlight-keyword">break</span>;
+
+                        <span class="highlight-keyword">case</span> <span class="highlight-number">1</span>:
+                            x = (height - h - <span class="highlight-number">1</span>);
+                            y = (rotatedHeight - <span class="highlight-number">1</span>) - (width - w - <span class="highlight-number">1</span>);
+                            <span class="highlight-keyword">break</span>;
+
+                        <span class="highlight-keyword">case</span> <span class="highlight-number">2</span>:
+                            x = (width - w - <span class="highlight-number">1</span>);
+                            y = (height - h - <span class="highlight-number">1</span>);
+
+                            <span class="highlight-keyword">break</span>;
+
+                        <span class="highlight-keyword">case</span> <span class="highlight-number">3</span>:
+                            x = (rotatedWidth - <span class="highlight-number">1</span>) - (height - h - <span class="highlight-number">1</span>);
+                            y = (width - w - <span class="highlight-number">1</span>);
+                            <span class="highlight-keyword">break</span>;
+                    }
+
+                    rotated[y * rotatedWidth + x] = item;
+                }
+            }
+
+            width = rotatedWidth;
+            height = rotatedHeight;
+            <span class="highlight-keyword">return</span> rotated;
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+
+using BitMiracle.LibTiff.Classic;
+
+namespace BitMiracle.LibTiff.Samples
+{
+    public static class RotateTiff
+    {
+        public static void Main()
+        {
+            int[] rotateAngles = new int[] { 90, 180, 270 };
+
+            for (int angleIndex = 0; angleIndex &lt; rotateAngles.Length; angleIndex++)
+            {
+                string outputFileName = string.Format("Rotated-{0}-degrees.tif", rotateAngles[angleIndex]);
+
+                using (Tiff input = Tiff.Open(@"Sample Data\flag_t24.tif", "r"))
+                {
+                    using (Tiff output = Tiff.Open(outputFileName, "w"))
+                    {
+                        for (short page = 0; page &lt; input.NumberOfDirectories(); page++)
+                        {
+                            input.SetDirectory(page);
+                            output.SetDirectory(page);
+
+                            int width = input.GetField(TiffTag.IMAGEWIDTH)[0].ToInt();
+                            int height = input.GetField(TiffTag.IMAGELENGTH)[0].ToInt();
+                            int samplesPerPixel = input.GetField(TiffTag.SAMPLESPERPIXEL)[0].ToInt();
+                            int bitsPerSample = input.GetField(TiffTag.BITSPERSAMPLE)[0].ToInt();
+                            int photo = input.GetField(TiffTag.PHOTOMETRIC)[0].ToInt();
+
+                            int[] raster = new int[width * height];
+                            input.ReadRGBAImageOriented(width, height, raster, Orientation.TOPLEFT);
+
+                            raster = rotate(raster, rotateAngles[angleIndex], ref width, ref height);
+
+                            output.SetField(TiffTag.IMAGEWIDTH, width);
+                            output.SetField(TiffTag.IMAGELENGTH, height);
+                            output.SetField(TiffTag.SAMPLESPERPIXEL, 3);
+                            output.SetField(TiffTag.BITSPERSAMPLE, 8);
+                            output.SetField(TiffTag.ROWSPERSTRIP, height);
+                            output.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
+                            output.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+                            output.SetField(TiffTag.COMPRESSION, Compression.DEFLATE);
+
+                            byte[] strip = rasterToRgbBuffer(raster);
+                            output.WriteEncodedStrip(0, strip, strip.Length);
+
+                            output.WriteDirectory();
+                        }
+                    }
+                }
+
+                Process.Start(outputFileName);
+            }
+        }
+
+        private static byte[] rasterToRgbBuffer(int[] raster)
+        {
+            byte[] buffer = new byte[raster.Length * 3];
+            for (int i = 0; i &lt; raster.Length; i++)
+                Buffer.BlockCopy(raster, i * 4, buffer, i * 3, 3);
+
+            return buffer;
+        }
+
+        private static int[] rotate(int[] buffer, int angle, ref int width, ref int height)
+        {
+            int rotatedWidth = width;
+            int rotatedHeight = height;
+            int numberOf90s = angle / 90;
+            if (numberOf90s % 2 != 0)
+            {
+                int tmp = rotatedWidth;
+                rotatedWidth = rotatedHeight;
+                rotatedHeight = tmp;
+            }
+
+            int[] rotated = new int[rotatedWidth * rotatedHeight];
+
+            for (int h = 0; h &lt; height; ++h)
+            {
+                for (int w = 0; w &lt; width; ++w)
+                {
+                    int item = buffer[h * width + w];
+                    int x = 0;
+                    int y = 0;
+                    switch (numberOf90s % 4)
+                    {
+                        case 0:
+                            x = w;
+                            y = h;
+                            break;
+
+                        case 1:
+                            x = (height - h - 1);
+                            y = (rotatedHeight - 1) - (width - w - 1);
+                            break;
+
+                        case 2:
+                            x = (width - w - 1);
+                            y = (height - h - 1);
+
+                            break;
+
+                        case 3:
+                            x = (rotatedWidth - 1) - (height - h - 1);
+                            y = (width - w - 1);
+                            break;
+                    }
+
+                    rotated[y * rotatedWidth + x] = item;
+                }
+            }
+
+            width = rotatedWidth;
+            height = rotatedHeight;
+            return rotated;
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EBAAAAA');</script><div id="ID0EAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAAAAAA_tabimgleft"></div><div id="ID0EAAAAAA_tab1" class="OH_CodeSnippetContainerTabDisabled" EnableCopyCode="true" disabled="true"><a>C#</a></div><div id="ID0EAAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0EAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAAAAAA_tabimgright"></div></div><div id="ID0EAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="highlight-keyword">Imports</span> System
+<span class="highlight-keyword">Imports</span> System.Diagnostics
+<span class="highlight-keyword">Imports</span> System.Drawing
+<span class="highlight-keyword">Imports</span> System.IO
+
+<span class="highlight-keyword">Imports</span> BitMiracle.LibTiff.Classic
+
+<span class="highlight-keyword">Namespace</span> BitMiracle.LibTiff.Samples
+    <span class="highlight-keyword">Public</span> <span class="highlight-keyword">NotInheritable</span> <span class="highlight-keyword">Class</span> RotateTiff
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> Main()
+            <span class="highlight-keyword">Dim</span> rotateAngles <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Integer</span>() {<span class="highlight-number">90</span>, <span class="highlight-number">180</span>, <span class="highlight-number">270</span>}
+
+            <span class="highlight-keyword">For</span> angleIndex <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> rotateAngles.Length - <span class="highlight-number">1</span> 
+                <span class="highlight-keyword">Dim</span> outputFileName <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span> = <span class="highlight-keyword">String</span>.Format(<span class="highlight-literal">"Rotated-{0}-degrees.tif"</span>, rotateAngles(angleIndex))
+
+                <span class="highlight-keyword">Using</span> input <span class="highlight-keyword">As</span> Tiff = Tiff.Open(<span class="highlight-literal">"Sample Data\flag_t24.tif"</span>, <span class="highlight-literal">"r"</span>)
+                    <span class="highlight-keyword">Using</span> output <span class="highlight-keyword">As</span> Tiff = Tiff.Open(outputFileName, <span class="highlight-literal">"w"</span>)
+                        <span class="highlight-keyword">For</span> page <span class="highlight-keyword">As</span> <span class="highlight-keyword">Short</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> input.NumberOfDirectories() - <span class="highlight-number">1</span>
+                            input.SetDirectory(page)
+                            output.SetDirectory(page)
+
+                            <span class="highlight-keyword">Dim</span> width <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = input.GetField(TiffTag.IMAGEWIDTH)(<span class="highlight-number">0</span>).ToInt()
+                            <span class="highlight-keyword">Dim</span> height <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = input.GetField(TiffTag.IMAGELENGTH)(<span class="highlight-number">0</span>).ToInt()
+                            <span class="highlight-keyword">Dim</span> samplesPerPixel <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = input.GetField(TiffTag.SAMPLESPERPIXEL)(<span class="highlight-number">0</span>).ToInt()
+                            <span class="highlight-keyword">Dim</span> bitsPerSample <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = input.GetField(TiffTag.BITSPERSAMPLE)(<span class="highlight-number">0</span>).ToInt()
+                            <span class="highlight-keyword">Dim</span> photo <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = input.GetField(TiffTag.PHOTOMETRIC)(<span class="highlight-number">0</span>).ToInt()
+
+                            <span class="highlight-keyword">Dim</span> raster <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Integer</span>(width * height - <span class="highlight-number">1</span>) {}
+                            input.ReadRGBAImageOriented(width, height, raster, Orientation.TOPLEFT)
+
+                            raster = rotate(raster, rotateAngles(angleIndex), width, height)
+
+                            output.SetField(TiffTag.IMAGEWIDTH, width)
+                            output.SetField(TiffTag.IMAGELENGTH, height)
+                            output.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">3</span>)
+                            output.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">8</span>)
+                            output.SetField(TiffTag.ROWSPERSTRIP, height)
+                            output.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB)
+                            output.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG)
+                            output.SetField(TiffTag.COMPRESSION, Compression.DEFLATE)
+
+                            <span class="highlight-keyword">Dim</span> strip <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = rasterToRgbBuffer(raster)
+                            output.WriteEncodedStrip(<span class="highlight-number">0</span>, strip, strip.Length)
+
+                            output.WriteDirectory()
+                        <span class="highlight-keyword">Next</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+
+                Process.Start(outputFileName)
+            <span class="highlight-keyword">Next</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> rasterToRgbBuffer(raster <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>()) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>()
+            <span class="highlight-keyword">Dim</span> buf <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(raster.Length * <span class="highlight-number">3</span> - <span class="highlight-number">1</span>) {}
+            <span class="highlight-keyword">For</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> raster.Length - <span class="highlight-number">1</span>
+                Buffer.BlockCopy(raster, i * <span class="highlight-number">4</span>, buf, i * <span class="highlight-number">3</span>, <span class="highlight-number">3</span>)
+            <span class="highlight-keyword">Next</span> 
+
+            <span class="highlight-keyword">Return</span> buf
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> rotate(buffer <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>(), angle <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>, <span class="highlight-keyword">ByRef</span> width <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>, <span class="highlight-keyword">ByRef</span> height <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>()
+            <span class="highlight-keyword">Dim</span> rotatedWidth <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = width
+            <span class="highlight-keyword">Dim</span> rotatedHeight <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = height
+            <span class="highlight-keyword">Dim</span> numberOf90s <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = angle \ <span class="highlight-number">90</span> 
+            <span class="highlight-keyword">If</span> numberOf90s <span class="highlight-keyword">Mod</span> <span class="highlight-number">2</span> &lt;&gt; <span class="highlight-number">0</span> <span class="highlight-keyword">Then</span> 
+                <span class="highlight-keyword">Dim</span> tmp <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = rotatedWidth
+                rotatedWidth = rotatedHeight
+                rotatedHeight = tmp
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+            <span class="highlight-keyword">Dim</span> rotated <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Integer</span>(rotatedWidth * rotatedHeight - <span class="highlight-number">1</span>) {}
+
+            <span class="highlight-keyword">For</span> h <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> height - <span class="highlight-number">1</span> 
+                <span class="highlight-keyword">For</span> w <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> width - <span class="highlight-number">1</span> 
+                    <span class="highlight-keyword">Dim</span> item <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = buffer(h * width + w)
+                    <span class="highlight-keyword">Dim</span> x <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+                    <span class="highlight-keyword">Dim</span> y <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+                    <span class="highlight-keyword">Select</span> <span class="highlight-keyword">Case</span> numberOf90s <span class="highlight-keyword">Mod</span> <span class="highlight-number">4</span> 
+                        <span class="highlight-keyword">Case</span> <span class="highlight-number">0</span>
+                            x = w
+                            y = h
+                            <span class="highlight-keyword">Exit</span> <span class="highlight-keyword">Select</span> 
+
+                        <span class="highlight-keyword">Case</span> <span class="highlight-number">1</span>
+                            x = (height - h - <span class="highlight-number">1</span>)
+                            y = (rotatedHeight - <span class="highlight-number">1</span>) - (width - w - <span class="highlight-number">1</span>)
+                            <span class="highlight-keyword">Exit</span> <span class="highlight-keyword">Select</span> 
+
+                        <span class="highlight-keyword">Case</span> <span class="highlight-number">2</span>
+                            x = (width - w - <span class="highlight-number">1</span>)
+                            y = (height - h - <span class="highlight-number">1</span>)
+
+                            <span class="highlight-keyword">Exit</span> <span class="highlight-keyword">Select</span> 
+
+                        <span class="highlight-keyword">Case</span> <span class="highlight-number">3</span>
+                            x = (rotatedWidth - <span class="highlight-number">1</span>) - (height - h - <span class="highlight-number">1</span>)
+                            y = (width - w - <span class="highlight-number">1</span>)
+                            <span class="highlight-keyword">Exit</span> <span class="highlight-keyword">Select</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Select</span>
+
+                    rotated(y * rotatedWidth + x) = item
+                <span class="highlight-keyword">Next</span> 
+            <span class="highlight-keyword">Next</span>
+
+            width = rotatedWidth
+            height = rotatedHeight
+            <span class="highlight-keyword">Return</span> rotated
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Class</span> 
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Namespace</span></pre></div><div id="ID0EAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Imports System
+Imports System.Diagnostics
+Imports System.Drawing
+Imports System.IO
+
+Imports BitMiracle.LibTiff.Classic
+
+Namespace BitMiracle.LibTiff.Samples
+    Public NotInheritable Class RotateTiff
+        Public Shared Sub Main()
+            Dim rotateAngles As Integer() = New Integer() {90, 180, 270}
+
+            For angleIndex As Integer = 0 To rotateAngles.Length - 1 
+                Dim outputFileName As String = String.Format("Rotated-{0}-degrees.tif", rotateAngles(angleIndex))
+
+                Using input As Tiff = Tiff.Open("Sample Data\flag_t24.tif", "r")
+                    Using output As Tiff = Tiff.Open(outputFileName, "w")
+                        For page As Short = 0 To input.NumberOfDirectories() - 1
+                            input.SetDirectory(page)
+                            output.SetDirectory(page)
+
+                            Dim width As Integer = input.GetField(TiffTag.IMAGEWIDTH)(0).ToInt()
+                            Dim height As Integer = input.GetField(TiffTag.IMAGELENGTH)(0).ToInt()
+                            Dim samplesPerPixel As Integer = input.GetField(TiffTag.SAMPLESPERPIXEL)(0).ToInt()
+                            Dim bitsPerSample As Integer = input.GetField(TiffTag.BITSPERSAMPLE)(0).ToInt()
+                            Dim photo As Integer = input.GetField(TiffTag.PHOTOMETRIC)(0).ToInt()
+
+                            Dim raster As Integer() = New Integer(width * height - 1) {}
+                            input.ReadRGBAImageOriented(width, height, raster, Orientation.TOPLEFT)
+
+                            raster = rotate(raster, rotateAngles(angleIndex), width, height)
+
+                            output.SetField(TiffTag.IMAGEWIDTH, width)
+                            output.SetField(TiffTag.IMAGELENGTH, height)
+                            output.SetField(TiffTag.SAMPLESPERPIXEL, 3)
+                            output.SetField(TiffTag.BITSPERSAMPLE, 8)
+                            output.SetField(TiffTag.ROWSPERSTRIP, height)
+                            output.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB)
+                            output.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG)
+                            output.SetField(TiffTag.COMPRESSION, Compression.DEFLATE)
+
+                            Dim strip As Byte() = rasterToRgbBuffer(raster)
+                            output.WriteEncodedStrip(0, strip, strip.Length)
+
+                            output.WriteDirectory()
+                        Next 
+                    End Using 
+                End Using
+
+                Process.Start(outputFileName)
+            Next 
+        End Sub 
+
+        Private Shared Function rasterToRgbBuffer(raster As Integer()) As Byte()
+            Dim buf As Byte() = New Byte(raster.Length * 3 - 1) {}
+            For i As Integer = 0 To raster.Length - 1
+                Buffer.BlockCopy(raster, i * 4, buf, i * 3, 3)
+            Next 
+
+            Return buf
+        End Function 
+
+        Private Shared Function rotate(buffer As Integer(), angle As Integer, ByRef width As Integer, ByRef height As Integer) As Integer()
+            Dim rotatedWidth As Integer = width
+            Dim rotatedHeight As Integer = height
+            Dim numberOf90s As Integer = angle \ 90 
+            If numberOf90s Mod 2 &lt;&gt; 0 Then 
+                Dim tmp As Integer = rotatedWidth
+                rotatedWidth = rotatedHeight
+                rotatedHeight = tmp
+            End If 
+
+            Dim rotated As Integer() = New Integer(rotatedWidth * rotatedHeight - 1) {}
+
+            For h As Integer = 0 To height - 1 
+                For w As Integer = 0 To width - 1 
+                    Dim item As Integer = buffer(h * width + w)
+                    Dim x As Integer = 0 
+                    Dim y As Integer = 0 
+                    Select Case numberOf90s Mod 4 
+                        Case 0
+                            x = w
+                            y = h
+                            Exit Select 
+
+                        Case 1
+                            x = (height - h - 1)
+                            y = (rotatedHeight - 1) - (width - w - 1)
+                            Exit Select 
+
+                        Case 2
+                            x = (width - w - 1)
+                            y = (height - h - 1)
+
+                            Exit Select 
+
+                        Case 3
+                            x = (rotatedWidth - 1) - (height - h - 1)
+                            y = (width - w - 1)
+                            Exit Select 
+                    End Select
+
+                    rotated(y * rotatedWidth + x) = item
+                Next 
+            Next
+
+            width = rotatedWidth
+            height = rotatedHeight
+            Return rotated
+        End Function 
+    End Class 
+End Namespace</pre></div><div id="ID0EAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAAAAAA');</script></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Rotate+TIFF+data+(in+a+viewer-agnostic+way)+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

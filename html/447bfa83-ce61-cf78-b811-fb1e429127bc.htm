@@ -1,0 +1,75 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tiff.ReadScanline Method (Byte[], Int32, Int16)</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="M:BitMiracle.LibTiff.Classic.Tiff.ReadScanline(System.Byte[],System.Int32,System.Int16)" /><meta name="Description" content="Reads and decodes a scanline of data from an open TIFF file/stream." /><meta name="Microsoft.Help.ContentType" content="Reference" /><meta name="BrandingAware" content="'true'" /><meta name="container" content="BitMiracle.LibTiff.Classic" /><meta name="file" content="447bfa83-ce61-cf78-b811-fb1e429127bc" /><meta name="guid" content="447bfa83-ce61-cf78-b811-fb1e429127bc" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Tiff<span id="ID0EFBABAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EFBABAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>ReadScanline Method (<span id="ID0EDBABAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDBABAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBBABAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBBABAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int16)</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="summary">
+            Reads and decodes a scanline of data from an open TIFF file/stream.
+            </div><p></p><b>Namespace:</b> <a href="9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" target="">BitMiracle.LibTiff.Classic</a><br /><b>Assembly:</b> <span sdata="assembly">BitMiracle.LibTiff.NET</span> (in BitMiracle.LibTiff.NET.dll) Version: 2.4.499.0 (2.4.499.0)<div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Syntax</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div id="snippetGroup_Syntax" class="code"><div id="ID0ECIDAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0ECIDAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0ECIDAAAAA_tabimgleft"></div><div id="ID0ECIDAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECIDAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0ECIDAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECIDAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0ECIDAAAAA_tab3" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECIDAAAAA','Visual C++','3','4');return false;">C++</a></div><div id="ID0ECIDAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0ECIDAAAAA_tabimgright"></div></div><div id="ID0ECIDAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0ECIDAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0ECIDAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0ECIDAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0ECIDAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0ECIDAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0ECIDAAAAA','4')" title="Print">Print</a></div></div><div id="ID0ECIDAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="keyword">public</span> <span class="identifier">bool</span> <span class="identifier">ReadScanline</span>(
+	<span class="identifier">byte</span>[] <span class="parameter">buffer</span>,
+	<span class="identifier">int</span> <span class="parameter">row</span>,
+	<span class="identifier">short</span> <span class="parameter">plane</span>
+)</pre></div><div id="ID0ECIDAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public bool ReadScanline(
+	byte[] buffer,
+	int row,
+	short plane
+)</pre></div><div id="ID0ECIDAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="keyword">Public</span> <span class="keyword">Function</span> <span class="identifier">ReadScanline</span> ( 
+	<span class="parameter">buffer</span> <span class="keyword">As</span> <span class="identifier">Byte</span>(),
+	<span class="parameter">row</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">plane</span> <span class="keyword">As</span> <span class="identifier">Short</span>
+) <span class="keyword">As</span> <span class="identifier">Boolean</span></pre></div><div id="ID0ECIDAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Public Function ReadScanline ( 
+	buffer As Byte(),
+	row As Integer,
+	plane As Short
+) As Boolean</pre></div><div id="ID0ECIDAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="keyword">public</span>:
+<span class="identifier">bool</span> <span class="identifier">ReadScanline</span>(
+	<span class="keyword">array</span>&lt;<span class="identifier">unsigned char</span>&gt;^ <span class="parameter">buffer</span>, 
+	<span class="identifier">int</span> <span class="parameter">row</span>, 
+	<span class="identifier">short</span> <span class="parameter">plane</span>
+)</pre></div><div id="ID0ECIDAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public:
+bool ReadScanline(
+	array&lt;unsigned char&gt;^ buffer, 
+	int row, 
+	short plane
+)</pre></div><div id="ID0ECIDAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECIDAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0ECIDAAAAA');</script></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="buffer"><dt><span class="parameter">buffer</span></dt><dd>Type: <span id="ID0EEACHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EEACHDAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/yyb1w04y" target="_blank">System<span id="ID0EBDACHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBDACHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Byte</a><span id="ID0ECACHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0ECACHDAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script><br /><span>The buffer to place read and decoded image data to.</span></dd></dl><dl paramName="row"><dt><span class="parameter">row</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCABHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCABHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The zero-based index of scanline (row) to read.</span></dd></dl><dl paramName="plane"><dt><span class="parameter">plane</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/e07e6fds" target="_blank">System<span id="ID0EBCAAHDAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAAHDAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int16</a><br /><span>The zero-based index of the sample plane.</span></dd></dl></div><h4 class="subHeading">Return Value</h4>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">Boolean</a><br /><span class="code">true</span> if image data were read and decoded successfully; otherwise, <span class="code">false</span><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Remarks</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><p><b>ReadScanline</b> reads the data for the specified <span class="parameter">row</span> and
+            specified sample plane <span class="parameter">plane</span> into the user supplied data buffer
+            <span class="parameter">buffer</span>. The data are returned decompressed and, in the native
+            byte- and bit-ordering, but are otherwise packed (see further below). The
+            <span class="parameter">buffer</span> must be large enough to hold an entire scanline of data.
+            Applications should call the <a href="e40cc5fe-b2f4-39e5-abc8-835346507d18.htm" target="">ScanlineSize<span id="ID0EAJBCAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAJBCAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a> to find out the size (in
+            bytes) of a scanline buffer. Applications may use
+            <a href="93ee616a-a69d-864b-fee7-f6c886a93bd6.htm" target="">ReadScanline(<span id="ID0EDHBCAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDHBCAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBHBCAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBHBCAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a> or specify 0 for <span class="parameter">plane</span>
+            parameter if image data is contiguous (i.e not organized in separate planes, 
+            <a href="004b29cb-3828-19ac-b924-95671b477f08.htm" target="">PLANARCONFIG</a> = <a href="d2e12021-da72-b32f-b558-dc23d914d698.htm" target="">PlanarConfig</a>.CONTIG).
+            </p><p>
+            The library attempts to hide bit- and byte-ordering differences between the image and
+            the native machine by converting data to the native machine order. Bit reversal is
+            done if the value of <a href="004b29cb-3828-19ac-b924-95671b477f08.htm" target="">FILLORDER</a> tag is opposite to the native
+            machine bit order. 16- and 32-bit samples are automatically byte-swapped if the file
+            was written with a byte order opposite to the native machine byte order.
+            </p><a name="seeAlsoSection"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">See Also</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div class="seeAlsoStyle"><a href="f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" target="">Tiff Class</a></div><div class="seeAlsoStyle"><a href="7371583f-43ad-c57e-08e4-439c740f29fa.htm" target="">Tiff Members</a></div><div class="seeAlsoStyle"><a href="af6c32ae-4afb-888c-fde0-aa19085a3002.htm" target="">ReadScanline Overload</a></div><div class="seeAlsoStyle"><a href="9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" target="">BitMiracle.LibTiff.Classic Namespace</a></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Tiff.ReadScanline+Method+(Byte%5b%5d%2c+Int32%2c+Int16)+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

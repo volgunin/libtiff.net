@@ -1,0 +1,98 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Version History</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="5200b425-c5b7-4675-b138-b055935bb221" /><meta name="Microsoft.Help.ContentType" content="Concepts" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Version History</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><a id="Section1"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle" /><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><a id="SubSection6"><!----></a><h3 class="subHeading">Version 2.3</h3><div class="subsection"><ul><li>
+                                Added support for OJPEG files mistakenly marked as JPEG ones (thanks to Hubertus Hohl)
+                            </li><li>
+                                Fixed bugs related to processing of JPEG data.
+                            </li><li>
+                                Fixed bug related to strip length calculations in JPEG codec (thanks to Emilie Lessard)
+                            </li><li>
+                                Fixed issues related to processing of custom directories and custom tags (thanks to Oliver Merkle and Alex J. Kennedy)
+                            </li><li>
+                                Fixed opening of 16 bit grayscale files with large MAXSAMPLEVALUE values.
+                            </li><li>
+                                Improved support for files produced by legacy TIFF writers.
+                            </li><li>
+                                Fixed opening of files with wrong tag data types.
+                            </li><li>
+                                Fixed bug in SwabArrayOfDouble method.
+                            </li><li>
+                                Fixed bug related to paletted 1bpp images in TiffRgbaImage.
+                            </li><li>
+                                Fixed state-related bugs in some codecs.
+                            </li><li>
+                                Fixed subsampling-related bug in OJpeg codec.
+                            </li><li>
+                                Added new samples.
+                            </li><li>
+                                Fixed bugs in Tiff2Pdf utility.
+                            </li></ul></div><a id="SubSection5"><!----></a><h3 class="subHeading">Version 2.2</h3><div class="subsection"><ul><li>
+                                Added new OJPEG (or Old JPEG, or Original JPEG) codec.
+                            </li><li>
+                                Added new sample ConvertToSingleStripInMemory.
+                            </li><li>
+                                Fixed bug in ReadRGBATile method.
+                            </li><li>
+                                Fixed bug with timezones in Tiff2Pdf utility.
+                            </li></ul></div><a id="SubSection4"><!----></a><h3 class="subHeading">Version 2.1</h3><div class="subsection"><ul><li>
+                                Added samples to the documentation.
+                            </li><li>
+                                Fixed bug with append mode in Tiff.Open() method.
+                            </li><li>
+                                Fixed bug in Sample Viewer.
+                            </li><li>
+                                Fixed bugs in predictor functions that were affecting Deflate and
+                                LZW codecs for some images.
+                            </li><li>
+                                Fixed bug with out-of-bounds exceptions when compressing some images
+                                using CCITT codec.
+                            </li><li>
+                                Fixed bug with handling of "unknown" tags.
+                            </li></ul></div><a id="SubSection3"><!----></a><h3 class="subHeading">Version 2.0</h3><div class="subsection"><ul><li>
+                                Cleaned up API a bit.
+                            </li><li>
+                                Greatly improved the documentation.
+                            </li><li>
+                                Changed the license for the library to the New BSD License.
+                            </li><li>
+                                Speed optimizations have been made.
+                            </li><li>
+                                Added new Tiff2Rgba program.
+                            </li><li>
+                                Added Silverlight support (thanks to Michael Epner and San Chen)
+                            </li><li>
+                                Added Silverlight test application that can be used as a sample
+                                (thanks to Michael Epner)
+                            </li><li>
+                                Added samples for various TIFF-related topics.
+                            </li><li>
+                                Added support for Visual Studio 2010. Now Visual 2005, 2008 and 2010
+                                can be used to build LibTiff.Net.
+                            </li><li>
+                                Added relevant bug fixes from libtiff 3.9.4 to LibTiff.Net code.
+                            </li><li>
+                                Fixed bugs in CCITT codec that caused exceptions during decoding
+                                of some images.
+                            </li><li>
+                                Fixed bug with handling of multipage images and page specifiers in TiffCP utility.
+                            </li><li>
+                                Fixed bug with handling of RGBA images in Tiff2Pdf utility.
+                            </li><li>
+                                Fixed bug with handling of multiple options in Tiff2Pdf utility.
+                            </li><li>
+                                Fixed bug with reading EXIF metadata.
+                            </li><li>
+                                Fixed bugs related to jpeg-in-tiff images.
+                            </li><li>
+                                Fixed bugs related to reading of tags.
+                            </li><li>
+                                Fixed bugs with incorrect handling of images greater than 2GB.
+                            </li><li>
+                                Fixed bugs within ReadRGBAImage (thanks to San Chen)
+                            </li></ul></div><a id="SubSection2"><!----></a><h3 class="subHeading">Version 1.1</h3><div class="subsection"><ul><li>A bug fix release.</li></ul></div><a id="SubSection1"><!----></a><h3 class="subHeading">Version 1.0</h3><div class="subsection"><ul><li>Initial release.</li></ul></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Version+History+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

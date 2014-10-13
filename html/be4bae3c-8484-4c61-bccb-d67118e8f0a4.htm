@@ -1,0 +1,150 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tiff2Pdf</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="be4bae3c-8484-4c61-bccb-d67118e8f0a4" /><meta name="Description" content="Tiff2Pdf converts a TIFF image to a PDF document." /><meta name="Microsoft.Help.ContentType" content="Concepts" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Tiff2Pdf</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>
+                Tiff2Pdf converts a TIFF image to a PDF document.
+            </p></div><a id="Section1"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle" /><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><a id="SubSection1"><!----></a><h3 class="subHeading">Usage</h3><div class="subsection"><p><b>Tiff2Pdf</b> [ options ] input.tiff
+                        </p></div><a id="SubSection2"><!----></a><h3 class="subHeading">Description</h3><div class="subsection"><p>
+                            Tiff2Pdf opens a TIFF image and writes a PDF document to
+                            standard output.
+                        </p><p>
+                            The program converts one TIFF file to one PDF file, including multiple
+                            page TIFF files, tiled TIFF files, black and white, grayscale, and
+                            color TIFF files that contain data of TIFF photometric interpretations
+                            of bilevel, grayscale, RGB, YCbCr, CMYK separation, and ICC L*a*b* as
+                            supported by LibTiff and PDF.
+                        </p><p>
+                            If you have multiple TIFF files to convert into one PDF file then use
+                            Tiffcp or other program to concatenate the files into a multiple page
+                            TIFF file. If the input TIFF file is of huge dimensions (greater than
+                            10000 pixels height or width) convert the input image to a tiled TIFF
+                            if it is not already.
+                        </p><p>
+                            The standard output is standard output. Set the output file name with
+                            the <i>−o output.pdf</i> option.
+                        </p><p>
+                            All black and white files are compressed into a single strip CCITT G4
+                            Fax compressed PDF, unless tiled, where tiled black and white images
+                            are compressed into tiled CCITT G4 Fax compressed PDF.
+                        </p><p>
+                            Color and grayscale data can be compressed using either JPEG
+                            compression, ITU-T T.81, or Zip/Deflate LZ77 compression. Set the
+                            compression type using the <i>−j</i> or
+                            <i>−z</i> options. Use only one or the other of
+                            <i>−j</i> and <i>−z</i>.
+                        </p><p>
+                            If the input TIFF contains single strip CCITT G4 Fax compressed
+                            information, then that is written to the PDF file without transcoding,
+                            unless the options of no compression and no passthrough are set,
+                            <i>−d</i> and <i>−n</i>.
+                        </p><p>
+                            If the input TIFF contains JPEG or single strip Zip/Deflate compressed
+                            information then that is written to the PDF file without transcoding,
+                            unless the options of no compression and no passthrough are set.
+                        </p><p>
+                            The default page size upon which the TIFF image is placed is
+                            determined by the resolution and extent of the image data. Default
+                            values for the TIFF image resolution can be set using the
+                            <i>−x</i> and <i>−y</i>
+                            options. The page size can be set using the
+                            <i>−p</i> option for paper size, or
+                            <i>−w</i> and <i>−l</i>
+                            for paper width and length, then each page of the TIFF image is
+                            centered on its page. The distance unit for default resolution and
+                            page width and length can be set by the
+                            <i>−u</i> option, the default unit is inch.
+                        </p><p>
+                            Various items of the output document information can be set with the
+                            <i>−e</i>, <i>−c</i>,
+                            <i>−a</i>, <i>−t</i>,
+                            <i>−s</i>, and <i>−k</i>
+                            options. Setting the argument of the option to "" for these tags
+                            causes the relevant document information field to be not written.
+                            Some of the document information values otherwise get their
+                            information from the input TIFF image, the software, author, document
+                            name, and image description.
+                        </p><p>
+                            The Portable Document Format (PDF) specification is copyrighted by
+                            Adobe Systems, Incorporated.
+                        </p></div><a id="SubSection3"><!----></a><h3 class="subHeading">Options</h3><div class="subsection"><div class="tableSection"><table><tr><th>Option</th><th>Description</th></tr><tr><td>−o output-file</td><td>
+                                    Set the output to go to file output-file.
+                                </td></tr><tr><td>−j</td><td>
+                                    Compress with JPEG.
+                                </td></tr><tr><td>−z</td><td>
+                                    Compress with Zip/Deflate.
+                                </td></tr><tr><td>−q quality</td><td>
+                                    Set the compression quality, 1-100 for JPEG.
+                                </td></tr><tr><td>−n</td><td>
+                                    Do not allow data to be converted without uncompressing, no
+                                    compressed data passthrough.
+                                </td></tr><tr><td>−b</td><td>
+                                    Set PDF "Interpolate" user preference.
+                                </td></tr><tr><td>−d</td><td>
+                                    Do not compress (decompress).
+                                </td></tr><tr><td>−i</td><td>
+                                    Invert colors.
+                                </td></tr><tr><td>−p paper-size</td><td>
+                                    Set paper size, e.g., <b>letter</b>,
+                                    <b>legal</b>, <b>A4</b>.
+                                </td></tr><tr><td>−u [i|m]</td><td>
+                                    Set distance unit, <b>i</b> for inch,
+                                    <b>m</b> for centimeter.
+                                </td></tr><tr><td>−w width</td><td>
+                                    Set width in units.
+                                </td></tr><tr><td>−l length</td><td>
+                                    Set length in units.
+                                </td></tr><tr><td>−x xres</td><td>
+                                    Set x/width resolution default.
+                                </td></tr><tr><td>−y yres</td><td>
+                                    Set y/length resolution default.
+                                </td></tr><tr><td>−r [d|o]</td><td>
+                                    Set <b>d</b> for resolution default for
+                                    images without resolution, <b>o</b> for
+                                    resolution override for all images.
+                                </td></tr><tr><td>−f</td><td>
+                                    Set PDF "Fit Window" user preference.
+                                </td></tr><tr><td>−e YYYYMMDDHHMMSS</td><td>
+                                    Set document information date, overrides image or current
+                                    date/time default, YYYYMMDDHHMMSS.
+                                </td></tr><tr><td>−c creator</td><td>
+                                    Set document information creator, overrides image software
+                                    default.
+                                </td></tr><tr><td>−a author</td><td>
+                                    Set document information author, overrides image artist default.
+                                </td></tr><tr><td>−t title</td><td>
+                                    Set document information title, overrides image document
+                                    name default.
+                                </td></tr><tr><td>−s subject</td><td>
+                                    Set document information subject, overrides image
+                                    description default.
+                                </td></tr><tr><td>−k keywords</td><td>
+                                    Set document information keywords.
+                                </td></tr><tr><td>−h</td><td>
+                                    List usage reminder to standard error and exit.
+                                </td></tr></table></div></div><a id="SubSection4"><!----></a><h3 class="subHeading">Examples</h3><div class="subsection"><p>
+                            The following example would generate the file output.pdf
+                            from input.tiff.
+                        </p><p><i>
+                                Tiff2Pdf −o output.pdf input.tiff
+                            </i></p><p>
+                            The following example would generate PDF output from input.tiff and
+                            write it to standard output.
+                        </p><p><i>
+                                Tiff2Pdf input.tiff
+                            </i></p><p>
+                            The following example would generate the file output.pdf from
+                            input.tiff, putting the image pages on a letter sized page,
+                            compressing the output with JPEG, with JPEG quality 75, setting the
+                            title to "Document", and setting the "Fit Window" option.
+                        </p><p><i>
+                                Tiff2Pdf −p letter −j −q 75 −t "Document" −f −o output.pdf input.tiff
+                            </i></p></div><a id="SubSection5"><!----></a><h3 class="subHeading">Bugs</h3><div class="subsection"><p>
+                            Please report bugs via the form at
+                            <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="http://bitmiracle.com/support.aspx" target="_blank">http://bitmiracle.com/support.aspx</a> or using
+                            <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="mailto:support@bitmiracle.com" target="_blank">e-mail</a>.
+                        </p></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Tiff2Pdf+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

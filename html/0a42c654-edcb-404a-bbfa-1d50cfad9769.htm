@@ -1,0 +1,598 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Part1. Black-and-white imaging</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="0a42c654-edcb-404a-bbfa-1d50cfad9769" /><meta name="Description" content="This article is the &quot;Graphics programming with libtiff. A C library for manipulating TIFF images&quot; tutorial by Michael Still rewritten to reflect differences between libtiff and LibTiff.Net." /><meta name="Microsoft.Help.ContentType" content="Concepts" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Part1. Black-and-white imaging</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>
+                This article is the "Graphics programming with libtiff. A C library for
+                manipulating TIFF images" tutorial by Michael Still rewritten to reflect
+                differences between libtiff and LibTiff.Net. You can read original article at
+                <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="http://www.ibm.com/developerworks/linux/library/l-libtiff" target="_blank">IBM DeveloperWorks site</a>.
+            </p></div><a id="Section1"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle" /><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><a id="SubSection1"><!----></a><h3 class="subHeading">Summary</h3><div class="subsection"><p>
+                            TIFF is an extremely common but quite complex raster image format.
+                            LibTiff.Net, a free managed implementation of the TIFF specification,
+                            based on LibTiff, a standard ANSI C implementation. This article
+                            discusses some of the pitfalls of TIFF and guides you through use of
+                            the LibTiff.Net library. The article also shows examples of how to use
+                            LibTiff.Net for your black-and-white imaging needs.
+                        </p><p>
+                            TIFF (Tag Image File Format) is a raster image format that was
+                            originally produced by Adobe. Raster image formats store the picture
+                            as a bitmap describing the state of pixels, as opposed to recording
+                            the length and locations of primitives such as lines and curves.
+                            LibTiff.Net is one of the implementations of the TIFF specification.
+                            This article focuses on black-and-white TIFF images; a possible future
+                            article will cover color images.
+                        </p></div><a id="SubSection2"><!----></a><h3 class="subHeading">The TIFF challenge</h3><div class="subsection"><p>
+                            Most file format specifications define some basic rules for the
+                            representation of the file. For instance, PNG documents (a competitor to
+                            TIFF) are always big endian. TIFF, however, doesn't mandate things like
+                            this. Here are some examples of the seemingly basic things that it
+                            doesn't define:
+                            <ul><li>Byte order: big endian or little endian</li><li>
+                                    Fill order of the bit within the image bytes: most
+                                    significant or least significant bit first
+                                </li><li>
+                                    Meaning of a given pixel value for black and white:
+                                    is 0 black or white?
+                                </li></ul></p><p>
+                            Creating a TIFF file can be very easy, because it is rare to have to
+                            do any conversion of the data that you already have. On the other
+                            hand, it also means that reading in random TIFFs created by other
+                            applications can be very hard - you have to code for all possible
+                            combinations to be reasonably certain of having a reliable product.
+                        </p><p>
+                            So, how do you write an application that can read in all these
+                            different possible permutations of the TIFF format? The most important
+                            thing to remember is
+                            <i>
+                                never make assumptions about the format of the image data you
+                                are reading in.
+                            </i></p></div><a id="SubSection3"><!----></a><h3 class="subHeading">Writing TIFF files</h3><div class="subsection"><p>
+                            First I'll show how to write a TIFF file out. Then I'll show how to
+                            read a TIFF file back into your program.
+                        </p><p><b>Infrastructure for writing</b></p><p>
+                            Bitmaps are traditionally represented inside your code by an array of
+                            bytes. In Listing 1, I set up LibTiff.Net and create a simple buffer
+                            that contains an image I can then write out to disk.
+                        </p><p><i>Listing 1. Setting up the infrastructure</i></p><div id="ID0EKJAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EKJAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EKJAAAAAA_tabimgleft"></div><div id="ID0EKJAAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EKJAAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EKJAAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EKJAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EKJAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EKJAAAAAA_tabimgright"></div></div><div id="ID0EKJAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EKJAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EKJAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EKJAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EKJAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EKJAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EKJAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EKJAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> WriteTiff
+{
+    <span class="highlight-keyword">class</span> Program
+    {
+        <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main(<span class="highlight-keyword">string</span>[] args)
+        {
+            <span class="highlight-keyword">byte</span>[] buffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[<span class="highlight-number">25</span> * <span class="highlight-number">144</span>];
+        }
+    }
+}</pre></div><div id="ID0EKJAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using BitMiracle.LibTiff.Classic;
+
+namespace WriteTiff
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            byte[] buffer = new byte[25 * 144];
+        }
+    }
+}</pre></div><div id="ID0EKJAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EKJAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EKJAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EKJAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EKJAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EKJAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EKJAAAAAA');</script><p>
+                            The code above is pretty simple. To use LibTiff.Net, all you need is
+                            to add reference to BitMiracle.LibTiff.NET.dll (or
+                            BitMiracle.LibTiff.Silverligh.dll in Silverlight project) and
+                            add using statement for BitMiracle.LibTiff.Classic namespace.
+                            The byte buffer that we have defined here is going to be our
+                            black-and-white image, so we should define one of those next.
+                        </p><p><b>Writing the image</b></p><p>
+                            To make up for that boring example, I am now pleased to present you
+                            with what is possibly the worst picture of the Sydney Harbor Bridge
+                            ever drawn. In Listing 2, the image is already in the image buffer
+                            and all we have to do is save it to the file on disk. The example
+                            first opens a TIFF image in write mode and then places the image
+                            into that file.
+                        </p><p>
+                            Please note that for clarity I have omitted the actual hex for the
+                            image; this is available in the
+                            <a href="df711b0d-97d4-4add-861c-9a0fe1da68eb.htm" target="">full version
+                            of this code</a>, for those who are interested.
+                        </p><p><i>Listing 2. The writing code</i></p><div id="ID0EEJAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EEJAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EEJAAAAAA_tabimgleft"></div><div id="ID0EEJAAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EEJAAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EEJAAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EEJAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EEJAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EEJAAAAAA_tabimgright"></div></div><div id="ID0EEJAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EEJAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EEJAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EEJAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EEJAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EEJAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EEJAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EEJAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> WriteTiff
+{
+    <span class="highlight-keyword">class</span> Program
+    {
+        <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main(<span class="highlight-keyword">string</span>[] args)
+        {
+            <span class="highlight-keyword">byte</span>[] buffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[<span class="highlight-number">25</span> * <span class="highlight-number">144</span>]
+            {
+                <span class="highlight-comment">// boring hex omitted</span>
+            };
+
+            <span class="highlight-comment">// Open the TIFF file</span> 
+            <span class="highlight-keyword">using</span> (Tiff image = Tiff.Open(<span class="highlight-literal">"output.tif"</span>, <span class="highlight-literal">"w"</span>))
+            {
+                <span class="highlight-keyword">if</span> (image == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Could not open output.tif for writing"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-comment">// We need to set some values for basic tags before we can add any data</span>
+                image.SetField(TiffTag.IMAGEWIDTH, <span class="highlight-number">25</span> * <span class="highlight-number">8</span>);
+                image.SetField(TiffTag.IMAGELENGTH, <span class="highlight-number">144</span>);
+                image.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">1</span>);
+                image.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">1</span>);
+                image.SetField(TiffTag.ROWSPERSTRIP, <span class="highlight-number">144</span>);
+
+                image.SetField(TiffTag.COMPRESSION, Compression.CCITTFAX4);
+                image.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISWHITE);
+                image.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+                image.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+                image.SetField(TiffTag.XRESOLUTION, <span class="highlight-number">150.0</span>);
+                image.SetField(TiffTag.YRESOLUTION, <span class="highlight-number">150.0</span>);
+                image.SetField(TiffTag.RESOLUTIONUNIT, ResUnit.INCH);
+
+                <span class="highlight-comment">// Write the information to the file</span>
+                image.WriteEncodedStrip(<span class="highlight-number">0</span>, buffer, <span class="highlight-number">25</span> * <span class="highlight-number">144</span>);
+
+                <span class="highlight-comment">// file will be auto-closed during disposal</span> 
+                <span class="highlight-comment">// but you can close image yourself</span>
+                image.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0EEJAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using BitMiracle.LibTiff.Classic;
+
+namespace WriteTiff
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            byte[] buffer = new byte[25 * 144]
+            {
+                // boring hex omitted
+            };
+
+            // Open the TIFF file 
+            using (Tiff image = Tiff.Open("output.tif", "w"))
+            {
+                if (image == null)
+                {
+                    System.Console.Error.WriteLine("Could not open output.tif for writing");
+                    return;
+                }
+
+                // We need to set some values for basic tags before we can add any data
+                image.SetField(TiffTag.IMAGEWIDTH, 25 * 8);
+                image.SetField(TiffTag.IMAGELENGTH, 144);
+                image.SetField(TiffTag.BITSPERSAMPLE, 1);
+                image.SetField(TiffTag.SAMPLESPERPIXEL, 1);
+                image.SetField(TiffTag.ROWSPERSTRIP, 144);
+
+                image.SetField(TiffTag.COMPRESSION, Compression.CCITTFAX4);
+                image.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISWHITE);
+                image.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+                image.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+                image.SetField(TiffTag.XRESOLUTION, 150.0);
+                image.SetField(TiffTag.YRESOLUTION, 150.0);
+                image.SetField(TiffTag.RESOLUTIONUNIT, ResUnit.INCH);
+
+                // Write the information to the file
+                image.WriteEncodedStrip(0, buffer, 25 * 144);
+
+                // file will be auto-closed during disposal 
+                // but you can close image yourself
+                image.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0EEJAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EEJAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EEJAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EEJAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EEJAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EEJAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EEJAAAAAA');</script><p>
+                            Windows Photo Viewer and other image viewers should be able to display
+                            output image without problems.
+                        </p><p>
+                            The sample code shows the basics of using the LibTiff.Net API. A few
+                            points worth noting:
+                            <ul><li>
+                                    The buffers presented to and returned from LibTiff.Net each
+                                    contain 8 pixels in a single byte. Thus, you have to be able
+                                    to extract the pixels you are interested in. The use of masks,
+                                    and the right and left shift operators, come in handy here.
+                                </li><li>
+                                    The <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Open(System.String,System.String)"><a href="915344e3-3d06-7d40-fac7-26cad5880e74.htm" target="">Open(String, String)</a></span>
+                                    function is very similar to the <i>fopen</i>
+                                    from C standard library (if you are familiar with it).
+                                </li><li>
+                                    We need to set the value for quite a few fields before we can
+                                    start writing the image out. These fields give LibTiff.Net
+                                    information about the size and shape of the image, as well as
+                                    the way data will be compressed within the image. These fields
+                                    need to be set before you can start handing image data to
+                                    LibTiff.Net. There are many more fields for which a value
+                                    could be set; I have used close to the bare minimum in
+                                    this example.
+                                </li><li><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.WriteEncodedStrip"><a href="303c7c76-4bbc-64f0-d262-509978754367.htm" target="">WriteEncodedStrip<span id="ID0EAADBACJAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAADBACJAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>
+                                    is the function call that actually inserts the image into the
+                                    file. This call inserts uncompressed image data into the file.
+                                    This means that LibTiff.Net will compress the image data for
+                                    you before writing it to the file. If you have already
+                                    compressed data, then have a look at the
+                                    <span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.WriteRawStrip"><a href="cf9d637e-1b03-f632-a32b-d42af63ca6ef.htm" target="">WriteRawStrip<span id="ID0EAABBACJAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABBACJAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>
+                                    instead.
+                                </li><li>
+                                    Finally, we close the file with
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Close"><a href="9bc26d59-9084-795c-2325-9d29069f7db2.htm" target="">Close<span id="ID0EAADAACJAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAADAACJAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>
+                                    . Although, if you call
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Dispose"><a href="7755ac80-49ba-f2e5-1de5-1dd3f589ce7b.htm" target="">Dispose<span id="ID0EAABAACJAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABAACJAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>
+                                    (and you should call it) it's not necessary.
+                                </li></ul></p><p>
+                            In case you're curious what the Sydney Harbor Bridge looks like,
+                            Figure 1 is a copy of the picture.
+                        </p><p><i>Figure 1. The Sydney Harbor Bridge, by Michael Still</i><div class="ps_mediaNear"><img alt="Sydney Harbor Bridge" src="./../media/SydneyHarborBridge.png" /></div></p></div><a id="SubSection4"><!----></a><h3 class="subHeading">Reading TIFF files</h3><div class="subsection"><p>
+                            Reading TIFF files reliably is much harder than writing them.
+                            Unfortunately, I don't have enough space in this article to discuss
+                            all of the important issues, so some of them will need to be left for
+                            later articles. There are also plenty of pages on the Web that discuss
+                            the issues involved.
+                        </p><p>
+                            The issue that complicates reading black-and-white TIFF images the
+                            most is the several different storage schemes that are possible within
+                            the TIFF file itself. LibTiff.Net doesn't hold your hand much with
+                            these schemes, so you have to be able to handle them yourself. The
+                            three schemes TIFF supports are single-strip images, stripped images,
+                            and tiled images:
+                            <ul><li><p><b>Single-strip image</b></p><p>
+                                        This is a special case of a stripped image, as the name
+                                        suggests. In this case, all of the bitmap is stored in one
+                                        large block. I have experienced reliability issues on
+                                        Windows machines with images that are single-strip. The
+                                        general recommendation is that no one strip should take
+                                        more than 8 kilobytes uncompressed, which, with
+                                        black-and-white images limits you to 65,536 pixels in
+                                        a single strip.
+                                    </p></li><li><p><b>Stripped (or multiple-strip) image</b></p><p>
+                                        Horizontal blocks of the image are stored together. More
+                                        than one strip is joined vertically to make the entire
+                                        bitmap. Figure 2 shows this concept.
+                                    </p><p><i>Figure 2. The Sydney Harbor Bridge, in strips</i><div class="ps_mediaNear"><img alt="Sydney Harbor Bridge in strips" src="./../media/SydneyHarborBridgeStrips.jpg" /></div></p></li><li><p><b>Tiled image</b></p><p>
+                                        Like your bathroom wall, it is composed of tiles. This
+                                        representation is shown in Figure 3, and is useful for
+                                        extremely large images. Tiles are especially useful when
+                                        you want to manipulate only a small portion of the image
+                                        at any one time.
+                                    </p><p><i>Figure 3. The Sydney Harbor Bridge, in tiles</i><div class="ps_mediaNear"><img alt="Sydney Harbor Bridge in tiles" src="./../media/SydneyHarborBridgeTiles.jpg" /></div></p></li></ul></p><p>
+                            Tiled images are comparatively uncommon, so I will focus on stripped
+                            images in this article. Remember that the single-strip case is merely
+                            a subset of multiple-strip images.
+                        </p></div><a id="SubSection5"><!----></a><h3 class="subHeading">Infrastructure for reading</h3><div class="subsection"><p>
+                            The most important thing to remember when reading in TIFF images is
+                            to be flexible. The reading example (Listing 3 below) has the same
+                            basic concepts as the writing example (Listing 2 above), with the
+                            major difference being that the reading example needs to deal with
+                            many possible input images. Apart from stripping and tiling, the most
+                            important thing to be flexible about is photometric interpretation.
+                            Luckily, with black-and-white images there are only two photometric
+                            interpretations to worry about; with color, and to a certain extent
+                            grayscale images, there are many more.
+                        </p><p>
+                            What is <i>photometric interpretation</i>? Well,
+                            the representation of the image in the buffer is really a very
+                            arbitrary thing. I might code my bitmaps so that 0 means black
+                            (<span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Photometric"><a href="762c8b34-c03a-e82d-facc-7c5a951666c6.htm" target="">Photometric</a></span>.MINISBLACK),
+                            whereas you might prefer that 1 means black (<span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Photometric"><a href="762c8b34-c03a-e82d-facc-7c5a951666c6.htm" target="">Photometric</a></span>.MINISWHITE).
+                            TIFF allows both, so our code has to be able to handle both cases. In
+                            the example below, I have assumed that the internal buffers need to be
+                            in Photometric.MINISWHITE, so we will convert images that are in
+                            Photometric.MINISBLACK.
+                        </p><p>
+                            The other big thing to bear in mind is <i>fill</i>
+                            order, that is, whether the first bit in the byte is the highest value
+                            or the lowest. Listing 3 also handles both of these correctly. I have
+                            assumed that the buffer should have the most significant bit first.
+                            TIFF images can be either big endian or little endian, but LibTiff.Net
+                            handles this for us. Thankfully, LibTiff also supports the various
+                            compression algorithms without you having to worry about those. These
+                            are by far the scariest area of TIFF, so it is still worth your time
+                            to use LibTiff.Net.
+                        </p><p><i>Listing 3. The reading code</i></p><div id="ID0EBDAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EBDAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EBDAAAAAA_tabimgleft"></div><div id="ID0EBDAAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EBDAAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EBDAAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EBDAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EBDAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EBDAAAAAA_tabimgright"></div></div><div id="ID0EBDAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EBDAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EBDAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EBDAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EBDAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EBDAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EBDAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EBDAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> ReadTiff
+{
+    <span class="highlight-keyword">class</span> Program
+    {
+        <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main(<span class="highlight-keyword">string</span>[] args)
+        {
+            <span class="highlight-comment">// Open the TIFF image</span> 
+            <span class="highlight-keyword">using</span> (Tiff image = Tiff.Open(args[<span class="highlight-number">0</span>], <span class="highlight-literal">"r"</span>))
+            {
+                <span class="highlight-keyword">if</span> (image == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Could not open incoming image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-comment">// Check that it is of a type that we support</span>
+                FieldValue[] <span class="highlight-keyword">value</span> = image.GetField(TiffTag.BITSPERSAMPLE);
+                <span class="highlight-keyword">if</span> (<span class="highlight-keyword">value</span> == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Undefined number of bits per sample"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">short</span> bps = <span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToShort();
+                <span class="highlight-keyword">if</span> (bps != <span class="highlight-number">1</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Unsupported number of bits per sample"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">value</span> = image.GetField(TiffTag.SAMPLESPERPIXEL);
+                <span class="highlight-keyword">if</span> (<span class="highlight-keyword">value</span> == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Undefined number of samples per pixel"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">short</span> spp = <span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToShort();
+                <span class="highlight-keyword">if</span> (spp != <span class="highlight-number">1</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Unsupported number of samples per pixel"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-comment">// Read in the possibly multiple strips</span> 
+                <span class="highlight-keyword">int</span> stripSize = image.StripSize();
+                <span class="highlight-keyword">int</span> stripMax = image.NumberOfStrips();
+                <span class="highlight-keyword">int</span> imageOffset = <span class="highlight-number">0</span>;
+
+                <span class="highlight-keyword">int</span> bufferSize = image.NumberOfStrips() * stripSize;
+                <span class="highlight-keyword">byte</span>[] buffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[bufferSize];
+
+                <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> stripCount = <span class="highlight-number">0</span>; stripCount &lt; stripMax; stripCount++)
+                {
+                    <span class="highlight-keyword">int</span> result = image.ReadEncodedStrip(stripCount, buffer, imageOffset, stripSize);
+                    <span class="highlight-keyword">if</span> (result == <span class="highlight-number">-1</span>)
+                    {
+                        System.Console.Error.WriteLine(<span class="highlight-literal">"Read error on input strip number {0}"</span>, stripCount);
+                        <span class="highlight-keyword">return</span>;
+                    }
+
+                    imageOffset += result;
+                }
+
+                <span class="highlight-comment">// Deal with photometric interpretations</span> 
+                <span class="highlight-keyword">value</span> = image.GetField(TiffTag.PHOTOMETRIC);
+                <span class="highlight-keyword">if</span> (<span class="highlight-keyword">value</span> == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Image has an undefined photometric interpretation"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                Photometric photo = (Photometric)<span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToInt();
+                <span class="highlight-keyword">if</span> (photo != Photometric.MINISWHITE)
+                {
+                    <span class="highlight-comment">// Flip bits</span>
+                    System.Console.Out.WriteLine(<span class="highlight-literal">"Fixing the photometric interpretation"</span>);
+
+                    <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> count = <span class="highlight-number">0</span>; count &lt; bufferSize; count++)
+                        buffer[count] = (<span class="highlight-keyword">byte</span>)~buffer[count];
+                }
+
+                <span class="highlight-comment">// Deal with fillorder</span> 
+                <span class="highlight-keyword">value</span> = image.GetField(TiffTag.FILLORDER);
+                <span class="highlight-keyword">if</span> (<span class="highlight-keyword">value</span> == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Image has an undefined fillorder"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                FillOrder fillorder = (FillOrder)<span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToInt();
+                <span class="highlight-keyword">if</span> (fillorder != FillOrder.MSB2LSB)
+                {
+                    <span class="highlight-comment">// We need to swap bits -- ABCDEFGH becomes HGFEDCBA</span>
+                    System.Console.Out.WriteLine(<span class="highlight-literal">"Fixing the fillorder"</span>);
+
+                    <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> count = <span class="highlight-number">0</span>; count &lt; bufferSize; count++)
+                    {
+                        <span class="highlight-keyword">byte</span> tempbyte = <span class="highlight-number">0</span>;
+                        <span class="highlight-keyword">if</span> ((buffer[count] &amp; <span class="highlight-number">128</span>) != <span class="highlight-number">0</span>) tempbyte += <span class="highlight-number">1</span>;
+                        <span class="highlight-keyword">if</span> ((buffer[count] &amp; <span class="highlight-number">64</span>) != <span class="highlight-number">0</span>) tempbyte += <span class="highlight-number">2</span>;
+                        <span class="highlight-keyword">if</span> ((buffer[count] &amp; <span class="highlight-number">32</span>) != <span class="highlight-number">0</span>) tempbyte += <span class="highlight-number">4</span>;
+                        <span class="highlight-keyword">if</span> ((buffer[count] &amp; <span class="highlight-number">16</span>) != <span class="highlight-number">0</span>) tempbyte += <span class="highlight-number">8</span>;
+                        <span class="highlight-keyword">if</span> ((buffer[count] &amp; <span class="highlight-number">8</span>) != <span class="highlight-number">0</span>) tempbyte += <span class="highlight-number">16</span>;
+                        <span class="highlight-keyword">if</span> ((buffer[count] &amp; <span class="highlight-number">4</span>) != <span class="highlight-number">0</span>) tempbyte += <span class="highlight-number">32</span>;
+                        <span class="highlight-keyword">if</span> ((buffer[count] &amp; <span class="highlight-number">2</span>) != <span class="highlight-number">0</span>) tempbyte += <span class="highlight-number">64</span>;
+                        <span class="highlight-keyword">if</span> ((buffer[count] &amp; <span class="highlight-number">1</span>) != <span class="highlight-number">0</span>) tempbyte += <span class="highlight-number">128</span>;
+                        buffer[count] = tempbyte;
+                    }
+                }
+
+                <span class="highlight-comment">// Do whatever it is we do with the buffer - we dump it in hex</span> 
+                <span class="highlight-keyword">value</span> = image.GetField(TiffTag.IMAGEWIDTH);
+                <span class="highlight-keyword">if</span> (<span class="highlight-keyword">value</span> == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Image does not define its width"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">int</span> width = <span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToInt();
+                <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> count = <span class="highlight-number">0</span>; count &lt; bufferSize; count++)
+                {
+                    System.Console.Out.Write(<span class="highlight-literal">"{0:X2}"</span>, buffer[count]);
+                    <span class="highlight-keyword">if</span> ((count + <span class="highlight-number">1</span>) % (width / <span class="highlight-number">8</span>) == <span class="highlight-number">0</span>)
+                        System.Console.Out.WriteLine();
+                    <span class="highlight-keyword">else</span>
+                        System.Console.Out.Write(<span class="highlight-literal">" "</span>);
+                }
+
+                image.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0EBDAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using BitMiracle.LibTiff.Classic;
+
+namespace ReadTiff
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Open the TIFF image 
+            using (Tiff image = Tiff.Open(args[0], "r"))
+            {
+                if (image == null)
+                {
+                    System.Console.Error.WriteLine("Could not open incoming image");
+                    return;
+                }
+
+                // Check that it is of a type that we support
+                FieldValue[] value = image.GetField(TiffTag.BITSPERSAMPLE);
+                if (value == null)
+                {
+                    System.Console.Error.WriteLine("Undefined number of bits per sample");
+                    return;
+                }
+
+                short bps = value[0].ToShort();
+                if (bps != 1)
+                {
+                    System.Console.Error.WriteLine("Unsupported number of bits per sample");
+                    return;
+                }
+
+                value = image.GetField(TiffTag.SAMPLESPERPIXEL);
+                if (value == null)
+                {
+                    System.Console.Error.WriteLine("Undefined number of samples per pixel");
+                    return;
+                }
+
+                short spp = value[0].ToShort();
+                if (spp != 1)
+                {
+                    System.Console.Error.WriteLine("Unsupported number of samples per pixel");
+                    return;
+                }
+
+                // Read in the possibly multiple strips 
+                int stripSize = image.StripSize();
+                int stripMax = image.NumberOfStrips();
+                int imageOffset = 0;
+
+                int bufferSize = image.NumberOfStrips() * stripSize;
+                byte[] buffer = new byte[bufferSize];
+
+                for (int stripCount = 0; stripCount &lt; stripMax; stripCount++)
+                {
+                    int result = image.ReadEncodedStrip(stripCount, buffer, imageOffset, stripSize);
+                    if (result == -1)
+                    {
+                        System.Console.Error.WriteLine("Read error on input strip number {0}", stripCount);
+                        return;
+                    }
+
+                    imageOffset += result;
+                }
+
+                // Deal with photometric interpretations 
+                value = image.GetField(TiffTag.PHOTOMETRIC);
+                if (value == null)
+                {
+                    System.Console.Error.WriteLine("Image has an undefined photometric interpretation");
+                    return;
+                }
+
+                Photometric photo = (Photometric)value[0].ToInt();
+                if (photo != Photometric.MINISWHITE)
+                {
+                    // Flip bits
+                    System.Console.Out.WriteLine("Fixing the photometric interpretation");
+
+                    for (int count = 0; count &lt; bufferSize; count++)
+                        buffer[count] = (byte)~buffer[count];
+                }
+
+                // Deal with fillorder 
+                value = image.GetField(TiffTag.FILLORDER);
+                if (value == null)
+                {
+                    System.Console.Error.WriteLine("Image has an undefined fillorder");
+                    return;
+                }
+
+                FillOrder fillorder = (FillOrder)value[0].ToInt();
+                if (fillorder != FillOrder.MSB2LSB)
+                {
+                    // We need to swap bits -- ABCDEFGH becomes HGFEDCBA
+                    System.Console.Out.WriteLine("Fixing the fillorder");
+
+                    for (int count = 0; count &lt; bufferSize; count++)
+                    {
+                        byte tempbyte = 0;
+                        if ((buffer[count] &amp; 128) != 0) tempbyte += 1;
+                        if ((buffer[count] &amp; 64) != 0) tempbyte += 2;
+                        if ((buffer[count] &amp; 32) != 0) tempbyte += 4;
+                        if ((buffer[count] &amp; 16) != 0) tempbyte += 8;
+                        if ((buffer[count] &amp; 8) != 0) tempbyte += 16;
+                        if ((buffer[count] &amp; 4) != 0) tempbyte += 32;
+                        if ((buffer[count] &amp; 2) != 0) tempbyte += 64;
+                        if ((buffer[count] &amp; 1) != 0) tempbyte += 128;
+                        buffer[count] = tempbyte;
+                    }
+                }
+
+                // Do whatever it is we do with the buffer - we dump it in hex 
+                value = image.GetField(TiffTag.IMAGEWIDTH);
+                if (value == null)
+                {
+                    System.Console.Error.WriteLine("Image does not define its width");
+                    return;
+                }
+
+                int width = value[0].ToInt();
+                for (int count = 0; count &lt; bufferSize; count++)
+                {
+                    System.Console.Out.Write("{0:X2}", buffer[count]);
+                    if ((count + 1) % (width / 8) == 0)
+                        System.Console.Out.WriteLine();
+                    else
+                        System.Console.Out.Write(" ");
+                }
+
+                image.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0EBDAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBDAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBDAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBDAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBDAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBDAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EBDAAAAAA');</script><p>
+                            This code works by first opening the image and checking that it is one
+                            that we can handle. It then reads in all of the strips for the image
+                            and appends them together into one large memory block. If required, it
+                            also flips bits until the photometric interpretation is the one we can
+                            handle, and deals with having to swap bits if the fill order is wrong.
+                            Finally, our sample outputs the image as a series of lines composed of
+                            hex values. Remember that each of the values represents 8 pixels in
+                            the actual image.
+                        </p></div><a id="SubSection6"><!----></a><h3 class="subHeading">Conclusion</h3><div class="subsection"><p>
+                            In this article I have shown you how to write and read some simple
+                            black-and-white images using LibTiff.Net, and introduced some key
+                            issues to be aware of. Before you start coding with LibTiff.Net,
+                            remember to put some thought into what compression algorithm you
+                            should be using for your images - group 4 fax is great for
+                            black-and-white, but what you use for color really depends on
+                            your needs.
+                        </p></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Part1.+Black-and-white+imaging+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

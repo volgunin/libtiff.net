@@ -1,0 +1,576 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Part2. Grayscale and color imaging</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="c0ab407e-de25-46db-9cc9-e0bf3f1bc83d" /><meta name="Description" content="This article is the &quot;Graphics programming with libtiff, Part 2. And now for a little color&quot; tutorial by Michael Still rewritten to reflect differences between libtiff and LibTiff.Net. You can read original article at IBM DeveloperWorks sitehttp://www.ibm." /><meta name="Microsoft.Help.ContentType" content="Concepts" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Part2. Grayscale and color imaging</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>
+                This article is the "Graphics programming with libtiff, Part 2. And now for a
+                little color" tutorial by Michael Still rewritten to reflect differences between
+                libtiff and LibTiff.Net. You can read original article at
+                <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="http://www.ibm.com/developerworks/linux/library/l-libtiff2/" target="_blank">IBM DeveloperWorks site</a>.
+            </p></div><a id="Section1"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle" /><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><a id="SubSection1"><!----></a><h3 class="subHeading">Summary</h3><div class="subsection"><p>
+                            TIFF is an extremely common but quite complex raster image format.
+                            LibTiff.Net, a free managed implementation of the TIFF specification,
+                            based on LibTiff, a standard ANSI C implementation. This article
+                            shows you how to use LibTiff.Net for grayscale and color imaging.
+                        </p><p>
+                            This article - a continuation of the
+                            <a href="0a42c654-edcb-404a-bbfa-1d50cfad9769.htm" target="">previous article</a>
+                            on black and white graphics programming with LibTiff.Net - covers
+                            grayscale and color imaging. It assumes that you have read and
+                            understand the code from the black and white article. First let's
+                            review some theory about how the image data is stored for color
+                            and grayscale. This theory applies to all imaging formats. Then we'll
+                            cover the specifics of using LibTiff.Net.
+                        </p></div><a id="SubSection2"><!----></a><h3 class="subHeading">A bit of terminology</h3><div class="subsection"><p>
+                            Images are made up of pixels. In black and white imaging, the pixel
+                            has one of two values, 0 or 1. This can be represented in a single
+                            bit. For grayscale and color images however, the pixel needs to store
+                            a much greater range of values; if a pixel was to have 255 levels of
+                            gray, we would need 8 bits to store that pixel. Each of these values
+                            is called a sample. TIFF expresses the size of the value in a tag called
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffTag"><a href="004b29cb-3828-19ac-b924-95671b477f08.htm" target="">TiffTag</a></span>.BITSPERSAMPLE.
+                            This will be 1 for black and white, and some larger number for grayscale.
+                        </p><p>
+                            For color images, we need to store even more information. For each
+                            pixel we will need to store a red, green, and blue value. Each of
+                            these values is stored in a separate <i>sample</i>.
+                            Therefore, we will need to define TiffTag.SAMPLESPERPIXEL. This will
+                            be 1 for black and white, or grayscale, but will normally be 3 for
+                            color images. We also need to define the size of each sample, so we'll
+                            still need to set a value for TiffTag.BITSPERSAMPLE.
+                        </p></div><a id="SubSection3"><!----></a><h3 class="subHeading">Theory of color and grayscale storage</h3><div class="subsection"><p>
+                            The first thing we need to understand to be able to support color and
+                            grayscale images is the format of the image data within memory. There
+                            are two main representations for color and grayscale images. I'll
+                            explain these by describing grayscale, and then extend it to color.
+                        </p><p><b>Direct storage of pixel data</b></p><p>
+                            If you remember the way pixel information was stored in the black
+                            and white images from the
+                            <a href="0a42c654-edcb-404a-bbfa-1d50cfad9769.htm" target="">previous article</a>,
+                            the information was just in the strips. You can also do this with
+                            grayscale and color images, but this representation of image data is
+                            quite inefficient. For example, in a scenario in which the image has a
+                            solid background, there are many pixels with the same value. If the
+                            pixel data is stored in the strips, then this value will waste a large
+                            amount of space.
+                        </p><p>
+                            Thankfully, there is a more efficient way to store image data. Imagine
+                            a simple four-color, 24-bit-per-pixel image. If we build a lookup
+                            table of the four color values (the 24-bit values that represent those
+                            colors), then we just need to store the relevant entry number of the
+                            color in the image strip itself. This can be done in only two bits,
+                            instead of the full 24.
+                        </p><p>
+                            The math looks something like this: A 24-bit color image that is
+                            1,000 by 1,000 pixels will take 24 million bits to store. The same
+                            image, if it was a four color image, would take 4 million bits for the
+                            strip data, and 98 bits for the color table. Neither of these numbers
+                            includes header and footer information for the file format, and the
+                            numbers are for uncompressed bitmaps. The advantages of the lookup
+                            table are obvious. This style of lookup table is called a
+                            <i>palette</i>, probably because of those things
+                            painters carry around.
+                        </p><p>
+                            This concept works for grayscale images as well. The only difference
+                            is that the "colors" in the palette are just shades of gray.
+                        </p><p><b>Compression algorithms in LibTiff.Net</b></p><p>
+                            Several compression algorithms are available within LibTiff.Net. The
+                            table below helps sort them out.
+                        </p><p><i>Table 1. LibTiff.Net compression algorithms</i></p><div class="tableSection"><table><tr><th>Compression algorithm</th><th>Well suited for</th><th>TiffTag.COMPRESSION</th></tr><tr><td>CCITT Group 4 Fax and Group 3 Fax</td><td>
+                                    This entry is here for completeness. If you're coding for
+                                    black and white images, then you're probably using the CCITT
+                                    fax compression methods. These compression algorithms don't
+                                    support color.
+                                </td><td>Compression.CCITTFAX3, Compression.CCITTFAX4</td></tr><tr><td>JPEG</td><td>
+                                    JPEG compression is great for large images such as photos.
+                                    However, the compression is normally lossy (in that image data
+                                    is thrown away as part of the compression process). This makes
+                                    JPEG very poor for compressing text which needs to remain
+                                    readable. The other thing to bear in mind is that the loss is
+                                    cumulative - see the next section for more information
+                                    about this.
+                                </td><td>Compression.JPEG</td></tr><tr><td>LZW</td><td>
+                                    This is the compression algorithm used in GIF images. There
+                                    were the licensing requirements from Unisys, but this
+                                    requirements are gone now and this compression codec is useful
+                                    for certain types of images. See note below.
+                                </td><td>Compression.LZW</td></tr><tr><td>Deflate</td><td>
+                                    This is the gzip compression algorithm, which is also used for
+                                    PNG. It is the compression algorithm I would recommend for
+                                    color images. See note below for another opinion.
+                                </td><td>Compression.DEFLATE</td></tr></table></div><div class="alert"><table><tr><th><img class="mtps-img-src" src="./../icons/alert_note.gif" alt="Note" /> <b>Note</b></th></tr><tr><td><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="http://www.awaresystems.be/imaging/tiff/faq.html" target="_blank">libtiff FAQ</a>
+                                gives following table for selection of color space and
+                                compression scheme.
+                            </td></tr></table></div><p><i>
+                                Table 2. Selection of color space and compression scheme
+                                as proposed in libtiff FAQ.
+                            </i></p><div class="tableSection"><table><tr><th>Application</th><th>Compression scheme and color space</th></tr><tr><td>Bilevel dithered or very complex imagery</td><td>
+                                    colorspace black and white. compression G3, G4, or perhaps
+                                    JBIG (last one is unsupported by LibTiff.Net)
+                                </td></tr><tr><td>Bilevel artificial imagery</td><td>
+                                    colorspace black and white. compression G3 or G4
+                                </td></tr><tr><td>Normal range grayscale or color photographic imagery</td><td><ul><li><p>
+                                                If compression is more important than quality
+                                            </p><p>
+                                                colorspace Grayscale or YCbCr. compression
+                                                JPEG. The YCbCr color space and JPEG
+                                                compression scheme are de facto related. Other
+                                                than using JPEG as compression scheme, there
+                                                is in our humble opinion no good reason for
+                                                using YCbCr.
+                                            </p></li><li><p>
+                                                If quality is more important than compression
+                                            </p><p>
+                                                colorspace Grayscale, RGB, or CIE L*a*b*.
+                                                compression LZW or Deflate
+                                            </p></li><li><p>
+                                                If quality is of utmost importance
+                                            </p><p>
+                                                colorspace 16bit per channel or even floating
+                                                point RGB, or 16bit per channel CIE L*a*b*.
+                                                compression LZW or Deflate
+                                            </p></li></ul></td></tr><tr><td>Normal range Grayscale or color artificial imagery</td><td><ul><li><p>
+                                                If the number of colors &lt;=256
+                                            </p><p>
+                                                colorspace Palette would be most suitable.
+                                                compression LZW or Deflate
+                                            </p></li><li><p>
+                                                If the number of colors &gt;256
+                                            </p><p>
+                                                colorspace Grayscale, RGB, or CIE L*a*b*.
+                                                compression LZW or Deflate
+                                            </p></li></ul></td></tr><tr><td>Dynamic range Grayscale or color imagery</td><td>
+                                    colorspace floating point Grayscale or RGB.
+                                    compression LZW or Deflate
+                                </td></tr></table></div><p><b>Accumulating loss?</b></p><p>
+                            Why does the loss in lossy compression algorithms such as JPEG
+                            accumulate? Imagine that you compress an image using JPEG. You then
+                            need to add, say, a barcode to the image, so you uncompress the image,
+                            add the barcode, and recompress it. When the recompression occurs, a
+                            new set of loss is introduced. You can imagine that if you do this
+                            enough, then you'll end up with an image that is a big blob.
+                        </p><p><i>Figure 1. The picture before compression</i><div class="ps_mediaNear"><img alt="The picture before compression" src="./../media/picture-start.jpg" /></div></p><p><i>Figure 2. The sample text before compression</i><div class="ps_mediaNear"><img alt="The sample text before compression" src="./../media/text-start.jpg" /></div></p><p>
+                            The code I used had a "quality" rating of 25% on the JPEG compression,
+                            which is a way of tweaking the loss of the compression algorithm. The
+                            lower the quality, the higher the compression ratio. The default is 75%.
+                        </p><p><i>Figure 3. The picture after 200 recompressions</i><div class="ps_mediaNear"><img alt="The picture after 200 recompressions" src="./../media/picture-200.jpg" /></div></p><p><i>Figure 4. The text after 200 recompressions</i><div class="ps_mediaNear"><img alt="The text after 200 recompressions" src="./../media/text-200.jpg" /></div></p></div><a id="SubSection4"><!----></a><h3 class="subHeading">Writing a color image</h3><div class="subsection"><p>
+                            Now we'll write a color image to disk. Remember that this is a
+                            simple example and can be elaborated on greatly.
+                        </p><p><i>Listing 1. Writing a color image</i></p><div id="ID0EGMAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EGMAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EGMAAAAAA_tabimgleft"></div><div id="ID0EGMAAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EGMAAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EGMAAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EGMAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EGMAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EGMAAAAAA_tabimgright"></div></div><div id="ID0EGMAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EGMAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EGMAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EGMAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EGMAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EGMAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EGMAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EGMAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> WriteColorTiff
+{
+    <span class="highlight-keyword">class</span> Program
+    {
+        <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main(<span class="highlight-keyword">string</span>[] args)
+        {
+            <span class="highlight-comment">// Open the output image</span> 
+            <span class="highlight-keyword">using</span> (Tiff output = Tiff.Open(<span class="highlight-literal">"output.tif"</span>, <span class="highlight-literal">"w"</span>))
+            {
+                <span class="highlight-keyword">if</span> (output == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Could not open outgoing image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-comment">// We need to know the width and the height before we can malloc</span> 
+                <span class="highlight-keyword">int</span> width = <span class="highlight-number">42</span>;
+                <span class="highlight-keyword">int</span> height = <span class="highlight-number">42</span>;
+                <span class="highlight-keyword">byte</span>[] raster = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[width * height * <span class="highlight-number">3</span>];
+
+                <span class="highlight-comment">// Magical stuff for creating the image</span> 
+                <span class="highlight-comment">// ...</span> 
+
+                <span class="highlight-comment">// Write the tiff tags to the file</span>
+                output.SetField(TiffTag.IMAGEWIDTH, width);
+                output.SetField(TiffTag.IMAGELENGTH, height);
+                output.SetField(TiffTag.COMPRESSION, Compression.DEFLATE);
+                output.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+                output.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
+                output.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">8</span>);
+                output.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">3</span>);
+
+                <span class="highlight-comment">// Actually write the image</span> 
+                <span class="highlight-keyword">if</span> (output.WriteEncodedStrip(<span class="highlight-number">0</span>, raster, width * height * <span class="highlight-number">3</span>) == <span class="highlight-number">0</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Could not write image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                output.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0EGMAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using BitMiracle.LibTiff.Classic;
+
+namespace WriteColorTiff
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Open the output image 
+            using (Tiff output = Tiff.Open("output.tif", "w"))
+            {
+                if (output == null)
+                {
+                    System.Console.Error.WriteLine("Could not open outgoing image");
+                    return;
+                }
+
+                // We need to know the width and the height before we can malloc 
+                int width = 42;
+                int height = 42;
+                byte[] raster = new byte[width * height * 3];
+
+                // Magical stuff for creating the image 
+                // ... 
+
+                // Write the tiff tags to the file
+                output.SetField(TiffTag.IMAGEWIDTH, width);
+                output.SetField(TiffTag.IMAGELENGTH, height);
+                output.SetField(TiffTag.COMPRESSION, Compression.DEFLATE);
+                output.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+                output.SetField(TiffTag.PHOTOMETRIC, Photometric.RGB);
+                output.SetField(TiffTag.BITSPERSAMPLE, 8);
+                output.SetField(TiffTag.SAMPLESPERPIXEL, 3);
+
+                // Actually write the image 
+                if (output.WriteEncodedStrip(0, raster, width * height * 3) == 0)
+                {
+                    System.Console.Error.WriteLine("Could not write image");
+                    return;
+                }
+
+                output.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0EGMAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EGMAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EGMAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EGMAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EGMAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EGMAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EGMAAAAAA');</script><p>
+                            This code shows some of the things we've discussed in theory. The
+                            image has three samples per pixel, each of eight bits. This means that
+                            the image is a 24-bit RGB image. If this was a black and white or
+                            grayscale image, then this value would be one. The
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Photometric"><a href="762c8b34-c03a-e82d-facc-7c5a951666c6.htm" target="">Photometric</a></span>.RGB)
+                            says that the image data is stored within the strips themselves (as
+                            opposed to being paletted) - more about this in a minute.
+                        </p><p>
+                            The other interesting thing to discuss here is the planar
+                            configuration of the image. Here I've specified
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.PlanarConfig"><a href="d2e12021-da72-b32f-b558-dc23d914d698.htm" target="">PlanarConfig</a></span>.CONTIG),
+                            which means that the red green and blue information for a given pixel
+                            is grouped together in the strips of image data. The other option
+                            is PlanarConfig.SEPARATE, where the red samples for the image are
+                            stored together, then the blue samples, and finally the green samples.
+                        </p><p><b>Other values for samples per pixel?</b></p><p>
+                            In my example, I have three samples per pixel. If this was a black and
+                            white image, or a grayscale image, then we would have one sample
+                            per pixel.
+                        </p><p>
+                            There are other valid values as well; for instance, sometimes people
+                            will store a transparency value for a given pixel, an
+                            <i>alpha channel</i>. This would result in
+                            having four samples per pixel.
+                        </p><p>
+                            It is possible to have an arbitrary number of samples per pixel, which
+                            is good if you need to pack in extra information about a pixel.
+                            <i>Note that doing this can break image viewers that make
+                            silly assumptions - I once had to write code for a former employer to
+                            strip out alpha channels and the like so that their PDF generator
+                            wouldn't crash.</i></p></div><a id="SubSection5"><!----></a><h3 class="subHeading">Writing a paletted color image</h3><div class="subsection"><p>
+                            So how do we write a paletted version of this image? Well, LibTiff.Net
+                            makes this really easy - all we need to do is change the value
+                            of TiffTag.PHOTOMETRIC to Photometric.PALETTE. It's not really worth
+                            including an example in this article, given it's a one word change.
+                        </p></div><a id="SubSection6"><!----></a><h3 class="subHeading">Reading a color image</h3><div class="subsection"><p>
+                            Now all we have to do is work out how to read other people's color
+                            and grayscale images reliably, and we're home free. Initially, I was
+                            very tempted to gloss over the
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadRGBAStrip(System.Int32,System.Int32[])"><a href="92668f86-933d-ef44-02e8-88ed5acc4efa.htm" target="">ReadRGBAStrip(Int32, <span id="ID0EDAEDGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAEDGAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int32<span id="ID0EBAEDGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAEDGAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                            and
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadRGBATile(System.Int32,System.Int32,System.Int32[])"><a href="1e447b83-017d-9a5c-2ac0-9c4fd0ed91e1.htm" target="">ReadRGBATile(Int32, Int32, <span id="ID0EDACDGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDACDGAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int32<span id="ID0EBACDGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBACDGAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                            calls, which hide some of the potential ugliness from the caller.
+                            However, these functions have some limitations, which are expressed
+                            in the documentation for
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadRGBAStrip(System.Int32,System.Int32[])"><a href="92668f86-933d-ef44-02e8-88ed5acc4efa.htm" target="">ReadRGBAStrip(Int32, <span id="ID0EDAADGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAADGAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int32<span id="ID0EBAADGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAADGAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span></p><p>
+                            There are a couple of odd things about this function. First, it
+                            defines (0, 0) to be in a different location than all the other code
+                            that we have been writing. In the previous code, the (0, 0) point has
+                            been in the top left of the image. This call defines (0, 0) to be in
+                            the bottom left. The other limitation is that not all valid values for
+                            bits per sample are supported. If you find these quirks unacceptable,
+                            then remember that you can still use
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadEncodedStrip(System.Int32,System.Byte[],System.Int32,System.Int32)"><a href="2d0ecc5f-7777-71d3-f4c2-d0bfad681c5e.htm" target="">ReadEncodedStrip(Int32, <span id="ID0EDABCGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDABCGAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBABCGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBABCGAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32)</a></span>
+                            in the same manner that I did for the black and white images in the
+                            previous article.
+                        </p><p><i>Listing 2. Reading a color image with ReadRGBAImage</i></p><div id="ID0EAGAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAGAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAGAAAAAA_tabimgleft"></div><div id="ID0EAGAAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAGAAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EAGAAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EAGAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAGAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAGAAAAAA_tabimgright"></div></div><div id="ID0EAGAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAGAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAGAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAGAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAGAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAGAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAGAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAGAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> ReadColorTiff
+{
+    <span class="highlight-keyword">class</span> Program
+    {
+        <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main(<span class="highlight-keyword">string</span>[] args)
+        {
+            <span class="highlight-comment">// Open the TIFF image</span> 
+            <span class="highlight-keyword">using</span> (Tiff image = Tiff.Open(args[<span class="highlight-number">0</span>], <span class="highlight-literal">"r"</span>))
+            {
+                <span class="highlight-keyword">if</span> (image == <span class="highlight-keyword">null</span>)
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Could not open incoming image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-comment">// Find the width and height of the image</span>
+                FieldValue[] <span class="highlight-keyword">value</span> = image.GetField(TiffTag.IMAGEWIDTH);
+                <span class="highlight-keyword">int</span> width = <span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToInt();
+
+                <span class="highlight-keyword">value</span> = image.GetField(TiffTag.IMAGELENGTH);
+                <span class="highlight-keyword">int</span> height = <span class="highlight-keyword">value</span>[<span class="highlight-number">0</span>].ToInt();
+
+                <span class="highlight-keyword">int</span> imageSize = height * width;
+                <span class="highlight-keyword">int</span>[] raster = <span class="highlight-keyword">new</span> <span class="highlight-keyword">int</span>[imageSize];
+
+                <span class="highlight-comment">// Read the image into the memory buffer</span> 
+                <span class="highlight-keyword">if</span> (!image.ReadRGBAImage(width, height, raster))
+                {
+                    System.Console.Error.WriteLine(<span class="highlight-literal">"Could not read image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-comment">// Here I fix the reversal of the image (vertically) and show you</span> 
+                <span class="highlight-comment">// how to get the color values from each pixel</span> 
+                <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> e = height - <span class="highlight-number">1</span>; e != <span class="highlight-number">-1</span>; e--)
+                {
+                    <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> c = <span class="highlight-number">0</span>; c &lt; width; c++)
+                    {
+                        <span class="highlight-keyword">int</span> red = Tiff.GetR(raster[e * width + c]);
+                        <span class="highlight-keyword">int</span> green = Tiff.GetG(raster[e * width + c]);
+                        <span class="highlight-keyword">int</span> blue = Tiff.GetB(raster[e * width + c]);
+                    }
+                }
+
+                image.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0EAGAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using BitMiracle.LibTiff.Classic;
+
+namespace ReadColorTiff
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Open the TIFF image 
+            using (Tiff image = Tiff.Open(args[0], "r"))
+            {
+                if (image == null)
+                {
+                    System.Console.Error.WriteLine("Could not open incoming image");
+                    return;
+                }
+
+                // Find the width and height of the image
+                FieldValue[] value = image.GetField(TiffTag.IMAGEWIDTH);
+                int width = value[0].ToInt();
+
+                value = image.GetField(TiffTag.IMAGELENGTH);
+                int height = value[0].ToInt();
+
+                int imageSize = height * width;
+                int[] raster = new int[imageSize];
+
+                // Read the image into the memory buffer 
+                if (!image.ReadRGBAImage(width, height, raster))
+                {
+                    System.Console.Error.WriteLine("Could not read image");
+                    return;
+                }
+
+                // Here I fix the reversal of the image (vertically) and show you 
+                // how to get the color values from each pixel 
+                for (int e = height - 1; e != -1; e--)
+                {
+                    for (int c = 0; c &lt; width; c++)
+                    {
+                        int red = Tiff.GetR(raster[e * width + c]);
+                        int green = Tiff.GetG(raster[e * width + c]);
+                        int blue = Tiff.GetB(raster[e * width + c]);
+                    }
+                }
+
+                image.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0EAGAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAGAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAGAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAGAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAGAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAGAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAGAAAAAA');</script></div><a id="SubSection7"><!----></a><h3 class="subHeading">Advanced topics</h3><div class="subsection"><p>
+                            Well, now that we've covered reading and writing basically any image
+                            format we can think of, there are two final topics.
+                        </p><p><b>Storing TIFF data in places other than files</b></p><p>
+                            All the examples to this point have read and written with files. There
+                            are many scenarios in which you wouldn't want to store your image data
+                            in a file, but would still want to use LibTiff.Net and TIFF. For
+                            example, you might have customer pictures for id cards, and these
+                            would be stored in a database.
+                        </p><p>
+                            The example I am most familiar with is PDF documents, where you can
+                            embed images into the document. These images can be in a subset of
+                            TIFF if desired, and TIFF is clearly the choice for black and
+                            white images.
+                        </p><p>
+                            LibTiff.Net allows you to replace the file/stream input and output
+                            functions in the library with your own. This is done with the
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ClientOpen(System.String,System.String,System.Object,BitMiracle.LibTiff.Classic.TiffStream)"><a href="c0b67436-6949-cd3a-e092-a82a20e393c9.htm" target="">ClientOpen(String, String, Object, TiffStream)</a></span>
+                            method. Here's an example (please note this code would compile and
+                            even run without errors, but won't do anything useful):
+                        </p><div id="ID0ECDAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0ECDAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0ECDAAAAAA_tabimgleft"></div><div id="ID0ECDAAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECDAAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0ECDAAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0ECDAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0ECDAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0ECDAAAAAA_tabimgright"></div></div><div id="ID0ECDAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0ECDAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0ECDAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0ECDAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0ECDAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0ECDAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0ECDAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0ECDAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> UsingClientOpen
+{
+    <span class="highlight-keyword">class</span> Program
+    {
+        <span class="highlight-comment">/// &lt;summary&gt;</span> 
+        <span class="highlight-comment">/// Custom stream for LibTiff.Net.</span> 
+        <span class="highlight-comment">/// Please consult documentation for TiffStream class for method parameters meaning.</span> 
+        <span class="highlight-comment">/// &lt;/summary&gt;</span> 
+        <span class="highlight-keyword">class</span> MyStream : TiffStream
+        {            
+            <span class="highlight-comment">// You may implement any constructor you want here.</span> 
+
+            <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">int</span> Read(<span class="highlight-keyword">object</span> clientData, <span class="highlight-keyword">byte</span>[] buffer, <span class="highlight-keyword">int</span> offset, <span class="highlight-keyword">int</span> count)
+            {
+                <span class="highlight-comment">// stub implementation</span> 
+                <span class="highlight-keyword">return</span> <span class="highlight-number">-1</span>;
+            }
+
+            <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">void</span> Write(<span class="highlight-keyword">object</span> clientData, <span class="highlight-keyword">byte</span>[] buffer, <span class="highlight-keyword">int</span> offset, <span class="highlight-keyword">int</span> count)
+            {
+                <span class="highlight-comment">// stub implementation</span>
+            }
+
+            <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">long</span> Seek(<span class="highlight-keyword">object</span> clientData, <span class="highlight-keyword">long</span> offset, System.IO.SeekOrigin origin)
+            {
+                <span class="highlight-comment">// stub implementation</span> 
+                <span class="highlight-keyword">return</span> <span class="highlight-number">-1</span>;
+            }
+
+            <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">void</span> Close(<span class="highlight-keyword">object</span> clientData)
+            {
+                <span class="highlight-comment">// stub implementation</span>
+            }
+
+            <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">long</span> Size(<span class="highlight-keyword">object</span> clientData)
+            {
+                <span class="highlight-comment">// stub implementation</span> 
+                <span class="highlight-keyword">return</span> <span class="highlight-number">-1</span>;
+            }
+        }
+
+        <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main(<span class="highlight-keyword">string</span>[] args)
+        {
+            MyStream stream = <span class="highlight-keyword">new</span> MyStream();
+
+            <span class="highlight-comment">// Open the TIFF image for reading</span> 
+            <span class="highlight-keyword">using</span> (Tiff image = Tiff.ClientOpen(<span class="highlight-literal">"custom"</span>, <span class="highlight-literal">"r"</span>, <span class="highlight-keyword">null</span>, stream))
+            {
+                <span class="highlight-keyword">if</span> (image == <span class="highlight-keyword">null</span>)
+                    <span class="highlight-keyword">return</span>;
+
+                <span class="highlight-comment">// Read image data here the same way</span> 
+                <span class="highlight-comment">// as if LibTiff.Net was using regular image file</span>
+                image.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0ECDAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using BitMiracle.LibTiff.Classic;
+
+namespace UsingClientOpen
+{
+    class Program
+    {
+        /// &lt;summary&gt; 
+        /// Custom stream for LibTiff.Net. 
+        /// Please consult documentation for TiffStream class for method parameters meaning. 
+        /// &lt;/summary&gt; 
+        class MyStream : TiffStream
+        {            
+            // You may implement any constructor you want here. 
+
+            public override int Read(object clientData, byte[] buffer, int offset, int count)
+            {
+                // stub implementation 
+                return -1;
+            }
+
+            public override void Write(object clientData, byte[] buffer, int offset, int count)
+            {
+                // stub implementation
+            }
+
+            public override long Seek(object clientData, long offset, System.IO.SeekOrigin origin)
+            {
+                // stub implementation 
+                return -1;
+            }
+
+            public override void Close(object clientData)
+            {
+                // stub implementation
+            }
+
+            public override long Size(object clientData)
+            {
+                // stub implementation 
+                return -1;
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            MyStream stream = new MyStream();
+
+            // Open the TIFF image for reading 
+            using (Tiff image = Tiff.ClientOpen("custom", "r", null, stream))
+            {
+                if (image == null)
+                    return;
+
+                // Read image data here the same way 
+                // as if LibTiff.Net was using regular image file
+                image.Close();
+            }
+        }
+    }
+}</pre></div><div id="ID0ECDAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECDAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECDAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECDAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECDAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECDAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0ECDAAAAAA');</script><p><b>Converting color to grayscale</b></p><p>
+                            How do you convert color images to grayscale? My first answer was to
+                            just average the red, green, and blue values. That answer is wrong.
+                            The reality is that the human eye is much better at seeing some colors
+                            than others. To get an accurate grayscale representation, you need to
+                            apply different coefficients to the color samples. Appropriate
+                            coefficients are 0.299 for red, 0.587 for green, and 0.114 for blue.
+                        </p></div><a id="SubSection8"><!----></a><h3 class="subHeading">Conclusion</h3><div class="subsection"><p>
+                            In this article I've discussed how to program with LibTiff.Net for
+                            grayscale and color images. I've shown you some sample code that
+                            should help to get you started. You should now know enough to have a
+                            great time coding with LibTiff.Net.
+                        </p></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Part2.+Grayscale+and+color+imaging+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

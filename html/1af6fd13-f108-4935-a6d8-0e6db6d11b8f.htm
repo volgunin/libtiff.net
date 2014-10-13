@@ -1,0 +1,215 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Read EXIF metadata</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="1af6fd13-f108-4935-a6d8-0e6db6d11b8f" /><meta name="Description" content="This sample shows how to extract EXIF metadata from a TIFF file." /><meta name="Microsoft.Help.ContentType" content="Samples" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Read EXIF metadata</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>This sample shows how to extract EXIF metadata from a TIFF file.</p><p></p><p>EXIF tags are stored in EXIF IFD (information directory). This sample shows how to get offset to that directory and read it. When EXIF IFD is read all EXIF tags can be retrieved using Tiff.GetField method with appropriate tag identifiers. EXIF tag identifiers start with EXIF_ (i.e. TiffTag.EXIF_*).</p></div><div id="ID0EBAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EBAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EBAAAAA_tabimgleft"></div><div id="ID0EBAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EBAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EBAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EBAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EBAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EBAAAAA_tabimgright"></div></div><div id="ID0EBAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EBAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EBAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EBAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EBAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EBAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EBAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EBAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> System.Diagnostics;
+<span class="highlight-keyword">using</span> System.IO;
+<span class="highlight-keyword">using</span> System.Windows.Forms;
+
+<span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> BitMiracle.LibTiff.Samples
+{
+    <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">class</span> ReadExifMetadata
+    {
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main()
+        {
+            <span class="highlight-keyword">using</span> (Tiff image = Tiff.Open(<span class="highlight-literal">@"Sample data\dscf0013.tif"</span>, <span class="highlight-literal">"r"</span>))
+            {
+                <span class="highlight-keyword">if</span> (image == <span class="highlight-keyword">null</span>)
+                {
+                    MessageBox.Show(<span class="highlight-literal">"Could not open incoming image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                FieldValue[] exifIFDTag = image.GetField(TiffTag.EXIFIFD);
+                <span class="highlight-keyword">if</span> (exifIFDTag == <span class="highlight-keyword">null</span>)
+                {
+                    MessageBox.Show(<span class="highlight-literal">"Exif metadata not found"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">int</span> exifIFDOffset = exifIFDTag[<span class="highlight-number">0</span>].ToInt();
+                <span class="highlight-keyword">if</span> (!image.ReadEXIFDirectory(exifIFDOffset))
+                {
+                    MessageBox.Show(<span class="highlight-literal">"Could not read EXIF IFD"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">using</span> (StreamWriter writer = <span class="highlight-keyword">new</span> StreamWriter(<span class="highlight-literal">"ReadExifMetadata.txt"</span>))
+                {
+                    <span class="highlight-keyword">for</span> (TiffTag tag = TiffTag.EXIF_EXPOSURETIME; tag &lt;= TiffTag.EXIF_IMAGEUNIQUEID; ++tag)
+                    {
+                        FieldValue[] <span class="highlight-keyword">value</span> = image.GetField(tag);
+                        <span class="highlight-keyword">if</span> (<span class="highlight-keyword">value</span> != <span class="highlight-keyword">null</span>)
+                        {
+                            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> i = <span class="highlight-number">0</span>; i &lt; <span class="highlight-keyword">value</span>.Length; i++)
+                            {
+                                writer.WriteLine(<span class="highlight-literal">"{0}"</span>, tag.ToString());
+                                writer.WriteLine(<span class="highlight-literal">"{0} : {1}"</span>, <span class="highlight-keyword">value</span>[i].Value.GetType().ToString(), <span class="highlight-keyword">value</span>[i].ToString());
+                            }
+
+                            writer.WriteLine();
+                        }
+                    }
+                }
+            }
+
+            Process.Start(<span class="highlight-literal">"ReadExifMetadata.txt"</span>);
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
+
+using BitMiracle.LibTiff.Classic;
+
+namespace BitMiracle.LibTiff.Samples
+{
+    public static class ReadExifMetadata
+    {
+        public static void Main()
+        {
+            using (Tiff image = Tiff.Open(@"Sample data\dscf0013.tif", "r"))
+            {
+                if (image == null)
+                {
+                    MessageBox.Show("Could not open incoming image");
+                    return;
+                }
+
+                FieldValue[] exifIFDTag = image.GetField(TiffTag.EXIFIFD);
+                if (exifIFDTag == null)
+                {
+                    MessageBox.Show("Exif metadata not found");
+                    return;
+                }
+
+                int exifIFDOffset = exifIFDTag[0].ToInt();
+                if (!image.ReadEXIFDirectory(exifIFDOffset))
+                {
+                    MessageBox.Show("Could not read EXIF IFD");
+                    return;
+                }
+
+                using (StreamWriter writer = new StreamWriter("ReadExifMetadata.txt"))
+                {
+                    for (TiffTag tag = TiffTag.EXIF_EXPOSURETIME; tag &lt;= TiffTag.EXIF_IMAGEUNIQUEID; ++tag)
+                    {
+                        FieldValue[] value = image.GetField(tag);
+                        if (value != null)
+                        {
+                            for (int i = 0; i &lt; value.Length; i++)
+                            {
+                                writer.WriteLine("{0}", tag.ToString());
+                                writer.WriteLine("{0} : {1}", value[i].Value.GetType().ToString(), value[i].ToString());
+                            }
+
+                            writer.WriteLine();
+                        }
+                    }
+                }
+            }
+
+            Process.Start("ReadExifMetadata.txt");
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EBAAAAA');</script><div id="ID0EAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAAAAAA_tabimgleft"></div><div id="ID0EAAAAAA_tab1" class="OH_CodeSnippetContainerTabDisabled" EnableCopyCode="true" disabled="true"><a>C#</a></div><div id="ID0EAAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0EAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAAAAAA_tabimgright"></div></div><div id="ID0EAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="highlight-keyword">Imports</span> System.Diagnostics
+<span class="highlight-keyword">Imports</span> System.IO
+<span class="highlight-keyword">Imports</span> System.Windows.Forms
+
+<span class="highlight-keyword">Imports</span> BitMiracle.LibTiff.Classic
+
+<span class="highlight-keyword">Namespace</span> BitMiracle.LibTiff.Samples
+    <span class="highlight-keyword">Public</span> <span class="highlight-keyword">NotInheritable</span> <span class="highlight-keyword">Class</span> ReadExifMetadata
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> <span class="highlight-keyword">New</span>()
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> Main()
+            <span class="highlight-keyword">Using</span> image <span class="highlight-keyword">As</span> Tiff = Tiff.Open(<span class="highlight-literal">"Sample data\dscf0013.tif"</span>, <span class="highlight-literal">"r"</span>)
+                <span class="highlight-keyword">If</span> image <span class="highlight-keyword">Is</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span>
+                    MessageBox.Show(<span class="highlight-literal">"Could not open incoming image"</span>)
+                    <span class="highlight-keyword">Return</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Dim</span> exifIFDTag <span class="highlight-keyword">As</span> FieldValue() = image.GetField(TiffTag.EXIFIFD)
+                <span class="highlight-keyword">If</span> exifIFDTag <span class="highlight-keyword">Is</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span>
+                    MessageBox.Show(<span class="highlight-literal">"Exif metadata not found"</span>)
+                    <span class="highlight-keyword">Return</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Dim</span> exifIFDOffset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = exifIFDTag(<span class="highlight-number">0</span>).ToInt()
+                <span class="highlight-keyword">If</span> <span class="highlight-keyword">Not</span> image.ReadEXIFDirectory(exifIFDOffset) <span class="highlight-keyword">Then</span>
+                    MessageBox.Show(<span class="highlight-literal">"Could not read EXIF IFD"</span>)
+                    <span class="highlight-keyword">Return</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Using</span> writer <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> StreamWriter(<span class="highlight-literal">"ReadExifMetadata.txt"</span>)
+                    <span class="highlight-keyword">For</span> tag <span class="highlight-keyword">As</span> TiffTag = TiffTag.EXIF_EXPOSURETIME <span class="highlight-keyword">To</span> TiffTag.EXIF_IMAGEUNIQUEID
+                        <span class="highlight-keyword">Dim</span> value <span class="highlight-keyword">As</span> FieldValue() = image.GetField(tag)
+                        <span class="highlight-keyword">If</span> value <span class="highlight-keyword">IsNot</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span> 
+                            <span class="highlight-keyword">For</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> value.Length - <span class="highlight-number">1</span>
+                                writer.WriteLine(<span class="highlight-literal">"{0}"</span>, tag.ToString())
+                                writer.WriteLine(<span class="highlight-literal">"{0} : {1}"</span>, value(i).Value.[<span class="highlight-keyword">GetType</span>]().ToString(), value(i).ToString())
+                            <span class="highlight-keyword">Next</span>
+
+                            writer.WriteLine()
+                        <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+                    <span class="highlight-keyword">Next</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+
+            Process.Start(<span class="highlight-literal">"ReadExifMetadata.txt"</span>)
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Class</span> 
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Namespace</span></pre></div><div id="ID0EAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Imports System.Diagnostics
+Imports System.IO
+Imports System.Windows.Forms
+
+Imports BitMiracle.LibTiff.Classic
+
+Namespace BitMiracle.LibTiff.Samples
+    Public NotInheritable Class ReadExifMetadata
+        Private Sub New()
+        End Sub 
+        Public Shared Sub Main()
+            Using image As Tiff = Tiff.Open("Sample data\dscf0013.tif", "r")
+                If image Is Nothing Then
+                    MessageBox.Show("Could not open incoming image")
+                    Return 
+                End If 
+
+                Dim exifIFDTag As FieldValue() = image.GetField(TiffTag.EXIFIFD)
+                If exifIFDTag Is Nothing Then
+                    MessageBox.Show("Exif metadata not found")
+                    Return 
+                End If 
+
+                Dim exifIFDOffset As Integer = exifIFDTag(0).ToInt()
+                If Not image.ReadEXIFDirectory(exifIFDOffset) Then
+                    MessageBox.Show("Could not read EXIF IFD")
+                    Return 
+                End If 
+
+                Using writer As New StreamWriter("ReadExifMetadata.txt")
+                    For tag As TiffTag = TiffTag.EXIF_EXPOSURETIME To TiffTag.EXIF_IMAGEUNIQUEID
+                        Dim value As FieldValue() = image.GetField(tag)
+                        If value IsNot Nothing Then 
+                            For i As Integer = 0 To value.Length - 1
+                                writer.WriteLine("{0}", tag.ToString())
+                                writer.WriteLine("{0} : {1}", value(i).Value.[GetType]().ToString(), value(i).ToString())
+                            Next
+
+                            writer.WriteLine()
+                        End If 
+                    Next 
+                End Using 
+            End Using
+
+            Process.Start("ReadExifMetadata.txt")
+        End Sub 
+    End Class 
+End Namespace</pre></div><div id="ID0EAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAAAAAA');</script></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Read+EXIF+metadata+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

@@ -1,0 +1,351 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Adding new (custom) tags</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="e0ed9e8f-4b0e-4480-9693-fbf731ed3b2f" /><meta name="Description" content="LibTiff.Net has built-in knowledge of all the standard TIFF tags, as well as extentions. The following describes how application specific tags can be used by applications without modifying LibTiff.Net." /><meta name="Microsoft.Help.ContentType" content="Concepts" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Adding new (custom) tags</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>
+                LibTiff.Net has built-in knowledge of all the standard TIFF tags, as well as
+                extentions. The following describes how application specific tags can be used
+                by applications without modifying LibTiff.Net.
+            </p></div><a id="Section1"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle" /><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><a id="SubSection1"><!----></a><h3 class="subHeading">TiffFieldInfo</h3><div class="subsection"><p>
+                            How LibTiff.Net manages specific tags is primarily controlled by the
+                            definition for that tag value stored internally as a TiffFieldInfo
+                            structure. Please consult documetation for 
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffFieldInfo"><a href="32cda987-0aca-8e33-71f0-7dd91ffe4763.htm" target="">TiffFieldInfo</a></span>
+                            for more details about members of this structure.
+                        </p><p>
+                            A TiffFieldInfo definition exists for each built-in tag in the
+                            Tiff_DirInfo.cs file. Some tags which support multiple data types have
+                            more than one definition, one per data type supported.
+                        </p><p>
+                            Two methods exist for getting the internal TiffFieldInfo
+                            definitions:
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FindFieldInfo(BitMiracle.LibTiff.Classic.TiffTag,BitMiracle.LibTiff.Classic.TiffType)"><a href="83de3c26-ae91-6d67-2998-2217a7338952.htm" target="">FindFieldInfo(TiffTag, TiffType)</a></span> and
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FindFieldInfoByName(System.String,BitMiracle.LibTiff.Classic.TiffType)"><a href="b66be4cb-5a81-bd39-efd1-17f777d33f6c.htm" target="">FindFieldInfoByName(String, TiffType)</a></span>.
+                        </p></div><a id="SubSection2"><!----></a><h3 class="subHeading">Default Tag Auto-registration</h3><div class="subsection"><p>
+                            LibTiff.Net reads unrecognised tags automatically. When an unknown
+                            tags is encountered, it is automatically internally defined with a
+                            default name and a type derived from the tag value in the file.
+                            Applications only need to predefine application specific tags if they
+                            need to be able to set them in a file, or if particular calling
+                            conventions are desired for
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetField(BitMiracle.LibTiff.Classic.TiffTag)"><a href="1bd1b3b8-a2ea-9d24-66ef-38ffdd33b984.htm" target="">GetField(TiffTag)</a></span> and
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetField(BitMiracle.LibTiff.Classic.TiffTag,System.Object[])"><a href="87815022-38e5-9d3e-2ab5-01af3c9077ae.htm" target="">SetField(TiffTag, <span id="ID0EDABBDAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDABBDAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBABBDAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBABBDAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>.
+                        </p><p>
+                            When tags are autodefined like this the
+                            <span sdata="cer" target="P:BitMiracle.LibTiff.Classic.TiffFieldInfo.ReadCount"><a href="13b2715c-a6e0-ff1a-f129-2cacf7ad346b.htm" target="">ReadCount</a></span> and
+                            <span sdata="cer" target="P:BitMiracle.LibTiff.Classic.TiffFieldInfo.WriteCount"><a href="97bf1749-ad05-451f-c8da-1973852453c7.htm" target="">WriteCount</a></span> are always
+                            <span sdata="cer" target="F:BitMiracle.LibTiff.Classic.TiffFieldInfo.Variable2"><a href="54726a19-65fd-a556-82e5-69492e8afd0a.htm" target="">Variable2</a></span>. The
+                            <span sdata="cer" target="P:BitMiracle.LibTiff.Classic.TiffFieldInfo.PassCount"><a href="aaa90240-9610-a674-b16f-567a815f7328.htm" target="">PassCount</a></span> is always true, and the
+                            <span sdata="cer" target="P:BitMiracle.LibTiff.Classic.TiffFieldInfo.Bit"><a href="6d13f9e2-7910-cce5-ca47-ab548ec1378d.htm" target="">Bit</a></span> is
+                            <span sdata="cer" target="F:BitMiracle.LibTiff.Classic.FieldBit.Custom"><a href="96714e16-bf79-dd3f-2d2c-7ff62f43c339.htm" target="">Custom</a></span>. The field name will be "Tag {0}" where the
+                            {0} is the tag number.
+                        </p></div><a id="SubSection3"><!----></a><h3 class="subHeading">Defining Application Tags</h3><div class="subsection"><p>
+                            For various reasons, it is common for applications to want to define
+                            their own tags to store information outside the core TIFF
+                            specification. This is done by calling
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.MergeFieldInfo(BitMiracle.LibTiff.Classic.TiffFieldInfo[],System.Int32)"><a href="2b1434fe-fc0b-35bd-4a95-0931349b23a9.htm" target="">MergeFieldInfo(<span id="ID0EDABDAAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDABDAAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>TiffFieldInfo<span id="ID0EBABDAAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBABDAAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span> with one or more TiffFieldInfo objects.                            
+                        </p><p>
+                            The tags need to be defined for each TIFF file opened - and when
+                            reading they should be defined before the tags of the file are read,
+                            yet a valid TIFF object is needed to merge the tags against. In order
+                            to get them registered at the appropriate part of the setup process,
+                            it is necessary to register our merge function as an extender callback
+                            with LibTiff.Net. This is done with
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetTagExtender(BitMiracle.LibTiff.Classic.Tiff.TiffExtendProc)"><a href="45515aaa-f023-9079-2250-af4381d5dc31.htm" target="">SetTagExtender(Tiff<span id="ID0EBABCAAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBABCAAAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>TiffExtendProc)</a></span>. It's a good idea to keep track of the previous
+                            tag extender (if any) so that we can call it from our extender allowing
+                            a chain of customizations to take effect.
+                        </p><p>
+                            The whole process is performed in following sample:
+                        </p><div id="ID0EAAAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAAAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAAAAAAAA_tabimgleft"></div><div id="ID0EAAAAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAAAAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EAAAAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EAAAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAAAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAAAAAAAA_tabimgright"></div></div><div id="ID0EAAAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAAAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAAAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAAAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAAAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAAAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAAAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+<span class="highlight-keyword">using</span> System.Diagnostics;
+
+<span class="highlight-keyword">namespace</span> ReadWriteCustomTags
+{
+    <span class="highlight-keyword">class</span> Program
+    {
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">const</span> TiffTag TIFFTAG_ASCIITAG = (TiffTag)<span class="highlight-number">666</span>;
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">const</span> TiffTag TIFFTAG_LONGTAG = (TiffTag)<span class="highlight-number">667</span>;
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">const</span> TiffTag TIFFTAG_SHORTTAG = (TiffTag)<span class="highlight-number">668</span>;
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">const</span> TiffTag TIFFTAG_RATIONALTAG = (TiffTag)<span class="highlight-number">669</span>;
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">const</span> TiffTag TIFFTAG_FLOATTAG = (TiffTag)<span class="highlight-number">670</span>;
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">const</span> TiffTag TIFFTAG_DOUBLETAG = (TiffTag)<span class="highlight-number">671</span>;
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">const</span> TiffTag TIFFTAG_BYTE = (TiffTag)<span class="highlight-number">672</span>;
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> Tiff.TiffExtendProc m_parentExtender;
+
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> TagExtender(Tiff tif)
+        {
+            TiffFieldInfo[] tiffFieldInfo = 
+            {
+                <span class="highlight-keyword">new</span> TiffFieldInfo(TIFFTAG_ASCIITAG, <span class="highlight-number">-1</span>, <span class="highlight-number">-1</span>, TiffType.ASCII, FieldBit.Custom, <span class="highlight-keyword">true</span>, <span class="highlight-keyword">false</span>, <span class="highlight-literal">"MyTag"</span>),
+                <span class="highlight-keyword">new</span> TiffFieldInfo(TIFFTAG_SHORTTAG, <span class="highlight-number">2</span>, <span class="highlight-number">2</span>, TiffType.SHORT, FieldBit.Custom, <span class="highlight-keyword">false</span>, <span class="highlight-keyword">true</span>, <span class="highlight-literal">"ShortTag"</span>),
+                <span class="highlight-keyword">new</span> TiffFieldInfo(TIFFTAG_LONGTAG, <span class="highlight-number">2</span>, <span class="highlight-number">2</span>, TiffType.LONG, FieldBit.Custom, <span class="highlight-keyword">false</span>, <span class="highlight-keyword">true</span>, <span class="highlight-literal">"LongTag"</span>),
+                <span class="highlight-keyword">new</span> TiffFieldInfo(TIFFTAG_RATIONALTAG, <span class="highlight-number">2</span>, <span class="highlight-number">2</span>, TiffType.RATIONAL, FieldBit.Custom, <span class="highlight-keyword">false</span>, <span class="highlight-keyword">true</span>, <span class="highlight-literal">"RationalTag"</span>),
+                <span class="highlight-keyword">new</span> TiffFieldInfo(TIFFTAG_FLOATTAG, <span class="highlight-number">2</span>, <span class="highlight-number">2</span>, TiffType.FLOAT, FieldBit.Custom, <span class="highlight-keyword">false</span>, <span class="highlight-keyword">true</span>, <span class="highlight-literal">"FloatTag"</span>),
+                <span class="highlight-keyword">new</span> TiffFieldInfo(TIFFTAG_DOUBLETAG, <span class="highlight-number">2</span>, <span class="highlight-number">2</span>, TiffType.DOUBLE, FieldBit.Custom, <span class="highlight-keyword">false</span>, <span class="highlight-keyword">true</span>, <span class="highlight-literal">"DoubleTag"</span>),
+                <span class="highlight-keyword">new</span> TiffFieldInfo(TIFFTAG_BYTE, <span class="highlight-number">2</span>, <span class="highlight-number">2</span>, TiffType.BYTE, FieldBit.Custom, <span class="highlight-keyword">false</span>, <span class="highlight-keyword">true</span>, <span class="highlight-literal">"ByteTag"</span>),
+            };
+
+            tif.MergeFieldInfo(tiffFieldInfo, tiffFieldInfo.Length);
+
+            <span class="highlight-keyword">if</span> (m_parentExtender != <span class="highlight-keyword">null</span>)
+                m_parentExtender(tif);
+        }
+
+        <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main(<span class="highlight-keyword">string</span>[] args)
+        {
+            <span class="highlight-comment">// Define an image</span> 
+            <span class="highlight-keyword">byte</span>[] buffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[<span class="highlight-number">25</span> * <span class="highlight-number">144</span>];
+
+            <span class="highlight-comment">// Register the custom tag handler</span>
+            Tiff.TiffExtendProc extender = TagExtender;
+            m_parentExtender = Tiff.SetTagExtender(extender);
+
+            <span class="highlight-keyword">string</span> outputFileName = <span class="highlight-literal">"output.tif"</span>;
+            Tiff image = Tiff.Open(outputFileName, <span class="highlight-literal">"w"</span>);
+
+            <span class="highlight-comment">// We need to set some values for basic tags before we can add any data</span>
+            image.SetField(TiffTag.IMAGEWIDTH, <span class="highlight-number">25</span> * <span class="highlight-number">8</span>);
+            image.SetField(TiffTag.IMAGELENGTH, <span class="highlight-number">144</span>);
+            image.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">1</span>);
+            image.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">1</span>);
+            image.SetField(TiffTag.ROWSPERSTRIP, <span class="highlight-number">144</span>);
+
+            image.SetField(TiffTag.COMPRESSION, Compression.CCITTFAX4);
+            image.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISWHITE);
+            image.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+            image.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+            image.SetField(TiffTag.XRESOLUTION, <span class="highlight-number">150.0</span>);
+            image.SetField(TiffTag.YRESOLUTION, <span class="highlight-number">150.0</span>);
+            image.SetField(TiffTag.RESOLUTIONUNIT, ResUnit.INCH);
+
+            <span class="highlight-comment">// set custom tags</span> 
+
+            <span class="highlight-keyword">string</span> <span class="highlight-keyword">value</span> = <span class="highlight-literal">"Tag contents"</span>;
+            image.SetField(TIFFTAG_ASCIITAG, <span class="highlight-keyword">value</span>);
+
+            <span class="highlight-keyword">short</span>[] shorts = { <span class="highlight-number">263</span>, <span class="highlight-number">264</span> };
+            image.SetField(TIFFTAG_SHORTTAG, <span class="highlight-number">2</span>, shorts);
+
+            <span class="highlight-keyword">int</span>[] longs = { <span class="highlight-number">117</span>, <span class="highlight-number">118</span> };
+            image.SetField(TIFFTAG_LONGTAG, <span class="highlight-number">2</span>, longs);
+
+            <span class="highlight-keyword">float</span>[] rationals = { <span class="highlight-number">0.333333</span>f, <span class="highlight-number">0.444444</span>f };
+            image.SetField(TIFFTAG_RATIONALTAG, <span class="highlight-number">2</span>, rationals);
+
+            <span class="highlight-keyword">float</span>[] floats = { <span class="highlight-number">0.666666</span>f, <span class="highlight-number">0.777777</span>f };
+            image.SetField(TIFFTAG_FLOATTAG, <span class="highlight-number">2</span>, floats);
+
+            <span class="highlight-keyword">double</span>[] doubles = { <span class="highlight-number">0.1234567</span>, <span class="highlight-number">0.7654321</span> };
+            image.SetField(TIFFTAG_DOUBLETAG, <span class="highlight-number">2</span>, doubles);
+
+            <span class="highlight-keyword">byte</span>[] bytes = { <span class="highlight-number">89</span>, <span class="highlight-number">90</span> };
+            image.SetField(TIFFTAG_BYTE, <span class="highlight-number">2</span>, bytes);
+
+            <span class="highlight-comment">// Write the information to the file</span>
+            image.WriteEncodedStrip(<span class="highlight-number">0</span>, buffer, <span class="highlight-number">25</span> * <span class="highlight-number">144</span>);
+
+            <span class="highlight-comment">// Close the file</span>
+            image.Dispose();
+
+            <span class="highlight-comment">// Now open that TIFF back and read new tags</span>
+            image = Tiff.Open(outputFileName, <span class="highlight-literal">"r"</span>);
+            FieldValue[] res = image.GetField(TIFFTAG_ASCIITAG);
+            Debug.Assert(res != <span class="highlight-keyword">null</span>);
+            Debug.Assert(res.Length == <span class="highlight-number">1</span>);
+            Debug.Assert(res[<span class="highlight-number">0</span>].ToString() == <span class="highlight-keyword">value</span>);
+
+            res = image.GetField(TIFFTAG_SHORTTAG);
+            Debug.Assert(res != <span class="highlight-keyword">null</span>);
+            Debug.Assert(res.Length == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">0</span>].ToInt() == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">1</span>].ToShortArray() != <span class="highlight-keyword">null</span>);
+
+            res = image.GetField(TIFFTAG_LONGTAG);
+            Debug.Assert(res != <span class="highlight-keyword">null</span>);
+            Debug.Assert(res.Length == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">0</span>].ToInt() == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">1</span>].ToIntArray() != <span class="highlight-keyword">null</span>);
+
+            res = image.GetField(TIFFTAG_RATIONALTAG);
+            Debug.Assert(res != <span class="highlight-keyword">null</span>);
+            Debug.Assert(res.Length == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">0</span>].ToInt() == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">1</span>].ToFloatArray() != <span class="highlight-keyword">null</span>);
+
+            res = image.GetField(TIFFTAG_FLOATTAG);
+            Debug.Assert(res != <span class="highlight-keyword">null</span>);
+            Debug.Assert(res.Length == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">0</span>].ToInt() == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">1</span>].ToFloatArray() != <span class="highlight-keyword">null</span>);
+
+            res = image.GetField(TIFFTAG_DOUBLETAG);
+            Debug.Assert(res != <span class="highlight-keyword">null</span>);
+            Debug.Assert(res.Length == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">0</span>].ToInt() == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">1</span>].ToDoubleArray() != <span class="highlight-keyword">null</span>);
+
+            res = image.GetField(TIFFTAG_BYTE);
+            Debug.Assert(res != <span class="highlight-keyword">null</span>);
+            Debug.Assert(res.Length == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">0</span>].ToInt() == <span class="highlight-number">2</span>);
+            Debug.Assert(res[<span class="highlight-number">1</span>].ToByteArray() != <span class="highlight-keyword">null</span>);
+
+            image.Dispose();
+        }
+    }
+}</pre></div><div id="ID0EAAAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using BitMiracle.LibTiff.Classic;
+using System.Diagnostics;
+
+namespace ReadWriteCustomTags
+{
+    class Program
+    {
+        private const TiffTag TIFFTAG_ASCIITAG = (TiffTag)666;
+        private const TiffTag TIFFTAG_LONGTAG = (TiffTag)667;
+        private const TiffTag TIFFTAG_SHORTTAG = (TiffTag)668;
+        private const TiffTag TIFFTAG_RATIONALTAG = (TiffTag)669;
+        private const TiffTag TIFFTAG_FLOATTAG = (TiffTag)670;
+        private const TiffTag TIFFTAG_DOUBLETAG = (TiffTag)671;
+        private const TiffTag TIFFTAG_BYTE = (TiffTag)672;
+
+        private static Tiff.TiffExtendProc m_parentExtender;
+
+        public static void TagExtender(Tiff tif)
+        {
+            TiffFieldInfo[] tiffFieldInfo = 
+            {
+                new TiffFieldInfo(TIFFTAG_ASCIITAG, -1, -1, TiffType.ASCII, FieldBit.Custom, true, false, "MyTag"),
+                new TiffFieldInfo(TIFFTAG_SHORTTAG, 2, 2, TiffType.SHORT, FieldBit.Custom, false, true, "ShortTag"),
+                new TiffFieldInfo(TIFFTAG_LONGTAG, 2, 2, TiffType.LONG, FieldBit.Custom, false, true, "LongTag"),
+                new TiffFieldInfo(TIFFTAG_RATIONALTAG, 2, 2, TiffType.RATIONAL, FieldBit.Custom, false, true, "RationalTag"),
+                new TiffFieldInfo(TIFFTAG_FLOATTAG, 2, 2, TiffType.FLOAT, FieldBit.Custom, false, true, "FloatTag"),
+                new TiffFieldInfo(TIFFTAG_DOUBLETAG, 2, 2, TiffType.DOUBLE, FieldBit.Custom, false, true, "DoubleTag"),
+                new TiffFieldInfo(TIFFTAG_BYTE, 2, 2, TiffType.BYTE, FieldBit.Custom, false, true, "ByteTag"),
+            };
+
+            tif.MergeFieldInfo(tiffFieldInfo, tiffFieldInfo.Length);
+
+            if (m_parentExtender != null)
+                m_parentExtender(tif);
+        }
+
+        static void Main(string[] args)
+        {
+            // Define an image 
+            byte[] buffer = new byte[25 * 144];
+
+            // Register the custom tag handler
+            Tiff.TiffExtendProc extender = TagExtender;
+            m_parentExtender = Tiff.SetTagExtender(extender);
+
+            string outputFileName = "output.tif";
+            Tiff image = Tiff.Open(outputFileName, "w");
+
+            // We need to set some values for basic tags before we can add any data
+            image.SetField(TiffTag.IMAGEWIDTH, 25 * 8);
+            image.SetField(TiffTag.IMAGELENGTH, 144);
+            image.SetField(TiffTag.BITSPERSAMPLE, 1);
+            image.SetField(TiffTag.SAMPLESPERPIXEL, 1);
+            image.SetField(TiffTag.ROWSPERSTRIP, 144);
+
+            image.SetField(TiffTag.COMPRESSION, Compression.CCITTFAX4);
+            image.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISWHITE);
+            image.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+            image.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+            image.SetField(TiffTag.XRESOLUTION, 150.0);
+            image.SetField(TiffTag.YRESOLUTION, 150.0);
+            image.SetField(TiffTag.RESOLUTIONUNIT, ResUnit.INCH);
+
+            // set custom tags 
+
+            string value = "Tag contents";
+            image.SetField(TIFFTAG_ASCIITAG, value);
+
+            short[] shorts = { 263, 264 };
+            image.SetField(TIFFTAG_SHORTTAG, 2, shorts);
+
+            int[] longs = { 117, 118 };
+            image.SetField(TIFFTAG_LONGTAG, 2, longs);
+
+            float[] rationals = { 0.333333f, 0.444444f };
+            image.SetField(TIFFTAG_RATIONALTAG, 2, rationals);
+
+            float[] floats = { 0.666666f, 0.777777f };
+            image.SetField(TIFFTAG_FLOATTAG, 2, floats);
+
+            double[] doubles = { 0.1234567, 0.7654321 };
+            image.SetField(TIFFTAG_DOUBLETAG, 2, doubles);
+
+            byte[] bytes = { 89, 90 };
+            image.SetField(TIFFTAG_BYTE, 2, bytes);
+
+            // Write the information to the file
+            image.WriteEncodedStrip(0, buffer, 25 * 144);
+
+            // Close the file
+            image.Dispose();
+
+            // Now open that TIFF back and read new tags
+            image = Tiff.Open(outputFileName, "r");
+            FieldValue[] res = image.GetField(TIFFTAG_ASCIITAG);
+            Debug.Assert(res != null);
+            Debug.Assert(res.Length == 1);
+            Debug.Assert(res[0].ToString() == value);
+
+            res = image.GetField(TIFFTAG_SHORTTAG);
+            Debug.Assert(res != null);
+            Debug.Assert(res.Length == 2);
+            Debug.Assert(res[0].ToInt() == 2);
+            Debug.Assert(res[1].ToShortArray() != null);
+
+            res = image.GetField(TIFFTAG_LONGTAG);
+            Debug.Assert(res != null);
+            Debug.Assert(res.Length == 2);
+            Debug.Assert(res[0].ToInt() == 2);
+            Debug.Assert(res[1].ToIntArray() != null);
+
+            res = image.GetField(TIFFTAG_RATIONALTAG);
+            Debug.Assert(res != null);
+            Debug.Assert(res.Length == 2);
+            Debug.Assert(res[0].ToInt() == 2);
+            Debug.Assert(res[1].ToFloatArray() != null);
+
+            res = image.GetField(TIFFTAG_FLOATTAG);
+            Debug.Assert(res != null);
+            Debug.Assert(res.Length == 2);
+            Debug.Assert(res[0].ToInt() == 2);
+            Debug.Assert(res[1].ToFloatArray() != null);
+
+            res = image.GetField(TIFFTAG_DOUBLETAG);
+            Debug.Assert(res != null);
+            Debug.Assert(res.Length == 2);
+            Debug.Assert(res[0].ToInt() == 2);
+            Debug.Assert(res[1].ToDoubleArray() != null);
+
+            res = image.GetField(TIFFTAG_BYTE);
+            Debug.Assert(res != null);
+            Debug.Assert(res.Length == 2);
+            Debug.Assert(res[0].ToInt() == 2);
+            Debug.Assert(res[1].ToByteArray() != null);
+
+            image.Dispose();
+        }
+    }
+}</pre></div><div id="ID0EAAAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAAAAAAAA');</script></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Adding+new+(custom)+tags+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

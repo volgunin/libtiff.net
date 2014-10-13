@@ -1,0 +1,58 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tiff2Rgba</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="b85a8605-d3d4-4747-abfb-f7e71b5fa2b5" /><meta name="Description" content="Tiff2Rgba converts a TIFF image to RGBA color space." /><meta name="Microsoft.Help.ContentType" content="Concepts" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Tiff2Rgba</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>
+                Tiff2Rgba converts a TIFF image to RGBA color space.
+            </p></div><a id="Section1"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle" /><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><a id="SubSection1"><!----></a><h3 class="subHeading">Usage</h3><div class="subsection"><p><b>Tiff2Rgba</b> [ options ] input.tif output.tif
+                        </p></div><a id="SubSection2"><!----></a><h3 class="subHeading">Description</h3><div class="subsection"><p>
+                            Tiff2Rgba converts a wide variety of TIFF images into an RGBA TIFF
+                            image. This includes the ability to translate different color spaces
+                            and photometric interpretation into RGBA, support for alpha blending,
+                            and translation of many different bit depths into a 32bit RGBA image.
+                        </p><p>
+                            Internally this program is implemented using the
+                            <span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.ReadRGBAImage"><a href="a36a7f7d-899e-9956-745a-25adf1c7f9ac.htm" target="">ReadRGBAImage<span id="ID0EAABBGAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABBGAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span> method, and it suffers any limitations of that
+                            method. This includes limited support for &gt; 8 BitsPerSample images,
+                            and flaws with some esoteric combinations of BitsPerSample,
+                            photometric interpretation, block organization and planar
+                            configuration.
+                        </p><p>
+                            The generated images are stripped images with four samples per pixel
+                            (red, green, blue and alpha) or if the <i>−n</i>
+                            flag is used, three samples per pixel (red, green, and blue). The
+                            resulting images are always planar configuration contiguous. For this
+                            reason, this program is a useful utility for transform exotic TIFF
+                            files into a form ingestible by almost any TIFF supporting software.
+                        </p></div><a id="SubSection3"><!----></a><h3 class="subHeading">Options</h3><div class="subsection"><div class="tableSection"><table><tr><th>Option</th><th>Description</th></tr><tr><td>−c compression_name</td><td>
+                                    Specify a compression scheme to use when writing image data:
+                                    <i>−c none</i> for no compression (the
+                                    default), <i>−c packbits</i> for the
+                                    PackBits compression algorithm,
+                                    <i>−c zip</i> for the Deflate
+                                    compression algorithm, <i>−c jpeg</i>
+                                    for the JPEG compression algorithm, and
+                                    <i>−c lzw</i> for Lempel-Ziv &amp; Welch.
+                                </td></tr><tr><td>−r number_of_rows</td><td>
+                                    Write data with a specified number of rows per strip; by
+                                    default the number of rows/strip is selected so that each
+                                    strip is approximately 8 kilobytes.
+                                </td></tr><tr><td>−b</td><td>
+                                    Process the image one block (strip/tile) at a time instead of
+                                    by reading the whole image into memory at once. This may be 
+                                    necessary for very large images on systems with limited RAM.
+                                </td></tr><tr><td>−n</td><td>
+                                    Drop the alpha component from the output file, producing a
+                                    pure RGB file. Currently this does not work if the
+                                    <i>−b</i> flag is also in effect.
+                                </td></tr></table></div></div><a id="SubSection4"><!----></a><h3 class="subHeading">Bugs</h3><div class="subsection"><p>
+                            Please report bugs via the form at
+                            <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="http://bitmiracle.com/support.aspx" target="_blank">http://bitmiracle.com/support.aspx</a> or using
+                            <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="mailto:support@bitmiracle.com" target="_blank">e-mail</a>.
+                        </p></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Tiff2Rgba+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

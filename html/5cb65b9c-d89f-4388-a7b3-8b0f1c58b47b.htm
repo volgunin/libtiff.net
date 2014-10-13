@@ -1,0 +1,154 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>TiffCP</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="5cb65b9c-d89f-4388-a7b3-8b0f1c58b47b" /><meta name="Description" content="TiffCP copies (and possibly converts) a TIFF file." /><meta name="Microsoft.Help.ContentType" content="Concepts" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">TiffCP</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>
+                TiffCP copies (and possibly converts) a TIFF file.
+            </p></div><a id="Section1"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle" /><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><a id="SubSection1"><!----></a><h3 class="subHeading">Usage</h3><div class="subsection"><p><b>TiffCP</b> [ options ] src1.tif ... srcN.tif dst.tif
+                        </p></div><a id="SubSection2"><!----></a><h3 class="subHeading">Description</h3><div class="subsection"><p>
+                            TiffCP combines one or more files created according to the Tag Image
+                            File Format, Revision 6.0 into a single TIFF file. Because the output
+                            file may be compressed using a different algorithm than the input
+                            files, TiffCP is most often used to convert between different
+                            compression schemes.
+                        </p><p>
+                            By default, TiffCP will copy all the understood tags in a TIFF
+                            directory of an input file to the associated directory in the
+                            output file.
+                        </p><p>
+                            TiffCP can be used to reorganize the storage characteristics of data
+                            in a file, but it is explicitly intended to not alter or convert the
+                            image data content in any way.
+                        </p></div><a id="SubSection3"><!----></a><h3 class="subHeading">Options</h3><div class="subsection"><div class="tableSection"><table><tr><th>Option</th><th>Description</th></tr><tr><td>−b image</td><td>
+                                    Subtract the following monochrome image from all others
+                                    processed. This can be used to remove a noise bias from a set
+                                    of images. This bias image is typically an image of noise the
+                                    camera saw with its shutter closed.
+                                </td></tr><tr><td>−B</td><td>
+                                    Force output to be written with Big-Endian byte order. This
+                                    option only has an effect when the output file is created or
+                                    overwritten and not when it is appended to.
+                                </td></tr><tr><td>−C</td><td>
+                                    Suppress the use of "strip chopping" when reading images that
+                                    have a single strip/tile of uncompressed data.
+                                </td></tr><tr><td>−c</td><td><p>
+                                        Specify the compression to use for data written to the
+                                        output file: <i>none</i> for no
+                                        compression, <i>packbits</i> for
+                                        PackBits compression, <i>lzw</i> for
+                                        Lempel-Ziv &amp; Welch compression,
+                                        <i>jpeg</i> for baseline JPEG
+                                        compression, <i>zip</i> for Deflate
+                                        compression, <i>g3</i> for CCITT
+                                        Group 3 (T.4) compression, and <i>g4</i>
+                                        for CCITT Group 4 (T.6) compression. By default TiffCP
+                                        will compress data according to the value of the
+                                        Compression tag found in the source file.
+                                    </p><p>
+                                        The CCITT Group 3 and Group 4 compression algorithms can
+                                        only be used with bilevel data.
+                                    </p><p>
+                                        Group 3 compression can be specified together with several
+                                        T.4-specific options: <i>1d</i> for
+                                        1-dimensional encoding, <i>2d</i>
+                                        for 2-dimensional encoding, and
+                                        <i>fill</i> to force each encoded
+                                        scanline to be zero-filled so that the terminating EOL
+                                        code lies on a byte boundary. Group 3-specific options are
+                                        specified by appending a ":"-separated list to the "g3"
+                                        option; e.g. <i>−c g3:2d:fill</i> to
+                                        get 2D-encoded data with byte-aligned EOL codes.
+                                    </p><p>
+                                        LZW compression can be specified together with a predictor
+                                        value. A predictor value of 2 causes each scanline of the
+                                        output image to undergo horizontal differencing before it
+                                        is encoded; a value of 1 forces each scanline to be
+                                        encoded without differencing. LZW-specific options are
+                                        specified by appending a ":"-separated list to the "lzw"
+                                        option; e.g. <i>−c lzw:2</i> for LZW
+                                        compression with horizontal differencing.
+                                    </p></td></tr><tr><td>−f</td><td>
+                                    Specify the bit fill order to use in writing output data. By
+                                    default, TiffCP will create a new file with the same fill
+                                    order as the original. Specifying
+                                    <i>−f lsb2msb</i> will force data to be
+                                    written with the FillOrder tag set to LSB2MSB, while
+                                    <i>−f msb2lsb</i> will force data to be
+                                    written with the FillOrder tag set to MSB2LSB.
+                                </td></tr><tr><td>−i</td><td>
+                                    Ignore non-fatal read errors and continue processing of the
+                                    input file.
+                                </td></tr><tr><td>−l</td><td>
+                                    Specify the length of a tile (in pixels). TiffCP attempts to
+                                    set the tile dimensions so that no more than 8 kilobytes of
+                                    data appear in a tile.
+                                </td></tr><tr><td>−L</td><td>
+                                    Force output to be written with Little-Endian byte order. This
+                                    option only has an effect when the output file is created or
+                                    overwritten and not when it is appended to.
+                                </td></tr><tr><td>−p</td><td>
+                                    Specify the planar configuration to use in writing image data
+                                    that has one 8-bit sample per pixel. By default, TiffCP will
+                                    create a new file with the same planar configuration as the
+                                    original. Specifying <i>−p contig</i>
+                                    will force data to be written with multi-sample data packed
+                                    together, while <i>−p separate</i> will
+                                    force samples to be written in separate planes.
+                                </td></tr><tr><td>−r</td><td>
+                                    Specify the number of rows (scanlines) in each strip of data
+                                    written to the output file. By default (or when value 0 is
+                                    specified), TiffCP attempts to set the rows/strip that no
+                                    more than 8 kilobytes of data appear in a strip. If you
+                                    specify special value <i>−1</i> it will
+                                    results in infinite number of the rows per strip. The entire
+                                    image will be the one strip in that case.
+                                </td></tr><tr><td>−s</td><td>
+                                    Force the output file to be written with data organized in
+                                    strips (rather than tiles).
+                                </td></tr><tr><td>−t</td><td>
+                                    Force the output file to be written with data organized in
+                                    tiles (rather than strips).
+                                </td></tr><tr><td>−w</td><td>
+                                    Specify the width of a tile (in pixels). TiffCP attempts to
+                                    set the tile dimensions so that no more than 8 kilobytes of
+                                    data appear in a tile.
+                                </td></tr><tr><td>−x</td><td>
+                                    Force the output file to be written with PAGENUMBER value
+                                    in sequence.
+                                </td></tr><tr><td>−,=character</td><td>
+                                    Substitute character for "," in parsing image directory
+                                    indices in files. This is necessary if filenames contain
+                                    commas. Note that −,= with whitespace immediately following
+                                    will disable the special meaning of the "," entirely.
+                                </td></tr></table></div></div><a id="SubSection4"><!----></a><h3 class="subHeading">Examples</h3><div class="subsection"><p>
+                            The following concatenates two files and writes the result using
+                            LZW encoding:
+                        </p><p><i>tiffcp −c lzw a.tif b.tif result.tif</i></p><p>
+                            To convert a G3 1d-encoded TIFF to a single strip of G4-encoded
+                            data the following might be used (1000 is just a number that is larger
+                            than the number of rows in the source file):
+                        </p><p><i>tiffcp −c g4 −r 10000 g3.tif g4.tif</i></p><p>
+                            To extract a selected set of images from a multi-image TIFF file, the
+                            file name may be immediately followed by a "," separated list of image
+                            directory indices. The first image is always in directory 0. Thus, to
+                            copy the 1st and 3rd images of image file "album.tif" to "result.tif":
+                        </p><p><i>tiffcp album.tif,0,2 result.tif</i></p><p>
+                            A trailing comma denotes remaining images in sequence. The following
+                            command will copy all image with except the first one:
+                        </p><p><i>tiffcp album.tif,1, result.tif</i></p><p>
+                            Given file "CCD.tif" whose first image is a noise bias followed by
+                            images which include that bias, subtract the noise from all those
+                            images following it (while decompressing) with the command:
+                        </p><p><i>tiffcp −c none −b CCD.tif CCD.tif,1, result.tif</i></p><p>
+                            If the file above were named "CCD,X.tif", the −,= option would be
+                            required to correctly parse this filename with image numbers, as
+                            follows:
+                        </p><p><i>tiffcp −c none −,=% −b CCD,X.tif CCD,X%1%.tif result.tif</i></p></div><a id="SubSection5"><!----></a><h3 class="subHeading">Bugs</h3><div class="subsection"><p>
+                            Please report bugs via the form at
+                            <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="http://bitmiracle.com/support.aspx" target="_blank">http://bitmiracle.com/support.aspx</a> or using
+                            <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a class="mtps-external-link" href="mailto:support@bitmiracle.com" target="_blank">e-mail</a>.
+                        </p></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+TiffCP+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

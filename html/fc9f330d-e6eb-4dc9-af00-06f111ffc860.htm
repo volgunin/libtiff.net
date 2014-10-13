@@ -1,0 +1,339 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Convert black-and-white TIFF to a System.Drawing.Bitmap</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="fc9f330d-e6eb-4dc9-af00-06f111ffc860" /><meta name="Description" content="This sample shows how to convert black and white TIFF image to a System.Drawing.Bitmap." /><meta name="Microsoft.Help.ContentType" content="Samples" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Convert black-and-white TIFF to a System.Drawing.Bitmap</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>This sample shows how to convert black and white TIFF image to a System.Drawing.Bitmap.</p><p></p><p>At first, this sample reads important TIFF fields like width, height, samples per pixel, etc. then reads scanlines of an image using Tiff.ReadScanline method in a loop. Note, that there are other Tiff.Read* methods provided by the library.</p><p></p><p>To convert opened TIFF image to a System.Drawing.Bitmap this sample creates Bitmap with the size of the original TIFF image and then uses combination of Bitmap.LockBits, Marshal.Copy and Bitmap.UnlockBits methods for each scanline.</p></div><div id="ID0EBAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EBAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EBAAAAA_tabimgleft"></div><div id="ID0EBAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EBAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EBAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EBAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EBAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EBAAAAA_tabimgright"></div></div><div id="ID0EBAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EBAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EBAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EBAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EBAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EBAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EBAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EBAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> System.Diagnostics;
+<span class="highlight-keyword">using</span> System.Drawing;
+<span class="highlight-keyword">using</span> System.Drawing.Imaging;
+<span class="highlight-keyword">using</span> System.Runtime.InteropServices;
+<span class="highlight-keyword">using</span> System.Windows.Forms;
+
+<span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> BitMiracle.LibTiff.Samples
+{
+    <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">class</span> BitonalTiffToBitmap
+    {
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main()
+        {
+            <span class="highlight-keyword">using</span> (Bitmap bitmap = tiffToBitmap(<span class="highlight-literal">@"Sample Data\bitonal.tif"</span>))
+            {
+                <span class="highlight-keyword">if</span> (bitmap == <span class="highlight-keyword">null</span>)
+                {
+                    MessageBox.Show(<span class="highlight-literal">"Failed to convert image. Maybe input image does not exist or is not 1 bit per pixel."</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                bitmap.Save(<span class="highlight-literal">"BitonalTiffToBitmap.bmp"</span>);
+                Process.Start(<span class="highlight-literal">"BitonalTiffToBitmap.bmp"</span>);
+            }
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> Bitmap tiffToBitmap(<span class="highlight-keyword">string</span> fileName)
+        {
+            <span class="highlight-keyword">using</span> (Tiff tif = Tiff.Open(fileName, <span class="highlight-literal">"r"</span>))
+            {
+                <span class="highlight-keyword">if</span> (tif == <span class="highlight-keyword">null</span>)
+                    <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+
+                FieldValue[] imageHeight = tif.GetField(TiffTag.IMAGELENGTH);
+                <span class="highlight-keyword">int</span> height = imageHeight[<span class="highlight-number">0</span>].ToInt();
+
+                FieldValue[] imageWidth = tif.GetField(TiffTag.IMAGEWIDTH);
+                <span class="highlight-keyword">int</span> width = imageWidth[<span class="highlight-number">0</span>].ToInt();
+
+                FieldValue[] bitsPerSample = tif.GetField(TiffTag.BITSPERSAMPLE);
+                <span class="highlight-keyword">short</span> bpp = bitsPerSample[<span class="highlight-number">0</span>].ToShort();
+                <span class="highlight-keyword">if</span> (bpp != <span class="highlight-number">1</span>)
+                    <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+
+                FieldValue[] samplesPerPixel = tif.GetField(TiffTag.SAMPLESPERPIXEL);
+                <span class="highlight-keyword">short</span> spp = samplesPerPixel[<span class="highlight-number">0</span>].ToShort();
+                <span class="highlight-keyword">if</span> (spp != <span class="highlight-number">1</span>)
+                    <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+
+                FieldValue[] photoMetric = tif.GetField(TiffTag.PHOTOMETRIC);
+                Photometric photo = (Photometric)photoMetric[<span class="highlight-number">0</span>].ToInt();
+                <span class="highlight-keyword">if</span> (photo != Photometric.MINISBLACK &amp;&amp; photo != Photometric.MINISWHITE)
+                    <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+
+                <span class="highlight-keyword">int</span> stride = tif.ScanlineSize();
+                Bitmap result = <span class="highlight-keyword">new</span> Bitmap(width, height, PixelFormat.Format1bppIndexed);
+
+                <span class="highlight-comment">// update bitmap palette according to Photometric value</span> 
+                <span class="highlight-keyword">bool</span> minIsWhite = (photo == Photometric.MINISWHITE);
+                ColorPalette palette = result.Palette;
+                palette.Entries[<span class="highlight-number">0</span>] = (minIsWhite ? Color.White : Color.Black);
+                palette.Entries[<span class="highlight-number">1</span>] = (minIsWhite ? Color.Black : Color.White);
+                result.Palette = palette;
+
+                <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> i = <span class="highlight-number">0</span>; i &lt; height; i++)
+                {
+                    Rectangle imgRect = <span class="highlight-keyword">new</span> Rectangle(<span class="highlight-number">0</span>, i, width, <span class="highlight-number">1</span>);
+                    BitmapData imgData = result.LockBits(imgRect, ImageLockMode.WriteOnly, PixelFormat.Format1bppIndexed);
+
+                    <span class="highlight-keyword">byte</span>[] buffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[stride];
+                    tif.ReadScanline(buffer, i);
+
+                    Marshal.Copy(buffer, <span class="highlight-number">0</span>, imgData.Scan0, buffer.Length);
+                    result.UnlockBits(imgData);
+                }
+
+                <span class="highlight-keyword">return</span> result;
+            }
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+using BitMiracle.LibTiff.Classic;
+
+namespace BitMiracle.LibTiff.Samples
+{
+    public static class BitonalTiffToBitmap
+    {
+        public static void Main()
+        {
+            using (Bitmap bitmap = tiffToBitmap(@"Sample Data\bitonal.tif"))
+            {
+                if (bitmap == null)
+                {
+                    MessageBox.Show("Failed to convert image. Maybe input image does not exist or is not 1 bit per pixel.");
+                    return;
+                }
+
+                bitmap.Save("BitonalTiffToBitmap.bmp");
+                Process.Start("BitonalTiffToBitmap.bmp");
+            }
+        }
+
+        private static Bitmap tiffToBitmap(string fileName)
+        {
+            using (Tiff tif = Tiff.Open(fileName, "r"))
+            {
+                if (tif == null)
+                    return null;
+
+                FieldValue[] imageHeight = tif.GetField(TiffTag.IMAGELENGTH);
+                int height = imageHeight[0].ToInt();
+
+                FieldValue[] imageWidth = tif.GetField(TiffTag.IMAGEWIDTH);
+                int width = imageWidth[0].ToInt();
+
+                FieldValue[] bitsPerSample = tif.GetField(TiffTag.BITSPERSAMPLE);
+                short bpp = bitsPerSample[0].ToShort();
+                if (bpp != 1)
+                    return null;
+
+                FieldValue[] samplesPerPixel = tif.GetField(TiffTag.SAMPLESPERPIXEL);
+                short spp = samplesPerPixel[0].ToShort();
+                if (spp != 1)
+                    return null;
+
+                FieldValue[] photoMetric = tif.GetField(TiffTag.PHOTOMETRIC);
+                Photometric photo = (Photometric)photoMetric[0].ToInt();
+                if (photo != Photometric.MINISBLACK &amp;&amp; photo != Photometric.MINISWHITE)
+                    return null;
+
+                int stride = tif.ScanlineSize();
+                Bitmap result = new Bitmap(width, height, PixelFormat.Format1bppIndexed);
+
+                // update bitmap palette according to Photometric value 
+                bool minIsWhite = (photo == Photometric.MINISWHITE);
+                ColorPalette palette = result.Palette;
+                palette.Entries[0] = (minIsWhite ? Color.White : Color.Black);
+                palette.Entries[1] = (minIsWhite ? Color.Black : Color.White);
+                result.Palette = palette;
+
+                for (int i = 0; i &lt; height; i++)
+                {
+                    Rectangle imgRect = new Rectangle(0, i, width, 1);
+                    BitmapData imgData = result.LockBits(imgRect, ImageLockMode.WriteOnly, PixelFormat.Format1bppIndexed);
+
+                    byte[] buffer = new byte[stride];
+                    tif.ReadScanline(buffer, i);
+
+                    Marshal.Copy(buffer, 0, imgData.Scan0, buffer.Length);
+                    result.UnlockBits(imgData);
+                }
+
+                return result;
+            }
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EBAAAAA');</script><div id="ID0EAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAAAAAA_tabimgleft"></div><div id="ID0EAAAAAA_tab1" class="OH_CodeSnippetContainerTabDisabled" EnableCopyCode="true" disabled="true"><a>C#</a></div><div id="ID0EAAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0EAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAAAAAA_tabimgright"></div></div><div id="ID0EAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="highlight-keyword">Imports</span> System.Diagnostics
+<span class="highlight-keyword">Imports</span> System.Drawing
+<span class="highlight-keyword">Imports</span> System.Drawing.Imaging
+<span class="highlight-keyword">Imports</span> System.Runtime.InteropServices
+<span class="highlight-keyword">Imports</span> System.Windows.Forms
+
+<span class="highlight-keyword">Imports</span> BitMiracle.LibTiff.Classic
+
+<span class="highlight-keyword">Namespace</span> BitMiracle.LibTiff.Samples
+    <span class="highlight-keyword">Public</span> <span class="highlight-keyword">NotInheritable</span> <span class="highlight-keyword">Class</span> BitonalTiffToBitmap
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> <span class="highlight-keyword">New</span>()
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> Main()
+            <span class="highlight-keyword">Using</span> bitmap <span class="highlight-keyword">As</span> Bitmap = tiffToBitmap(<span class="highlight-literal">"Sample Data\bitonal.tif"</span>)
+                <span class="highlight-keyword">If</span> bitmap <span class="highlight-keyword">Is</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span>
+                    MessageBox.Show(<span class="highlight-literal">"Failed to convert image. Maybe input image does not exist or is not 1 bit per pixel."</span>)
+                    <span class="highlight-keyword">Return</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+
+                bitmap.Save(<span class="highlight-literal">"BitonalTiffToBitmap.bmp"</span>)
+                Process.Start(<span class="highlight-literal">"BitonalTiffToBitmap.bmp"</span>)
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> tiffToBitmap(<span class="highlight-keyword">ByVal</span> fileName <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span>) <span class="highlight-keyword">As</span> Bitmap
+            <span class="highlight-keyword">Using</span> tif <span class="highlight-keyword">As</span> Tiff = Tiff.Open(fileName, <span class="highlight-literal">"r"</span>)
+                <span class="highlight-keyword">If</span> tif <span class="highlight-keyword">Is</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span> 
+                    <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Dim</span> imageHeight <span class="highlight-keyword">As</span> FieldValue() = tif.GetField(TiffTag.IMAGELENGTH)
+                <span class="highlight-keyword">Dim</span> height <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = imageHeight(<span class="highlight-number">0</span>).ToInt()
+
+                <span class="highlight-keyword">Dim</span> imageWidth <span class="highlight-keyword">As</span> FieldValue() = tif.GetField(TiffTag.IMAGEWIDTH)
+                <span class="highlight-keyword">Dim</span> width <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = imageWidth(<span class="highlight-number">0</span>).ToInt()
+
+                <span class="highlight-keyword">Dim</span> bitsPerSample <span class="highlight-keyword">As</span> FieldValue() = tif.GetField(TiffTag.BITSPERSAMPLE)
+                <span class="highlight-keyword">Dim</span> bpp <span class="highlight-keyword">As</span> <span class="highlight-keyword">Short</span> = bitsPerSample(<span class="highlight-number">0</span>).ToShort()
+                <span class="highlight-keyword">If</span> bpp &lt;&gt; <span class="highlight-number">1</span> <span class="highlight-keyword">Then</span> 
+                    <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Dim</span> samplesPerPixel <span class="highlight-keyword">As</span> FieldValue() = tif.GetField(TiffTag.SAMPLESPERPIXEL)
+                <span class="highlight-keyword">Dim</span> spp <span class="highlight-keyword">As</span> <span class="highlight-keyword">Short</span> = samplesPerPixel(<span class="highlight-number">0</span>).ToShort()
+                <span class="highlight-keyword">If</span> spp &lt;&gt; <span class="highlight-number">1</span> <span class="highlight-keyword">Then</span> 
+                    <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Dim</span> photoMetricField <span class="highlight-keyword">As</span> FieldValue() = tif.GetField(TiffTag.PHOTOMETRIC)
+                <span class="highlight-keyword">Dim</span> photo <span class="highlight-keyword">As</span> Photometric = <span class="highlight-keyword">DirectCast</span>(photoMetricField(<span class="highlight-number">0</span>).ToInt(), Photometric)
+                <span class="highlight-keyword">If</span> photo &lt;&gt; Photometric.MINISBLACK <span class="highlight-keyword">AndAlso</span> photo &lt;&gt; Photometric.MINISWHITE <span class="highlight-keyword">Then</span> 
+                    <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Dim</span> stride <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = tif.ScanlineSize()
+                <span class="highlight-keyword">Dim</span> result <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Bitmap(width, height, PixelFormat.Format1bppIndexed)
+
+                <span class="highlight-comment">' update bitmap palette according to Photometric value</span> 
+                <span class="highlight-keyword">Dim</span> minIsWhite <span class="highlight-keyword">As</span> <span class="highlight-keyword">Boolean</span> = (photo = Photometric.MINISWHITE)
+                <span class="highlight-keyword">Dim</span> palette <span class="highlight-keyword">As</span> ColorPalette = result.Palette
+                <span class="highlight-keyword">If</span> minIsWhite <span class="highlight-keyword">Then</span>
+                    palette.Entries(<span class="highlight-number">0</span>) = Color.White
+                    palette.Entries(<span class="highlight-number">1</span>) = Color.Black
+                <span class="highlight-keyword">Else</span>
+                    palette.Entries(<span class="highlight-number">0</span>) = Color.Black
+                    palette.Entries(<span class="highlight-number">1</span>) = Color.White
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+                result.Palette = palette
+
+                <span class="highlight-keyword">For</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> height - <span class="highlight-number">1</span> 
+                    <span class="highlight-keyword">Dim</span> imgRect <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Rectangle(<span class="highlight-number">0</span>, i, width, <span class="highlight-number">1</span>)
+                    <span class="highlight-keyword">Dim</span> imgData <span class="highlight-keyword">As</span> BitmapData = result.LockBits(imgRect, ImageLockMode.[<span class="highlight-keyword">WriteOnly</span>], PixelFormat.Format1bppIndexed)
+
+                    <span class="highlight-keyword">Dim</span> buffer <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(stride - <span class="highlight-number">1</span>) {}
+                    tif.ReadScanline(buffer, i)
+
+                    Marshal.Copy(buffer, <span class="highlight-number">0</span>, imgData.Scan0, buffer.Length)
+                    result.UnlockBits(imgData)
+                <span class="highlight-keyword">Next</span> 
+
+                <span class="highlight-keyword">Return</span> result
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Class</span> 
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Namespace</span></pre></div><div id="ID0EAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Imports System.Diagnostics
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.Runtime.InteropServices
+Imports System.Windows.Forms
+
+Imports BitMiracle.LibTiff.Classic
+
+Namespace BitMiracle.LibTiff.Samples
+    Public NotInheritable Class BitonalTiffToBitmap
+        Private Sub New()
+        End Sub 
+        Public Shared Sub Main()
+            Using bitmap As Bitmap = tiffToBitmap("Sample Data\bitonal.tif")
+                If bitmap Is Nothing Then
+                    MessageBox.Show("Failed to convert image. Maybe input image does not exist or is not 1 bit per pixel.")
+                    Return 
+                End If
+
+                bitmap.Save("BitonalTiffToBitmap.bmp")
+                Process.Start("BitonalTiffToBitmap.bmp")
+            End Using 
+        End Sub 
+
+        Private Shared Function tiffToBitmap(ByVal fileName As String) As Bitmap
+            Using tif As Tiff = Tiff.Open(fileName, "r")
+                If tif Is Nothing Then 
+                    Return Nothing 
+                End If 
+
+                Dim imageHeight As FieldValue() = tif.GetField(TiffTag.IMAGELENGTH)
+                Dim height As Integer = imageHeight(0).ToInt()
+
+                Dim imageWidth As FieldValue() = tif.GetField(TiffTag.IMAGEWIDTH)
+                Dim width As Integer = imageWidth(0).ToInt()
+
+                Dim bitsPerSample As FieldValue() = tif.GetField(TiffTag.BITSPERSAMPLE)
+                Dim bpp As Short = bitsPerSample(0).ToShort()
+                If bpp &lt;&gt; 1 Then 
+                    Return Nothing 
+                End If 
+
+                Dim samplesPerPixel As FieldValue() = tif.GetField(TiffTag.SAMPLESPERPIXEL)
+                Dim spp As Short = samplesPerPixel(0).ToShort()
+                If spp &lt;&gt; 1 Then 
+                    Return Nothing 
+                End If 
+
+                Dim photoMetricField As FieldValue() = tif.GetField(TiffTag.PHOTOMETRIC)
+                Dim photo As Photometric = DirectCast(photoMetricField(0).ToInt(), Photometric)
+                If photo &lt;&gt; Photometric.MINISBLACK AndAlso photo &lt;&gt; Photometric.MINISWHITE Then 
+                    Return Nothing 
+                End If 
+
+                Dim stride As Integer = tif.ScanlineSize()
+                Dim result As New Bitmap(width, height, PixelFormat.Format1bppIndexed)
+
+                ' update bitmap palette according to Photometric value 
+                Dim minIsWhite As Boolean = (photo = Photometric.MINISWHITE)
+                Dim palette As ColorPalette = result.Palette
+                If minIsWhite Then
+                    palette.Entries(0) = Color.White
+                    palette.Entries(1) = Color.Black
+                Else
+                    palette.Entries(0) = Color.Black
+                    palette.Entries(1) = Color.White
+                End If
+                result.Palette = palette
+
+                For i As Integer = 0 To height - 1 
+                    Dim imgRect As New Rectangle(0, i, width, 1)
+                    Dim imgData As BitmapData = result.LockBits(imgRect, ImageLockMode.[WriteOnly], PixelFormat.Format1bppIndexed)
+
+                    Dim buffer As Byte() = New Byte(stride - 1) {}
+                    tif.ReadScanline(buffer, i)
+
+                    Marshal.Copy(buffer, 0, imgData.Scan0, buffer.Length)
+                    result.UnlockBits(imgData)
+                Next 
+
+                Return result
+            End Using 
+        End Function 
+    End Class 
+End Namespace</pre></div><div id="ID0EAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAAAAAA');</script></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Convert+black-and-white+TIFF+to+a+System.Drawing.Bitmap+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

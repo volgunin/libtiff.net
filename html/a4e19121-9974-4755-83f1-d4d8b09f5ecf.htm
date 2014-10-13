@@ -1,0 +1,701 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Convert bytes of a multi-strip TIFF image to bytes of a single-strip one</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="a4e19121-9974-4755-83f1-d4d8b09f5ecf" /><meta name="Description" content="This sample shows how to convert any non-tiled TIFF image to the TIFF image which have all data written in a single strip using custom TiffStream and System.IO.MemoryStream." /><meta name="Microsoft.Help.ContentType" content="Samples" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Convert bytes of a multi-strip TIFF image to bytes of a single-strip one</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>This sample shows how to convert any non-tiled TIFF image to the TIFF image which have all data written in a single strip using custom TiffStream and System.IO.MemoryStream.</p><p>Input image is read from byte buffer (via custom TiffStream) and output image is written in System.IO.MemoryStream.</p></div><div id="ID0EBAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EBAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EBAAAAA_tabimgleft"></div><div id="ID0EBAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EBAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EBAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EBAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EBAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EBAAAAA_tabimgright"></div></div><div id="ID0EBAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EBAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EBAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EBAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EBAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EBAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EBAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EBAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> System;
+<span class="highlight-keyword">using</span> System.Diagnostics;
+<span class="highlight-keyword">using</span> System.Windows.Forms;
+<span class="highlight-keyword">using</span> System.IO;
+
+<span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> BitMiracle.LibTiff.Samples
+{
+    <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">class</span> ConvertToSingleStripInMemory
+    {
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main()
+        {
+            <span class="highlight-keyword">byte</span>[] inputBytes = File.ReadAllBytes(<span class="highlight-literal">@"Sample Data\multipage.tif"</span>);
+            TiffStreamForBytes byteStream = <span class="highlight-keyword">new</span> TiffStreamForBytes(inputBytes);
+
+            <span class="highlight-keyword">using</span> (Tiff input = Tiff.ClientOpen(<span class="highlight-literal">"bytes"</span>, <span class="highlight-literal">"r"</span>, <span class="highlight-keyword">null</span>, byteStream))
+            {
+                <span class="highlight-keyword">if</span> (input == <span class="highlight-keyword">null</span>)
+                {
+                    MessageBox.Show(<span class="highlight-literal">"Could not open incoming image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">if</span> (input.IsTiled())
+                {
+                    MessageBox.Show(<span class="highlight-literal">"Could not process tiled image"</span>);
+                    <span class="highlight-keyword">return</span>;
+                }
+
+                <span class="highlight-keyword">using</span> (MemoryStream ms = <span class="highlight-keyword">new</span> MemoryStream())
+                {
+                    <span class="highlight-keyword">using</span> (Tiff output = Tiff.ClientOpen(<span class="highlight-literal">"InMemory"</span>, <span class="highlight-literal">"w"</span>, ms, <span class="highlight-keyword">new</span> TiffStream()))
+                    {
+                        <span class="highlight-keyword">int</span> numberOfDirectories = input.NumberOfDirectories();
+                        <span class="highlight-keyword">for</span> (<span class="highlight-keyword">short</span> i = <span class="highlight-number">0</span>; i &lt; numberOfDirectories; ++i)
+                        {
+                            input.SetDirectory(i);
+
+                            copyTags(input, output);
+                            copyStrips(input, output);
+
+                            output.WriteDirectory();
+                        }
+                    }
+
+                    <span class="highlight-comment">// retrieve bytes from memory stream and write them in a file</span> 
+                    <span class="highlight-keyword">byte</span>[] bytes = ms.ToArray();
+                    File.WriteAllBytes(<span class="highlight-literal">"SavedBytes.tif"</span>, bytes);
+                }
+            }
+
+            <span class="highlight-keyword">using</span> (Tiff result = Tiff.Open(<span class="highlight-literal">"SavedBytes.tif"</span>, <span class="highlight-literal">"rc"</span>))
+            {
+                MessageBox.Show(<span class="highlight-literal">"Number of strips in result file: "</span> + result.NumberOfStrips());
+            }
+
+            Process.Start(<span class="highlight-literal">"SavedBytes.tif"</span>);
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> copyTags(Tiff input, Tiff output)
+        {
+            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">ushort</span> t = <span class="highlight-keyword">ushort</span>.MinValue; t &lt; <span class="highlight-keyword">ushort</span>.MaxValue; ++t)
+            {
+                TiffTag tag = (TiffTag)t;
+                FieldValue[] tagValue = input.GetField(tag);
+                <span class="highlight-keyword">if</span> (tagValue != <span class="highlight-keyword">null</span>)
+                    output.GetTagMethods().SetField(output, tag, tagValue);
+            }
+
+            <span class="highlight-keyword">int</span> height = input.GetField(TiffTag.IMAGELENGTH)[<span class="highlight-number">0</span>].ToInt();
+            output.SetField(TiffTag.ROWSPERSTRIP, height);
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> copyStrips(Tiff input, Tiff output)
+        {
+            <span class="highlight-keyword">bool</span> encoded = <span class="highlight-keyword">false</span>;
+            FieldValue[] compressionTagValue = input.GetField(TiffTag.COMPRESSION);
+            <span class="highlight-keyword">if</span> (compressionTagValue != <span class="highlight-keyword">null</span>)
+                encoded = (compressionTagValue[<span class="highlight-number">0</span>].ToInt() != (<span class="highlight-keyword">int</span>)Compression.NONE);
+
+            <span class="highlight-keyword">int</span> numberOfStrips = input.NumberOfStrips();
+
+            <span class="highlight-keyword">int</span> offset = <span class="highlight-number">0</span>;
+            <span class="highlight-keyword">byte</span>[] stripsData = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[numberOfStrips * input.StripSize()];
+            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> i = <span class="highlight-number">0</span>; i &lt; numberOfStrips; ++i)
+            {
+                <span class="highlight-keyword">int</span> bytesRead = readStrip(input, i, stripsData, offset, encoded);
+                offset += bytesRead;
+            }
+
+            writeStrip(output, stripsData, offset, encoded);
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">int</span> readStrip(Tiff image, <span class="highlight-keyword">int</span> stripNumber, <span class="highlight-keyword">byte</span>[] buffer, <span class="highlight-keyword">int</span> offset, <span class="highlight-keyword">bool</span> encoded)
+        {
+            <span class="highlight-keyword">if</span> (encoded)
+                <span class="highlight-keyword">return</span> image.ReadEncodedStrip(stripNumber, buffer, offset, buffer.Length - offset);
+            <span class="highlight-keyword">else</span> 
+                <span class="highlight-keyword">return</span> image.ReadRawStrip(stripNumber, buffer, offset, buffer.Length - offset);
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> writeStrip(Tiff image, <span class="highlight-keyword">byte</span>[] stripsData, <span class="highlight-keyword">int</span> count, <span class="highlight-keyword">bool</span> encoded)
+        {
+            <span class="highlight-keyword">if</span> (encoded)
+                image.WriteEncodedStrip(<span class="highlight-number">0</span>, stripsData, count);
+            <span class="highlight-keyword">else</span>
+                image.WriteRawStrip(<span class="highlight-number">0</span>, stripsData, count);
+        }
+    }
+
+    <span class="highlight-comment">/// &lt;summary&gt;</span> 
+    <span class="highlight-comment">/// Custom read-only stream for byte buffer that can be used</span> 
+    <span class="highlight-comment">/// with Tiff.ClientOpen method.</span> 
+    <span class="highlight-comment">/// &lt;/summary&gt;</span> 
+    <span class="highlight-keyword">class</span> TiffStreamForBytes : TiffStream
+    {
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">byte</span>[] m_bytes;
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">int</span> m_position;
+
+        <span class="highlight-keyword">public</span> TiffStreamForBytes(<span class="highlight-keyword">byte</span>[] bytes)
+        {
+            m_bytes = bytes;
+            m_position = <span class="highlight-number">0</span>;
+        }
+
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">int</span> Read(<span class="highlight-keyword">object</span> clientData, <span class="highlight-keyword">byte</span>[] buffer, <span class="highlight-keyword">int</span> offset, <span class="highlight-keyword">int</span> count)
+        {
+            <span class="highlight-keyword">if</span> ((m_position + count) &gt; m_bytes.Length)
+                <span class="highlight-keyword">return</span> <span class="highlight-number">-1</span>;
+
+            Buffer.BlockCopy(m_bytes, m_position, buffer, offset, count);
+            m_position += count;
+            <span class="highlight-keyword">return</span> count;
+        }
+
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">void</span> Write(<span class="highlight-keyword">object</span> clientData, <span class="highlight-keyword">byte</span>[] buffer, <span class="highlight-keyword">int</span> offset, <span class="highlight-keyword">int</span> count)
+        {
+            <span class="highlight-keyword">throw</span> <span class="highlight-keyword">new</span> InvalidOperationException(<span class="highlight-literal">"This stream is read-only"</span>);
+        }
+
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">long</span> Seek(<span class="highlight-keyword">object</span> clientData, <span class="highlight-keyword">long</span> offset, SeekOrigin origin)
+        {
+            <span class="highlight-keyword">switch</span> (origin)
+            {
+                <span class="highlight-keyword">case</span> SeekOrigin.Begin:
+                    <span class="highlight-keyword">if</span> (offset &gt; m_bytes.Length)
+                        <span class="highlight-keyword">return</span> <span class="highlight-number">-1</span>;
+
+                    m_position = (<span class="highlight-keyword">int</span>)offset;
+                    <span class="highlight-keyword">return</span> m_position;
+
+                <span class="highlight-keyword">case</span> SeekOrigin.Current:
+                    <span class="highlight-keyword">if</span> ((offset + m_position) &gt; m_bytes.Length)
+                        <span class="highlight-keyword">return</span> <span class="highlight-number">-1</span>;
+
+                    m_position += (<span class="highlight-keyword">int</span>)offset;
+                    <span class="highlight-keyword">return</span> m_position;
+
+                <span class="highlight-keyword">case</span> SeekOrigin.End:
+                    <span class="highlight-keyword">if</span> ((m_bytes.Length - offset) &lt; <span class="highlight-number">0</span>)
+                        <span class="highlight-keyword">return</span> <span class="highlight-number">-1</span>;
+
+                    m_position = (<span class="highlight-keyword">int</span>)(m_bytes.Length - offset);
+                    <span class="highlight-keyword">return</span> m_position;
+            }
+
+            <span class="highlight-keyword">return</span> <span class="highlight-number">-1</span>;
+        }
+
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">void</span> Close(<span class="highlight-keyword">object</span> clientData)
+        {
+            <span class="highlight-comment">// nothing to do</span>
+        }
+
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">override</span> <span class="highlight-keyword">long</span> Size(<span class="highlight-keyword">object</span> clientData)
+        {
+            <span class="highlight-keyword">return</span> m_bytes.Length;
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using System;
+using System.Diagnostics;
+using System.Windows.Forms;
+using System.IO;
+
+using BitMiracle.LibTiff.Classic;
+
+namespace BitMiracle.LibTiff.Samples
+{
+    public static class ConvertToSingleStripInMemory
+    {
+        public static void Main()
+        {
+            byte[] inputBytes = File.ReadAllBytes(@"Sample Data\multipage.tif");
+            TiffStreamForBytes byteStream = new TiffStreamForBytes(inputBytes);
+
+            using (Tiff input = Tiff.ClientOpen("bytes", "r", null, byteStream))
+            {
+                if (input == null)
+                {
+                    MessageBox.Show("Could not open incoming image");
+                    return;
+                }
+
+                if (input.IsTiled())
+                {
+                    MessageBox.Show("Could not process tiled image");
+                    return;
+                }
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (Tiff output = Tiff.ClientOpen("InMemory", "w", ms, new TiffStream()))
+                    {
+                        int numberOfDirectories = input.NumberOfDirectories();
+                        for (short i = 0; i &lt; numberOfDirectories; ++i)
+                        {
+                            input.SetDirectory(i);
+
+                            copyTags(input, output);
+                            copyStrips(input, output);
+
+                            output.WriteDirectory();
+                        }
+                    }
+
+                    // retrieve bytes from memory stream and write them in a file 
+                    byte[] bytes = ms.ToArray();
+                    File.WriteAllBytes("SavedBytes.tif", bytes);
+                }
+            }
+
+            using (Tiff result = Tiff.Open("SavedBytes.tif", "rc"))
+            {
+                MessageBox.Show("Number of strips in result file: " + result.NumberOfStrips());
+            }
+
+            Process.Start("SavedBytes.tif");
+        }
+
+        private static void copyTags(Tiff input, Tiff output)
+        {
+            for (ushort t = ushort.MinValue; t &lt; ushort.MaxValue; ++t)
+            {
+                TiffTag tag = (TiffTag)t;
+                FieldValue[] tagValue = input.GetField(tag);
+                if (tagValue != null)
+                    output.GetTagMethods().SetField(output, tag, tagValue);
+            }
+
+            int height = input.GetField(TiffTag.IMAGELENGTH)[0].ToInt();
+            output.SetField(TiffTag.ROWSPERSTRIP, height);
+        }
+
+        private static void copyStrips(Tiff input, Tiff output)
+        {
+            bool encoded = false;
+            FieldValue[] compressionTagValue = input.GetField(TiffTag.COMPRESSION);
+            if (compressionTagValue != null)
+                encoded = (compressionTagValue[0].ToInt() != (int)Compression.NONE);
+
+            int numberOfStrips = input.NumberOfStrips();
+
+            int offset = 0;
+            byte[] stripsData = new byte[numberOfStrips * input.StripSize()];
+            for (int i = 0; i &lt; numberOfStrips; ++i)
+            {
+                int bytesRead = readStrip(input, i, stripsData, offset, encoded);
+                offset += bytesRead;
+            }
+
+            writeStrip(output, stripsData, offset, encoded);
+        }
+
+        private static int readStrip(Tiff image, int stripNumber, byte[] buffer, int offset, bool encoded)
+        {
+            if (encoded)
+                return image.ReadEncodedStrip(stripNumber, buffer, offset, buffer.Length - offset);
+            else 
+                return image.ReadRawStrip(stripNumber, buffer, offset, buffer.Length - offset);
+        }
+
+        private static void writeStrip(Tiff image, byte[] stripsData, int count, bool encoded)
+        {
+            if (encoded)
+                image.WriteEncodedStrip(0, stripsData, count);
+            else
+                image.WriteRawStrip(0, stripsData, count);
+        }
+    }
+
+    /// &lt;summary&gt; 
+    /// Custom read-only stream for byte buffer that can be used 
+    /// with Tiff.ClientOpen method. 
+    /// &lt;/summary&gt; 
+    class TiffStreamForBytes : TiffStream
+    {
+        private byte[] m_bytes;
+        private int m_position;
+
+        public TiffStreamForBytes(byte[] bytes)
+        {
+            m_bytes = bytes;
+            m_position = 0;
+        }
+
+        public override int Read(object clientData, byte[] buffer, int offset, int count)
+        {
+            if ((m_position + count) &gt; m_bytes.Length)
+                return -1;
+
+            Buffer.BlockCopy(m_bytes, m_position, buffer, offset, count);
+            m_position += count;
+            return count;
+        }
+
+        public override void Write(object clientData, byte[] buffer, int offset, int count)
+        {
+            throw new InvalidOperationException("This stream is read-only");
+        }
+
+        public override long Seek(object clientData, long offset, SeekOrigin origin)
+        {
+            switch (origin)
+            {
+                case SeekOrigin.Begin:
+                    if (offset &gt; m_bytes.Length)
+                        return -1;
+
+                    m_position = (int)offset;
+                    return m_position;
+
+                case SeekOrigin.Current:
+                    if ((offset + m_position) &gt; m_bytes.Length)
+                        return -1;
+
+                    m_position += (int)offset;
+                    return m_position;
+
+                case SeekOrigin.End:
+                    if ((m_bytes.Length - offset) &lt; 0)
+                        return -1;
+
+                    m_position = (int)(m_bytes.Length - offset);
+                    return m_position;
+            }
+
+            return -1;
+        }
+
+        public override void Close(object clientData)
+        {
+            // nothing to do
+        }
+
+        public override long Size(object clientData)
+        {
+            return m_bytes.Length;
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EBAAAAA');</script><div id="ID0EAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAAAAAA_tabimgleft"></div><div id="ID0EAAAAAA_tab1" class="OH_CodeSnippetContainerTabDisabled" EnableCopyCode="true" disabled="true"><a>C#</a></div><div id="ID0EAAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0EAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAAAAAA_tabimgright"></div></div><div id="ID0EAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="highlight-keyword">Imports</span> System.Diagnostics
+<span class="highlight-keyword">Imports</span> System.Windows.Forms
+<span class="highlight-keyword">Imports</span> System.IO
+
+<span class="highlight-keyword">Imports</span> BitMiracle.LibTiff.Classic
+
+<span class="highlight-keyword">Namespace</span> BitMiracle.LibTiff.Samples
+    <span class="highlight-keyword">Public</span> <span class="highlight-keyword">NotInheritable</span> <span class="highlight-keyword">Class</span> ConvertToSingleStripInMemory
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> <span class="highlight-keyword">New</span>()
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> Main()
+            <span class="highlight-keyword">Dim</span> inputBytes <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = File.ReadAllBytes(<span class="highlight-literal">"Sample Data\multipage.tif"</span>)
+            <span class="highlight-keyword">Dim</span> byteStream <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> TiffStreamForBytes(inputBytes)
+
+            <span class="highlight-keyword">Using</span> input <span class="highlight-keyword">As</span> Tiff = Tiff.ClientOpen(<span class="highlight-literal">"bytes"</span>, <span class="highlight-literal">"r"</span>, <span class="highlight-keyword">Nothing</span>, byteStream)
+                <span class="highlight-keyword">If</span> input <span class="highlight-keyword">Is</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span>
+                    MessageBox.Show(<span class="highlight-literal">"Could not open incoming image"</span>)
+                    <span class="highlight-keyword">Return</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">If</span> input.IsTiled() <span class="highlight-keyword">Then</span>
+                    MessageBox.Show(<span class="highlight-literal">"Could not process tiled image"</span>)
+                    <span class="highlight-keyword">Return</span> 
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Using</span> ms <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> MemoryStream()
+                    <span class="highlight-keyword">Using</span> output <span class="highlight-keyword">As</span> Tiff = Tiff.ClientOpen(<span class="highlight-literal">"InMemory"</span>, <span class="highlight-literal">"w"</span>, ms, <span class="highlight-keyword">New</span> TiffStream())
+                        <span class="highlight-keyword">Dim</span> numberOfDirectories <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = input.NumberOfDirectories()
+                        <span class="highlight-keyword">For</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Short</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> numberOfDirectories - <span class="highlight-number">1</span>
+                            input.SetDirectory(i)
+
+                            copyTags(input, output)
+                            copyStrips(input, output)
+
+                            output.WriteDirectory()
+                        <span class="highlight-keyword">Next</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+
+                    <span class="highlight-comment">' retrieve bytes from memory stream and write them in a file</span> 
+                    <span class="highlight-keyword">Dim</span> bytes <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = ms.ToArray()
+                    File.WriteAllBytes(<span class="highlight-literal">"SavedBytes.tif"</span>, bytes)
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+
+            <span class="highlight-keyword">Using</span> result <span class="highlight-keyword">As</span> Tiff = Tiff.Open(<span class="highlight-literal">"SavedBytes.tif"</span>, <span class="highlight-literal">"rc"</span>)
+                MessageBox.Show(<span class="highlight-literal">"Number of strips in result file: "</span> &amp; result.NumberOfStrips())
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+
+            Process.Start(<span class="highlight-literal">"SavedBytes.tif"</span>)
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> copyTags(<span class="highlight-keyword">ByVal</span> input <span class="highlight-keyword">As</span> Tiff, <span class="highlight-keyword">ByVal</span> output <span class="highlight-keyword">As</span> Tiff)
+            <span class="highlight-keyword">For</span> t <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> <span class="highlight-number">65535</span> 
+                <span class="highlight-keyword">Dim</span> tag <span class="highlight-keyword">As</span> TiffTag = <span class="highlight-keyword">DirectCast</span>(t, TiffTag)
+                <span class="highlight-keyword">Dim</span> tagValue <span class="highlight-keyword">As</span> FieldValue() = input.GetField(tag)
+                <span class="highlight-keyword">If</span> tagValue <span class="highlight-keyword">IsNot</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span>
+                    output.GetTagMethods().SetField(output, tag, tagValue)
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+            <span class="highlight-keyword">Next</span> 
+
+            <span class="highlight-keyword">Dim</span> height <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = input.GetField(TiffTag.IMAGELENGTH)(<span class="highlight-number">0</span>).ToInt()
+            output.SetField(TiffTag.ROWSPERSTRIP, height)
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> copyStrips(<span class="highlight-keyword">ByVal</span> input <span class="highlight-keyword">As</span> Tiff, <span class="highlight-keyword">ByVal</span> output <span class="highlight-keyword">As</span> Tiff)
+            <span class="highlight-keyword">Dim</span> encoded <span class="highlight-keyword">As</span> <span class="highlight-keyword">Boolean</span> = <span class="highlight-keyword">False</span> 
+            <span class="highlight-keyword">Dim</span> compressionTagValue <span class="highlight-keyword">As</span> FieldValue() = input.GetField(TiffTag.COMPRESSION)
+            <span class="highlight-keyword">If</span> compressionTagValue <span class="highlight-keyword">IsNot</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span>
+                encoded = (compressionTagValue(<span class="highlight-number">0</span>).ToInt() &lt;&gt; <span class="highlight-keyword">CInt</span>(Compression.NONE))
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+            <span class="highlight-keyword">Dim</span> numberOfStrips <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = input.NumberOfStrips()
+
+            <span class="highlight-keyword">Dim</span> offset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+            <span class="highlight-keyword">Dim</span> stripsData <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(numberOfStrips * input.StripSize() - <span class="highlight-number">1</span>) {}
+            <span class="highlight-keyword">For</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> numberOfStrips - <span class="highlight-number">1</span> 
+                <span class="highlight-keyword">Dim</span> bytesRead <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = readStrip(input, i, stripsData, offset, encoded)
+                offset += bytesRead
+            <span class="highlight-keyword">Next</span>
+
+            writeStrip(output, stripsData, offset, encoded)
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> readStrip(<span class="highlight-keyword">ByVal</span> image <span class="highlight-keyword">As</span> Tiff, <span class="highlight-keyword">ByVal</span> stripNumber <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>, <span class="highlight-keyword">ByVal</span> buffer <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>(), <span class="highlight-keyword">ByVal</span> offset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>, <span class="highlight-keyword">ByVal</span> encoded <span class="highlight-keyword">As</span> <span class="highlight-keyword">Boolean</span>) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> 
+            <span class="highlight-keyword">If</span> encoded <span class="highlight-keyword">Then</span> 
+                <span class="highlight-keyword">Return</span> image.ReadEncodedStrip(stripNumber, buffer, offset, buffer.Length - offset)
+            <span class="highlight-keyword">Else</span> 
+                <span class="highlight-keyword">Return</span> image.ReadRawStrip(stripNumber, buffer, offset, buffer.Length - offset)
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> writeStrip(<span class="highlight-keyword">ByVal</span> image <span class="highlight-keyword">As</span> Tiff, <span class="highlight-keyword">ByVal</span> stripsData <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>(), <span class="highlight-keyword">ByVal</span> count <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>, <span class="highlight-keyword">ByVal</span> encoded <span class="highlight-keyword">As</span> <span class="highlight-keyword">Boolean</span>)
+            <span class="highlight-keyword">If</span> encoded <span class="highlight-keyword">Then</span>
+                image.WriteEncodedStrip(<span class="highlight-number">0</span>, stripsData, count)
+            <span class="highlight-keyword">Else</span>
+                image.WriteRawStrip(<span class="highlight-number">0</span>, stripsData, count)
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Class</span> 
+
+    <span class="highlight-comment">''' &lt;summary&gt;</span> 
+    <span class="highlight-comment">''' Custom read-only stream for byte buffer that can be used</span> 
+    <span class="highlight-comment">''' with Tiff.ClientOpen method.</span> 
+    <span class="highlight-comment">''' &lt;/summary&gt;</span> 
+    <span class="highlight-keyword">Class</span> TiffStreamForBytes
+        <span class="highlight-keyword">Inherits</span> TiffStream
+        <span class="highlight-keyword">Private</span> m_bytes <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>()
+        <span class="highlight-keyword">Private</span> m_position <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> 
+
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Sub</span> <span class="highlight-keyword">New</span>(<span class="highlight-keyword">ByVal</span> bytes <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>())
+            m_bytes = bytes
+            m_position = <span class="highlight-number">0</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Overrides</span> <span class="highlight-keyword">Function</span> Read(<span class="highlight-keyword">ByVal</span> clientData <span class="highlight-keyword">As</span> <span class="highlight-keyword">Object</span>, <span class="highlight-keyword">ByVal</span> buffer__1 <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>(), <span class="highlight-keyword">ByVal</span> offset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>, <span class="highlight-keyword">ByVal</span> count <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> 
+            <span class="highlight-keyword">If</span> (m_position + count) &gt; m_bytes.Length <span class="highlight-keyword">Then</span> 
+                <span class="highlight-keyword">Return</span> <span class="highlight-number">-1</span> 
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+
+            Buffer.BlockCopy(m_bytes, m_position, buffer__1, offset, count)
+            m_position += count
+            <span class="highlight-keyword">Return</span> count
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Overrides</span> <span class="highlight-keyword">Sub</span> Write(<span class="highlight-keyword">ByVal</span> clientData <span class="highlight-keyword">As</span> <span class="highlight-keyword">Object</span>, <span class="highlight-keyword">ByVal</span> buffer <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>(), <span class="highlight-keyword">ByVal</span> offset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>, <span class="highlight-keyword">ByVal</span> count <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>)
+            <span class="highlight-keyword">Throw</span> <span class="highlight-keyword">New</span> InvalidOperationException(<span class="highlight-literal">"This stream is read-only"</span>)
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Overrides</span> <span class="highlight-keyword">Function</span> Seek(<span class="highlight-keyword">ByVal</span> clientData <span class="highlight-keyword">As</span> <span class="highlight-keyword">Object</span>, <span class="highlight-keyword">ByVal</span> offset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Long</span>, <span class="highlight-keyword">ByVal</span> origin <span class="highlight-keyword">As</span> SeekOrigin) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Long</span> 
+            <span class="highlight-keyword">Select</span> <span class="highlight-keyword">Case</span> origin
+                <span class="highlight-keyword">Case</span> SeekOrigin.Begin
+                    <span class="highlight-keyword">If</span> offset &gt; m_bytes.Length <span class="highlight-keyword">Then</span> 
+                        <span class="highlight-keyword">Return</span> <span class="highlight-number">-1</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+
+                    m_position = <span class="highlight-keyword">CInt</span>(offset)
+                    <span class="highlight-keyword">Return</span> m_position
+
+                <span class="highlight-keyword">Case</span> SeekOrigin.Current
+                    <span class="highlight-keyword">If</span> (offset + m_position) &gt; m_bytes.Length <span class="highlight-keyword">Then</span> 
+                        <span class="highlight-keyword">Return</span> <span class="highlight-number">-1</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+
+                    m_position += <span class="highlight-keyword">CInt</span>(offset)
+                    <span class="highlight-keyword">Return</span> m_position
+
+                <span class="highlight-keyword">Case</span> SeekOrigin.[<span class="highlight-keyword">End</span>]
+                    <span class="highlight-keyword">If</span> (m_bytes.Length - offset) &lt; <span class="highlight-number">0</span> <span class="highlight-keyword">Then</span> 
+                        <span class="highlight-keyword">Return</span> <span class="highlight-number">-1</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+
+                    m_position = <span class="highlight-keyword">CInt</span>(m_bytes.Length - offset)
+                    <span class="highlight-keyword">Return</span> m_position
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Select</span> 
+
+            <span class="highlight-keyword">Return</span> <span class="highlight-number">-1</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Overrides</span> <span class="highlight-keyword">Sub</span> Close(<span class="highlight-keyword">ByVal</span> clientData <span class="highlight-keyword">As</span> <span class="highlight-keyword">Object</span>)
+            <span class="highlight-comment">' nothing to do</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Overrides</span> <span class="highlight-keyword">Function</span> Size(<span class="highlight-keyword">ByVal</span> clientData <span class="highlight-keyword">As</span> <span class="highlight-keyword">Object</span>) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Long</span> 
+            <span class="highlight-keyword">Return</span> m_bytes.Length
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Class</span> 
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Namespace</span></pre></div><div id="ID0EAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Imports System.Diagnostics
+Imports System.Windows.Forms
+Imports System.IO
+
+Imports BitMiracle.LibTiff.Classic
+
+Namespace BitMiracle.LibTiff.Samples
+    Public NotInheritable Class ConvertToSingleStripInMemory
+        Private Sub New()
+        End Sub 
+        Public Shared Sub Main()
+            Dim inputBytes As Byte() = File.ReadAllBytes("Sample Data\multipage.tif")
+            Dim byteStream As New TiffStreamForBytes(inputBytes)
+
+            Using input As Tiff = Tiff.ClientOpen("bytes", "r", Nothing, byteStream)
+                If input Is Nothing Then
+                    MessageBox.Show("Could not open incoming image")
+                    Return 
+                End If 
+
+                If input.IsTiled() Then
+                    MessageBox.Show("Could not process tiled image")
+                    Return 
+                End If 
+
+                Using ms As New MemoryStream()
+                    Using output As Tiff = Tiff.ClientOpen("InMemory", "w", ms, New TiffStream())
+                        Dim numberOfDirectories As Integer = input.NumberOfDirectories()
+                        For i As Short = 0 To numberOfDirectories - 1
+                            input.SetDirectory(i)
+
+                            copyTags(input, output)
+                            copyStrips(input, output)
+
+                            output.WriteDirectory()
+                        Next 
+                    End Using 
+
+                    ' retrieve bytes from memory stream and write them in a file 
+                    Dim bytes As Byte() = ms.ToArray()
+                    File.WriteAllBytes("SavedBytes.tif", bytes)
+                End Using 
+            End Using 
+
+            Using result As Tiff = Tiff.Open("SavedBytes.tif", "rc")
+                MessageBox.Show("Number of strips in result file: " &amp; result.NumberOfStrips())
+            End Using
+
+            Process.Start("SavedBytes.tif")
+        End Sub 
+
+        Private Shared Sub copyTags(ByVal input As Tiff, ByVal output As Tiff)
+            For t As Integer = 0 To 65535 
+                Dim tag As TiffTag = DirectCast(t, TiffTag)
+                Dim tagValue As FieldValue() = input.GetField(tag)
+                If tagValue IsNot Nothing Then
+                    output.GetTagMethods().SetField(output, tag, tagValue)
+                End If 
+            Next 
+
+            Dim height As Integer = input.GetField(TiffTag.IMAGELENGTH)(0).ToInt()
+            output.SetField(TiffTag.ROWSPERSTRIP, height)
+        End Sub 
+
+        Private Shared Sub copyStrips(ByVal input As Tiff, ByVal output As Tiff)
+            Dim encoded As Boolean = False 
+            Dim compressionTagValue As FieldValue() = input.GetField(TiffTag.COMPRESSION)
+            If compressionTagValue IsNot Nothing Then
+                encoded = (compressionTagValue(0).ToInt() &lt;&gt; CInt(Compression.NONE))
+            End If 
+
+            Dim numberOfStrips As Integer = input.NumberOfStrips()
+
+            Dim offset As Integer = 0 
+            Dim stripsData As Byte() = New Byte(numberOfStrips * input.StripSize() - 1) {}
+            For i As Integer = 0 To numberOfStrips - 1 
+                Dim bytesRead As Integer = readStrip(input, i, stripsData, offset, encoded)
+                offset += bytesRead
+            Next
+
+            writeStrip(output, stripsData, offset, encoded)
+        End Sub 
+
+        Private Shared Function readStrip(ByVal image As Tiff, ByVal stripNumber As Integer, ByVal buffer As Byte(), ByVal offset As Integer, ByVal encoded As Boolean) As Integer 
+            If encoded Then 
+                Return image.ReadEncodedStrip(stripNumber, buffer, offset, buffer.Length - offset)
+            Else 
+                Return image.ReadRawStrip(stripNumber, buffer, offset, buffer.Length - offset)
+            End If 
+        End Function 
+
+        Private Shared Sub writeStrip(ByVal image As Tiff, ByVal stripsData As Byte(), ByVal count As Integer, ByVal encoded As Boolean)
+            If encoded Then
+                image.WriteEncodedStrip(0, stripsData, count)
+            Else
+                image.WriteRawStrip(0, stripsData, count)
+            End If 
+        End Sub 
+    End Class 
+
+    ''' &lt;summary&gt; 
+    ''' Custom read-only stream for byte buffer that can be used 
+    ''' with Tiff.ClientOpen method. 
+    ''' &lt;/summary&gt; 
+    Class TiffStreamForBytes
+        Inherits TiffStream
+        Private m_bytes As Byte()
+        Private m_position As Integer 
+
+        Public Sub New(ByVal bytes As Byte())
+            m_bytes = bytes
+            m_position = 0 
+        End Sub 
+
+        Public Overrides Function Read(ByVal clientData As Object, ByVal buffer__1 As Byte(), ByVal offset As Integer, ByVal count As Integer) As Integer 
+            If (m_position + count) &gt; m_bytes.Length Then 
+                Return -1 
+            End If
+
+            Buffer.BlockCopy(m_bytes, m_position, buffer__1, offset, count)
+            m_position += count
+            Return count
+        End Function 
+
+        Public Overrides Sub Write(ByVal clientData As Object, ByVal buffer As Byte(), ByVal offset As Integer, ByVal count As Integer)
+            Throw New InvalidOperationException("This stream is read-only")
+        End Sub 
+
+        Public Overrides Function Seek(ByVal clientData As Object, ByVal offset As Long, ByVal origin As SeekOrigin) As Long 
+            Select Case origin
+                Case SeekOrigin.Begin
+                    If offset &gt; m_bytes.Length Then 
+                        Return -1 
+                    End If
+
+                    m_position = CInt(offset)
+                    Return m_position
+
+                Case SeekOrigin.Current
+                    If (offset + m_position) &gt; m_bytes.Length Then 
+                        Return -1 
+                    End If
+
+                    m_position += CInt(offset)
+                    Return m_position
+
+                Case SeekOrigin.[End]
+                    If (m_bytes.Length - offset) &lt; 0 Then 
+                        Return -1 
+                    End If
+
+                    m_position = CInt(m_bytes.Length - offset)
+                    Return m_position
+            End Select 
+
+            Return -1 
+        End Function 
+
+        Public Overrides Sub Close(ByVal clientData As Object)
+            ' nothing to do 
+        End Sub 
+
+        Public Overrides Function Size(ByVal clientData As Object) As Long 
+            Return m_bytes.Length
+        End Function 
+    End Class 
+End Namespace</pre></div><div id="ID0EAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAAAAAA');</script></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Convert+bytes+of+a+multi-strip+TIFF+image+to+bytes+of+a+single-strip+one+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

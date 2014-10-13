@@ -1,0 +1,1019 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Convert System.Drawing.Bitmap to a black and white TIFF</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="075f57db-d779-48f7-9fd7-4ca075a01599" /><meta name="Description" content="This sample shows how to convert a System.Drawing.Bitmap to the black&amp;white CCITT compressed TIFF image." /><meta name="Microsoft.Help.ContentType" content="Samples" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><link type="text/css" rel="stylesheet" href="./../styles/highlight.css" /><script type="text/javascript" src="../scripts/highlight.js"><!----></script><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Convert System.Drawing.Bitmap to a black and white TIFF</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>This sample shows how to convert a System.Drawing.Bitmap to the black&amp;white CCITT compressed TIFF image.</p></div><div id="ID0EBAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EBAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EBAAAAA_tabimgleft"></div><div id="ID0EBAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EBAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0EBAAAAA_tab2" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>VB</a></div><div id="ID0EBAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EBAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EBAAAAA_tabimgright"></div></div><div id="ID0EBAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EBAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EBAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EBAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EBAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EBAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EBAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EBAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="highlight-keyword">using</span> System;
+<span class="highlight-keyword">using</span> System.Diagnostics;
+<span class="highlight-keyword">using</span> System.Drawing;
+<span class="highlight-keyword">using</span> System.Drawing.Imaging;
+<span class="highlight-keyword">using</span> System.IO;
+<span class="highlight-keyword">using</span> System.Runtime.InteropServices;
+
+<span class="highlight-keyword">using</span> BitMiracle.LibTiff.Classic;
+
+<span class="highlight-keyword">namespace</span> BitMiracle.LibTiff.Samples
+{
+    <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">class</span> ImageToBitonalTiff
+    {
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> Main()
+        {
+            <span class="highlight-keyword">using</span> (Bitmap bmp = <span class="highlight-keyword">new</span> Bitmap(<span class="highlight-literal">@"Sample data\rgb.jpg"</span>))
+            {
+                <span class="highlight-comment">// convert using WriteEncodedStrip</span> 
+                <span class="highlight-keyword">byte</span>[] tiffBytes = GetTiffImageBytes(bmp, <span class="highlight-keyword">false</span>);
+                File.WriteAllBytes(<span class="highlight-literal">"ImageToBitonalTiff.tif"</span>, tiffBytes);
+
+                <span class="highlight-comment">// make another conversion using WriteScanline</span>
+                tiffBytes = GetTiffImageBytes(bmp, <span class="highlight-keyword">true</span>);
+                File.WriteAllBytes(<span class="highlight-literal">"ImageToTiff_ByScanlines.tif"</span>, tiffBytes);
+
+                Process.Start(<span class="highlight-literal">"ImageToBitonalTiff.tif"</span>);
+            }
+        }
+
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">byte</span>[] GetTiffImageBytes(Bitmap img, <span class="highlight-keyword">bool</span> byScanlines)
+        {
+            <span class="highlight-keyword">try</span>
+            {
+                <span class="highlight-keyword">byte</span>[] raster = GetImageRasterBytes(img);
+
+                <span class="highlight-keyword">using</span> (MemoryStream ms = <span class="highlight-keyword">new</span> MemoryStream())
+                {
+                    <span class="highlight-keyword">using</span> (Tiff tif = Tiff.ClientOpen(<span class="highlight-literal">"InMemory"</span>, <span class="highlight-literal">"w"</span>, ms, <span class="highlight-keyword">new</span> TiffStream()))
+                    {
+                        <span class="highlight-keyword">if</span> (tif == <span class="highlight-keyword">null</span>)
+                            <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+
+                        tif.SetField(TiffTag.IMAGEWIDTH, img.Width);
+                        tif.SetField(TiffTag.IMAGELENGTH, img.Height);
+                        tif.SetField(TiffTag.COMPRESSION, Compression.CCITTFAX4);
+                        tif.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISBLACK);
+
+                        tif.SetField(TiffTag.ROWSPERSTRIP, img.Height);
+
+                        tif.SetField(TiffTag.XRESOLUTION, img.HorizontalResolution);
+                        tif.SetField(TiffTag.YRESOLUTION, img.VerticalResolution);
+
+                        tif.SetField(TiffTag.SUBFILETYPE, <span class="highlight-number">0</span>);
+                        tif.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">1</span>);
+                        tif.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+                        tif.SetField(TiffTag.ORIENTATION, Orientation.TOPLEFT);
+
+                        tif.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">1</span>);
+                        tif.SetField(TiffTag.T6OPTIONS, <span class="highlight-number">0</span>);
+                        tif.SetField(TiffTag.RESOLUTIONUNIT, ResUnit.INCH);
+
+                        tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+                        <span class="highlight-keyword">int</span> tiffStride = tif.ScanlineSize();
+                        <span class="highlight-keyword">int</span> stride = raster.Length / img.Height;
+
+                        <span class="highlight-keyword">if</span> (byScanlines)
+                        {
+                            <span class="highlight-comment">// raster stride MAY be bigger than TIFF stride (due to padding in raster bits)</span> 
+                            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> i = <span class="highlight-number">0</span>, offset = <span class="highlight-number">0</span>; i &lt; img.Height; i++)
+                            {
+                                <span class="highlight-keyword">bool</span> res = tif.WriteScanline(raster, offset, i, <span class="highlight-number">0</span>);
+                                <span class="highlight-keyword">if</span> (!res)
+                                    <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+
+                                offset += stride;
+                            }
+                        }
+                        <span class="highlight-keyword">else</span>
+                        {
+                            <span class="highlight-keyword">if</span> (tiffStride &lt; stride)
+                            {
+                                <span class="highlight-comment">// raster stride is bigger than TIFF stride</span> 
+                                <span class="highlight-comment">// this is due to padding in raster bits</span> 
+                                <span class="highlight-comment">// we need to create correct TIFF strip and write it into TIFF</span> 
+
+                                <span class="highlight-keyword">byte</span>[] stripBits = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[tiffStride * img.Height];
+                                <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> i = <span class="highlight-number">0</span>, rasterPos = <span class="highlight-number">0</span>, stripPos = <span class="highlight-number">0</span>; i &lt; img.Height; i++)
+                                {
+                                    System.Buffer.BlockCopy(raster, rasterPos, stripBits, stripPos, tiffStride);
+                                    rasterPos += stride;
+                                    stripPos += tiffStride;
+                                }
+
+                                <span class="highlight-comment">// Write the information to the file</span> 
+                                <span class="highlight-keyword">int</span> n = tif.WriteEncodedStrip(<span class="highlight-number">0</span>, stripBits, stripBits.Length);
+                                <span class="highlight-keyword">if</span> (n &lt;= <span class="highlight-number">0</span>)
+                                    <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+                            }
+                            <span class="highlight-keyword">else</span>
+                            {
+                                <span class="highlight-comment">// Write the information to the file</span> 
+                                <span class="highlight-keyword">int</span> n = tif.WriteEncodedStrip(<span class="highlight-number">0</span>, raster, raster.Length);
+                                <span class="highlight-keyword">if</span> (n &lt;= <span class="highlight-number">0</span>)
+                                    <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+                            }
+                        }
+                    }
+
+                    <span class="highlight-keyword">return</span> ms.GetBuffer();
+                }
+            }
+            <span class="highlight-keyword">catch</span> (Exception)
+            {
+                <span class="highlight-keyword">return</span> <span class="highlight-keyword">null</span>;
+            }
+        }
+
+        <span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">byte</span>[] GetImageRasterBytes(Bitmap img)
+        {
+            <span class="highlight-comment">// Specify full image</span>
+            Rectangle rect = <span class="highlight-keyword">new</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, img.Width, img.Height);
+
+            Bitmap bmp = img;
+            <span class="highlight-keyword">byte</span>[] bits = <span class="highlight-keyword">null</span>;
+
+            <span class="highlight-keyword">try</span>
+            {
+                <span class="highlight-comment">// Lock the managed memory</span> 
+                <span class="highlight-keyword">if</span> (img.PixelFormat != PixelFormat.Format1bppIndexed)
+                    bmp = convertToBitonal(img);
+
+                BitmapData bmpdata = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format1bppIndexed);
+
+                <span class="highlight-comment">// Declare an array to hold the bytes of the bitmap.</span>
+                bits = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[bmpdata.Stride * bmpdata.Height];
+
+                <span class="highlight-comment">// Copy the sample values into the array.</span>
+                Marshal.Copy(bmpdata.Scan0, bits, <span class="highlight-number">0</span>, bits.Length);
+
+                <span class="highlight-comment">// Release managed memory</span>
+                bmp.UnlockBits(bmpdata);
+            }
+            <span class="highlight-keyword">finally</span>
+            {
+                <span class="highlight-keyword">if</span> (bmp != img)
+                    bmp.Dispose();
+            }
+
+            <span class="highlight-keyword">return</span> bits;
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> Bitmap convertToBitonal(Bitmap original)
+        {
+            <span class="highlight-keyword">int</span> sourceStride;
+            <span class="highlight-keyword">byte</span>[] sourceBuffer = extractBytes(original, <span class="highlight-keyword">out</span> sourceStride);
+
+            <span class="highlight-comment">// Create destination bitmap</span>
+            Bitmap destination = <span class="highlight-keyword">new</span> Bitmap(original.Width, original.Height,
+                PixelFormat.Format1bppIndexed);
+
+            destination.SetResolution(original.HorizontalResolution, original.VerticalResolution);
+
+            <span class="highlight-comment">// Lock destination bitmap in memory</span>
+            BitmapData destinationData = destination.LockBits(
+                <span class="highlight-keyword">new</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, destination.Width, destination.Height),
+                ImageLockMode.WriteOnly, PixelFormat.Format1bppIndexed);
+
+            <span class="highlight-comment">// Create buffer for destination bitmap bits</span> 
+            <span class="highlight-keyword">int</span> imageSize = destinationData.Stride * destinationData.Height;
+            <span class="highlight-keyword">byte</span>[] destinationBuffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[imageSize];
+
+            <span class="highlight-keyword">int</span> sourceIndex = <span class="highlight-number">0</span>;
+            <span class="highlight-keyword">int</span> destinationIndex = <span class="highlight-number">0</span>;
+            <span class="highlight-keyword">int</span> pixelTotal = <span class="highlight-number">0</span>;
+            <span class="highlight-keyword">byte</span> destinationValue = <span class="highlight-number">0</span>;
+            <span class="highlight-keyword">int</span> pixelValue = <span class="highlight-number">128</span>;
+            <span class="highlight-keyword">int</span> height = destination.Height;
+            <span class="highlight-keyword">int</span> width = destination.Width;
+            <span class="highlight-keyword">int</span> threshold = <span class="highlight-number">500</span>;
+
+            <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> y = <span class="highlight-number">0</span>; y &lt; height; y++)
+            {
+                sourceIndex = y * sourceStride;
+                destinationIndex = y * destinationData.Stride;
+                destinationValue = <span class="highlight-number">0</span>;
+                pixelValue = <span class="highlight-number">128</span>;
+
+                <span class="highlight-keyword">for</span> (<span class="highlight-keyword">int</span> x = <span class="highlight-number">0</span>; x &lt; width; x++)
+                {
+                    <span class="highlight-comment">// Compute pixel brightness (i.e. total of Red, Green, and Blue values)</span>
+                    pixelTotal = sourceBuffer[sourceIndex + <span class="highlight-number">1</span>] + sourceBuffer[sourceIndex + <span class="highlight-number">2</span>] +
+                        sourceBuffer[sourceIndex + <span class="highlight-number">3</span>];
+
+                    <span class="highlight-keyword">if</span> (pixelTotal &gt; threshold)
+                        destinationValue += (<span class="highlight-keyword">byte</span>)pixelValue;
+
+                    <span class="highlight-keyword">if</span> (pixelValue == <span class="highlight-number">1</span>)
+                    {
+                        destinationBuffer[destinationIndex] = destinationValue;
+                        destinationIndex++;
+                        destinationValue = <span class="highlight-number">0</span>;
+                        pixelValue = <span class="highlight-number">128</span>;
+                    }
+                    <span class="highlight-keyword">else</span>
+                    {
+                        pixelValue &gt;&gt;= <span class="highlight-number">1</span>;
+                    }
+
+                    sourceIndex += <span class="highlight-number">4</span>;
+                }
+
+                <span class="highlight-keyword">if</span> (pixelValue != <span class="highlight-number">128</span>)
+                    destinationBuffer[destinationIndex] = destinationValue;
+            }
+
+            Marshal.Copy(destinationBuffer, <span class="highlight-number">0</span>, destinationData.Scan0, imageSize);
+            destination.UnlockBits(destinationData);
+            <span class="highlight-keyword">return</span> destination;
+        }
+
+        <span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">byte</span>[] extractBytes(Bitmap original, <span class="highlight-keyword">out</span> <span class="highlight-keyword">int</span> stride)
+        {
+            Bitmap source = <span class="highlight-keyword">null</span>;
+
+            <span class="highlight-keyword">try</span>
+            {
+                <span class="highlight-comment">// If original bitmap is not already in 32 BPP, ARGB format, then convert</span> 
+                <span class="highlight-keyword">if</span> (original.PixelFormat != PixelFormat.Format32bppArgb)
+                {
+                    source = <span class="highlight-keyword">new</span> Bitmap(original.Width, original.Height, PixelFormat.Format32bppArgb);
+                    source.SetResolution(original.HorizontalResolution, original.VerticalResolution);
+                    <span class="highlight-keyword">using</span> (Graphics g = Graphics.FromImage(source))
+                    {
+                        g.DrawImageUnscaled(original, <span class="highlight-number">0</span>, <span class="highlight-number">0</span>);
+                    }
+                }
+                <span class="highlight-keyword">else</span>
+                {
+                    source = original;
+                }
+
+                <span class="highlight-comment">// Lock source bitmap in memory</span>
+                BitmapData sourceData = source.LockBits(
+                    <span class="highlight-keyword">new</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, source.Width, source.Height),
+                    ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+
+                <span class="highlight-comment">// Copy image data to binary array</span> 
+                <span class="highlight-keyword">int</span> imageSize = sourceData.Stride * sourceData.Height;
+                <span class="highlight-keyword">byte</span>[] sourceBuffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[imageSize];
+                Marshal.Copy(sourceData.Scan0, sourceBuffer, <span class="highlight-number">0</span>, imageSize);
+
+                <span class="highlight-comment">// Unlock source bitmap</span>
+                source.UnlockBits(sourceData);
+
+                stride = sourceData.Stride;
+                <span class="highlight-keyword">return</span> sourceBuffer;
+            }
+            <span class="highlight-keyword">finally</span>
+            {
+                <span class="highlight-keyword">if</span> (source != original)
+                    source.Dispose();
+            }
+
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Runtime.InteropServices;
+
+using BitMiracle.LibTiff.Classic;
+
+namespace BitMiracle.LibTiff.Samples
+{
+    public static class ImageToBitonalTiff
+    {
+        public static void Main()
+        {
+            using (Bitmap bmp = new Bitmap(@"Sample data\rgb.jpg"))
+            {
+                // convert using WriteEncodedStrip 
+                byte[] tiffBytes = GetTiffImageBytes(bmp, false);
+                File.WriteAllBytes("ImageToBitonalTiff.tif", tiffBytes);
+
+                // make another conversion using WriteScanline
+                tiffBytes = GetTiffImageBytes(bmp, true);
+                File.WriteAllBytes("ImageToTiff_ByScanlines.tif", tiffBytes);
+
+                Process.Start("ImageToBitonalTiff.tif");
+            }
+        }
+
+        public static byte[] GetTiffImageBytes(Bitmap img, bool byScanlines)
+        {
+            try
+            {
+                byte[] raster = GetImageRasterBytes(img);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (Tiff tif = Tiff.ClientOpen("InMemory", "w", ms, new TiffStream()))
+                    {
+                        if (tif == null)
+                            return null;
+
+                        tif.SetField(TiffTag.IMAGEWIDTH, img.Width);
+                        tif.SetField(TiffTag.IMAGELENGTH, img.Height);
+                        tif.SetField(TiffTag.COMPRESSION, Compression.CCITTFAX4);
+                        tif.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISBLACK);
+
+                        tif.SetField(TiffTag.ROWSPERSTRIP, img.Height);
+
+                        tif.SetField(TiffTag.XRESOLUTION, img.HorizontalResolution);
+                        tif.SetField(TiffTag.YRESOLUTION, img.VerticalResolution);
+
+                        tif.SetField(TiffTag.SUBFILETYPE, 0);
+                        tif.SetField(TiffTag.BITSPERSAMPLE, 1);
+                        tif.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+                        tif.SetField(TiffTag.ORIENTATION, Orientation.TOPLEFT);
+
+                        tif.SetField(TiffTag.SAMPLESPERPIXEL, 1);
+                        tif.SetField(TiffTag.T6OPTIONS, 0);
+                        tif.SetField(TiffTag.RESOLUTIONUNIT, ResUnit.INCH);
+
+                        tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+
+                        int tiffStride = tif.ScanlineSize();
+                        int stride = raster.Length / img.Height;
+
+                        if (byScanlines)
+                        {
+                            // raster stride MAY be bigger than TIFF stride (due to padding in raster bits) 
+                            for (int i = 0, offset = 0; i &lt; img.Height; i++)
+                            {
+                                bool res = tif.WriteScanline(raster, offset, i, 0);
+                                if (!res)
+                                    return null;
+
+                                offset += stride;
+                            }
+                        }
+                        else
+                        {
+                            if (tiffStride &lt; stride)
+                            {
+                                // raster stride is bigger than TIFF stride 
+                                // this is due to padding in raster bits 
+                                // we need to create correct TIFF strip and write it into TIFF 
+
+                                byte[] stripBits = new byte[tiffStride * img.Height];
+                                for (int i = 0, rasterPos = 0, stripPos = 0; i &lt; img.Height; i++)
+                                {
+                                    System.Buffer.BlockCopy(raster, rasterPos, stripBits, stripPos, tiffStride);
+                                    rasterPos += stride;
+                                    stripPos += tiffStride;
+                                }
+
+                                // Write the information to the file 
+                                int n = tif.WriteEncodedStrip(0, stripBits, stripBits.Length);
+                                if (n &lt;= 0)
+                                    return null;
+                            }
+                            else
+                            {
+                                // Write the information to the file 
+                                int n = tif.WriteEncodedStrip(0, raster, raster.Length);
+                                if (n &lt;= 0)
+                                    return null;
+                            }
+                        }
+                    }
+
+                    return ms.GetBuffer();
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public static byte[] GetImageRasterBytes(Bitmap img)
+        {
+            // Specify full image
+            Rectangle rect = new Rectangle(0, 0, img.Width, img.Height);
+
+            Bitmap bmp = img;
+            byte[] bits = null;
+
+            try
+            {
+                // Lock the managed memory 
+                if (img.PixelFormat != PixelFormat.Format1bppIndexed)
+                    bmp = convertToBitonal(img);
+
+                BitmapData bmpdata = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format1bppIndexed);
+
+                // Declare an array to hold the bytes of the bitmap.
+                bits = new byte[bmpdata.Stride * bmpdata.Height];
+
+                // Copy the sample values into the array.
+                Marshal.Copy(bmpdata.Scan0, bits, 0, bits.Length);
+
+                // Release managed memory
+                bmp.UnlockBits(bmpdata);
+            }
+            finally
+            {
+                if (bmp != img)
+                    bmp.Dispose();
+            }
+
+            return bits;
+        }
+
+        private static Bitmap convertToBitonal(Bitmap original)
+        {
+            int sourceStride;
+            byte[] sourceBuffer = extractBytes(original, out sourceStride);
+
+            // Create destination bitmap
+            Bitmap destination = new Bitmap(original.Width, original.Height,
+                PixelFormat.Format1bppIndexed);
+
+            destination.SetResolution(original.HorizontalResolution, original.VerticalResolution);
+
+            // Lock destination bitmap in memory
+            BitmapData destinationData = destination.LockBits(
+                new Rectangle(0, 0, destination.Width, destination.Height),
+                ImageLockMode.WriteOnly, PixelFormat.Format1bppIndexed);
+
+            // Create buffer for destination bitmap bits 
+            int imageSize = destinationData.Stride * destinationData.Height;
+            byte[] destinationBuffer = new byte[imageSize];
+
+            int sourceIndex = 0;
+            int destinationIndex = 0;
+            int pixelTotal = 0;
+            byte destinationValue = 0;
+            int pixelValue = 128;
+            int height = destination.Height;
+            int width = destination.Width;
+            int threshold = 500;
+
+            for (int y = 0; y &lt; height; y++)
+            {
+                sourceIndex = y * sourceStride;
+                destinationIndex = y * destinationData.Stride;
+                destinationValue = 0;
+                pixelValue = 128;
+
+                for (int x = 0; x &lt; width; x++)
+                {
+                    // Compute pixel brightness (i.e. total of Red, Green, and Blue values)
+                    pixelTotal = sourceBuffer[sourceIndex + 1] + sourceBuffer[sourceIndex + 2] +
+                        sourceBuffer[sourceIndex + 3];
+
+                    if (pixelTotal &gt; threshold)
+                        destinationValue += (byte)pixelValue;
+
+                    if (pixelValue == 1)
+                    {
+                        destinationBuffer[destinationIndex] = destinationValue;
+                        destinationIndex++;
+                        destinationValue = 0;
+                        pixelValue = 128;
+                    }
+                    else
+                    {
+                        pixelValue &gt;&gt;= 1;
+                    }
+
+                    sourceIndex += 4;
+                }
+
+                if (pixelValue != 128)
+                    destinationBuffer[destinationIndex] = destinationValue;
+            }
+
+            Marshal.Copy(destinationBuffer, 0, destinationData.Scan0, imageSize);
+            destination.UnlockBits(destinationData);
+            return destination;
+        }
+
+        private static byte[] extractBytes(Bitmap original, out int stride)
+        {
+            Bitmap source = null;
+
+            try
+            {
+                // If original bitmap is not already in 32 BPP, ARGB format, then convert 
+                if (original.PixelFormat != PixelFormat.Format32bppArgb)
+                {
+                    source = new Bitmap(original.Width, original.Height, PixelFormat.Format32bppArgb);
+                    source.SetResolution(original.HorizontalResolution, original.VerticalResolution);
+                    using (Graphics g = Graphics.FromImage(source))
+                    {
+                        g.DrawImageUnscaled(original, 0, 0);
+                    }
+                }
+                else
+                {
+                    source = original;
+                }
+
+                // Lock source bitmap in memory
+                BitmapData sourceData = source.LockBits(
+                    new Rectangle(0, 0, source.Width, source.Height),
+                    ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+
+                // Copy image data to binary array 
+                int imageSize = sourceData.Stride * sourceData.Height;
+                byte[] sourceBuffer = new byte[imageSize];
+                Marshal.Copy(sourceData.Scan0, sourceBuffer, 0, imageSize);
+
+                // Unlock source bitmap
+                source.UnlockBits(sourceData);
+
+                stride = sourceData.Stride;
+                return sourceBuffer;
+            }
+            finally
+            {
+                if (source != original)
+                    source.Dispose();
+            }
+
+        }
+    }
+}</pre></div><div id="ID0EBAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EBAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EBAAAAA');</script><div id="ID0EAAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0EAAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0EAAAAAA_tabimgleft"></div><div id="ID0EAAAAAA_tab1" class="OH_CodeSnippetContainerTabDisabled" EnableCopyCode="true" disabled="true"><a>C#</a></div><div id="ID0EAAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0EAAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0EAAAAAA_tab3" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>C++</a></div><div id="ID0EAAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0EAAAAAA_tabimgright"></div></div><div id="ID0EAAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0EAAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0EAAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0EAAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0EAAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0EAAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0EAAAAAA','4')" title="Print">Print</a></div></div><div id="ID0EAAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="highlight-keyword">Imports</span> System
+<span class="highlight-keyword">Imports</span> System.Diagnostics
+<span class="highlight-keyword">Imports</span> System.Drawing
+<span class="highlight-keyword">Imports</span> System.Drawing.Imaging
+<span class="highlight-keyword">Imports</span> System.IO
+<span class="highlight-keyword">Imports</span> System.Runtime.InteropServices
+
+<span class="highlight-keyword">Imports</span> BitMiracle.LibTiff.Classic
+
+<span class="highlight-keyword">Namespace</span> BitMiracle.LibTiff.Samples
+    <span class="highlight-keyword">Public</span> <span class="highlight-keyword">NotInheritable</span> <span class="highlight-keyword">Class</span> ImageToBitonalTiff
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Sub</span> <span class="highlight-keyword">New</span>()
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> Main()
+            <span class="highlight-keyword">Using</span> bmp <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Bitmap(<span class="highlight-literal">"Sample data\rgb.jpg"</span>)
+                <span class="highlight-comment">' convert using WriteEncodedStrip</span> 
+                <span class="highlight-keyword">Dim</span> tiffBytes <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = GetTiffImageBytes(bmp, <span class="highlight-keyword">False</span>)
+                File.WriteAllBytes(<span class="highlight-literal">"ImageToBitonalTiff.tif"</span>, tiffBytes)
+
+                <span class="highlight-comment">' make another conversion using WriteScanline</span>
+                tiffBytes = GetTiffImageBytes(bmp, <span class="highlight-keyword">True</span>)
+                File.WriteAllBytes(<span class="highlight-literal">"ImageToTiff_ByScanlines.tif"</span>, tiffBytes)
+
+                Process.Start(<span class="highlight-literal">"ImageToBitonalTiff.tif"</span>)
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span> 
+
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> GetTiffImageBytes(<span class="highlight-keyword">ByVal</span> img <span class="highlight-keyword">As</span> Bitmap, <span class="highlight-keyword">ByVal</span> byScanlines <span class="highlight-keyword">As</span> <span class="highlight-keyword">Boolean</span>) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>()
+            <span class="highlight-keyword">Try</span> 
+                <span class="highlight-keyword">Dim</span> raster <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = GetImageRasterBytes(img)
+
+                <span class="highlight-keyword">Using</span> ms <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> MemoryStream()
+                    <span class="highlight-keyword">Using</span> tif <span class="highlight-keyword">As</span> Tiff = Tiff.ClientOpen(<span class="highlight-literal">"InMemory"</span>, <span class="highlight-literal">"w"</span>, ms, <span class="highlight-keyword">New</span> TiffStream())
+                        <span class="highlight-keyword">If</span> tif <span class="highlight-keyword">Is</span> <span class="highlight-keyword">Nothing</span> <span class="highlight-keyword">Then</span> 
+                            <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+                        <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+
+                        tif.SetField(TiffTag.IMAGEWIDTH, img.Width)
+                        tif.SetField(TiffTag.IMAGELENGTH, img.Height)
+                        tif.SetField(TiffTag.COMPRESSION, Compression.CCITTFAX4)
+                        tif.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISBLACK)
+
+                        tif.SetField(TiffTag.ROWSPERSTRIP, img.Height)
+
+                        tif.SetField(TiffTag.XRESOLUTION, img.HorizontalResolution)
+                        tif.SetField(TiffTag.YRESOLUTION, img.VerticalResolution)
+
+                        tif.SetField(TiffTag.SUBFILETYPE, <span class="highlight-number">0</span>)
+                        tif.SetField(TiffTag.BITSPERSAMPLE, <span class="highlight-number">1</span>)
+                        tif.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB)
+                        tif.SetField(TiffTag.ORIENTATION, Orientation.TOPLEFT)
+
+                        tif.SetField(TiffTag.SAMPLESPERPIXEL, <span class="highlight-number">1</span>)
+                        tif.SetField(TiffTag.T6OPTIONS, <span class="highlight-number">0</span>)
+                        tif.SetField(TiffTag.RESOLUTIONUNIT, ResUnit.INCH)
+
+                        tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG)
+
+                        <span class="highlight-keyword">Dim</span> tiffStride <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = tif.ScanlineSize()
+                        <span class="highlight-keyword">Dim</span> stride <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = raster.Length / img.Height
+
+                        <span class="highlight-keyword">If</span> byScanlines <span class="highlight-keyword">Then</span> 
+                            <span class="highlight-comment">' raster stride MAY be bigger than TIFF stride (due to padding in raster raster)</span> 
+                            <span class="highlight-keyword">Dim</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span>, offset <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+                            <span class="highlight-keyword">While</span> i &lt; img.Height
+                                <span class="highlight-keyword">Dim</span> res <span class="highlight-keyword">As</span> <span class="highlight-keyword">Boolean</span> = tif.WriteScanline(raster, offset, i, <span class="highlight-number">0</span>)
+                                <span class="highlight-keyword">If</span> <span class="highlight-keyword">Not</span> res <span class="highlight-keyword">Then</span> 
+                                    <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+                                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+
+                                offset += stride
+                                i += <span class="highlight-number">1</span> 
+                            <span class="highlight-keyword">End</span> <span class="highlight-keyword">While</span> 
+                        <span class="highlight-keyword">Else</span> 
+                            <span class="highlight-keyword">If</span> tiffStride &lt; stride <span class="highlight-keyword">Then</span> 
+                                <span class="highlight-comment">' raster stride is bigger than TIFF stride</span> 
+                                <span class="highlight-comment">' this is due to padding in raster bits</span> 
+                                <span class="highlight-comment">' we need to create correct TIFF strip and write it into TIFF</span> 
+
+                                <span class="highlight-keyword">Dim</span> stripBits <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(tiffStride * img.Height - <span class="highlight-number">1</span>) {}
+                                <span class="highlight-keyword">Dim</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span>, rasterPos <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span>, stripPos <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+                                <span class="highlight-keyword">While</span> i &lt; img.Height
+                                    System.Buffer.BlockCopy(raster, rasterPos, stripBits, stripPos, tiffStride)
+                                    rasterPos += stride
+                                    stripPos += tiffStride
+                                    i += <span class="highlight-number">1</span> 
+                                <span class="highlight-keyword">End</span> <span class="highlight-keyword">While</span> 
+
+                                <span class="highlight-comment">' Write the information to the file</span> 
+                                <span class="highlight-keyword">Dim</span> n <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = tif.WriteEncodedStrip(<span class="highlight-number">0</span>, stripBits, stripBits.Length)
+                                <span class="highlight-keyword">If</span> n &lt;= <span class="highlight-number">0</span> <span class="highlight-keyword">Then</span> 
+                                    <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+                                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+                            <span class="highlight-keyword">Else</span> 
+                                <span class="highlight-comment">' Write the information to the file</span> 
+                                <span class="highlight-keyword">Dim</span> n <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = tif.WriteEncodedStrip(<span class="highlight-number">0</span>, raster, raster.Length)
+                                <span class="highlight-keyword">If</span> n &lt;= <span class="highlight-number">0</span> <span class="highlight-keyword">Then</span> 
+                                    <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+                                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+                            <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+                        <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+
+                    <span class="highlight-keyword">Return</span> ms.GetBuffer()
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+            <span class="highlight-keyword">Catch</span> generatedExceptionName <span class="highlight-keyword">As</span> Exception
+                <span class="highlight-keyword">Return</span> <span class="highlight-keyword">Nothing</span> 
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span> 
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+
+        <span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> GetImageRasterBytes(<span class="highlight-keyword">ByVal</span> img <span class="highlight-keyword">As</span> Bitmap) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>()
+            <span class="highlight-comment">' Specify full image</span> 
+            <span class="highlight-keyword">Dim</span> rect <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, img.Width, img.Height)
+
+            <span class="highlight-keyword">Dim</span> bmp <span class="highlight-keyword">As</span> Bitmap = img
+            <span class="highlight-keyword">Dim</span> bits <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">Nothing</span> 
+
+            <span class="highlight-keyword">Try</span> 
+                <span class="highlight-comment">' Lock the managed memory</span> 
+                <span class="highlight-keyword">If</span> img.PixelFormat &lt;&gt; PixelFormat.Format1bppIndexed <span class="highlight-keyword">Then</span>
+                    bmp = convertToBitonal(img)
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-keyword">Dim</span> bmpdata <span class="highlight-keyword">As</span> BitmapData = bmp.LockBits(rect, ImageLockMode.[<span class="highlight-keyword">ReadOnly</span>], PixelFormat.Format1bppIndexed)
+
+                <span class="highlight-comment">' Declare an array to hold the bytes of the bitmap.</span>
+                bits = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(bmpdata.Stride * bmpdata.Height - <span class="highlight-number">1</span>) {}
+
+                <span class="highlight-comment">' Copy the sample values into the array.</span>
+                Marshal.Copy(bmpdata.Scan0, bits, <span class="highlight-number">0</span>, bits.Length)
+
+                <span class="highlight-comment">' Release managed memory</span>
+                bmp.UnlockBits(bmpdata)
+            <span class="highlight-keyword">Finally</span> 
+                <span class="highlight-keyword">If</span> <span class="highlight-keyword">Not</span> <span class="highlight-keyword">Object</span>.ReferenceEquals(bmp, img) <span class="highlight-keyword">Then</span>
+                    bmp.Dispose()
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span> 
+
+            <span class="highlight-keyword">Return</span> bits
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> convertToBitonal(<span class="highlight-keyword">ByVal</span> original <span class="highlight-keyword">As</span> Bitmap) <span class="highlight-keyword">As</span> Bitmap
+            <span class="highlight-keyword">Dim</span> sourceStride <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> 
+            <span class="highlight-keyword">Dim</span> sourceBuffer <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = extractBytes(original, sourceStride)
+
+            <span class="highlight-comment">' Create destination bitmap</span> 
+            <span class="highlight-keyword">Dim</span> destination <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> Bitmap(original.Width, original.Height, PixelFormat.Format1bppIndexed)
+
+            destination.SetResolution(original.HorizontalResolution, original.VerticalResolution)
+
+            <span class="highlight-comment">' Lock destination bitmap in memory</span> 
+            <span class="highlight-keyword">Dim</span> destinationData <span class="highlight-keyword">As</span> BitmapData = destination.LockBits(<span class="highlight-keyword">New</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, destination.Width, destination.Height), ImageLockMode.[<span class="highlight-keyword">WriteOnly</span>], PixelFormat.Format1bppIndexed)
+
+            <span class="highlight-comment">' Create buffer for destination bitmap bits</span> 
+            <span class="highlight-keyword">Dim</span> imageSize <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = destinationData.Stride * destinationData.Height
+            <span class="highlight-keyword">Dim</span> destinationBuffer <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(imageSize - <span class="highlight-number">1</span>) {}
+
+            <span class="highlight-keyword">Dim</span> sourceIndex <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+            <span class="highlight-keyword">Dim</span> destinationIndex <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+            <span class="highlight-keyword">Dim</span> pixelTotal <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> 
+            <span class="highlight-keyword">Dim</span> destinationValue <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span> = <span class="highlight-number">0</span> 
+            <span class="highlight-keyword">Dim</span> pixelValue <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">128</span> 
+            <span class="highlight-keyword">Dim</span> height <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = destination.Height
+            <span class="highlight-keyword">Dim</span> width <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = destination.Width
+            <span class="highlight-keyword">Dim</span> threshold <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">500</span> 
+
+            <span class="highlight-keyword">For</span> y <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> height - <span class="highlight-number">1</span>
+                sourceIndex = y * sourceStride
+                destinationIndex = y * destinationData.Stride
+                destinationValue = <span class="highlight-number">0</span>
+                pixelValue = <span class="highlight-number">128</span> 
+
+                <span class="highlight-keyword">For</span> x <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> width - <span class="highlight-number">1</span> 
+                    <span class="highlight-comment">' Compute pixel brightness (i.e. total of Red, Green, and Blue values)</span>
+                    pixelTotal = <span class="highlight-keyword">CType</span>(sourceBuffer(sourceIndex + <span class="highlight-number">1</span>), <span class="highlight-keyword">Integer</span>) + <span class="highlight-keyword">CType</span>(sourceBuffer(sourceIndex + <span class="highlight-number">2</span>), <span class="highlight-keyword">Integer</span>) + <span class="highlight-keyword">CType</span>(sourceBuffer(sourceIndex + <span class="highlight-number">3</span>), <span class="highlight-keyword">Integer</span>)
+
+                    <span class="highlight-keyword">If</span> pixelTotal &gt; threshold <span class="highlight-keyword">Then</span>
+                        destinationValue += <span class="highlight-keyword">CByte</span>(pixelValue)
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                    <span class="highlight-keyword">If</span> pixelValue = <span class="highlight-number">1</span> <span class="highlight-keyword">Then</span>
+                        destinationBuffer(destinationIndex) = destinationValue
+                        destinationIndex += <span class="highlight-number">1</span>
+                        destinationValue = <span class="highlight-number">0</span>
+                        pixelValue = <span class="highlight-number">128</span> 
+                    <span class="highlight-keyword">Else</span>
+                        pixelValue &gt;&gt;= <span class="highlight-number">1</span> 
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+
+                    sourceIndex += <span class="highlight-number">4</span> 
+                <span class="highlight-keyword">Next</span> 
+
+                <span class="highlight-keyword">If</span> pixelValue &lt;&gt; <span class="highlight-number">128</span> <span class="highlight-keyword">Then</span>
+                    destinationBuffer(destinationIndex) = destinationValue
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+            <span class="highlight-keyword">Next</span>
+
+            Marshal.Copy(destinationBuffer, <span class="highlight-number">0</span>, destinationData.Scan0, imageSize)
+            destination.UnlockBits(destinationData)
+            <span class="highlight-keyword">Return</span> destination
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+
+        <span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Function</span> extractBytes(<span class="highlight-keyword">ByVal</span> original <span class="highlight-keyword">As</span> Bitmap, <span class="highlight-keyword">ByRef</span> stride <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>) <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>()
+            <span class="highlight-keyword">Dim</span> source <span class="highlight-keyword">As</span> Bitmap = <span class="highlight-keyword">Nothing</span> 
+
+            <span class="highlight-keyword">Try</span> 
+                <span class="highlight-comment">' If original bitmap is not already in 32 BPP, ARGB format, then convert</span> 
+                <span class="highlight-keyword">If</span> original.PixelFormat &lt;&gt; PixelFormat.Format32bppArgb <span class="highlight-keyword">Then</span>
+                    source = <span class="highlight-keyword">New</span> Bitmap(original.Width, original.Height, PixelFormat.Format32bppArgb)
+                    source.SetResolution(original.HorizontalResolution, original.VerticalResolution)
+                    <span class="highlight-keyword">Using</span> g <span class="highlight-keyword">As</span> Graphics = Graphics.FromImage(source)
+                        g.DrawImageUnscaled(original, <span class="highlight-number">0</span>, <span class="highlight-number">0</span>)
+                    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span> 
+                <span class="highlight-keyword">Else</span>
+                    source = original
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+
+                <span class="highlight-comment">' Lock source bitmap in memory</span> 
+                <span class="highlight-keyword">Dim</span> sourceData <span class="highlight-keyword">As</span> BitmapData = source.LockBits(<span class="highlight-keyword">New</span> Rectangle(<span class="highlight-number">0</span>, <span class="highlight-number">0</span>, source.Width, source.Height), ImageLockMode.[<span class="highlight-keyword">ReadOnly</span>], PixelFormat.Format32bppArgb)
+
+                <span class="highlight-comment">' Copy image data to binary array</span> 
+                <span class="highlight-keyword">Dim</span> imageSize <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = sourceData.Stride * sourceData.Height
+                <span class="highlight-keyword">Dim</span> sourceBuffer <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(imageSize - <span class="highlight-number">1</span>) {}
+                Marshal.Copy(sourceData.Scan0, sourceBuffer, <span class="highlight-number">0</span>, imageSize)
+
+                <span class="highlight-comment">' Unlock source bitmap</span>
+                source.UnlockBits(sourceData)
+
+                stride = sourceData.Stride
+                <span class="highlight-keyword">Return</span> sourceBuffer
+            <span class="highlight-keyword">Finally</span> 
+                <span class="highlight-keyword">If</span> <span class="highlight-keyword">Not</span> <span class="highlight-keyword">Object</span>.ReferenceEquals(source, original) <span class="highlight-keyword">Then</span>
+                    source.Dispose()
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span> 
+            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span> 
+
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span> 
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Class</span> 
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Namespace</span></pre></div><div id="ID0EAAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Imports System
+Imports System.Diagnostics
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.IO
+Imports System.Runtime.InteropServices
+
+Imports BitMiracle.LibTiff.Classic
+
+Namespace BitMiracle.LibTiff.Samples
+    Public NotInheritable Class ImageToBitonalTiff
+        Private Sub New()
+        End Sub 
+        Public Shared Sub Main()
+            Using bmp As New Bitmap("Sample data\rgb.jpg")
+                ' convert using WriteEncodedStrip 
+                Dim tiffBytes As Byte() = GetTiffImageBytes(bmp, False)
+                File.WriteAllBytes("ImageToBitonalTiff.tif", tiffBytes)
+
+                ' make another conversion using WriteScanline
+                tiffBytes = GetTiffImageBytes(bmp, True)
+                File.WriteAllBytes("ImageToTiff_ByScanlines.tif", tiffBytes)
+
+                Process.Start("ImageToBitonalTiff.tif")
+            End Using 
+        End Sub 
+
+        Public Shared Function GetTiffImageBytes(ByVal img As Bitmap, ByVal byScanlines As Boolean) As Byte()
+            Try 
+                Dim raster As Byte() = GetImageRasterBytes(img)
+
+                Using ms As New MemoryStream()
+                    Using tif As Tiff = Tiff.ClientOpen("InMemory", "w", ms, New TiffStream())
+                        If tif Is Nothing Then 
+                            Return Nothing 
+                        End If
+
+                        tif.SetField(TiffTag.IMAGEWIDTH, img.Width)
+                        tif.SetField(TiffTag.IMAGELENGTH, img.Height)
+                        tif.SetField(TiffTag.COMPRESSION, Compression.CCITTFAX4)
+                        tif.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISBLACK)
+
+                        tif.SetField(TiffTag.ROWSPERSTRIP, img.Height)
+
+                        tif.SetField(TiffTag.XRESOLUTION, img.HorizontalResolution)
+                        tif.SetField(TiffTag.YRESOLUTION, img.VerticalResolution)
+
+                        tif.SetField(TiffTag.SUBFILETYPE, 0)
+                        tif.SetField(TiffTag.BITSPERSAMPLE, 1)
+                        tif.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB)
+                        tif.SetField(TiffTag.ORIENTATION, Orientation.TOPLEFT)
+
+                        tif.SetField(TiffTag.SAMPLESPERPIXEL, 1)
+                        tif.SetField(TiffTag.T6OPTIONS, 0)
+                        tif.SetField(TiffTag.RESOLUTIONUNIT, ResUnit.INCH)
+
+                        tif.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG)
+
+                        Dim tiffStride As Integer = tif.ScanlineSize()
+                        Dim stride As Integer = raster.Length / img.Height
+
+                        If byScanlines Then 
+                            ' raster stride MAY be bigger than TIFF stride (due to padding in raster raster) 
+                            Dim i As Integer = 0, offset As Integer = 0 
+                            While i &lt; img.Height
+                                Dim res As Boolean = tif.WriteScanline(raster, offset, i, 0)
+                                If Not res Then 
+                                    Return Nothing 
+                                End If
+
+                                offset += stride
+                                i += 1 
+                            End While 
+                        Else 
+                            If tiffStride &lt; stride Then 
+                                ' raster stride is bigger than TIFF stride 
+                                ' this is due to padding in raster bits 
+                                ' we need to create correct TIFF strip and write it into TIFF 
+
+                                Dim stripBits As Byte() = New Byte(tiffStride * img.Height - 1) {}
+                                Dim i As Integer = 0, rasterPos As Integer = 0, stripPos As Integer = 0 
+                                While i &lt; img.Height
+                                    System.Buffer.BlockCopy(raster, rasterPos, stripBits, stripPos, tiffStride)
+                                    rasterPos += stride
+                                    stripPos += tiffStride
+                                    i += 1 
+                                End While 
+
+                                ' Write the information to the file 
+                                Dim n As Integer = tif.WriteEncodedStrip(0, stripBits, stripBits.Length)
+                                If n &lt;= 0 Then 
+                                    Return Nothing 
+                                End If 
+                            Else 
+                                ' Write the information to the file 
+                                Dim n As Integer = tif.WriteEncodedStrip(0, raster, raster.Length)
+                                If n &lt;= 0 Then 
+                                    Return Nothing 
+                                End If 
+                            End If 
+                        End If 
+                    End Using 
+
+                    Return ms.GetBuffer()
+                End Using 
+            Catch generatedExceptionName As Exception
+                Return Nothing 
+            End Try 
+        End Function 
+
+        Public Shared Function GetImageRasterBytes(ByVal img As Bitmap) As Byte()
+            ' Specify full image 
+            Dim rect As New Rectangle(0, 0, img.Width, img.Height)
+
+            Dim bmp As Bitmap = img
+            Dim bits As Byte() = Nothing 
+
+            Try 
+                ' Lock the managed memory 
+                If img.PixelFormat &lt;&gt; PixelFormat.Format1bppIndexed Then
+                    bmp = convertToBitonal(img)
+                End If 
+
+                Dim bmpdata As BitmapData = bmp.LockBits(rect, ImageLockMode.[ReadOnly], PixelFormat.Format1bppIndexed)
+
+                ' Declare an array to hold the bytes of the bitmap.
+                bits = New Byte(bmpdata.Stride * bmpdata.Height - 1) {}
+
+                ' Copy the sample values into the array.
+                Marshal.Copy(bmpdata.Scan0, bits, 0, bits.Length)
+
+                ' Release managed memory
+                bmp.UnlockBits(bmpdata)
+            Finally 
+                If Not Object.ReferenceEquals(bmp, img) Then
+                    bmp.Dispose()
+                End If 
+            End Try 
+
+            Return bits
+        End Function 
+
+        Private Shared Function convertToBitonal(ByVal original As Bitmap) As Bitmap
+            Dim sourceStride As Integer 
+            Dim sourceBuffer As Byte() = extractBytes(original, sourceStride)
+
+            ' Create destination bitmap 
+            Dim destination As New Bitmap(original.Width, original.Height, PixelFormat.Format1bppIndexed)
+
+            destination.SetResolution(original.HorizontalResolution, original.VerticalResolution)
+
+            ' Lock destination bitmap in memory 
+            Dim destinationData As BitmapData = destination.LockBits(New Rectangle(0, 0, destination.Width, destination.Height), ImageLockMode.[WriteOnly], PixelFormat.Format1bppIndexed)
+
+            ' Create buffer for destination bitmap bits 
+            Dim imageSize As Integer = destinationData.Stride * destinationData.Height
+            Dim destinationBuffer As Byte() = New Byte(imageSize - 1) {}
+
+            Dim sourceIndex As Integer = 0 
+            Dim destinationIndex As Integer = 0 
+            Dim pixelTotal As Integer = 0 
+            Dim destinationValue As Byte = 0 
+            Dim pixelValue As Integer = 128 
+            Dim height As Integer = destination.Height
+            Dim width As Integer = destination.Width
+            Dim threshold As Integer = 500 
+
+            For y As Integer = 0 To height - 1
+                sourceIndex = y * sourceStride
+                destinationIndex = y * destinationData.Stride
+                destinationValue = 0
+                pixelValue = 128 
+
+                For x As Integer = 0 To width - 1 
+                    ' Compute pixel brightness (i.e. total of Red, Green, and Blue values)
+                    pixelTotal = CType(sourceBuffer(sourceIndex + 1), Integer) + CType(sourceBuffer(sourceIndex + 2), Integer) + CType(sourceBuffer(sourceIndex + 3), Integer)
+
+                    If pixelTotal &gt; threshold Then
+                        destinationValue += CByte(pixelValue)
+                    End If 
+
+                    If pixelValue = 1 Then
+                        destinationBuffer(destinationIndex) = destinationValue
+                        destinationIndex += 1
+                        destinationValue = 0
+                        pixelValue = 128 
+                    Else
+                        pixelValue &gt;&gt;= 1 
+                    End If
+
+                    sourceIndex += 4 
+                Next 
+
+                If pixelValue &lt;&gt; 128 Then
+                    destinationBuffer(destinationIndex) = destinationValue
+                End If 
+            Next
+
+            Marshal.Copy(destinationBuffer, 0, destinationData.Scan0, imageSize)
+            destination.UnlockBits(destinationData)
+            Return destination
+        End Function 
+
+        Private Shared Function extractBytes(ByVal original As Bitmap, ByRef stride As Integer) As Byte()
+            Dim source As Bitmap = Nothing 
+
+            Try 
+                ' If original bitmap is not already in 32 BPP, ARGB format, then convert 
+                If original.PixelFormat &lt;&gt; PixelFormat.Format32bppArgb Then
+                    source = New Bitmap(original.Width, original.Height, PixelFormat.Format32bppArgb)
+                    source.SetResolution(original.HorizontalResolution, original.VerticalResolution)
+                    Using g As Graphics = Graphics.FromImage(source)
+                        g.DrawImageUnscaled(original, 0, 0)
+                    End Using 
+                Else
+                    source = original
+                End If 
+
+                ' Lock source bitmap in memory 
+                Dim sourceData As BitmapData = source.LockBits(New Rectangle(0, 0, source.Width, source.Height), ImageLockMode.[ReadOnly], PixelFormat.Format32bppArgb)
+
+                ' Copy image data to binary array 
+                Dim imageSize As Integer = sourceData.Stride * sourceData.Height
+                Dim sourceBuffer As Byte() = New Byte(imageSize - 1) {}
+                Marshal.Copy(sourceData.Scan0, sourceBuffer, 0, imageSize)
+
+                ' Unlock source bitmap
+                source.UnlockBits(sourceData)
+
+                stride = sourceData.Stride
+                Return sourceBuffer
+            Finally 
+                If Not Object.ReferenceEquals(source, original) Then
+                    source.Dispose()
+                End If 
+            End Try 
+
+        End Function 
+    End Class 
+End Namespace</pre></div><div id="ID0EAAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0EAAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0EAAAAAA');</script></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Convert+System.Drawing.Bitmap+to+a+black+and+white+TIFF+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

@@ -1,0 +1,792 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Differences between LibTiff and LibTiff.Net</title><meta name="Language" content="en-us" /><meta name="Microsoft.Help.Id" content="dc0ab65b-e9a8-44f9-aec9-82b15a5d14fb" /><meta name="Description" content="Our priority was to introduce as little changes into LibTiff's API as possible. But, as you can imagine, some changes had to be made because of differences between C and C# languages and underlying class libraries." /><meta name="Microsoft.Help.ContentType" content="Concepts" /><meta name="BrandingAware" content="'true'" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">Differences between LibTiff and LibTiff.Net</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="introduction"><p>
+                Our priority was to introduce as little changes into LibTiff's API
+                as possible. But, as you can imagine, some changes had to be made because
+                of differences between C and C# languages and underlying class libraries.
+            </p><p>
+                Also, we were unable to resist the temptation to rename some methods
+                and types.
+            </p><p>
+                LibTiff prefers unsigned integer types for parameters and return
+                values. LibTiff.Net, by contrast, prefers signed integer types for
+                parameters and return values. You can pass unsigned values or convert
+                return values to unsigned types if you wish, but keep in mind, that it
+                will affect performance (not seriously, though).
+            </p></div><a id="Section1"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle" /><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><a id="SubSection1"><!----></a><h3 class="subHeading">General notes</h3><div class="subsection"><p><b>TIFF</b> struct changed it's name to
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Tiff"><a href="f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" target="">Tiff</a></span>
+                            and became full-featured class.
+                        </p><p>
+                            In LibTiff most functions were accepting pointer to a
+                            <b>TIFF</b> struct as first parameter. LibTiff.NET does
+                            not need it because these functions are now methods of
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Tiff"><a href="f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" target="">Tiff</a></span>
+                            class.
+                        </p><p><b>TIFFCodec</b> struct changed it's name to
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffCodec"><a href="c89dab2a-f4ba-5a37-7535-3c6314b12b62.htm" target="">TiffCodec</a></span>
+                            and became full-featured class with virtual methods suitable for overloading.
+                        </p><p><b>TIFFTagMethods</b> struct changed it's name to
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffTagMethods"><a href="5eaf91df-51ac-3841-7d1c-d1e77a33370f.htm" target="">TiffTagMethods</a></span>
+                            and became full-featured class with virtual methods suitable for overloading.
+                        </p><p><b>TIFFRegisterCODEC</b> function changed it's name
+                            and signature. It is now known as
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.RegisterCodec(BitMiracle.LibTiff.Classic.TiffCodec)"><a href="40ee20a0-64de-2854-a14c-8664db9ecff8.htm" target="">RegisterCodec(TiffCodec)</a></span>
+                            and gets an instance of class derived from TiffCodec.
+                        </p><p>
+                            Custom error handling strategy changed. Now you should provide
+                            implementation of a class derived from
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffErrorHandler"><a href="d6570178-f923-4185-9f1b-f11b94e4d0f0.htm" target="">TiffErrorHandler</a></span>
+                            and pass it as parameter to
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetErrorHandler(BitMiracle.LibTiff.Classic.TiffErrorHandler)"><a href="1cc52bda-c37c-3653-427e-18ec3fc51bae.htm" target="">SetErrorHandler(TiffErrorHandler)</a></span>
+                            method.
+                        </p><p>
+                            Custom file/stream handling strategy changed. Now you should provide
+                            implementation of a class derived from
+                            <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffStream"><a href="441a1bd6-5612-b060-4d63-b7c2f4895136.htm" target="">TiffStream</a></span>
+                            and pass it as parameter to
+                            <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ClientOpen(System.String,System.String,System.Object,BitMiracle.LibTiff.Classic.TiffStream)"><a href="c0b67436-6949-cd3a-e092-a82a20e393c9.htm" target="">ClientOpen(String, String, Object, TiffStream)</a></span>
+                            method.
+                        </p></div><a id="SubSection2"><!----></a><h3 class="subHeading">Renamings of functions</h3><div class="subsection"><div class="tableSection"><table><tr><th>Libtiff name</th><th>LibTiff.Net name / notes</th></tr><tr><td>
+                                    TIFFGetA
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetA(System.Int32)"><a href="2adc84e6-ff6c-7ec9-9f68-b0c36a44bdbc.htm" target="">GetA(Int32)</a></span></td></tr><tr><td>
+                                    TIFFGetB
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetB(System.Int32)"><a href="f581cfa4-0f1f-b881-d615-b84dd42e11b3.htm" target="">GetB(Int32)</a></span></td></tr><tr><td>
+                                    TIFFGetG
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetG(System.Int32)"><a href="89382ff7-5f1e-4ec0-5f69-bb16355d3ac3.htm" target="">GetG(Int32)</a></span></td></tr><tr><td>
+                                    TIFFGetR
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetR(System.Int32)"><a href="d1c0e4a4-fb7a-8343-3bbc-744efe2c4d65.htm" target="">GetR(Int32)</a></span></td></tr><tr><td>
+                                    TIFF.tif_cleanup
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.Cleanup"><a href="f5ccf8aa-4ef4-d604-0f12-4133be17e83f.htm" target="">Cleanup<span id="ID0EAAAA0VE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0VE0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFF.tif_close
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.Close"><a href="a668de41-40b8-d531-f82c-74b2c50173aa.htm" target="">Close<span id="ID0EAAAA0UE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0UE0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFF.tif_decoderow
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.DecodeRow(System.Byte[],System.Int32,System.Int32,System.Int16)"><a href="bfb0b224-4f0a-b64c-f725-732eba237452.htm" target="">DecodeRow(<span id="ID0EDAAA0TE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0TE0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0TE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0TE0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFF.tif_decodestrip
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.DecodeStrip(System.Byte[],System.Int32,System.Int32,System.Int16)"><a href="df38a3c3-90f6-7528-86ca-8ccb1ec1dea3.htm" target="">DecodeStrip(<span id="ID0EDAAA0SE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0SE0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0SE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0SE0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFF.tif_decodetile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.DecodeTile(System.Byte[],System.Int32,System.Int32,System.Int16)"><a href="7cd5debf-d2a0-1e7a-c552-3563415f7d86.htm" target="">DecodeTile(<span id="ID0EDAAA0RE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0RE0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0RE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0RE0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFF.tif_defstripsize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.DefStripSize(System.Int32)"><a href="e10d55a9-4f64-1796-bff3-ba86b598a864.htm" target="">DefStripSize(Int32)</a></span></td></tr><tr><td>
+                                    TIFF.tif_deftilesize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.DefTileSize(System.Int32@,System.Int32@)"><a href="5e4c0c92-8f74-7aa7-4f34-10612f8440bf.htm" target="">DefTileSize(Int32<span id="ID0EDAAA0PE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0PE0AADAAAAAA?vb=|cpp=%|cs=|fs=|nu=");
+				</script>, Int32<span id="ID0EBAAA0PE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0PE0AADAAAAAA?vb=|cpp=%|cs=|fs=|nu=");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFF.tif_encoderow
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.EncodeRow(System.Byte[],System.Int32,System.Int32,System.Int16)"><a href="3b70fc4d-c1a3-7dd1-60e7-bc0db93705fd.htm" target="">EncodeRow(<span id="ID0EDAAA0OE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0OE0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0OE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0OE0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFF.tif_encodestrip
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.EncodeStrip(System.Byte[],System.Int32,System.Int32,System.Int16)"><a href="c0d79fd1-fcb9-2248-fd5d-6be957c6eb2b.htm" target="">EncodeStrip(<span id="ID0EDAAA0NE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0NE0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0NE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0NE0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFF.tif_encodetile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.EncodeTile(System.Byte[],System.Int32,System.Int32,System.Int16)"><a href="1f0dd20a-fe18-77aa-66bd-8ce012eb2ad2.htm" target="">EncodeTile(<span id="ID0EDAAA0ME0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0ME0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0ME0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0ME0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFF.tif_postencode
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.PostEncode"><a href="f2ed5399-5077-3077-6945-d05ef6d27da2.htm" target="">PostEncode<span id="ID0EAAAA0LE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0LE0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFF.tif_predecode
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.PreDecode(System.Int16)"><a href="428b7ff1-ff04-2474-b4ec-69bf14010f29.htm" target="">PreDecode(Int16)</a></span></td></tr><tr><td>
+                                    TIFF.tif_preencode
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.PreEncode(System.Int16)"><a href="e349edd5-177c-4a34-c13b-6a0f03ac8f3b.htm" target="">PreEncode(Int16)</a></span></td></tr><tr><td>
+                                    TIFF.tif_seek
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.Seek(System.Int32)"><a href="7a992634-6be4-ed19-7491-f314bafc5817.htm" target="">Seek(Int32)</a></span></td></tr><tr><td>
+                                    TIFF.tif_setupdecode
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.SetupDecode"><a href="c88a1a3c-f13e-d84d-fbdc-0cba359bd3bf.htm" target="">SetupDecode<span id="ID0EAAAA0HE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0HE0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFF.tif_setupencode
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffCodec.SetupEncode"><a href="d60ef536-2049-bf85-1e43-27707bfcf4d2.htm" target="">SetupEncode<span id="ID0EAAAA0GE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0GE0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFTagMethods.printdir
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffTagMethods.PrintDir(BitMiracle.LibTiff.Classic.Tiff,System.IO.Stream,BitMiracle.LibTiff.Classic.TiffPrintFlags)"><a href="7b5a5628-1583-5ec5-ad4f-5336f84f9327.htm" target="">PrintDir(Tiff, Stream, TiffPrintFlags)</a></span></td></tr><tr><td>
+                                    TIFFTagMethods.vgetfield
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffTagMethods.GetField(BitMiracle.LibTiff.Classic.Tiff,BitMiracle.LibTiff.Classic.TiffTag)"><a href="1466b00a-85b4-9ec3-bf2c-fdb29d7431d1.htm" target="">GetField(Tiff, TiffTag)</a></span></td></tr><tr><td>
+                                    TIFFTagMethods.vsetfield
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.TiffTagMethods.SetField(BitMiracle.LibTiff.Classic.Tiff,BitMiracle.LibTiff.Classic.TiffTag,BitMiracle.LibTiff.Classic.FieldValue[])"><a href="4bf85153-1b2c-377a-42ba-c0b6eb37a79d.htm" target="">SetField(Tiff, TiffTag, <span id="ID0EDAAA0DE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0DE0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>FieldValue<span id="ID0EBAAA0DE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0DE0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span></td></tr><tr><td>
+                                    _TIFFmemcmp
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Compare(System.Int16[],System.Int16[],System.Int32)"><a href="2a65db00-c5db-ac53-cc67-07f8917d66b6.htm" target="">Compare(<span id="ID0EHABA0CE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EHABA0CE0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int16<span id="ID0EFABA0CE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EFABA0CE0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, <span id="ID0EDABA0CE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDABA0CE0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int16<span id="ID0EBABA0CE0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBABA0CE0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span>
+                                    (for some types, write us if you need another overload.)
+                                </td></tr><tr><td>_TIFFmemcpy </td><td> no longer exists</td></tr><tr><td>_TIFFmemset </td><td> no longer exists</td></tr><tr><td>
+                                    _TIFFrealloc
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.Realloc"><a href="dbb47233-c980-a143-bcf1-940e3157a3e2.htm" target="">Realloc<span id="ID0EAABA06D0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABA06D0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>
+                                    (for some types, write us if you need another overload.)
+                                </td></tr><tr><td>
+                                    TIFFAccessTagMethods
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetTagMethods"><a href="483694ce-3a8e-159f-8e4f-94ad64da2edc.htm" target="">GetTagMethods<span id="ID0EAADA05D0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAADA05D0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>
+                                    (Also added <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetTagMethods(BitMiracle.LibTiff.Classic.TiffTagMethods)"><a href="8a8b26fb-b82c-c173-97ff-7cf43bcd9ea1.htm" target="">SetTagMethods(TiffTagMethods)</a></span>
+                                    in order to retain original abilities TIFFAccessTagMethods)
+                                </td></tr><tr><td>
+                                    TIFFCheckTile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.CheckTile(System.Int32,System.Int32,System.Int32,System.Int16)"><a href="0a96fe04-da43-0904-6136-e3646cbc6793.htm" target="">CheckTile(Int32, Int32, Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFFCheckpointDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.CheckpointDirectory"><a href="2cf5f3bc-3f0d-76f4-84ae-83000e9e2d54.htm" target="">CheckpointDirectory<span id="ID0EAAAA03D0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA03D0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>TIFFCleanup </td><td> no longer exists</td></tr><tr><td>
+                                    TIFFClientOpen
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ClientOpen(System.String,System.String,System.Object,BitMiracle.LibTiff.Classic.TiffStream)"><a href="c0b67436-6949-cd3a-e092-a82a20e393c9.htm" target="">ClientOpen(String, String, Object, TiffStream)</a></span></td></tr><tr><td>
+                                    TIFFClientdata
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Clientdata"><a href="f79a82c8-205f-cde0-3ce8-d361c0da700c.htm" target="">Clientdata<span id="ID0EAAAA0ZD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0ZD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFClose
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Close"><a href="9bc26d59-9084-795c-2325-9d29069f7db2.htm" target="">Close<span id="ID0EAAAA0YD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0YD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFComputeStrip
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ComputeStrip(System.Int32,System.Int16)"><a href="dc784122-da09-6cd4-ced2-863e9af1b829.htm" target="">ComputeStrip(Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFFComputeTile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ComputeTile(System.Int32,System.Int32,System.Int32,System.Int16)"><a href="4b2d529d-76c3-991e-0c92-d4a054758831.htm" target="">ComputeTile(Int32, Int32, Int32, Int16)</a></span></td></tr><tr><td>
+                                    TIFFCreateDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.CreateDirectory"><a href="b51071ed-0da2-583e-5a99-4c092900646f.htm" target="">CreateDirectory<span id="ID0EAAAA0VD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0VD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFCurrentDirOffset
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.CurrentDirOffset"><a href="209cd5bf-9c19-b50f-aff7-0a2c1d5c0989.htm" target="">CurrentDirOffset<span id="ID0EAAAA0UD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0UD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFCurrentDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.CurrentDirectory"><a href="09316c3d-c073-4306-7579-4e237d8232e1.htm" target="">CurrentDirectory<span id="ID0EAAAA0TD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0TD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFCurrentRow
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.CurrentRow"><a href="260a19de-789c-d18b-4049-7413ba758474.htm" target="">CurrentRow<span id="ID0EAAAA0SD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0SD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFCurrentStrip
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.CurrentStrip"><a href="d041c94e-fc55-406f-45d3-2d261b1bd244.htm" target="">CurrentStrip<span id="ID0EAAAA0RD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0RD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFCurrentTile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.CurrentTile"><a href="baa97aff-b269-43ba-d580-dce0aa32014c.htm" target="">CurrentTile<span id="ID0EAAAA0QD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0QD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFDataWidth
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.DataWidth(BitMiracle.LibTiff.Classic.TiffType)"><a href="5a89ec7c-84d8-72d2-220b-2ccfc89594df.htm" target="">DataWidth(TiffType)</a></span></td></tr><tr><td>
+                                    TIFFDefaultStripSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.DefaultStripSize(System.Int32)"><a href="02d9c67e-0341-e407-59de-7cdeb347c337.htm" target="">DefaultStripSize(Int32)</a></span></td></tr><tr><td>
+                                    TIFFDefaultTileSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.DefaultTileSize(System.Int32@,System.Int32@)"><a href="c21ee1b4-0467-20be-ebd3-50f26d460ef3.htm" target="">DefaultTileSize(Int32<span id="ID0EDAAA0ND0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0ND0AADAAAAAA?vb=|cpp=%|cs=|fs=|nu=");
+				</script>, Int32<span id="ID0EBAAA0ND0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0ND0AADAAAAAA?vb=|cpp=%|cs=|fs=|nu=");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFFError
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Error(System.String,System.String,System.Object[])"><a href="ca3be540-4e35-5f34-d952-d8374fec723f.htm" target="">Error(String, String, <span id="ID0EDAFA0MD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAFA0MD0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBAFA0MD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAFA0MD0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                                    (also added overloaded method
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Error(BitMiracle.LibTiff.Classic.Tiff,System.String,System.String,System.Object[])"><a href="5e874fa4-c74c-67d4-4892-70a18ab9ddc8.htm" target="">Error(Tiff, String, String, <span id="ID0EDADA0MD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDADA0MD0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBADA0MD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBADA0MD0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                                    that accepts <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Tiff"><a href="f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" target="">Tiff</a></span>
+                                    class instance as first parameter. Please use that overloaded method)
+                                </td></tr><tr><td>
+                                    TIFFErrorExt
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ErrorExt(System.Object,System.String,System.String,System.Object[])"><a href="baddbf14-02c0-7931-3f2f-bbd7d4721255.htm" target="">ErrorExt(Object, String, String, <span id="ID0EDAFA0LD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAFA0LD0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBAFA0LD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAFA0LD0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                                    (also added overloaded method
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ErrorExt(BitMiracle.LibTiff.Classic.Tiff,System.Object,System.String,System.String,System.Object[])"><a href="f630e6fb-2d3c-4dc9-34d9-a8987d4fe543.htm" target="">ErrorExt(Tiff, Object, String, String, <span id="ID0EDADA0LD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDADA0LD0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBADA0LD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBADA0LD0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                                    that accepts <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Tiff"><a href="f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" target="">Tiff</a></span>
+                                    class instance as first parameter. Please use that overloaded method)
+                                </td></tr><tr><td>
+                                    TIFFExtendProc
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Tiff.TiffExtendProc"><a href="785cdf77-02a7-8576-eb17-1425fb97e976.htm" target="">Tiff<span id="ID0EBAAA0KD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0KD0AADAAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>TiffExtendProc</a></span></td></tr><tr><td>
+                                    TIFFFdOpen
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Open(System.String,System.String)"><a href="915344e3-3d06-7d40-fac7-26cad5880e74.htm" target="">Open(String, String)</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFFieldWithName
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FieldWithName(System.String)"><a href="f6fb8bc1-b9c1-d54a-a66e-ecaf016de6a8.htm" target="">FieldWithName(String)</a></span></td></tr><tr><td>
+                                    TIFFFieldWithTag
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FieldWithTag(BitMiracle.LibTiff.Classic.TiffTag)"><a href="3faa7711-d06a-a442-ed29-cf86c720655d.htm" target="">FieldWithTag(TiffTag)</a></span></td></tr><tr><td>
+                                    TIFFFileName
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FileName"><a href="6850d0d1-eb4d-6ab8-36bf-789f915bd38a.htm" target="">FileName<span id="ID0EAAAA0GD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0GD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>TIFFFileno </td><td> no longer exists</td></tr><tr><td>
+                                    TIFFFindCODEC
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FindCodec(BitMiracle.LibTiff.Classic.Compression)"><a href="d8d19ede-212b-a319-8bfa-75add07df448.htm" target="">FindCodec(Compression)</a></span></td></tr><tr><td>
+                                    TIFFFindFieldInfo
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FindFieldInfo(BitMiracle.LibTiff.Classic.TiffTag,BitMiracle.LibTiff.Classic.TiffType)"><a href="83de3c26-ae91-6d67-2998-2217a7338952.htm" target="">FindFieldInfo(TiffTag, TiffType)</a></span></td></tr><tr><td>
+                                    TIFFFindFieldInfoByName
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FindFieldInfoByName(System.String,BitMiracle.LibTiff.Classic.TiffType)"><a href="b66be4cb-5a81-bd39-efd1-17f777d33f6c.htm" target="">FindFieldInfoByName(String, TiffType)</a></span></td></tr><tr><td>
+                                    TIFFFlush
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Flush"><a href="14b42cfd-08c7-7725-c289-9b077621410e.htm" target="">Flush<span id="ID0EAAAA0BD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0BD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFFlushData
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FlushData"><a href="22761731-896e-93e4-1619-42e1c31d1b59.htm" target="">FlushData<span id="ID0EAAAA0AD0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0AD0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFFreeDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.FreeDirectory"><a href="eb14ea47-71e6-3afc-6ece-0f809653ea1d.htm" target="">FreeDirectory<span id="ID0EAAAA06C0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA06C0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFGetBitRevTable
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetBitRevTable(System.Boolean)"><a href="4a335206-8caa-ea2a-5bf9-fb12614cc3a0.htm" target="">GetBitRevTable(Boolean)</a></span></td></tr><tr><td>
+                                    TIFFGetClientInfo
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetClientInfo(System.String)"><a href="7fb74f1e-3ef1-1522-b9c4-26e7819ac56a.htm" target="">GetClientInfo(String)</a></span></td></tr><tr><td>
+                                    TIFFGetCloseProc
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetStream"><a href="b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" target="">GetStream<span id="ID0EAABA03C0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABA03C0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>)
+                                </td></tr><tr><td>
+                                    TIFFGetConfiguredCODECs
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetConfiguredCodecs"><a href="cc13a735-04b8-978d-bb92-e0d5a4040d86.htm" target="">GetConfiguredCodecs<span id="ID0EAAAA02C0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA02C0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFGetField
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetField(BitMiracle.LibTiff.Classic.TiffTag)"><a href="1bd1b3b8-a2ea-9d24-66ef-38ffdd33b984.htm" target="">GetField(TiffTag)</a></span></td></tr><tr><td>
+                                    TIFFGetFieldDefaulted
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetFieldDefaulted(BitMiracle.LibTiff.Classic.TiffTag)"><a href="9f3018bf-0470-6c36-2299-fd8ceff56062.htm" target="">GetFieldDefaulted(TiffTag)</a></span></td></tr><tr><td>
+                                    TIFFGetMapFileProc
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetStream"><a href="b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" target="">GetStream<span id="ID0EAABA0YC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABA0YC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>)
+                                </td></tr><tr><td>
+                                    TIFFGetMode
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetMode"><a href="716bb83c-682d-aff4-90c2-2c88174aee75.htm" target="">GetMode<span id="ID0EAAAA0XC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0XC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFGetReadProc
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetStream"><a href="b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" target="">GetStream<span id="ID0EAABA0WC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABA0WC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>)
+                                </td></tr><tr><td>
+                                    TIFFGetSeekProc
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetStream"><a href="b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" target="">GetStream<span id="ID0EAABA0VC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABA0VC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>)
+                                </td></tr><tr><td>
+                                    TIFFGetSizeProc
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetStream"><a href="b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" target="">GetStream<span id="ID0EAABA0UC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABA0UC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>)
+                                </td></tr><tr><td>
+                                    TIFFGetTagListCount
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetTagListCount"><a href="5d64aad3-863c-b268-198b-07ddd24fbfad.htm" target="">GetTagListCount<span id="ID0EAAAA0TC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0TC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFGetTagListEntry
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetTagListEntry(System.Int32)"><a href="f5cff1b5-ce07-e55e-ab1c-7827d91f711e.htm" target="">GetTagListEntry(Int32)</a></span></td></tr><tr><td>
+                                    TIFFGetUnmapFileProc
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetStream"><a href="b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" target="">GetStream<span id="ID0EAABA0RC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABA0RC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>)
+                                </td></tr><tr><td>
+                                    TIFFGetVersion
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetVersion"><a href="0d9caba0-bb41-b09a-beeb-bd0314195078.htm" target="">GetVersion<span id="ID0EAAAA0QC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0QC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFGetWriteProc
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetStream"><a href="b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" target="">GetStream<span id="ID0EAABA0PC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAABA0PC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span>)
+                                </td></tr><tr><td>
+                                    TIFFIsBigEndian
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.IsBigEndian"><a href="f00cb90b-0c20-9a77-0e49-79c00e4af782.htm" target="">IsBigEndian<span id="ID0EAAAA0OC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0OC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFIsByteSwapped
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.IsByteSwapped"><a href="2ee23e7c-3bdf-3dcf-c22e-909bf9a5cd01.htm" target="">IsByteSwapped<span id="ID0EAAAA0NC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0NC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFIsCODECConfigured
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.IsCodecConfigured(BitMiracle.LibTiff.Classic.Compression)"><a href="b4544171-4ee8-400d-3342-637b8e6b9f26.htm" target="">IsCodecConfigured(Compression)</a></span></td></tr><tr><td>
+                                    TIFFIsMSB2LSB
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.IsMSB2LSB"><a href="a3d28fcf-75f2-e630-9ad2-fc7f02410b03.htm" target="">IsMSB2LSB<span id="ID0EAAAA0LC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0LC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFIsTiled
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.IsTiled"><a href="7f0867f0-eb03-ca74-96de-742d16df1021.htm" target="">IsTiled<span id="ID0EAAAA0KC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0KC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFIsUpSampled
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.IsUpSampled"><a href="59876a4a-28d0-c1c2-4ba5-648cf57af121.htm" target="">IsUpSampled<span id="ID0EAAAA0JC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0JC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFLastDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.LastDirectory"><a href="d59e2fe0-0610-bddc-8e58-00e1a19fda32.htm" target="">LastDirectory<span id="ID0EAAAA0IC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0IC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFMergeFieldInfo
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.MergeFieldInfo(BitMiracle.LibTiff.Classic.TiffFieldInfo[],System.Int32)"><a href="2b1434fe-fc0b-35bd-4a95-0931349b23a9.htm" target="">MergeFieldInfo(<span id="ID0EDAAA0HC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0HC0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>TiffFieldInfo<span id="ID0EBAAA0HC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0HC0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span></td></tr><tr><td>
+                                    TIFFNumberOfDirectories
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.NumberOfDirectories"><a href="41cb7264-20ec-7429-bb0a-82341116afc9.htm" target="">NumberOfDirectories<span id="ID0EAAAA0GC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0GC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFNumberOfStrips
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.NumberOfStrips"><a href="325ce2db-9094-7128-9744-00fc33367a38.htm" target="">NumberOfStrips<span id="ID0EAAAA0FC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0FC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFNumberOfTiles
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.NumberOfTiles"><a href="5858c623-1e50-cffc-c584-e7963f36a2a4.htm" target="">NumberOfTiles<span id="ID0EAAAA0EC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0EC0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFOpen
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Open(System.String,System.String)"><a href="915344e3-3d06-7d40-fac7-26cad5880e74.htm" target="">Open(String, String)</a></span></td></tr><tr><td>
+                                    TIFFOpenW
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Open(System.String,System.String)"><a href="915344e3-3d06-7d40-fac7-26cad5880e74.htm" target="">Open(String, String)</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFPrintDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.PrintDirectory(System.IO.Stream)"><a href="5509d038-8348-002b-c226-182ee04704e6.htm" target="">PrintDirectory(Stream)</a></span></td></tr><tr><td>
+                                    TIFFRGBAImageOK
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.RGBAImageOK(System.String@)"><a href="3fff539c-69e9-5983-048b-c1111dc8994e.htm" target="">RGBAImageOK(String<span id="ID0EBAAA0AC0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0AC0AADAAAAAA?vb=|cpp=%|cs=|fs=|nu=");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFFRasterScanlineSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.RasterScanlineSize"><a href="5cebaf51-e954-db5e-70cb-5fcaeb973ba2.htm" target="">RasterScanlineSize<span id="ID0EAAAA06B0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA06B0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFRawStripSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.RawStripSize(System.Int32)"><a href="415812d8-7ad2-0e0a-fee2-8813e031872e.htm" target="">RawStripSize(Int32)</a></span></td></tr><tr><td>
+                                    TIFFReadBufferSetup
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadBufferSetup(System.Byte[],System.Int32)"><a href="5aedf257-d3b8-47eb-0249-28575847deff.htm" target="">ReadBufferSetup(<span id="ID0EDAAA04B0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA04B0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA04B0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA04B0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span></td></tr><tr><td>
+                                    TIFFReadCustomDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadCustomDirectory(System.Int64,BitMiracle.LibTiff.Classic.TiffFieldInfo[],System.Int32)"><a href="d8e658ef-6db8-4bf9-95cf-aca6b909d143.htm" target="">ReadCustomDirectory(Int64, <span id="ID0EDAAA03B0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA03B0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>TiffFieldInfo<span id="ID0EBAAA03B0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA03B0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span></td></tr><tr><td>
+                                    TIFFReadDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadDirectory"><a href="32d714d8-3e76-b61c-7c29-cd5dc08141bd.htm" target="">ReadDirectory<span id="ID0EAAAA02B0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA02B0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFReadEXIFDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadEXIFDirectory(System.Int64)"><a href="0723e393-5697-10fa-d1d4-fc304359043b.htm" target="">ReadEXIFDirectory(Int64)</a></span></td></tr><tr><td>
+                                    TIFFReadEncodedStrip
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadEncodedStrip(System.Int32,System.Byte[],System.Int32,System.Int32)"><a href="2d0ecc5f-7777-71d3-f4c2-d0bfad681c5e.htm" target="">ReadEncodedStrip(Int32, <span id="ID0EDAAA0ZB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0ZB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0ZB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0ZB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32)</a></span></td></tr><tr><td>
+                                    TIFFReadEncodedTile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadEncodedTile(System.Int32,System.Byte[],System.Int32,System.Int32)"><a href="44229155-25ca-5d8c-0058-0aa6e35a0b55.htm" target="">ReadEncodedTile(Int32, <span id="ID0EDAAA0YB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0YB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0YB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0YB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32)</a></span></td></tr><tr><td>
+                                    TIFFReadRGBAImage
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.ReadRGBAImage"><a href="a36a7f7d-899e-9956-745a-25adf1c7f9ac.htm" target="">ReadRGBAImage<span id="ID0EAAAA0XB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0XB0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFReadRGBAImageOriented
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.ReadRGBAImageOriented"><a href="93087c97-6d28-7886-75da-1611cc78d023.htm" target="">ReadRGBAImageOriented<span id="ID0EAAAA0WB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0WB0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFReadRGBAStrip
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadRGBAStrip(System.Int32,System.Int32[])"><a href="92668f86-933d-ef44-02e8-88ed5acc4efa.htm" target="">ReadRGBAStrip(Int32, <span id="ID0EDAAA0VB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0VB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int32<span id="ID0EBAAA0VB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0VB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFFReadRGBATile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadRGBATile(System.Int32,System.Int32,System.Int32[])"><a href="1e447b83-017d-9a5c-2ac0-9c4fd0ed91e1.htm" target="">ReadRGBATile(Int32, Int32, <span id="ID0EDAAA0UB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0UB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int32<span id="ID0EBAAA0UB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0UB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFFReadRawStrip
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadRawStrip(System.Int32,System.Byte[],System.Int32,System.Int32)"><a href="d0b7f303-ed33-2f9e-e897-8d73816419a7.htm" target="">ReadRawStrip(Int32, <span id="ID0EDAAA0TB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0TB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0TB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0TB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32)</a></span></td></tr><tr><td>
+                                    TIFFReadRawTile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadRawTile(System.Int32,System.Byte[],System.Int32,System.Int32)"><a href="ea790cce-fa51-f9b3-6cc8-ff5feacc6e1d.htm" target="">ReadRawTile(Int32, <span id="ID0EDAAA0SB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0SB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0SB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0SB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32)</a></span></td></tr><tr><td>
+                                    TIFFReadScanline
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.ReadScanline"><a href="af6c32ae-4afb-888c-fde0-aa19085a3002.htm" target="">ReadScanline<span id="ID0EAAAA0RB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0RB0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFReadTile
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReadTile(System.Byte[],System.Int32,System.Int32,System.Int32,System.Int32,System.Int16)"><a href="c33e99a3-6e9a-dfd7-75d9-d3b5072555ab.htm" target="">ReadTile(<span id="ID0EDAAA0QB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0QB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0QB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0QB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32, Int32, Int32, Int32, Int16)</a></span></td></tr><tr><td>TIFFReassignTagToIgnore </td><td> no longer exists</td></tr><tr><td>
+                                    TIFFRegisterCODEC
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.RegisterCodec(BitMiracle.LibTiff.Classic.TiffCodec)"><a href="40ee20a0-64de-2854-a14c-8664db9ecff8.htm" target="">RegisterCodec(TiffCodec)</a></span></td></tr><tr><td>
+                                    TIFFReverseBits
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ReverseBits(System.Byte[],System.Int32)"><a href="36b45114-2e13-e2cf-7006-f53da6b79adb.htm" target="">ReverseBits(<span id="ID0EDAAA0NB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0NB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAA0NB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0NB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span></td></tr><tr><td>
+                                    TIFFRewriteDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.RewriteDirectory"><a href="5674fb3f-754d-706b-574a-ff8f63145c5a.htm" target="">RewriteDirectory<span id="ID0EAAAA0MB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0MB0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFScanlineSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.ScanlineSize"><a href="e40cc5fe-b2f4-39e5-abc8-835346507d18.htm" target="">ScanlineSize<span id="ID0EAAAA0LB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA0LB0AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFSetClientInfo
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetClientInfo(System.Object,System.String)"><a href="72b5621c-7b56-7de2-b16c-8d90362dd3b2.htm" target="">SetClientInfo(Object, String)</a></span></td></tr><tr><td>
+                                    TIFFSetClientdata
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetClientdata(System.Object)"><a href="be4bb019-ebb9-a858-1e34-44f09f92aeb9.htm" target="">SetClientdata(Object)</a></span></td></tr><tr><td>
+                                    TIFFSetDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetDirectory(System.Int16)"><a href="29e2caf0-871a-b2e3-3c8f-3d365627d047.htm" target="">SetDirectory(Int16)</a></span></td></tr><tr><td>
+                                    TIFFSetErrorHandler
+                                </td><td>
+                                    no longer exists (use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetErrorHandler(BitMiracle.LibTiff.Classic.TiffErrorHandler)"><a href="1cc52bda-c37c-3653-427e-18ec3fc51bae.htm" target="">SetErrorHandler(TiffErrorHandler)</a></span>
+                                    with instance of class derived from
+                                    <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffErrorHandler"><a href="d6570178-f923-4185-9f1b-f11b94e4d0f0.htm" target="">TiffErrorHandler</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFSetErrorHandlerExt
+                                </td><td>
+                                    no longer exists (use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetErrorHandler(BitMiracle.LibTiff.Classic.TiffErrorHandler)"><a href="1cc52bda-c37c-3653-427e-18ec3fc51bae.htm" target="">SetErrorHandler(TiffErrorHandler)</a></span>
+                                    with instance of class derived from
+                                    <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffErrorHandler"><a href="d6570178-f923-4185-9f1b-f11b94e4d0f0.htm" target="">TiffErrorHandler</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFSetField
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetField(BitMiracle.LibTiff.Classic.TiffTag,System.Object[])"><a href="87815022-38e5-9d3e-2ab5-01af3c9077ae.htm" target="">SetField(TiffTag, <span id="ID0EDAAA0FB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA0FB0AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBAAA0FB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0FB0AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFFSetFileName
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetFileName(System.String)"><a href="9e617b90-c34d-63de-5853-0a0b0bd3f4d5.htm" target="">SetFileName(String)</a></span></td></tr><tr><td>TIFFSetFileno </td><td> no longer exists</td></tr><tr><td>
+                                    TIFFSetMode
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetMode(System.Int32)"><a href="eb233c02-7cd6-c516-f538-f1a1d1353538.htm" target="">SetMode(Int32)</a></span></td></tr><tr><td>
+                                    TIFFSetSubDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetSubDirectory(System.Int64)"><a href="4516f9b3-4167-c276-4f2c-8f696ea768c5.htm" target="">SetSubDirectory(Int64)</a></span></td></tr><tr><td>
+                                    TIFFSetTagExtender
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetTagExtender(BitMiracle.LibTiff.Classic.Tiff.TiffExtendProc)"><a href="45515aaa-f023-9079-2250-af4381d5dc31.htm" target="">SetTagExtender(Tiff<span id="ID0EBAAA0AB0AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA0AB0AADAAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>TiffExtendProc)</a></span></td></tr><tr><td>
+                                    TIFFSetWarningHandler
+                                </td><td>
+                                    no longer exists (use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetErrorHandler(BitMiracle.LibTiff.Classic.TiffErrorHandler)"><a href="1cc52bda-c37c-3653-427e-18ec3fc51bae.htm" target="">SetErrorHandler(TiffErrorHandler)</a></span>
+                                    with instance of class derived from
+                                    <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffErrorHandler"><a href="d6570178-f923-4185-9f1b-f11b94e4d0f0.htm" target="">TiffErrorHandler</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFSetWarningHandlerExt
+                                </td><td>
+                                    no longer exists (use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetErrorHandler(BitMiracle.LibTiff.Classic.TiffErrorHandler)"><a href="1cc52bda-c37c-3653-427e-18ec3fc51bae.htm" target="">SetErrorHandler(TiffErrorHandler)</a></span>
+                                    with instance of class derived from
+                                    <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffErrorHandler"><a href="d6570178-f923-4185-9f1b-f11b94e4d0f0.htm" target="">TiffErrorHandler</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFSetWriteOffset
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetWriteOffset(System.Int64)"><a href="9a8bfc02-bf62-1716-b334-c0e3da1e34b5.htm" target="">SetWriteOffset(Int64)</a></span></td></tr><tr><td>
+                                    TIFFSetupStrips
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetupStrips"><a href="9c329dc2-9366-8b36-39f3-add2a63057c8.htm" target="">SetupStrips<span id="ID0EAAAA3AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA3AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFStripSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.StripSize"><a href="b8ab7c05-d5de-e99c-3d61-9ce63ecf3ab1.htm" target="">StripSize<span id="ID0EAAAA2AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAA2AADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFSwabArrayOfDouble
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SwabArrayOfDouble(System.Double[],System.Int32)"><a href="613d7c8d-55dc-9d11-a0d0-63ade6a3c760.htm" target="">SwabArrayOfDouble(<span id="ID0EDAAA1AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAA1AADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Double<span id="ID0EBAAA1AADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAA1AADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span></td></tr><tr><td>
+                                    TIFFSwabArrayOfLong
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SwabArrayOfLong(System.Int32[],System.Int32)"><a href="ddd08655-d14b-0b3a-7571-27bb5c7cfcb3.htm" target="">SwabArrayOfLong(<span id="ID0EDAAAZAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAAZAADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int32<span id="ID0EBAAAZAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAAZAADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span></td></tr><tr><td>
+                                    TIFFSwabArrayOfShort
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SwabArrayOfShort(System.Int16[],System.Int32)"><a href="fdf157b3-2de2-29e1-1986-44a993fee193.htm" target="">SwabArrayOfShort(<span id="ID0EDAAAYAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAAYAADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Int16<span id="ID0EBAAAYAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAAYAADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span></td></tr><tr><td>
+                                    TIFFSwabArrayOfTriples
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.SwabArrayOfTriples"><a href="bd17be91-7097-eeec-773c-4e0c94e43a66.htm" target="">SwabArrayOfTriples<span id="ID0EAAAAXAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAAXAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFSwabDouble
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SwabDouble(System.Double@)"><a href="8468877c-2e12-87c4-49ac-0414d2b7f38f.htm" target="">SwabDouble(Double<span id="ID0EBAAAWAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAAWAADAAAAAA?vb=|cpp=%|cs=|fs=|nu=");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFFSwabLong
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SwabLong(System.Int32@)"><a href="298cf704-d0a0-7628-0c38-300334a3b7bc.htm" target="">SwabLong(Int32<span id="ID0EBAAAVAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAAVAADAAAAAA?vb=|cpp=%|cs=|fs=|nu=");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFFSwabShort
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SwabShort(System.Int16@)"><a href="7214e72c-807b-e3e4-6dab-b5a8fbca09c7.htm" target="">SwabShort(Int16<span id="ID0EBAAAUAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAAUAADAAAAAA?vb=|cpp=%|cs=|fs=|nu=");
+				</script>)</a></span></td></tr><tr><td>
+                                    TIFFTileRowSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.TileRowSize"><a href="a5c71919-11a8-cc07-15b8-62b313f07a01.htm" target="">TileRowSize<span id="ID0EAAAATAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAATAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFTileSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.TileSize"><a href="07058663-1c98-9f73-88f6-d990ec96bdd3.htm" target="">TileSize<span id="ID0EAAAASAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAASAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFUnRegisterCODEC
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.UnRegisterCodec(BitMiracle.LibTiff.Classic.TiffCodec)"><a href="84adbea5-217e-9823-abf8-0c839fa69f50.htm" target="">UnRegisterCodec(TiffCodec)</a></span></td></tr><tr><td>
+                                    TIFFUnlinkDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.UnlinkDirectory(System.Int16)"><a href="960b2644-d100-0f19-cacb-d2835096b7a5.htm" target="">UnlinkDirectory(Int16)</a></span></td></tr><tr><td>
+                                    TIFFVGetField
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetField(BitMiracle.LibTiff.Classic.TiffTag)"><a href="1bd1b3b8-a2ea-9d24-66ef-38ffdd33b984.htm" target="">GetField(TiffTag)</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFVGetFieldDefaulted
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.GetFieldDefaulted(BitMiracle.LibTiff.Classic.TiffTag)"><a href="9f3018bf-0470-6c36-2299-fd8ceff56062.htm" target="">GetFieldDefaulted(TiffTag)</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFVSetField
+                                </td><td>
+                                    no longer exists (please use
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.SetField(BitMiracle.LibTiff.Classic.TiffTag,System.Object[])"><a href="87815022-38e5-9d3e-2ab5-01af3c9077ae.htm" target="">SetField(TiffTag, <span id="ID0EDABANAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDABANAADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBABANAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBABANAADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>)
+                                </td></tr><tr><td>
+                                    TIFFVStripSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.VStripSize(System.Int32)"><a href="5aba7308-0e50-aa8f-1e16-7a30c3fa1865.htm" target="">VStripSize(Int32)</a></span></td></tr><tr><td>
+                                    TIFFVTileSize
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.VTileSize(System.Int32)"><a href="e09be500-c612-fafe-f38d-33880816c3e1.htm" target="">VTileSize(Int32)</a></span></td></tr><tr><td>
+                                    TIFFWarning
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Warning(System.String,System.String,System.Object[])"><a href="cb2896a6-c077-898b-8362-7828b396fd80.htm" target="">Warning(String, String, <span id="ID0EDAFAKAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAFAKAADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBAFAKAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAFAKAADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                                    (also added overloaded method
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.Warning(BitMiracle.LibTiff.Classic.Tiff,System.String,System.String,System.Object[])"><a href="21a3d01e-d9c7-f368-6100-9e3a155c3bdf.htm" target="">Warning(Tiff, String, String, <span id="ID0EDADAKAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDADAKAADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBADAKAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBADAKAADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                                    that accepts <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Tiff"><a href="f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" target="">Tiff</a></span>
+                                    class instance as first parameter. Please use that overloaded method)
+                                </td></tr><tr><td>
+                                    TIFFWarningExt
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.WarningExt(System.Object,System.String,System.String,System.Object[])"><a href="c4cf7506-1921-8c20-bb07-3800c12b0ad4.htm" target="">WarningExt(Object, String, String, <span id="ID0EDAFAJAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAFAJAADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBAFAJAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAFAJAADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                                    (also added overloaded method
+                                    <span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.WarningExt(BitMiracle.LibTiff.Classic.Tiff,System.Object,System.String,System.String,System.Object[])"><a href="46aa49bd-d3fc-8c84-b30d-f75fc152671c.htm" target="">WarningExt(Tiff, Object, String, String, <span id="ID0EDADAJAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDADAJAADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Object<span id="ID0EBADAJAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBADAJAADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>)</a></span>
+                                    that accepts <span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Tiff"><a href="f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" target="">Tiff</a></span>
+                                    class instance as first parameter. Please use that overloaded method)
+                                </td></tr><tr><td>
+                                    TIFFWriteBufferSetup
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.WriteBufferSetup(System.Byte[],System.Int32)"><a href="61054a96-45d5-9234-5180-0389a1142771.htm" target="">WriteBufferSetup(<span id="ID0EDAAAIAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EDAAAIAADAAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script>Byte<span id="ID0EBAAAIAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBAAAIAADAAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script>, Int32)</a></span></td></tr><tr><td>
+                                    TIFFWriteCheck
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.WriteCheck(System.Boolean,System.String)"><a href="7c482b59-ec7a-d43f-bad7-1a1fd15b8a86.htm" target="">WriteCheck(Boolean, String)</a></span></td></tr><tr><td>
+                                    TIFFWriteDirectory
+                                </td><td><span sdata="cer" target="M:BitMiracle.LibTiff.Classic.Tiff.WriteDirectory"><a href="20b69324-919e-ce8c-763a-d0c935708789.htm" target="">WriteDirectory<span id="ID0EAAAAGAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAAGAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFWriteEncodedStrip
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.WriteEncodedStrip"><a href="303c7c76-4bbc-64f0-d262-509978754367.htm" target="">WriteEncodedStrip<span id="ID0EAAAAFAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAAFAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFWriteEncodedTile
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.WriteEncodedTile"><a href="6f378a2a-bf2b-f83b-4798-7d2e5181bed7.htm" target="">WriteEncodedTile<span id="ID0EAAAAEAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAAEAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFWriteRawStrip
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.WriteRawStrip"><a href="cf9d637e-1b03-f632-a32b-d42af63ca6ef.htm" target="">WriteRawStrip<span id="ID0EAAAADAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAADAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFWriteRawTile
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.WriteRawTile"><a href="e7803430-0f05-b8cf-c2d0-f5b1c5ab39bf.htm" target="">WriteRawTile<span id="ID0EAAAACAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAACAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFWriteScanline
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.WriteScanline"><a href="db0aa987-8e75-5a3e-5fec-1af1e2749968.htm" target="">WriteScanline<span id="ID0EAAAABAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAABAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr><tr><td>
+                                    TIFFWriteTile
+                                </td><td><span sdata="cer" target="Overload:BitMiracle.LibTiff.Classic.Tiff.WriteTile"><a href="b175a081-3be0-b4f8-f39b-d99be1ce5b27.htm" target="">WriteTile<span id="ID0EAAAAAAADAAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EAAAAAAADAAAAAA?vb=|cpp=()|cs=()|fs=()|nu=()");
+				</script></a></span></td></tr></table></div></div><a id="SubSection3"><!----></a><h3 class="subHeading">Renamings of constants and types</h3><div class="subsection"><div class="tableSection"><table><tr><th>Libtiff name</th><th>LibTiff.Net name / notes</th></tr><tr><td>
+                                    CLEANFAXDATA_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.CleanFaxData"><a href="470116a5-e961-c50c-988b-7e8dfbe3b5cb.htm" target="">CleanFaxData</a></span>.*
+                                </td></tr><tr><td>
+                                    COLORRESPONSEUNIT_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.ColorResponseUnit"><a href="0f629c9d-c09f-7a70-21dd-7342559a714f.htm" target="">ColorResponseUnit</a></span>.CRU*
+                                </td></tr><tr><td>
+                                    COMPRESSION_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Compression"><a href="ce8d3df9-34e8-ec94-528a-aa310689459b.htm" target="">Compression</a></span>.*
+                                </td></tr><tr><td>
+                                    EXIFTAG_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffTag"><a href="004b29cb-3828-19ac-b924-95671b477f08.htm" target="">TiffTag</a></span>.EXIF_*
+                                </td></tr><tr><td>
+                                    EXTRASAMPLE_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.ExtraSample"><a href="edceb228-3508-d66e-d73c-200bdecdfe42.htm" target="">ExtraSample</a></span>.*
+                                </td></tr><tr><td>
+                                    FAXMODE_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.FaxMode"><a href="4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" target="">FaxMode</a></span>.*
+                                </td></tr><tr><td>
+                                    FILETYPE_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.FileType"><a href="09cacae0-cba1-e059-0899-13e5a4001db3.htm" target="">FileType</a></span>.*
+                                </td></tr><tr><td>
+                                    FILLORDER_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.FillOrder"><a href="65279396-524c-fcee-60dc-bf29d27ea836.htm" target="">FillOrder</a></span>.*
+                                </td></tr><tr><td>
+                                    GRAYRESPONSEUNIT_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.GrayResponseUnit"><a href="a711564a-497c-098c-df92-22e73b235fb2.htm" target="">GrayResponseUnit</a></span>.GRU*
+                                </td></tr><tr><td>
+                                    GROUP3OPT_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Group3Opt"><a href="e00d6851-cf09-287f-638b-fc62c498351a.htm" target="">Group3Opt</a></span>.*
+                                    (note, that GROUP3OPT_2DENCODING renamed to
+                                    <span sdata="cer" target="F:BitMiracle.LibTiff.Classic.Group3Opt.ENCODING2D"><a href="e00d6851-cf09-287f-638b-fc62c498351a.htm" target="">ENCODING2D</a></span>)
+                                </td></tr><tr><td>
+                                    INKSET_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.InkSet"><a href="0dd445ac-30cc-2c32-1dcc-5b48d2e644f4.htm" target="">InkSet</a></span>.*
+                                </td></tr><tr><td>
+                                    JPEGCOLORMODE_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.JpegColorMode"><a href="0839bb36-3896-39ff-cb13-f4601b4e20ae.htm" target="">JpegColorMode</a></span>.*
+                                </td></tr><tr><td>
+                                    JPEGPROC_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.JpegProc"><a href="5fa3fdfe-5a31-bf03-2463-662f6bbee378.htm" target="">JpegProc</a></span>.*
+                                </td></tr><tr><td>
+                                    JPEGTABLESMODE_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.JpegTablesMode"><a href="84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" target="">JpegTablesMode</a></span>.*
+                                </td></tr><tr><td>
+                                    OFILETYPE_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.OFileType"><a href="ef0eb2f9-7686-0a09-2ecc-9b6d6a124f35.htm" target="">OFileType</a></span>.*
+                                </td></tr><tr><td>
+                                    ORIENTATION_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Orientation"><a href="16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" target="">Orientation</a></span>.*
+                                </td></tr><tr><td>
+                                    PHOTOMETRIC_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Photometric"><a href="762c8b34-c03a-e82d-facc-7c5a951666c6.htm" target="">Photometric</a></span>.*
+                                </td></tr><tr><td>
+                                    PLANARCONFIG_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.PlanarConfig"><a href="d2e12021-da72-b32f-b558-dc23d914d698.htm" target="">PlanarConfig</a></span>.*
+                                </td></tr><tr><td>
+                                    PREDICTOR_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Predictor"><a href="fa1b7e9c-678e-7328-2a3f-be1fe8578cbc.htm" target="">Predictor</a></span>.*
+                                </td></tr><tr><td>
+                                    RESUNIT_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.ResUnit"><a href="5137d019-fa06-e573-99cd-8d4a5900e1c6.htm" target="">ResUnit</a></span>.*
+                                </td></tr><tr><td>
+                                    SAMPLEFORMAT_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.SampleFormat"><a href="2d79449a-302f-ba62-142d-0d9204a1012e.htm" target="">SampleFormat</a></span>.*
+                                </td></tr><tr><td>
+                                    THRESHHOLD_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.Threshold"><a href="98e0e69a-3705-662e-ed72-952340aad2f0.htm" target="">Threshold</a></span>.*
+                                </td></tr><tr><td>
+                                    TIFFPRINT_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffPrintFlags"><a href="a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" target="">TiffPrintFlags</a></span>.*
+                                </td></tr><tr><td>
+                                    TIFFTAG_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffTag"><a href="004b29cb-3828-19ac-b924-95671b477f08.htm" target="">TiffTag</a></span>.*
+                                </td></tr><tr><td>
+                                    YCBCRPOSITION_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.YCbCrPosition"><a href="e41b4d87-aa80-6c0b-a755-4a058a73c576.htm" target="">YCbCrPosition</a></span>.*
+                                </td></tr><tr><td>
+                                    TIFFDataType.TIFF_*
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffType"><a href="f66b7b47-23b6-2531-85fb-620e31342a07.htm" target="">TiffType</a></span>.*
+                                </td></tr><tr><td>
+                                    TIFFFieldInfo
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffFieldInfo"><a href="32cda987-0aca-8e33-71f0-7dd91ffe4763.htm" target="">TiffFieldInfo</a></span></td></tr><tr><td>
+                                    TIFFRGBAImage
+                                </td><td><span sdata="cer" target="T:BitMiracle.LibTiff.Classic.TiffRgbaImage"><a href="979c75ee-8f71-5601-3830-ed93ec51174d.htm" target="">TiffRgbaImage</a></span></td></tr></table></div></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+Differences+between+LibTiff+and+LibTiff.Net+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

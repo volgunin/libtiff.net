@@ -1,0 +1,167 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>TiffRgbaImage.PutSeparateDelegate Delegate</title><meta name="Language" content="en-us" /><meta name="System.Keywords" content="TiffRgbaImage.PutSeparateDelegate delegate" /><meta name="System.Keywords" content="BitMiracle.LibTiff.Classic.TiffRgbaImage.PutSeparateDelegate delegate" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffRgbaImage.PutSeparateDelegate" /><meta name="Microsoft.Help.Id" content="T:BitMiracle.LibTiff.Classic.TiffRgbaImage.PutSeparateDelegate" /><meta name="Description" content="Delegate for &quot;put&quot; method (the method that is called to pack pixel data in the raster) used when converting separated samples." /><meta name="Microsoft.Help.ContentType" content="Reference" /><meta name="BrandingAware" content="'true'" /><meta name="container" content="BitMiracle.LibTiff.Classic" /><meta name="file" content="3b7f9d58-c51c-88b2-5711-22804449cd99" /><meta name="guid" content="3b7f9d58-c51c-88b2-5711-22804449cd99" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">TiffRgbaImage<span id="ID0EBBABAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBBABAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>PutSeparateDelegate Delegate</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="summary">
+            Delegate for "put" method (the method that is called to pack pixel data in the raster)
+            used when converting separated samples.
+            </div><p></p><b>Namespace:</b> <a href="9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" target="">BitMiracle.LibTiff.Classic</a><br /><b>Assembly:</b> <span sdata="assembly">BitMiracle.LibTiff.NET</span> (in BitMiracle.LibTiff.NET.dll) Version: 2.4.499.0 (2.4.499.0)<div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Syntax</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div id="snippetGroup_Syntax" class="code"><div id="ID0ECBDAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0ECBDAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0ECBDAAAAA_tabimgleft"></div><div id="ID0ECBDAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECBDAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0ECBDAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECBDAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0ECBDAAAAA_tab3" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECBDAAAAA','Visual C++','3','4');return false;">C++</a></div><div id="ID0ECBDAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0ECBDAAAAA_tabimgright"></div></div><div id="ID0ECBDAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0ECBDAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0ECBDAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0ECBDAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0ECBDAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0ECBDAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0ECBDAAAAA','4')" title="Print">Print</a></div></div><div id="ID0ECBDAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="identifier">PutSeparateDelegate</span>(
+	<span class="identifier">TiffRgbaImage</span> <span class="parameter">img</span>,
+	<span class="identifier">int</span>[] <span class="parameter">raster</span>,
+	<span class="identifier">int</span> <span class="parameter">rasterOffset</span>,
+	<span class="identifier">int</span> <span class="parameter">rasterShift</span>,
+	<span class="identifier">int</span> <span class="parameter">x</span>,
+	<span class="identifier">int</span> <span class="parameter">y</span>,
+	<span class="identifier">int</span> <span class="parameter">width</span>,
+	<span class="identifier">int</span> <span class="parameter">height</span>,
+	<span class="identifier">byte</span>[] <span class="parameter">buffer</span>,
+	<span class="identifier">int</span> <span class="parameter">offset1</span>,
+	<span class="identifier">int</span> <span class="parameter">offset2</span>,
+	<span class="identifier">int</span> <span class="parameter">offset3</span>,
+	<span class="identifier">int</span> <span class="parameter">offset4</span>,
+	<span class="identifier">int</span> <span class="parameter">bufferShift</span>
+)</pre></div><div id="ID0ECBDAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public delegate void PutSeparateDelegate(
+	TiffRgbaImage img,
+	int[] raster,
+	int rasterOffset,
+	int rasterShift,
+	int x,
+	int y,
+	int width,
+	int height,
+	byte[] buffer,
+	int offset1,
+	int offset2,
+	int offset3,
+	int offset4,
+	int bufferShift
+)</pre></div><div id="ID0ECBDAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="keyword">Public</span> <span class="keyword">Delegate</span> <span class="keyword">Sub</span> <span class="identifier">PutSeparateDelegate</span> ( 
+	<span class="parameter">img</span> <span class="keyword">As</span> <span class="identifier">TiffRgbaImage</span>,
+	<span class="parameter">raster</span> <span class="keyword">As</span> <span class="identifier">Integer</span>(),
+	<span class="parameter">rasterOffset</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">rasterShift</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">x</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">y</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">width</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">height</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">buffer</span> <span class="keyword">As</span> <span class="identifier">Byte</span>(),
+	<span class="parameter">offset1</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">offset2</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">offset3</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">offset4</span> <span class="keyword">As</span> <span class="identifier">Integer</span>,
+	<span class="parameter">bufferShift</span> <span class="keyword">As</span> <span class="identifier">Integer</span>
+)</pre></div><div id="ID0ECBDAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Public Delegate Sub PutSeparateDelegate ( 
+	img As TiffRgbaImage,
+	raster As Integer(),
+	rasterOffset As Integer,
+	rasterShift As Integer,
+	x As Integer,
+	y As Integer,
+	width As Integer,
+	height As Integer,
+	buffer As Byte(),
+	offset1 As Integer,
+	offset2 As Integer,
+	offset3 As Integer,
+	offset4 As Integer,
+	bufferShift As Integer
+)</pre></div><div id="ID0ECBDAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="identifier">PutSeparateDelegate</span>(
+	<span class="identifier">TiffRgbaImage</span>^ <span class="parameter">img</span>, 
+	<span class="keyword">array</span>&lt;<span class="identifier">int</span>&gt;^ <span class="parameter">raster</span>, 
+	<span class="identifier">int</span> <span class="parameter">rasterOffset</span>, 
+	<span class="identifier">int</span> <span class="parameter">rasterShift</span>, 
+	<span class="identifier">int</span> <span class="parameter">x</span>, 
+	<span class="identifier">int</span> <span class="parameter">y</span>, 
+	<span class="identifier">int</span> <span class="parameter">width</span>, 
+	<span class="identifier">int</span> <span class="parameter">height</span>, 
+	<span class="keyword">array</span>&lt;<span class="identifier">unsigned char</span>&gt;^ <span class="parameter">buffer</span>, 
+	<span class="identifier">int</span> <span class="parameter">offset1</span>, 
+	<span class="identifier">int</span> <span class="parameter">offset2</span>, 
+	<span class="identifier">int</span> <span class="parameter">offset3</span>, 
+	<span class="identifier">int</span> <span class="parameter">offset4</span>, 
+	<span class="identifier">int</span> <span class="parameter">bufferShift</span>
+)</pre></div><div id="ID0ECBDAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public delegate void PutSeparateDelegate(
+	TiffRgbaImage^ img, 
+	array&lt;int&gt;^ raster, 
+	int rasterOffset, 
+	int rasterShift, 
+	int x, 
+	int y, 
+	int width, 
+	int height, 
+	array&lt;unsigned char&gt;^ buffer, 
+	int offset1, 
+	int offset2, 
+	int offset3, 
+	int offset4, 
+	int bufferShift
+)</pre></div><div id="ID0ECBDAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECBDAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0ECBDAAAAA');</script></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="img"><dt><span class="parameter">img</span></dt><dd>Type: <a href="979c75ee-8f71-5601-3830-ed93ec51174d.htm" target="">BitMiracle.LibTiff.Classic<span id="ID0EBCANADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCANADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>TiffRgbaImage</a><br /><span>An instance of the <a href="979c75ee-8f71-5601-3830-ed93ec51174d.htm" target="">TiffRgbaImage</a> class.</span></dd></dl><dl paramName="raster"><dt><span class="parameter">raster</span></dt><dd>Type: <span id="ID0EEAMADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EEAMADAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBDAMADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBDAMADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><span id="ID0ECAMADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0ECAMADAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script><br /><span>The raster (the buffer to place decoded image data to).</span></dd></dl><dl paramName="rasterOffset"><dt><span class="parameter">rasterOffset</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCALADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCALADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The zero-based byte offset in <span class="parameter">raster</span> at
+            which to begin storing decoded bytes.</span></dd></dl><dl paramName="rasterShift"><dt><span class="parameter">rasterShift</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCAKADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAKADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The value that should be added to
+            <span class="parameter">rasterOffset</span> after each row processed.</span></dd></dl><dl paramName="x"><dt><span class="parameter">x</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCAJADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAJADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The x-coordinate of the first pixel in block of pixels to be decoded.</span></dd></dl><dl paramName="y"><dt><span class="parameter">y</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCAIADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAIADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The y-coordinate of the first pixel in block of pixels to be decoded.</span></dd></dl><dl paramName="width"><dt><span class="parameter">width</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCAHADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAHADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The block width.</span></dd></dl><dl paramName="height"><dt><span class="parameter">height</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCAGADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAGADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The block height.</span></dd></dl><dl paramName="buffer"><dt><span class="parameter">buffer</span></dt><dd>Type: <span id="ID0EEAFADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EEAFADAAAAA?vb=|cpp=array&lt;|cs=|fs=|nu=");
+				</script><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/yyb1w04y" target="_blank">System<span id="ID0EBDAFADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBDAFADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Byte</a><span id="ID0ECAFADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0ECAFADAAAAA?vb=()|cpp=&gt;|cs=[]|fs=[]|nu=[]");
+				</script><br /><span>The buffer with image data.</span></dd></dl><dl paramName="offset1"><dt><span class="parameter">offset1</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCAEADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAEADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The zero-based byte offset in <span class="parameter">buffer</span> at
+            which to begin reading image bytes that constitute first sample plane.</span></dd></dl><dl paramName="offset2"><dt><span class="parameter">offset2</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCADADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCADADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The zero-based byte offset in <span class="parameter">buffer</span> at
+            which to begin reading image bytes that constitute second sample plane.</span></dd></dl><dl paramName="offset3"><dt><span class="parameter">offset3</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCACADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCACADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The zero-based byte offset in <span class="parameter">buffer</span> at
+            which to begin reading image bytes that constitute third sample plane.</span></dd></dl><dl paramName="offset4"><dt><span class="parameter">offset4</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCABADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCABADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The zero-based byte offset in <span class="parameter">buffer</span> at
+            which to begin reading image bytes that constitute fourth sample plane.</span></dd></dl><dl paramName="bufferShift"><dt><span class="parameter">bufferShift</span></dt><dd>Type: <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://msdn2.microsoft.com/en-us/library/td2s409d" target="_blank">System<span id="ID0EBCAAADAAAAA"> </span><script type="text/javascript">
+					addToLanSpecTextIdSet("ID0EBCAAADAAAAA?vb=.|cpp=::|cs=.|fs=.|nu=.");
+				</script>Int32</a><br /><span>The value that should be added to <span class="parameter">offset1</span>,
+            <span class="parameter">offset2</span>, <span class="parameter">offset3</span> and <span class="parameter">offset4</span>
+            after each row processed.</span></dd></dl></div><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Remarks</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><p>
+            The image reading and conversion methods invoke "put" methods to copy/image/whatever
+            tiles of raw image data. A default set of methods is provided to convert/copy raw
+            image data to 8-bit packed ABGR format rasters. Applications can supply alternate
+            methods that unpack the data into a different format or, for example, unpack the data
+            and draw the unpacked raster on the display.
+            </p><p>
+            To setup custom "put" method for separated samples please use
+            <a href="1d1db6ae-9df9-1f42-0d7f-57fcf959f339.htm" target="">PutSeparate</a> property.</p><p>
+            The <span class="parameter">bufferShift</span> is usually 0. It is greater than 0 if width of strip
+            being converted is greater than image width or part of the tile being converted is
+            outside the image (may be true for tiles on the right and bottom edge of the image).
+            In other words, <span class="parameter">bufferShift</span> is used to make up for any padding on
+            the end of each line of the buffer with image data.
+            </p><p>
+            The <span class="parameter">rasterShift</span> is 0 if width of tile being converted is equal to
+            image width and image data should not be flipped vertically. In other circumstances
+            <span class="parameter">rasterShift</span> is used to make up for any padding on the end of each
+            line of the raster and/or for flipping purposes.
+            </p><a name="seeAlsoSection"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">See Also</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div class="seeAlsoStyle"><a href="9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" target="">BitMiracle.LibTiff.Classic Namespace</a></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+TiffRgbaImage.PutSeparateDelegate+Delegate+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>

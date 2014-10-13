@@ -1,0 +1,627 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp"><head><link rel="SHORTCUT ICON" href="./../icons/favicon.ico" /><style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled { backgroundImageName: tabLeftBG.gif; }.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled { backgroundImageName: tabRightBG.gif; }.OH_footer { backgroundImageName: footer_slice.gif; background-position: top; background-repeat: repeat-x; }</style><link rel="stylesheet" type="text/css" href="./../styles/branding.css" /><link rel="stylesheet" type="text/css" href="./../styles/branding-en-US.css" /><style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style><script src="./../scripts/branding.js" type="text/javascript"><!----></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>TiffTag Enumeration</title><meta name="Language" content="en-us" /><meta name="System.Keywords" content="TiffTag enumeration" /><meta name="System.Keywords" content="BitMiracle.LibTiff.Classic.TiffTag enumeration" /><meta name="System.Keywords" content="IGNORE enumeration member" /><meta name="System.Keywords" content="SUBFILETYPE enumeration member" /><meta name="System.Keywords" content="OSUBFILETYPE enumeration member" /><meta name="System.Keywords" content="IMAGEWIDTH enumeration member" /><meta name="System.Keywords" content="IMAGELENGTH enumeration member" /><meta name="System.Keywords" content="BITSPERSAMPLE enumeration member" /><meta name="System.Keywords" content="COMPRESSION enumeration member" /><meta name="System.Keywords" content="PHOTOMETRIC enumeration member" /><meta name="System.Keywords" content="THRESHHOLDING enumeration member" /><meta name="System.Keywords" content="CELLWIDTH enumeration member" /><meta name="System.Keywords" content="CELLLENGTH enumeration member" /><meta name="System.Keywords" content="FILLORDER enumeration member" /><meta name="System.Keywords" content="DOCUMENTNAME enumeration member" /><meta name="System.Keywords" content="IMAGEDESCRIPTION enumeration member" /><meta name="System.Keywords" content="MAKE enumeration member" /><meta name="System.Keywords" content="MODEL enumeration member" /><meta name="System.Keywords" content="STRIPOFFSETS enumeration member" /><meta name="System.Keywords" content="ORIENTATION enumeration member" /><meta name="System.Keywords" content="SAMPLESPERPIXEL enumeration member" /><meta name="System.Keywords" content="ROWSPERSTRIP enumeration member" /><meta name="System.Keywords" content="STRIPBYTECOUNTS enumeration member" /><meta name="System.Keywords" content="MINSAMPLEVALUE enumeration member" /><meta name="System.Keywords" content="MAXSAMPLEVALUE enumeration member" /><meta name="System.Keywords" content="XRESOLUTION enumeration member" /><meta name="System.Keywords" content="YRESOLUTION enumeration member" /><meta name="System.Keywords" content="PLANARCONFIG enumeration member" /><meta name="System.Keywords" content="PAGENAME enumeration member" /><meta name="System.Keywords" content="XPOSITION enumeration member" /><meta name="System.Keywords" content="YPOSITION enumeration member" /><meta name="System.Keywords" content="FREEOFFSETS enumeration member" /><meta name="System.Keywords" content="FREEBYTECOUNTS enumeration member" /><meta name="System.Keywords" content="GRAYRESPONSEUNIT enumeration member" /><meta name="System.Keywords" content="GRAYRESPONSECURVE enumeration member" /><meta name="System.Keywords" content="GROUP3OPTIONS enumeration member" /><meta name="System.Keywords" content="T4OPTIONS enumeration member" /><meta name="System.Keywords" content="GROUP4OPTIONS enumeration member" /><meta name="System.Keywords" content="T6OPTIONS enumeration member" /><meta name="System.Keywords" content="RESOLUTIONUNIT enumeration member" /><meta name="System.Keywords" content="PAGENUMBER enumeration member" /><meta name="System.Keywords" content="COLORRESPONSEUNIT enumeration member" /><meta name="System.Keywords" content="TRANSFERFUNCTION enumeration member" /><meta name="System.Keywords" content="SOFTWARE enumeration member" /><meta name="System.Keywords" content="DATETIME enumeration member" /><meta name="System.Keywords" content="ARTIST enumeration member" /><meta name="System.Keywords" content="HOSTCOMPUTER enumeration member" /><meta name="System.Keywords" content="PREDICTOR enumeration member" /><meta name="System.Keywords" content="WHITEPOINT enumeration member" /><meta name="System.Keywords" content="PRIMARYCHROMATICITIES enumeration member" /><meta name="System.Keywords" content="COLORMAP enumeration member" /><meta name="System.Keywords" content="HALFTONEHINTS enumeration member" /><meta name="System.Keywords" content="TILEWIDTH enumeration member" /><meta name="System.Keywords" content="TILELENGTH enumeration member" /><meta name="System.Keywords" content="TILEOFFSETS enumeration member" /><meta name="System.Keywords" content="TILEBYTECOUNTS enumeration member" /><meta name="System.Keywords" content="BADFAXLINES enumeration member" /><meta name="System.Keywords" content="CLEANFAXDATA enumeration member" /><meta name="System.Keywords" content="CONSECUTIVEBADFAXLINES enumeration member" /><meta name="System.Keywords" content="SUBIFD enumeration member" /><meta name="System.Keywords" content="INKSET enumeration member" /><meta name="System.Keywords" content="INKNAMES enumeration member" /><meta name="System.Keywords" content="NUMBEROFINKS enumeration member" /><meta name="System.Keywords" content="DOTRANGE enumeration member" /><meta name="System.Keywords" content="TARGETPRINTER enumeration member" /><meta name="System.Keywords" content="EXTRASAMPLES enumeration member" /><meta name="System.Keywords" content="SAMPLEFORMAT enumeration member" /><meta name="System.Keywords" content="SMINSAMPLEVALUE enumeration member" /><meta name="System.Keywords" content="SMAXSAMPLEVALUE enumeration member" /><meta name="System.Keywords" content="CLIPPATH enumeration member" /><meta name="System.Keywords" content="XCLIPPATHUNITS enumeration member" /><meta name="System.Keywords" content="YCLIPPATHUNITS enumeration member" /><meta name="System.Keywords" content="INDEXED enumeration member" /><meta name="System.Keywords" content="JPEGTABLES enumeration member" /><meta name="System.Keywords" content="OPIPROXY enumeration member" /><meta name="System.Keywords" content="JPEGPROC enumeration member" /><meta name="System.Keywords" content="JPEGIFOFFSET enumeration member" /><meta name="System.Keywords" content="JPEGIFBYTECOUNT enumeration member" /><meta name="System.Keywords" content="JPEGRESTARTINTERVAL enumeration member" /><meta name="System.Keywords" content="JPEGLOSSLESSPREDICTORS enumeration member" /><meta name="System.Keywords" content="JPEGPOINTTRANSFORM enumeration member" /><meta name="System.Keywords" content="JPEGQTABLES enumeration member" /><meta name="System.Keywords" content="JPEGDCTABLES enumeration member" /><meta name="System.Keywords" content="JPEGACTABLES enumeration member" /><meta name="System.Keywords" content="YCBCRCOEFFICIENTS enumeration member" /><meta name="System.Keywords" content="YCBCRSUBSAMPLING enumeration member" /><meta name="System.Keywords" content="YCBCRPOSITIONING enumeration member" /><meta name="System.Keywords" content="REFERENCEBLACKWHITE enumeration member" /><meta name="System.Keywords" content="XMLPACKET enumeration member" /><meta name="System.Keywords" content="OPIIMAGEID enumeration member" /><meta name="System.Keywords" content="REFPTS enumeration member" /><meta name="System.Keywords" content="REGIONTACKPOINT enumeration member" /><meta name="System.Keywords" content="REGIONWARPCORNERS enumeration member" /><meta name="System.Keywords" content="REGIONAFFINE enumeration member" /><meta name="System.Keywords" content="MATTEING enumeration member" /><meta name="System.Keywords" content="DATATYPE enumeration member" /><meta name="System.Keywords" content="IMAGEDEPTH enumeration member" /><meta name="System.Keywords" content="TILEDEPTH enumeration member" /><meta name="System.Keywords" content="PIXAR_IMAGEFULLWIDTH enumeration member" /><meta name="System.Keywords" content="PIXAR_IMAGEFULLLENGTH enumeration member" /><meta name="System.Keywords" content="PIXAR_TEXTUREFORMAT enumeration member" /><meta name="System.Keywords" content="PIXAR_WRAPMODES enumeration member" /><meta name="System.Keywords" content="PIXAR_FOVCOT enumeration member" /><meta name="System.Keywords" content="PIXAR_MATRIX_WORLDTOSCREEN enumeration member" /><meta name="System.Keywords" content="PIXAR_MATRIX_WORLDTOCAMERA enumeration member" /><meta name="System.Keywords" content="WRITERSERIALNUMBER enumeration member" /><meta name="System.Keywords" content="COPYRIGHT enumeration member" /><meta name="System.Keywords" content="RICHTIFFIPTC enumeration member" /><meta name="System.Keywords" content="IT8SITE enumeration member" /><meta name="System.Keywords" content="IT8COLORSEQUENCE enumeration member" /><meta name="System.Keywords" content="IT8HEADER enumeration member" /><meta name="System.Keywords" content="IT8RASTERPADDING enumeration member" /><meta name="System.Keywords" content="IT8BITSPERRUNLENGTH enumeration member" /><meta name="System.Keywords" content="IT8BITSPEREXTENDEDRUNLENGTH enumeration member" /><meta name="System.Keywords" content="IT8COLORTABLE enumeration member" /><meta name="System.Keywords" content="IT8IMAGECOLORINDICATOR enumeration member" /><meta name="System.Keywords" content="IT8BKGCOLORINDICATOR enumeration member" /><meta name="System.Keywords" content="IT8IMAGECOLORVALUE enumeration member" /><meta name="System.Keywords" content="IT8BKGCOLORVALUE enumeration member" /><meta name="System.Keywords" content="IT8PIXELINTENSITYRANGE enumeration member" /><meta name="System.Keywords" content="IT8TRANSPARENCYINDICATOR enumeration member" /><meta name="System.Keywords" content="IT8COLORCHARACTERIZATION enumeration member" /><meta name="System.Keywords" content="IT8HCUSAGE enumeration member" /><meta name="System.Keywords" content="IT8TRAPINDICATOR enumeration member" /><meta name="System.Keywords" content="IT8CMYKEQUIVALENT enumeration member" /><meta name="System.Keywords" content="FRAMECOUNT enumeration member" /><meta name="System.Keywords" content="PHOTOSHOP enumeration member" /><meta name="System.Keywords" content="EXIFIFD enumeration member" /><meta name="System.Keywords" content="ICCPROFILE enumeration member" /><meta name="System.Keywords" content="JBIGOPTIONS enumeration member" /><meta name="System.Keywords" content="GPSIFD enumeration member" /><meta name="System.Keywords" content="FAXRECVPARAMS enumeration member" /><meta name="System.Keywords" content="FAXSUBADDRESS enumeration member" /><meta name="System.Keywords" content="FAXRECVTIME enumeration member" /><meta name="System.Keywords" content="FAXDCS enumeration member" /><meta name="System.Keywords" content="STONITS enumeration member" /><meta name="System.Keywords" content="FEDEX_EDR enumeration member" /><meta name="System.Keywords" content="INTEROPERABILITYIFD enumeration member" /><meta name="System.Keywords" content="DNGVERSION enumeration member" /><meta name="System.Keywords" content="DNGBACKWARDVERSION enumeration member" /><meta name="System.Keywords" content="UNIQUECAMERAMODEL enumeration member" /><meta name="System.Keywords" content="LOCALIZEDCAMERAMODEL enumeration member" /><meta name="System.Keywords" content="CFAPLANECOLOR enumeration member" /><meta name="System.Keywords" content="CFALAYOUT enumeration member" /><meta name="System.Keywords" content="LINEARIZATIONTABLE enumeration member" /><meta name="System.Keywords" content="BLACKLEVELREPEATDIM enumeration member" /><meta name="System.Keywords" content="BLACKLEVEL enumeration member" /><meta name="System.Keywords" content="BLACKLEVELDELTAH enumeration member" /><meta name="System.Keywords" content="BLACKLEVELDELTAV enumeration member" /><meta name="System.Keywords" content="WHITELEVEL enumeration member" /><meta name="System.Keywords" content="DEFAULTSCALE enumeration member" /><meta name="System.Keywords" content="DEFAULTCROPORIGIN enumeration member" /><meta name="System.Keywords" content="DEFAULTCROPSIZE enumeration member" /><meta name="System.Keywords" content="COLORMATRIX1 enumeration member" /><meta name="System.Keywords" content="COLORMATRIX2 enumeration member" /><meta name="System.Keywords" content="CAMERACALIBRATION1 enumeration member" /><meta name="System.Keywords" content="CAMERACALIBRATION2 enumeration member" /><meta name="System.Keywords" content="REDUCTIONMATRIX1 enumeration member" /><meta name="System.Keywords" content="REDUCTIONMATRIX2 enumeration member" /><meta name="System.Keywords" content="ANALOGBALANCE enumeration member" /><meta name="System.Keywords" content="ASSHOTNEUTRAL enumeration member" /><meta name="System.Keywords" content="ASSHOTWHITEXY enumeration member" /><meta name="System.Keywords" content="BASELINEEXPOSURE enumeration member" /><meta name="System.Keywords" content="BASELINENOISE enumeration member" /><meta name="System.Keywords" content="BASELINESHARPNESS enumeration member" /><meta name="System.Keywords" content="BAYERGREENSPLIT enumeration member" /><meta name="System.Keywords" content="LINEARRESPONSELIMIT enumeration member" /><meta name="System.Keywords" content="CAMERASERIALNUMBER enumeration member" /><meta name="System.Keywords" content="LENSINFO enumeration member" /><meta name="System.Keywords" content="CHROMABLURRADIUS enumeration member" /><meta name="System.Keywords" content="ANTIALIASSTRENGTH enumeration member" /><meta name="System.Keywords" content="SHADOWSCALE enumeration member" /><meta name="System.Keywords" content="DNGPRIVATEDATA enumeration member" /><meta name="System.Keywords" content="MAKERNOTESAFETY enumeration member" /><meta name="System.Keywords" content="CALIBRATIONILLUMINANT1 enumeration member" /><meta name="System.Keywords" content="CALIBRATIONILLUMINANT2 enumeration member" /><meta name="System.Keywords" content="BESTQUALITYSCALE enumeration member" /><meta name="System.Keywords" content="RAWDATAUNIQUEID enumeration member" /><meta name="System.Keywords" content="ORIGINALRAWFILENAME enumeration member" /><meta name="System.Keywords" content="ORIGINALRAWFILEDATA enumeration member" /><meta name="System.Keywords" content="ACTIVEAREA enumeration member" /><meta name="System.Keywords" content="MASKEDAREAS enumeration member" /><meta name="System.Keywords" content="ASSHOTICCPROFILE enumeration member" /><meta name="System.Keywords" content="ASSHOTPREPROFILEMATRIX enumeration member" /><meta name="System.Keywords" content="CURRENTICCPROFILE enumeration member" /><meta name="System.Keywords" content="CURRENTPREPROFILEMATRIX enumeration member" /><meta name="System.Keywords" content="DCSHUESHIFTVALUES enumeration member" /><meta name="System.Keywords" content="FAXMODE enumeration member" /><meta name="System.Keywords" content="JPEGQUALITY enumeration member" /><meta name="System.Keywords" content="JPEGCOLORMODE enumeration member" /><meta name="System.Keywords" content="JPEGTABLESMODE enumeration member" /><meta name="System.Keywords" content="FAXFILLFUNC enumeration member" /><meta name="System.Keywords" content="PIXARLOGDATAFMT enumeration member" /><meta name="System.Keywords" content="DCSIMAGERTYPE enumeration member" /><meta name="System.Keywords" content="DCSINTERPMODE enumeration member" /><meta name="System.Keywords" content="DCSBALANCEARRAY enumeration member" /><meta name="System.Keywords" content="DCSCORRECTMATRIX enumeration member" /><meta name="System.Keywords" content="DCSGAMMA enumeration member" /><meta name="System.Keywords" content="DCSTOESHOULDERPTS enumeration member" /><meta name="System.Keywords" content="DCSCALIBRATIONFD enumeration member" /><meta name="System.Keywords" content="ZIPQUALITY enumeration member" /><meta name="System.Keywords" content="PIXARLOGQUALITY enumeration member" /><meta name="System.Keywords" content="DCSCLIPRECTANGLE enumeration member" /><meta name="System.Keywords" content="SGILOGDATAFMT enumeration member" /><meta name="System.Keywords" content="SGILOGENCODE enumeration member" /><meta name="System.Keywords" content="EXIF_EXPOSURETIME enumeration member" /><meta name="System.Keywords" content="EXIF_FNUMBER enumeration member" /><meta name="System.Keywords" content="EXIF_EXPOSUREPROGRAM enumeration member" /><meta name="System.Keywords" content="EXIF_SPECTRALSENSITIVITY enumeration member" /><meta name="System.Keywords" content="EXIF_ISOSPEEDRATINGS enumeration member" /><meta name="System.Keywords" content="EXIF_OECF enumeration member" /><meta name="System.Keywords" content="EXIF_EXIFVERSION enumeration member" /><meta name="System.Keywords" content="EXIF_DATETIMEORIGINAL enumeration member" /><meta name="System.Keywords" content="EXIF_DATETIMEDIGITIZED enumeration member" /><meta name="System.Keywords" content="EXIF_COMPONENTSCONFIGURATION enumeration member" /><meta name="System.Keywords" content="EXIF_COMPRESSEDBITSPERPIXEL enumeration member" /><meta name="System.Keywords" content="EXIF_SHUTTERSPEEDVALUE enumeration member" /><meta name="System.Keywords" content="EXIF_APERTUREVALUE enumeration member" /><meta name="System.Keywords" content="EXIF_BRIGHTNESSVALUE enumeration member" /><meta name="System.Keywords" content="EXIF_EXPOSUREBIASVALUE enumeration member" /><meta name="System.Keywords" content="EXIF_MAXAPERTUREVALUE enumeration member" /><meta name="System.Keywords" content="EXIF_SUBJECTDISTANCE enumeration member" /><meta name="System.Keywords" content="EXIF_METERINGMODE enumeration member" /><meta name="System.Keywords" content="EXIF_LIGHTSOURCE enumeration member" /><meta name="System.Keywords" content="EXIF_FLASH enumeration member" /><meta name="System.Keywords" content="EXIF_FOCALLENGTH enumeration member" /><meta name="System.Keywords" content="EXIF_SUBJECTAREA enumeration member" /><meta name="System.Keywords" content="EXIF_MAKERNOTE enumeration member" /><meta name="System.Keywords" content="EXIF_USERCOMMENT enumeration member" /><meta name="System.Keywords" content="EXIF_SUBSECTIME enumeration member" /><meta name="System.Keywords" content="EXIF_SUBSECTIMEORIGINAL enumeration member" /><meta name="System.Keywords" content="EXIF_SUBSECTIMEDIGITIZED enumeration member" /><meta name="System.Keywords" content="EXIF_FLASHPIXVERSION enumeration member" /><meta name="System.Keywords" content="EXIF_COLORSPACE enumeration member" /><meta name="System.Keywords" content="EXIF_PIXELXDIMENSION enumeration member" /><meta name="System.Keywords" content="EXIF_PIXELYDIMENSION enumeration member" /><meta name="System.Keywords" content="EXIF_RELATEDSOUNDFILE enumeration member" /><meta name="System.Keywords" content="EXIF_FLASHENERGY enumeration member" /><meta name="System.Keywords" content="EXIF_SPATIALFREQUENCYRESPONSE enumeration member" /><meta name="System.Keywords" content="EXIF_FOCALPLANEXRESOLUTION enumeration member" /><meta name="System.Keywords" content="EXIF_FOCALPLANEYRESOLUTION enumeration member" /><meta name="System.Keywords" content="EXIF_FOCALPLANERESOLUTIONUNIT enumeration member" /><meta name="System.Keywords" content="EXIF_SUBJECTLOCATION enumeration member" /><meta name="System.Keywords" content="EXIF_EXPOSUREINDEX enumeration member" /><meta name="System.Keywords" content="EXIF_SENSINGMETHOD enumeration member" /><meta name="System.Keywords" content="EXIF_FILESOURCE enumeration member" /><meta name="System.Keywords" content="EXIF_SCENETYPE enumeration member" /><meta name="System.Keywords" content="EXIF_CFAPATTERN enumeration member" /><meta name="System.Keywords" content="EXIF_CUSTOMRENDERED enumeration member" /><meta name="System.Keywords" content="EXIF_EXPOSUREMODE enumeration member" /><meta name="System.Keywords" content="EXIF_WHITEBALANCE enumeration member" /><meta name="System.Keywords" content="EXIF_DIGITALZOOMRATIO enumeration member" /><meta name="System.Keywords" content="EXIF_FOCALLENGTHIN35MMFILM enumeration member" /><meta name="System.Keywords" content="EXIF_SCENECAPTURETYPE enumeration member" /><meta name="System.Keywords" content="EXIF_GAINCONTROL enumeration member" /><meta name="System.Keywords" content="EXIF_CONTRAST enumeration member" /><meta name="System.Keywords" content="EXIF_SATURATION enumeration member" /><meta name="System.Keywords" content="EXIF_SHARPNESS enumeration member" /><meta name="System.Keywords" content="EXIF_DEVICESETTINGDESCRIPTION enumeration member" /><meta name="System.Keywords" content="EXIF_SUBJECTDISTANCERANGE enumeration member" /><meta name="System.Keywords" content="EXIF_IMAGEUNIQUEID enumeration member" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IGNORE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SUBFILETYPE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.OSUBFILETYPE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IMAGEWIDTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IMAGELENGTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BITSPERSAMPLE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.COMPRESSION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PHOTOMETRIC" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.THRESHHOLDING" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CELLWIDTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CELLLENGTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FILLORDER" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DOCUMENTNAME" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IMAGEDESCRIPTION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.MAKE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.MODEL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.STRIPOFFSETS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ORIENTATION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SAMPLESPERPIXEL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ROWSPERSTRIP" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.STRIPBYTECOUNTS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.MINSAMPLEVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.MAXSAMPLEVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.XRESOLUTION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.YRESOLUTION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PLANARCONFIG" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PAGENAME" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.XPOSITION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.YPOSITION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FREEOFFSETS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FREEBYTECOUNTS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.GRAYRESPONSEUNIT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.GRAYRESPONSECURVE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.GROUP3OPTIONS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.T4OPTIONS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.GROUP4OPTIONS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.T6OPTIONS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.RESOLUTIONUNIT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PAGENUMBER" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.COLORRESPONSEUNIT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.TRANSFERFUNCTION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SOFTWARE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DATETIME" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ARTIST" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.HOSTCOMPUTER" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PREDICTOR" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.WHITEPOINT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PRIMARYCHROMATICITIES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.COLORMAP" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.HALFTONEHINTS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.TILEWIDTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.TILELENGTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.TILEOFFSETS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.TILEBYTECOUNTS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BADFAXLINES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CLEANFAXDATA" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CONSECUTIVEBADFAXLINES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SUBIFD" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.INKSET" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.INKNAMES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.NUMBEROFINKS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DOTRANGE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.TARGETPRINTER" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXTRASAMPLES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SAMPLEFORMAT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SMINSAMPLEVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SMAXSAMPLEVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CLIPPATH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.XCLIPPATHUNITS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.YCLIPPATHUNITS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.INDEXED" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGTABLES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.OPIPROXY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGPROC" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGIFOFFSET" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGIFBYTECOUNT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGRESTARTINTERVAL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGLOSSLESSPREDICTORS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGPOINTTRANSFORM" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGQTABLES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGDCTABLES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGACTABLES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.YCBCRCOEFFICIENTS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.YCBCRSUBSAMPLING" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.YCBCRPOSITIONING" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.REFERENCEBLACKWHITE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.XMLPACKET" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.OPIIMAGEID" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.REFPTS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.REGIONTACKPOINT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.REGIONWARPCORNERS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.REGIONAFFINE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.MATTEING" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DATATYPE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IMAGEDEPTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.TILEDEPTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXAR_IMAGEFULLWIDTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXAR_IMAGEFULLLENGTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXAR_TEXTUREFORMAT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXAR_WRAPMODES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXAR_FOVCOT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXAR_MATRIX_WORLDTOSCREEN" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXAR_MATRIX_WORLDTOCAMERA" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.WRITERSERIALNUMBER" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.COPYRIGHT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.RICHTIFFIPTC" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8SITE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8COLORSEQUENCE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8HEADER" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8RASTERPADDING" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8BITSPERRUNLENGTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8BITSPEREXTENDEDRUNLENGTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8COLORTABLE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8IMAGECOLORINDICATOR" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8BKGCOLORINDICATOR" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8IMAGECOLORVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8BKGCOLORVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8PIXELINTENSITYRANGE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8TRANSPARENCYINDICATOR" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8COLORCHARACTERIZATION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8HCUSAGE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8TRAPINDICATOR" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.IT8CMYKEQUIVALENT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FRAMECOUNT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PHOTOSHOP" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIFIFD" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ICCPROFILE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JBIGOPTIONS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.GPSIFD" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FAXRECVPARAMS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FAXSUBADDRESS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FAXRECVTIME" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FAXDCS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.STONITS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FEDEX_EDR" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.INTEROPERABILITYIFD" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DNGVERSION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DNGBACKWARDVERSION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.UNIQUECAMERAMODEL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.LOCALIZEDCAMERAMODEL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CFAPLANECOLOR" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CFALAYOUT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.LINEARIZATIONTABLE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BLACKLEVELREPEATDIM" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BLACKLEVEL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BLACKLEVELDELTAH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BLACKLEVELDELTAV" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.WHITELEVEL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DEFAULTSCALE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DEFAULTCROPORIGIN" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DEFAULTCROPSIZE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.COLORMATRIX1" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.COLORMATRIX2" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CAMERACALIBRATION1" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CAMERACALIBRATION2" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.REDUCTIONMATRIX1" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.REDUCTIONMATRIX2" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ANALOGBALANCE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ASSHOTNEUTRAL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ASSHOTWHITEXY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BASELINEEXPOSURE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BASELINENOISE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BASELINESHARPNESS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BAYERGREENSPLIT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.LINEARRESPONSELIMIT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CAMERASERIALNUMBER" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.LENSINFO" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CHROMABLURRADIUS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ANTIALIASSTRENGTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SHADOWSCALE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DNGPRIVATEDATA" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.MAKERNOTESAFETY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CALIBRATIONILLUMINANT1" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CALIBRATIONILLUMINANT2" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.BESTQUALITYSCALE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.RAWDATAUNIQUEID" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ORIGINALRAWFILENAME" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ORIGINALRAWFILEDATA" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ACTIVEAREA" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.MASKEDAREAS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ASSHOTICCPROFILE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ASSHOTPREPROFILEMATRIX" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CURRENTICCPROFILE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.CURRENTPREPROFILEMATRIX" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSHUESHIFTVALUES" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FAXMODE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGQUALITY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGCOLORMODE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.JPEGTABLESMODE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.FAXFILLFUNC" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXARLOGDATAFMT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSIMAGERTYPE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSINTERPMODE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSBALANCEARRAY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSCORRECTMATRIX" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSGAMMA" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSTOESHOULDERPTS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSCALIBRATIONFD" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.ZIPQUALITY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.PIXARLOGQUALITY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.DCSCLIPRECTANGLE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SGILOGDATAFMT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.SGILOGENCODE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSURETIME" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FNUMBER" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSUREPROGRAM" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SPECTRALSENSITIVITY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_ISOSPEEDRATINGS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_OECF" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXIFVERSION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_DATETIMEORIGINAL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_DATETIMEDIGITIZED" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_COMPONENTSCONFIGURATION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_COMPRESSEDBITSPERPIXEL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SHUTTERSPEEDVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_APERTUREVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_BRIGHTNESSVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSUREBIASVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_MAXAPERTUREVALUE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBJECTDISTANCE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_METERINGMODE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_LIGHTSOURCE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FLASH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALLENGTH" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBJECTAREA" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_MAKERNOTE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_USERCOMMENT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBSECTIME" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBSECTIMEORIGINAL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBSECTIMEDIGITIZED" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FLASHPIXVERSION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_COLORSPACE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_PIXELXDIMENSION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_PIXELYDIMENSION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_RELATEDSOUNDFILE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FLASHENERGY" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SPATIALFREQUENCYRESPONSE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALPLANEXRESOLUTION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALPLANEYRESOLUTION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALPLANERESOLUTIONUNIT" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBJECTLOCATION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSUREINDEX" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SENSINGMETHOD" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FILESOURCE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SCENETYPE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_CFAPATTERN" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_CUSTOMRENDERED" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSUREMODE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_WHITEBALANCE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_DIGITALZOOMRATIO" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALLENGTHIN35MMFILM" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SCENECAPTURETYPE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_GAINCONTROL" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_CONTRAST" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SATURATION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SHARPNESS" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_DEVICESETTINGDESCRIPTION" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBJECTDISTANCERANGE" /><meta name="Microsoft.Help.F1" content="BitMiracle.LibTiff.Classic.TiffTag.EXIF_IMAGEUNIQUEID" /><meta name="Microsoft.Help.Id" content="T:BitMiracle.LibTiff.Classic.TiffTag" /><meta name="Description" content="TIFF tag definitions." /><meta name="Microsoft.Help.ContentType" content="Reference" /><meta name="BrandingAware" content="'true'" /><meta name="container" content="BitMiracle.LibTiff.Classic" /><meta name="file" content="004b29cb-3828-19ac-b924-95671b477f08" /><meta name="guid" content="004b29cb-3828-19ac-b924-95671b477f08" /><link type="text/css" rel="stylesheet" href="ms-help://Hx/HxRuntime/HxLink.css" /><meta name="SelfBranded" content="true" /></head><body onload="onLoad()" class="primary-mtps-offline-document"><div class="OH_outerDiv"><div class="OH_outerContent"><table class="TitleTable"><tr><td class="OH_tdTitleColumn">TiffTag Enumeration</td><td class="OH_tdRunningTitleColumn">LibTiff.Net, the managed version of the LibTiff library for reading and writing TIFF.</td></tr></table><div id="mainSection"><div id="mainBody"><span class="introStyle"></span><div class="summary">
+            TIFF tag definitions.
+            </div><p></p><b>Namespace:</b> <a href="9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" target="">BitMiracle.LibTiff.Classic</a><br /><b>Assembly:</b> <span sdata="assembly">BitMiracle.LibTiff.NET</span> (in BitMiracle.LibTiff.NET.dll) Version: 2.4.499.0 (2.4.499.0)<div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Syntax</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div id="snippetGroup_Syntax" class="code"><div id="ID0ECAEAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0ECAEAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0ECAEAAAAA_tabimgleft"></div><div id="ID0ECAEAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECAEAAAAA','C#','1','4');return false;">C#</a></div><div id="ID0ECAEAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECAEAAAAA','Visual Basic','2','4');return false;">VB</a></div><div id="ID0ECAEAAAAA_tab3" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="#" onclick="javascript:ChangeTab('ID0ECAEAAAAA','Visual C++','3','4');return false;">C++</a></div><div id="ID0ECAEAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0ECAEAAAAA_tabimgright"></div></div><div id="ID0ECAEAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0ECAEAAAAA_ViewColorized" href="#" onclick="javascript:ExchangeTitleContent('ID0ECAEAAAAA','4')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0ECAEAAAAA_copycode" href="#" onclick="javascript:CopyToClipboard('ID0ECAEAAAAA','4')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0ECAEAAAAA_PrintText" class="OH_PrintText" href="#" onclick="javascript:Print('ID0ECAEAAAAA','4')" title="Print">Print</a></div></div><div id="ID0ECAEAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre><span class="keyword">public</span> <span class="keyword">enum</span> <span class="identifier">TiffTag</span></pre></div><div id="ID0ECAEAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public enum TiffTag</pre></div><div id="ID0ECAEAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="keyword">Public</span> <span class="keyword">Enumeration</span> <span class="identifier">TiffTag</span></pre></div><div id="ID0ECAEAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Public Enumeration TiffTag</pre></div><div id="ID0ECAEAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre><span class="keyword">public</span> <span class="keyword">enum class</span> <span class="identifier">TiffTag</span></pre></div><div id="ID0ECAEAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public enum class TiffTag</pre></div><div id="ID0ECAEAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECAEAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0ECAEAAAAA');</script></div><div id="enumerationSection"><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Members</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><table id="memberList" class="members"><tr><th class="ps_iconColumn">
+									 
+								</th><th class="ps_nameColumn">Member name</th><th class="ps_valueColumn">Value</th><th class="ps_descriptionColumn">Description</th></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IGNORE"><span class="selflink">IGNORE</span></td><td>0</td><td>
+            Tag placeholder
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SUBFILETYPE"><span class="selflink">SUBFILETYPE</span></td><td>254</td><td>
+            Subfile data descriptor.
+            For the list of possible values, see <a href="09cacae0-cba1-e059-0899-13e5a4001db3.htm" target="">FileType</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.OSUBFILETYPE"><span class="selflink">OSUBFILETYPE</span></td><td>255</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Kind of data in subfile. For the list of possible values, see <a href="ef0eb2f9-7686-0a09-2ecc-9b6d6a124f35.htm" target="">OFileType</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IMAGEWIDTH"><span class="selflink">IMAGEWIDTH</span></td><td>256</td><td>
+            Image width in pixels.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IMAGELENGTH"><span class="selflink">IMAGELENGTH</span></td><td>257</td><td>
+            Image height in pixels.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BITSPERSAMPLE"><span class="selflink">BITSPERSAMPLE</span></td><td>258</td><td>
+            Bits per channel (sample).
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.COMPRESSION"><span class="selflink">COMPRESSION</span></td><td>259</td><td>
+            Data compression technique.
+            For the list of possible values, see <a href="ce8d3df9-34e8-ec94-528a-aa310689459b.htm" target="">Compression</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PHOTOMETRIC"><span class="selflink">PHOTOMETRIC</span></td><td>262</td><td>
+            Photometric interpretation.
+            For the list of possible values, see <a href="762c8b34-c03a-e82d-facc-7c5a951666c6.htm" target="">Photometric</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.THRESHHOLDING"><span class="selflink">THRESHHOLDING</span></td><td>263</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Thresholding used on data. For the list of possible values, see <a href="98e0e69a-3705-662e-ed72-952340aad2f0.htm" target="">Threshold</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CELLWIDTH"><span class="selflink">CELLWIDTH</span></td><td>264</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Dithering matrix width.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CELLLENGTH"><span class="selflink">CELLLENGTH</span></td><td>265</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Dithering matrix height.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FILLORDER"><span class="selflink">FILLORDER</span></td><td>266</td><td>
+            Data order within a byte.
+            For the list of possible values, see <a href="65279396-524c-fcee-60dc-bf29d27ea836.htm" target="">FillOrder</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DOCUMENTNAME"><span class="selflink">DOCUMENTNAME</span></td><td>269</td><td>
+            Name of document which holds for image.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IMAGEDESCRIPTION"><span class="selflink">IMAGEDESCRIPTION</span></td><td>270</td><td>
+            Information about image.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.MAKE"><span class="selflink">MAKE</span></td><td>271</td><td>
+            Scanner manufacturer name.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.MODEL"><span class="selflink">MODEL</span></td><td>272</td><td>
+            Scanner model name/number.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.STRIPOFFSETS"><span class="selflink">STRIPOFFSETS</span></td><td>273</td><td>
+            Offsets to data strips.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ORIENTATION"><span class="selflink">ORIENTATION</span></td><td>274</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Image orientation. For the list of possible values, see <a href="16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" target="">Orientation</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SAMPLESPERPIXEL"><span class="selflink">SAMPLESPERPIXEL</span></td><td>277</td><td>
+            Samples per pixel.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ROWSPERSTRIP"><span class="selflink">ROWSPERSTRIP</span></td><td>278</td><td>
+            Rows per strip of data.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.STRIPBYTECOUNTS"><span class="selflink">STRIPBYTECOUNTS</span></td><td>279</td><td>
+            Bytes counts for strips.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.MINSAMPLEVALUE"><span class="selflink">MINSAMPLEVALUE</span></td><td>280</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Minimum sample value.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.MAXSAMPLEVALUE"><span class="selflink">MAXSAMPLEVALUE</span></td><td>281</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Maximum sample value.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.XRESOLUTION"><span class="selflink">XRESOLUTION</span></td><td>282</td><td>
+            Pixels/resolution in x.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.YRESOLUTION"><span class="selflink">YRESOLUTION</span></td><td>283</td><td>
+            Pixels/resolution in y.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PLANARCONFIG"><span class="selflink">PLANARCONFIG</span></td><td>284</td><td>
+            Storage organization.
+            For the list of possible values, see <a href="d2e12021-da72-b32f-b558-dc23d914d698.htm" target="">PlanarConfig</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PAGENAME"><span class="selflink">PAGENAME</span></td><td>285</td><td>
+            Page name image is from.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.XPOSITION"><span class="selflink">XPOSITION</span></td><td>286</td><td>
+            X page offset of image lhs.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.YPOSITION"><span class="selflink">YPOSITION</span></td><td>287</td><td>
+            Y page offset of image lhs.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FREEOFFSETS"><span class="selflink">FREEOFFSETS</span></td><td>288</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Byte offset to free block.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FREEBYTECOUNTS"><span class="selflink">FREEBYTECOUNTS</span></td><td>289</td><td>
+            [obsoleted by TIFF rev. 5.0]<br />
+            Sizes of free blocks.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.GRAYRESPONSEUNIT"><span class="selflink">GRAYRESPONSEUNIT</span></td><td>290</td><td>
+            [obsoleted by TIFF rev. 6.0]<br />
+            Gray scale curve accuracy.
+            For the list of possible values, see <a href="a711564a-497c-098c-df92-22e73b235fb2.htm" target="">GrayResponseUnit</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.GRAYRESPONSECURVE"><span class="selflink">GRAYRESPONSECURVE</span></td><td>291</td><td>
+            [obsoleted by TIFF rev. 6.0]<br />
+            Gray scale response curve.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.GROUP3OPTIONS"><span class="selflink">GROUP3OPTIONS</span></td><td>292</td><td>
+            Options for CCITT Group 3 fax encoding. 32 flag bits.
+            For the list of possible values, see <a href="e00d6851-cf09-287f-638b-fc62c498351a.htm" target="">Group3Opt</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.T4OPTIONS"><span class="selflink">T4OPTIONS</span></td><td>292</td><td>
+            TIFF 6.0 proper name alias for GROUP3OPTIONS.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.GROUP4OPTIONS"><span class="selflink">GROUP4OPTIONS</span></td><td>293</td><td>
+            Options for CCITT Group 4 fax encoding. 32 flag bits.
+            For the list of possible values, see <a href="e00d6851-cf09-287f-638b-fc62c498351a.htm" target="">Group3Opt</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.T6OPTIONS"><span class="selflink">T6OPTIONS</span></td><td>293</td><td>
+            TIFF 6.0 proper name alias for GROUP4OPTIONS.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.RESOLUTIONUNIT"><span class="selflink">RESOLUTIONUNIT</span></td><td>296</td><td>
+            Units of resolutions.
+            For the list of possible values, see <a href="5137d019-fa06-e573-99cd-8d4a5900e1c6.htm" target="">ResUnit</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PAGENUMBER"><span class="selflink">PAGENUMBER</span></td><td>297</td><td>
+            Page numbers of multi-page.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.COLORRESPONSEUNIT"><span class="selflink">COLORRESPONSEUNIT</span></td><td>300</td><td>
+            [obsoleted by TIFF rev. 6.0]<br />
+            Color curve accuracy.
+            For the list of possible values, see <a href="0f629c9d-c09f-7a70-21dd-7342559a714f.htm" target="">ColorResponseUnit</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.TRANSFERFUNCTION"><span class="selflink">TRANSFERFUNCTION</span></td><td>301</td><td>
+            Colorimetry info.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SOFTWARE"><span class="selflink">SOFTWARE</span></td><td>305</td><td>
+            Name &amp; release.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DATETIME"><span class="selflink">DATETIME</span></td><td>306</td><td>
+            Creation date and time.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ARTIST"><span class="selflink">ARTIST</span></td><td>315</td><td>
+            Creator of image.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.HOSTCOMPUTER"><span class="selflink">HOSTCOMPUTER</span></td><td>316</td><td>
+            Machine where created.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PREDICTOR"><span class="selflink">PREDICTOR</span></td><td>317</td><td>
+            Prediction scheme w/ LZW.
+            For the list of possible values, see <a href="fa1b7e9c-678e-7328-2a3f-be1fe8578cbc.htm" target="">Predictor</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.WHITEPOINT"><span class="selflink">WHITEPOINT</span></td><td>318</td><td>
+            Image white point.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PRIMARYCHROMATICITIES"><span class="selflink">PRIMARYCHROMATICITIES</span></td><td>319</td><td>
+            Primary chromaticities.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.COLORMAP"><span class="selflink">COLORMAP</span></td><td>320</td><td>
+            RGB map for pallette image.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.HALFTONEHINTS"><span class="selflink">HALFTONEHINTS</span></td><td>321</td><td>
+            Highlight + shadow info.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.TILEWIDTH"><span class="selflink">TILEWIDTH</span></td><td>322</td><td>
+            Tile width in pixels.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.TILELENGTH"><span class="selflink">TILELENGTH</span></td><td>323</td><td>
+            Tile height in pixels.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.TILEOFFSETS"><span class="selflink">TILEOFFSETS</span></td><td>324</td><td>
+            Offsets to data tiles.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.TILEBYTECOUNTS"><span class="selflink">TILEBYTECOUNTS</span></td><td>325</td><td>
+            Byte counts for tiles.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BADFAXLINES"><span class="selflink">BADFAXLINES</span></td><td>326</td><td>
+            Lines with wrong pixel count.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CLEANFAXDATA"><span class="selflink">CLEANFAXDATA</span></td><td>327</td><td>
+            Regenerated line info.
+            For the list of possible values, see <a href="470116a5-e961-c50c-988b-7e8dfbe3b5cb.htm" target="">CleanFaxData</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CONSECUTIVEBADFAXLINES"><span class="selflink">CONSECUTIVEBADFAXLINES</span></td><td>328</td><td>
+            Max consecutive bad lines.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SUBIFD"><span class="selflink">SUBIFD</span></td><td>330</td><td>
+            Subimage descriptors.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.INKSET"><span class="selflink">INKSET</span></td><td>332</td><td>
+            Inks in separated image.
+            For the list of possible values, see <a href="0dd445ac-30cc-2c32-1dcc-5b48d2e644f4.htm" target="">InkSet</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.INKNAMES"><span class="selflink">INKNAMES</span></td><td>333</td><td>
+            ASCII names of inks.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.NUMBEROFINKS"><span class="selflink">NUMBEROFINKS</span></td><td>334</td><td>
+            Number of inks.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DOTRANGE"><span class="selflink">DOTRANGE</span></td><td>336</td><td>
+            0% and 100% dot codes.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.TARGETPRINTER"><span class="selflink">TARGETPRINTER</span></td><td>337</td><td>
+            Separation target.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXTRASAMPLES"><span class="selflink">EXTRASAMPLES</span></td><td>338</td><td>
+            Information about extra samples.
+            For the list of possible values, see <a href="edceb228-3508-d66e-d73c-200bdecdfe42.htm" target="">ExtraSample</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SAMPLEFORMAT"><span class="selflink">SAMPLEFORMAT</span></td><td>339</td><td>
+            Data sample format.
+            For the list of possible values, see <a href="2d79449a-302f-ba62-142d-0d9204a1012e.htm" target="">SampleFormat</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SMINSAMPLEVALUE"><span class="selflink">SMINSAMPLEVALUE</span></td><td>340</td><td>
+            Variable MinSampleValue.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SMAXSAMPLEVALUE"><span class="selflink">SMAXSAMPLEVALUE</span></td><td>341</td><td>
+            Variable MaxSampleValue.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CLIPPATH"><span class="selflink">CLIPPATH</span></td><td>343</td><td>
+            ClipPath. Introduced post TIFF rev 6.0 by Adobe TIFF technote 2.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.XCLIPPATHUNITS"><span class="selflink">XCLIPPATHUNITS</span></td><td>344</td><td>
+            XClipPathUnits. Introduced post TIFF rev 6.0 by Adobe TIFF technote 2.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.YCLIPPATHUNITS"><span class="selflink">YCLIPPATHUNITS</span></td><td>345</td><td>
+            YClipPathUnits. Introduced post TIFF rev 6.0 by Adobe TIFF technote 2.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.INDEXED"><span class="selflink">INDEXED</span></td><td>346</td><td>
+            Indexed. Introduced post TIFF rev 6.0 by Adobe TIFF Technote 3.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGTABLES"><span class="selflink">JPEGTABLES</span></td><td>347</td><td>
+            JPEG table stream. Introduced post TIFF rev 6.0.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.OPIPROXY"><span class="selflink">OPIPROXY</span></td><td>351</td><td>
+            OPI Proxy. Introduced post TIFF rev 6.0 by Adobe TIFF technote.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGPROC"><span class="selflink">JPEGPROC</span></td><td>512</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            JPEG processing algorithm.
+            For the list of possible values, see <a href="5fa3fdfe-5a31-bf03-2463-662f6bbee378.htm" target="">JpegProc</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGIFOFFSET"><span class="selflink">JPEGIFOFFSET</span></td><td>513</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            Pointer to SOI marker.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGIFBYTECOUNT"><span class="selflink">JPEGIFBYTECOUNT</span></td><td>514</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            JFIF stream length
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGRESTARTINTERVAL"><span class="selflink">JPEGRESTARTINTERVAL</span></td><td>515</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            Restart interval length.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGLOSSLESSPREDICTORS"><span class="selflink">JPEGLOSSLESSPREDICTORS</span></td><td>517</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            Lossless proc predictor.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGPOINTTRANSFORM"><span class="selflink">JPEGPOINTTRANSFORM</span></td><td>518</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            Lossless point transform.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGQTABLES"><span class="selflink">JPEGQTABLES</span></td><td>519</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            Q matrice offsets.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGDCTABLES"><span class="selflink">JPEGDCTABLES</span></td><td>520</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            DCT table offsets.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGACTABLES"><span class="selflink">JPEGACTABLES</span></td><td>521</td><td>
+            [obsoleted by Technical Note #2 which specifies a revised JPEG-in-TIFF scheme]<br />
+            AC coefficient offsets.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.YCBCRCOEFFICIENTS"><span class="selflink">YCBCRCOEFFICIENTS</span></td><td>529</td><td>
+            RGB -&gt; YCbCr transform.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.YCBCRSUBSAMPLING"><span class="selflink">YCBCRSUBSAMPLING</span></td><td>530</td><td>
+            YCbCr subsampling factors.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.YCBCRPOSITIONING"><span class="selflink">YCBCRPOSITIONING</span></td><td>531</td><td>
+            Subsample positioning.
+            For the list of possible values, see <a href="e41b4d87-aa80-6c0b-a755-4a058a73c576.htm" target="">YCbCrPosition</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.REFERENCEBLACKWHITE"><span class="selflink">REFERENCEBLACKWHITE</span></td><td>532</td><td>
+            Colorimetry info.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.XMLPACKET"><span class="selflink">XMLPACKET</span></td><td>700</td><td>
+            XML packet. Introduced post TIFF rev 6.0 by Adobe XMP Specification, January 2004.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.OPIIMAGEID"><span class="selflink">OPIIMAGEID</span></td><td>32781</td><td>
+            OPI ImageID. Introduced post TIFF rev 6.0 by Adobe TIFF technote.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.REFPTS"><span class="selflink">REFPTS</span></td><td>32953</td><td>
+            Image reference points. Private tag registered to Island Graphics.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.REGIONTACKPOINT"><span class="selflink">REGIONTACKPOINT</span></td><td>32954</td><td>
+            Region-xform tack point. Private tag registered to Island Graphics.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.REGIONWARPCORNERS"><span class="selflink">REGIONWARPCORNERS</span></td><td>32955</td><td>
+            Warp quadrilateral. Private tag registered to Island Graphics.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.REGIONAFFINE"><span class="selflink">REGIONAFFINE</span></td><td>32956</td><td>
+            Affine transformation matrix. Private tag registered to Island Graphics.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.MATTEING"><span class="selflink">MATTEING</span></td><td>32995</td><td>
+            [obsoleted by TIFF rev. 6.0]<br />
+            Use EXTRASAMPLE tag. Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DATATYPE"><span class="selflink">DATATYPE</span></td><td>32996</td><td>
+            [obsoleted by TIFF rev. 6.0]<br />
+            Use SAMPLEFORMAT tag. Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IMAGEDEPTH"><span class="selflink">IMAGEDEPTH</span></td><td>32997</td><td>
+            Z depth of image. Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.TILEDEPTH"><span class="selflink">TILEDEPTH</span></td><td>32998</td><td>
+            Z depth/data tile. Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXAR_IMAGEFULLWIDTH"><span class="selflink">PIXAR_IMAGEFULLWIDTH</span></td><td>33300</td><td>
+            Full image size in X. This tag is set when an image has been cropped out of a larger
+            image. It reflect width of the original uncropped image. The XPOSITION tag can be used
+            to determine the position of the smaller image in the larger one.
+            Private tag registered to Pixar.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXAR_IMAGEFULLLENGTH"><span class="selflink">PIXAR_IMAGEFULLLENGTH</span></td><td>33301</td><td>
+            Full image size in Y. This tag is set when an image has been cropped out of a larger
+            image. It reflect height of the original uncropped image. The YPOSITION can be used
+            to determine the position of the smaller image in the larger one.
+            Private tag registered to Pixar.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXAR_TEXTUREFORMAT"><span class="selflink">PIXAR_TEXTUREFORMAT</span></td><td>33302</td><td>
+            Texture map format. Used to identify special image modes and data used by Pixar's
+            texture formats. Private tag registered to Pixar.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXAR_WRAPMODES"><span class="selflink">PIXAR_WRAPMODES</span></td><td>33303</td><td>
+            S&amp;T wrap modes. Used to identify special image modes and data used by Pixar's
+            texture formats. Private tag registered to Pixar.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXAR_FOVCOT"><span class="selflink">PIXAR_FOVCOT</span></td><td>33304</td><td>
+            Cotan(fov) for env. maps. Used to identify special image modes and data used by
+            Pixar's texture formats. Private tag registered to Pixar.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXAR_MATRIX_WORLDTOSCREEN"><span class="selflink">PIXAR_MATRIX_WORLDTOSCREEN</span></td><td>33305</td><td>
+            Used to identify special image modes and data used by Pixar's texture formats.
+            Private tag registered to Pixar.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXAR_MATRIX_WORLDTOCAMERA"><span class="selflink">PIXAR_MATRIX_WORLDTOCAMERA</span></td><td>33306</td><td>
+            Used to identify special image modes and data used by Pixar's texture formats.
+            Private tag registered to Pixar.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.WRITERSERIALNUMBER"><span class="selflink">WRITERSERIALNUMBER</span></td><td>33405</td><td>
+            Device serial number. Private tag registered to Eastman Kodak.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.COPYRIGHT"><span class="selflink">COPYRIGHT</span></td><td>33432</td><td>
+            Copyright string. This tag is listed in the TIFF rev. 6.0 w/ unknown ownership.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.RICHTIFFIPTC"><span class="selflink">RICHTIFFIPTC</span></td><td>33723</td><td>
+            IPTC TAG from RichTIFF specifications.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8SITE"><span class="selflink">IT8SITE</span></td><td>34016</td><td>
+            Site name. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8COLORSEQUENCE"><span class="selflink">IT8COLORSEQUENCE</span></td><td>34017</td><td>
+            Color seq. [RGB, CMYK, etc]. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8HEADER"><span class="selflink">IT8HEADER</span></td><td>34018</td><td>
+            DDES Header. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8RASTERPADDING"><span class="selflink">IT8RASTERPADDING</span></td><td>34019</td><td>
+            Raster scanline padding. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8BITSPERRUNLENGTH"><span class="selflink">IT8BITSPERRUNLENGTH</span></td><td>34020</td><td>
+            The number of bits in short run. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8BITSPEREXTENDEDRUNLENGTH"><span class="selflink">IT8BITSPEREXTENDEDRUNLENGTH</span></td><td>34021</td><td>
+            The number of bits in long run. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8COLORTABLE"><span class="selflink">IT8COLORTABLE</span></td><td>34022</td><td>
+            LW colortable. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8IMAGECOLORINDICATOR"><span class="selflink">IT8IMAGECOLORINDICATOR</span></td><td>34023</td><td>
+            BP/BL image color switch. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8BKGCOLORINDICATOR"><span class="selflink">IT8BKGCOLORINDICATOR</span></td><td>34024</td><td>
+            BP/BL bg color switch. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8IMAGECOLORVALUE"><span class="selflink">IT8IMAGECOLORVALUE</span></td><td>34025</td><td>
+            BP/BL image color value. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8BKGCOLORVALUE"><span class="selflink">IT8BKGCOLORVALUE</span></td><td>34026</td><td>
+            BP/BL bg color value. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8PIXELINTENSITYRANGE"><span class="selflink">IT8PIXELINTENSITYRANGE</span></td><td>34027</td><td>
+            MP pixel intensity value. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8TRANSPARENCYINDICATOR"><span class="selflink">IT8TRANSPARENCYINDICATOR</span></td><td>34028</td><td>
+            HC transparency switch. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8COLORCHARACTERIZATION"><span class="selflink">IT8COLORCHARACTERIZATION</span></td><td>34029</td><td>
+            Color characterization table. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8HCUSAGE"><span class="selflink">IT8HCUSAGE</span></td><td>34030</td><td>
+            HC usage indicator. Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8TRAPINDICATOR"><span class="selflink">IT8TRAPINDICATOR</span></td><td>34031</td><td>
+            Trapping indicator (untrapped = 0, trapped = 1). Reserved for ANSI IT8 TIFF/IT.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.IT8CMYKEQUIVALENT"><span class="selflink">IT8CMYKEQUIVALENT</span></td><td>34032</td><td>
+            CMYK color equivalents.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FRAMECOUNT"><span class="selflink">FRAMECOUNT</span></td><td>34232</td><td>
+            Sequence Frame Count. Private tag registered to Texas Instruments.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PHOTOSHOP"><span class="selflink">PHOTOSHOP</span></td><td>34377</td><td>
+            Private tag registered to Adobe for PhotoShop.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIFIFD"><span class="selflink">EXIFIFD</span></td><td>34665</td><td>
+            Pointer to EXIF private directory. This tag is documented in EXIF specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ICCPROFILE"><span class="selflink">ICCPROFILE</span></td><td>34675</td><td>
+            ICC profile data. ?? Private tag registered to Adobe. ??
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JBIGOPTIONS"><span class="selflink">JBIGOPTIONS</span></td><td>34750</td><td>
+            JBIG options. Private tag registered to Pixel Magic.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.GPSIFD"><span class="selflink">GPSIFD</span></td><td>34853</td><td>
+            Pointer to GPS private directory. This tag is documented in EXIF specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FAXRECVPARAMS"><span class="selflink">FAXRECVPARAMS</span></td><td>34908</td><td>
+            Encoded Class 2 ses. params. Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FAXSUBADDRESS"><span class="selflink">FAXSUBADDRESS</span></td><td>34909</td><td>
+            Received SubAddr string. Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FAXRECVTIME"><span class="selflink">FAXRECVTIME</span></td><td>34910</td><td>
+            Receive time (secs). Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FAXDCS"><span class="selflink">FAXDCS</span></td><td>34911</td><td>
+            Encoded fax ses. params, Table 2/T.30. Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.STONITS"><span class="selflink">STONITS</span></td><td>37439</td><td>
+            Sample value to Nits. Private tag registered to SGI.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FEDEX_EDR"><span class="selflink">FEDEX_EDR</span></td><td>34929</td><td>
+            Private tag registered to FedEx.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.INTEROPERABILITYIFD"><span class="selflink">INTEROPERABILITYIFD</span></td><td>40965</td><td>
+            Pointer to Interoperability private directory.
+            This tag is documented in EXIF specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DNGVERSION"><span class="selflink">DNGVERSION</span></td><td>50706</td><td>
+            DNG version number. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DNGBACKWARDVERSION"><span class="selflink">DNGBACKWARDVERSION</span></td><td>50707</td><td>
+            DNG compatibility version. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.UNIQUECAMERAMODEL"><span class="selflink">UNIQUECAMERAMODEL</span></td><td>50708</td><td>
+            Name for the camera model. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.LOCALIZEDCAMERAMODEL"><span class="selflink">LOCALIZEDCAMERAMODEL</span></td><td>50709</td><td>
+            Localized camera model name. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CFAPLANECOLOR"><span class="selflink">CFAPLANECOLOR</span></td><td>50710</td><td>
+            CFAPattern-&gt;LinearRaw space mapping. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CFALAYOUT"><span class="selflink">CFALAYOUT</span></td><td>50711</td><td>
+            Spatial layout of the CFA. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.LINEARIZATIONTABLE"><span class="selflink">LINEARIZATIONTABLE</span></td><td>50712</td><td>
+            Lookup table description. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BLACKLEVELREPEATDIM"><span class="selflink">BLACKLEVELREPEATDIM</span></td><td>50713</td><td>
+            Repeat pattern size for the BlackLevel tag. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BLACKLEVEL"><span class="selflink">BLACKLEVEL</span></td><td>50714</td><td>
+            Zero light encoding level. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BLACKLEVELDELTAH"><span class="selflink">BLACKLEVELDELTAH</span></td><td>50715</td><td>
+            Zero light encoding level differences (columns). Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BLACKLEVELDELTAV"><span class="selflink">BLACKLEVELDELTAV</span></td><td>50716</td><td>
+            Zero light encoding level differences (rows). Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.WHITELEVEL"><span class="selflink">WHITELEVEL</span></td><td>50717</td><td>
+            Fully saturated encoding level. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DEFAULTSCALE"><span class="selflink">DEFAULTSCALE</span></td><td>50718</td><td>
+            Default scale factors. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DEFAULTCROPORIGIN"><span class="selflink">DEFAULTCROPORIGIN</span></td><td>50719</td><td>
+            Origin of the final image area. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DEFAULTCROPSIZE"><span class="selflink">DEFAULTCROPSIZE</span></td><td>50720</td><td>
+            Size of the final image area. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.COLORMATRIX1"><span class="selflink">COLORMATRIX1</span></td><td>50721</td><td>
+            XYZ-&gt;reference color space transformation matrix 1.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.COLORMATRIX2"><span class="selflink">COLORMATRIX2</span></td><td>50722</td><td>
+            XYZ-&gt;reference color space transformation matrix 2.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CAMERACALIBRATION1"><span class="selflink">CAMERACALIBRATION1</span></td><td>50723</td><td>
+            Calibration matrix 1. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CAMERACALIBRATION2"><span class="selflink">CAMERACALIBRATION2</span></td><td>50724</td><td>
+            Calibration matrix 2. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.REDUCTIONMATRIX1"><span class="selflink">REDUCTIONMATRIX1</span></td><td>50725</td><td>
+            Dimensionality reduction matrix 1. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.REDUCTIONMATRIX2"><span class="selflink">REDUCTIONMATRIX2</span></td><td>50726</td><td>
+            Dimensionality reduction matrix 2. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ANALOGBALANCE"><span class="selflink">ANALOGBALANCE</span></td><td>50727</td><td>
+            Gain applied the stored raw values. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ASSHOTNEUTRAL"><span class="selflink">ASSHOTNEUTRAL</span></td><td>50728</td><td>
+            Selected white balance in linear reference space.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ASSHOTWHITEXY"><span class="selflink">ASSHOTWHITEXY</span></td><td>50729</td><td>
+            Selected white balance in x-y chromaticity coordinates.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BASELINEEXPOSURE"><span class="selflink">BASELINEEXPOSURE</span></td><td>50730</td><td>
+            How much to move the zero point. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BASELINENOISE"><span class="selflink">BASELINENOISE</span></td><td>50731</td><td>
+            Relative noise level. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BASELINESHARPNESS"><span class="selflink">BASELINESHARPNESS</span></td><td>50732</td><td>
+            Relative amount of sharpening. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BAYERGREENSPLIT"><span class="selflink">BAYERGREENSPLIT</span></td><td>50733</td><td>
+            How closely the values of the green pixels in the blue/green rows 
+            track the values of the green pixels in the red/green rows.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.LINEARRESPONSELIMIT"><span class="selflink">LINEARRESPONSELIMIT</span></td><td>50734</td><td>
+            Non-linear encoding range. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CAMERASERIALNUMBER"><span class="selflink">CAMERASERIALNUMBER</span></td><td>50735</td><td>
+            Camera's serial number. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.LENSINFO"><span class="selflink">LENSINFO</span></td><td>50736</td><td>
+            Information about the lens.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CHROMABLURRADIUS"><span class="selflink">CHROMABLURRADIUS</span></td><td>50737</td><td>
+            Chroma blur radius. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ANTIALIASSTRENGTH"><span class="selflink">ANTIALIASSTRENGTH</span></td><td>50738</td><td>
+            Relative strength of the camera's anti-alias filter.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SHADOWSCALE"><span class="selflink">SHADOWSCALE</span></td><td>50739</td><td>
+            Used by Adobe Camera Raw. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DNGPRIVATEDATA"><span class="selflink">DNGPRIVATEDATA</span></td><td>50740</td><td>
+            Manufacturer's private data. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.MAKERNOTESAFETY"><span class="selflink">MAKERNOTESAFETY</span></td><td>50741</td><td>
+            Whether the EXIF MakerNote tag is safe to preserve along with the rest of the EXIF data.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CALIBRATIONILLUMINANT1"><span class="selflink">CALIBRATIONILLUMINANT1</span></td><td>50778</td><td>
+            Illuminant 1. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CALIBRATIONILLUMINANT2"><span class="selflink">CALIBRATIONILLUMINANT2</span></td><td>50779</td><td>
+            Illuminant 2. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.BESTQUALITYSCALE"><span class="selflink">BESTQUALITYSCALE</span></td><td>50780</td><td>
+            Best quality multiplier. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.RAWDATAUNIQUEID"><span class="selflink">RAWDATAUNIQUEID</span></td><td>50781</td><td>
+            Unique identifier for the raw image data. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ORIGINALRAWFILENAME"><span class="selflink">ORIGINALRAWFILENAME</span></td><td>50827</td><td>
+            File name of the original raw file. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ORIGINALRAWFILEDATA"><span class="selflink">ORIGINALRAWFILEDATA</span></td><td>50828</td><td>
+            Contents of the original raw file. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ACTIVEAREA"><span class="selflink">ACTIVEAREA</span></td><td>50829</td><td>
+            Active (non-masked) pixels of the sensor. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.MASKEDAREAS"><span class="selflink">MASKEDAREAS</span></td><td>50830</td><td>
+            List of coordinates of fully masked pixels. Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ASSHOTICCPROFILE"><span class="selflink">ASSHOTICCPROFILE</span></td><td>50831</td><td>
+            Used to map cameras's color space into ICC profile space.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ASSHOTPREPROFILEMATRIX"><span class="selflink">ASSHOTPREPROFILEMATRIX</span></td><td>50832</td><td>
+            Used to map cameras's color space into ICC profile space.
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CURRENTICCPROFILE"><span class="selflink">CURRENTICCPROFILE</span></td><td>50833</td><td>
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.CURRENTPREPROFILEMATRIX"><span class="selflink">CURRENTPREPROFILEMATRIX</span></td><td>50834</td><td>
+            Introduced by Adobe DNG specification.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSHUESHIFTVALUES"><span class="selflink">DCSHUESHIFTVALUES</span></td><td>65535</td><td>
+            Undefined tag used by Eastman Kodak, hue shift correction data.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FAXMODE"><span class="selflink">FAXMODE</span></td><td>65536</td><td>
+            [pseudo tag. not written to file]<br />
+            Group 3/4 format control.
+            For the list of possible values, see <a href="4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" target="">FaxMode</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGQUALITY"><span class="selflink">JPEGQUALITY</span></td><td>65537</td><td>
+            [pseudo tag. not written to file]<br />
+            Compression quality level. Quality level is on the IJG 0-100 scale. Default value is 75.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGCOLORMODE"><span class="selflink">JPEGCOLORMODE</span></td><td>65538</td><td>
+            [pseudo tag. not written to file]<br />
+            Auto RGB&lt;=&gt;YCbCr convert.
+            For the list of possible values, see <a href="0839bb36-3896-39ff-cb13-f4601b4e20ae.htm" target="">JpegColorMode</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.JPEGTABLESMODE"><span class="selflink">JPEGTABLESMODE</span></td><td>65539</td><td>
+            [pseudo tag. not written to file]<br />
+            For the list of possible values, see <a href="84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" target="">JpegTablesMode</a>.
+            Default is <a href="84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" target="">QUANT</a> | <a href="84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" target="">HUFF</a>.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.FAXFILLFUNC"><span class="selflink">FAXFILLFUNC</span></td><td>65540</td><td>
+            [pseudo tag. not written to file]<br />
+            G3/G4 fill function.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXARLOGDATAFMT"><span class="selflink">PIXARLOGDATAFMT</span></td><td>65549</td><td>
+            [pseudo tag. not written to file]<br />
+            PixarLogCodec I/O data sz.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSIMAGERTYPE"><span class="selflink">DCSIMAGERTYPE</span></td><td>65550</td><td>
+            [pseudo tag. not written to file]<br />
+            Imager mode &amp; filter.
+            Allocated to Oceana Matrix (<a href="mailto:dev@oceana.com" target="_blank">dev@oceana.com</a>).
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSINTERPMODE"><span class="selflink">DCSINTERPMODE</span></td><td>65551</td><td>
+            [pseudo tag. not written to file]<br />
+            Interpolation mode.
+            Allocated to Oceana Matrix (<a href="mailto:dev@oceana.com" target="_blank">dev@oceana.com</a>).
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSBALANCEARRAY"><span class="selflink">DCSBALANCEARRAY</span></td><td>65552</td><td>
+            [pseudo tag. not written to file]<br />
+            Color balance values.
+            Allocated to Oceana Matrix (<a href="mailto:dev@oceana.com" target="_blank">dev@oceana.com</a>). 
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSCORRECTMATRIX"><span class="selflink">DCSCORRECTMATRIX</span></td><td>65553</td><td>
+            [pseudo tag. not written to file]<br />
+            Color correction values.
+            Allocated to Oceana Matrix (<a href="mailto:dev@oceana.com" target="_blank">dev@oceana.com</a>). 
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSGAMMA"><span class="selflink">DCSGAMMA</span></td><td>65554</td><td>
+            [pseudo tag. not written to file]<br />
+            Gamma value.
+            Allocated to Oceana Matrix (<a href="mailto:dev@oceana.com" target="_blank">dev@oceana.com</a>). 
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSTOESHOULDERPTS"><span class="selflink">DCSTOESHOULDERPTS</span></td><td>65555</td><td>
+            [pseudo tag. not written to file]<br />
+            Toe &amp; shoulder points.
+            Allocated to Oceana Matrix (<a href="mailto:dev@oceana.com" target="_blank">dev@oceana.com</a>). 
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSCALIBRATIONFD"><span class="selflink">DCSCALIBRATIONFD</span></td><td>65556</td><td>
+            [pseudo tag. not written to file]<br />
+            Calibration file description.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.ZIPQUALITY"><span class="selflink">ZIPQUALITY</span></td><td>65557</td><td>
+            [pseudo tag. not written to file]<br />
+            Compression quality level.
+            Quality level is on the ZLIB 1-9 scale. Default value is -1.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.PIXARLOGQUALITY"><span class="selflink">PIXARLOGQUALITY</span></td><td>65558</td><td>
+            [pseudo tag. not written to file]<br />
+            PixarLog uses same scale.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.DCSCLIPRECTANGLE"><span class="selflink">DCSCLIPRECTANGLE</span></td><td>65559</td><td>
+            [pseudo tag. not written to file]<br />
+            Area of image to acquire.
+            Allocated to Oceana Matrix (<a href="mailto:dev@oceana.com" target="_blank">dev@oceana.com</a>).
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SGILOGDATAFMT"><span class="selflink">SGILOGDATAFMT</span></td><td>65560</td><td>
+            [pseudo tag. not written to file]<br />
+            SGILog user data format.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.SGILOGENCODE"><span class="selflink">SGILOGENCODE</span></td><td>65561</td><td>
+            [pseudo tag. not written to file]<br />
+            SGILog data encoding control.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSURETIME"><span class="selflink">EXIF_EXPOSURETIME</span></td><td>33434</td><td>
+            Exposure time.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FNUMBER"><span class="selflink">EXIF_FNUMBER</span></td><td>33437</td><td>
+            F number.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSUREPROGRAM"><span class="selflink">EXIF_EXPOSUREPROGRAM</span></td><td>34850</td><td>
+            Exposure program.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SPECTRALSENSITIVITY"><span class="selflink">EXIF_SPECTRALSENSITIVITY</span></td><td>34852</td><td>
+            Spectral sensitivity.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_ISOSPEEDRATINGS"><span class="selflink">EXIF_ISOSPEEDRATINGS</span></td><td>34855</td><td>
+            ISO speed rating.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_OECF"><span class="selflink">EXIF_OECF</span></td><td>34856</td><td>
+            Optoelectric conversion factor.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXIFVERSION"><span class="selflink">EXIF_EXIFVERSION</span></td><td>36864</td><td>
+            Exif version.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_DATETIMEORIGINAL"><span class="selflink">EXIF_DATETIMEORIGINAL</span></td><td>36867</td><td>
+            Date and time of original data generation.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_DATETIMEDIGITIZED"><span class="selflink">EXIF_DATETIMEDIGITIZED</span></td><td>36868</td><td>
+            Date and time of digital data generation.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_COMPONENTSCONFIGURATION"><span class="selflink">EXIF_COMPONENTSCONFIGURATION</span></td><td>37121</td><td>
+            Meaning of each component.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_COMPRESSEDBITSPERPIXEL"><span class="selflink">EXIF_COMPRESSEDBITSPERPIXEL</span></td><td>37122</td><td>
+            Image compression mode.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SHUTTERSPEEDVALUE"><span class="selflink">EXIF_SHUTTERSPEEDVALUE</span></td><td>37377</td><td>
+            Shutter speed.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_APERTUREVALUE"><span class="selflink">EXIF_APERTUREVALUE</span></td><td>37378</td><td>
+            Aperture.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_BRIGHTNESSVALUE"><span class="selflink">EXIF_BRIGHTNESSVALUE</span></td><td>37379</td><td>
+            Brightness.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSUREBIASVALUE"><span class="selflink">EXIF_EXPOSUREBIASVALUE</span></td><td>37380</td><td>
+            Exposure bias.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_MAXAPERTUREVALUE"><span class="selflink">EXIF_MAXAPERTUREVALUE</span></td><td>37381</td><td>
+            Maximum lens aperture.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBJECTDISTANCE"><span class="selflink">EXIF_SUBJECTDISTANCE</span></td><td>37382</td><td>
+            Subject distance.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_METERINGMODE"><span class="selflink">EXIF_METERINGMODE</span></td><td>37383</td><td>
+            Metering mode.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_LIGHTSOURCE"><span class="selflink">EXIF_LIGHTSOURCE</span></td><td>37384</td><td>
+            Light source.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FLASH"><span class="selflink">EXIF_FLASH</span></td><td>37385</td><td>
+            Flash.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALLENGTH"><span class="selflink">EXIF_FOCALLENGTH</span></td><td>37386</td><td>
+            Lens focal length.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBJECTAREA"><span class="selflink">EXIF_SUBJECTAREA</span></td><td>37396</td><td>
+            Subject area.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_MAKERNOTE"><span class="selflink">EXIF_MAKERNOTE</span></td><td>37500</td><td>
+            Manufacturer notes.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_USERCOMMENT"><span class="selflink">EXIF_USERCOMMENT</span></td><td>37510</td><td>
+            User comments.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBSECTIME"><span class="selflink">EXIF_SUBSECTIME</span></td><td>37520</td><td>
+            DateTime subseconds.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBSECTIMEORIGINAL"><span class="selflink">EXIF_SUBSECTIMEORIGINAL</span></td><td>37521</td><td>
+            DateTimeOriginal subseconds.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBSECTIMEDIGITIZED"><span class="selflink">EXIF_SUBSECTIMEDIGITIZED</span></td><td>37522</td><td>
+            DateTimeDigitized subseconds.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FLASHPIXVERSION"><span class="selflink">EXIF_FLASHPIXVERSION</span></td><td>40960</td><td>
+            Supported Flashpix version.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_COLORSPACE"><span class="selflink">EXIF_COLORSPACE</span></td><td>40961</td><td>
+            Color space information.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_PIXELXDIMENSION"><span class="selflink">EXIF_PIXELXDIMENSION</span></td><td>40962</td><td>
+            Valid image width.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_PIXELYDIMENSION"><span class="selflink">EXIF_PIXELYDIMENSION</span></td><td>40963</td><td>
+            Valid image height.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_RELATEDSOUNDFILE"><span class="selflink">EXIF_RELATEDSOUNDFILE</span></td><td>40964</td><td>
+            Related audio file.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FLASHENERGY"><span class="selflink">EXIF_FLASHENERGY</span></td><td>41483</td><td>
+            Flash energy.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SPATIALFREQUENCYRESPONSE"><span class="selflink">EXIF_SPATIALFREQUENCYRESPONSE</span></td><td>41484</td><td>
+            Spatial frequency response.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALPLANEXRESOLUTION"><span class="selflink">EXIF_FOCALPLANEXRESOLUTION</span></td><td>41486</td><td>
+            Focal plane X resolution.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALPLANEYRESOLUTION"><span class="selflink">EXIF_FOCALPLANEYRESOLUTION</span></td><td>41487</td><td>
+            Focal plane Y resolution.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALPLANERESOLUTIONUNIT"><span class="selflink">EXIF_FOCALPLANERESOLUTIONUNIT</span></td><td>41488</td><td>
+            Focal plane resolution unit.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBJECTLOCATION"><span class="selflink">EXIF_SUBJECTLOCATION</span></td><td>41492</td><td>
+            Subject location.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSUREINDEX"><span class="selflink">EXIF_EXPOSUREINDEX</span></td><td>41493</td><td>
+            Exposure index.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SENSINGMETHOD"><span class="selflink">EXIF_SENSINGMETHOD</span></td><td>41495</td><td>
+            Sensing method.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FILESOURCE"><span class="selflink">EXIF_FILESOURCE</span></td><td>41728</td><td>
+            File source.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SCENETYPE"><span class="selflink">EXIF_SCENETYPE</span></td><td>41729</td><td>
+            Scene type.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_CFAPATTERN"><span class="selflink">EXIF_CFAPATTERN</span></td><td>41730</td><td>
+            CFA pattern.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_CUSTOMRENDERED"><span class="selflink">EXIF_CUSTOMRENDERED</span></td><td>41985</td><td>
+            Custom image processing.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_EXPOSUREMODE"><span class="selflink">EXIF_EXPOSUREMODE</span></td><td>41986</td><td>
+            Exposure mode.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_WHITEBALANCE"><span class="selflink">EXIF_WHITEBALANCE</span></td><td>41987</td><td>
+            White balance.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_DIGITALZOOMRATIO"><span class="selflink">EXIF_DIGITALZOOMRATIO</span></td><td>41988</td><td>
+            Digital zoom ratio.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_FOCALLENGTHIN35MMFILM"><span class="selflink">EXIF_FOCALLENGTHIN35MMFILM</span></td><td>41989</td><td>
+            Focal length in 35 mm film.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SCENECAPTURETYPE"><span class="selflink">EXIF_SCENECAPTURETYPE</span></td><td>41990</td><td>
+            Scene capture type.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_GAINCONTROL"><span class="selflink">EXIF_GAINCONTROL</span></td><td>41991</td><td>
+            Gain control.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_CONTRAST"><span class="selflink">EXIF_CONTRAST</span></td><td>41992</td><td>
+            Contrast.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SATURATION"><span class="selflink">EXIF_SATURATION</span></td><td>41993</td><td>
+            Saturation.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SHARPNESS"><span class="selflink">EXIF_SHARPNESS</span></td><td>41994</td><td>
+            Sharpness.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_DEVICESETTINGDESCRIPTION"><span class="selflink">EXIF_DEVICESETTINGDESCRIPTION</span></td><td>41995</td><td>
+            Device settings description.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_SUBJECTDISTANCERANGE"><span class="selflink">EXIF_SUBJECTDISTANCERANGE</span></td><td>41996</td><td>
+            Subject distance range.
+            </td></tr><tr><td></td><td target="F:BitMiracle.LibTiff.Classic.TiffTag.EXIF_IMAGEUNIQUEID"><span class="selflink">EXIF_IMAGEUNIQUEID</span></td><td>42016</td><td>
+            Unique image ID.
+            </td></tr></table></div><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Remarks</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div>
+            Joris Van Damme maintains
+            <img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /><a href="http://www.awaresystems.be/imaging/tiff/tifftags.html" target="_blank">
+            TIFF Tag Reference</a>, good source of tag information. It's an overview of known TIFF
+            Tags with properties, short description, and other useful information.
+            <a name="seeAlsoSection"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">See Also</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div class="seeAlsoStyle"><a href="9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" target="">BitMiracle.LibTiff.Classic Namespace</a></div></div></div></div></div><div id="OH_footer" class="OH_footer"><p /><p><a href="http://www.bitmiracle.com/libtiff" target="_blank"><img src="./../icons/online_icon.gif" class="OH_offlineIcon" alt="Online" title="Online" /> 
+						Copyright © 2008-2013 Bit Miracle. All rights reserved. (http://www.bitmiracle.com/libtiff)</a></p><div class="OH_feedbacklink"><a href="mailto:support@bitmiracle.com?subject=LibTiff.Net%2c+the+managed+version+of+the+LibTiff+library+for+reading+and+writing+TIFF.+TiffTag+Enumeration+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to support@bitmiracle.com.</div></div></body></html>
