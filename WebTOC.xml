@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="Welcome" Url="html/28e55885-805a-4a45-b62e-2f8e71c1a9bf.htm" />
+  <HelpTOCNode Title="License and Copyright" Url="html/c3b8a067-673b-42d0-9d38-991c8964d125.htm" />
+  <HelpTOCNode Title="TIFF 6.0 specification coverage" Url="html/abdb7196-7bdc-4dee-88c7-fe25459575df.htm" />
+  <HelpTOCNode Id="9b54f0e1-cb26-4ad1-b1b1-874ffa8112ea" Title="Getting Started" Url="html/04c510d6-361c-4325-b3e5-6d8139a21d5f.htm">
+    <HelpTOCNode Title="Using pre-built LibTiff.Net" Url="html/aa770c56-8f9f-489f-b5b3-ad8797ef3727.htm" />
+    <HelpTOCNode Title="Building source code of LibTiff.Net" Url="html/7aac47e1-7126-4e75-8667-be7549d6c0b6.htm" />
+    <HelpTOCNode Title="Basic introduction to the capabilities of the library" Url="html/7404175a-f67f-479b-83f7-0e6dc75b9acf.htm" />
+    <HelpTOCNode Title="Well-known tags and their value(s) data types" Url="html/54cbd23d-dc55-44b9-921f-3a06efc2f6ce.htm" />
+    <HelpTOCNode Id="88d097b8-d82c-49f6-8fbf-65c025def297" Title="Graphics programming with LibTiff.Net" Url="html/EE9522F3-9E7F-4B29-98F7-D9C22DD0497C.htm">
+      <HelpTOCNode Title="Part1. Black-and-white imaging" Url="html/0a42c654-edcb-404a-bbfa-1d50cfad9769.htm" />
+      <HelpTOCNode Title="Part2. Grayscale and color imaging" Url="html/c0ab407e-de25-46db-9cc9-e0bf3f1bc83d.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="Adding new (custom) tags" Url="html/e0ed9e8f-4b0e-4480-9693-fbf731ed3b2f.htm" />
+    <HelpTOCNode Id="aec77711-e5bd-4240-8c01-fa63f84b08a8" Title="TIFF tools" Url="html/77f96b22-949a-40a4-9e5c-8f7a81e78f74.htm">
+      <HelpTOCNode Title="Tiff2Pdf" Url="html/be4bae3c-8484-4c61-bccb-d67118e8f0a4.htm" />
+      <HelpTOCNode Title="Tiff2Rgba" Url="html/b85a8605-d3d4-4747-abfb-f7e71b5fa2b5.htm" />
+      <HelpTOCNode Title="TiffCP" Url="html/5cb65b9c-d89f-4388-a7b3-8b0f1c58b47b.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="Test Images" Url="html/9ccb55b6-cac8-4213-9bad-5fcf11d9d6af.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="0a3cb751-0293-420e-881a-ff76fc11f284" Title="Samples" Url="html/e4f25423-eede-4ef6-a920-9cb539d056c6.htm">
+    <HelpTOCNode Id="18a4edc1-7800-49d4-bf9d-7c10518a1bb9" Title="Using LibTiff.Net" Url="html/583193f1-ba33-4d44-a0ec-cdbc339d5804.htm">
+      <HelpTOCNode Title="How to read basic properties of a TIFF image" Url="html/8bd9873f-831f-40e1-937c-fd6702dc0670.htm" />
+      <HelpTOCNode Title="Add page to existing TIFF" Url="html/e5eb36a8-7150-41dd-8785-f8784a94c214.htm" />
+      <HelpTOCNode Title="Create simple black-and-white TIFF" Url="html/99e4ca6d-023c-430a-9ef0-e25c27dd42cf.htm" />
+      <HelpTOCNode Title="Create gradient TIFF" Url="html/7005eea9-13c6-49a9-9804-864be2654278.htm" />
+      <HelpTOCNode Title="Create TIFF with palette (color map)" Url="html/4821a437-c9e1-4206-bfee-e19f33ce7943.htm" />
+      <HelpTOCNode Title="Create multipage TIFF" Url="html/a74083a3-0fc0-494e-a302-9f64017355b7.htm" />
+      <HelpTOCNode Title="Copy and rotate TIFF data" Url="html/98f13f88-f60d-40dc-a5b3-cf902f385d92.htm" />
+      <HelpTOCNode Title="Rotate TIFF data (in a viewer-agnostic way)" Url="html/39c566d1-98fa-4b46-aa7a-e03ee2eada8c.htm" />
+      <HelpTOCNode Title="Retrieve number of pages in TIFF image" Url="html/336d22bb-109b-41cf-9cce-8acc43f43b3b.htm" />
+      <HelpTOCNode Title="Read and write custom TIFF tags" Url="html/61b90b5d-8a3b-4122-a5f2-8674dda2b696.htm" />
+      <HelpTOCNode Title="Add custom TIFF tags to an existing TIFF image" Url="html/f47d1201-0893-45dc-907e-2bbeb5e3cb0c.htm" />
+      <HelpTOCNode Title="How to read value of a TIFF tag unknown to LibTiff.Net" Url="html/c3397c64-c55d-4db2-8245-654d21555c15.htm" />
+      <HelpTOCNode Title="Read RGB values of image pixels" Url="html/98c3da41-bb2c-4bba-9a94-5ba32069aab5.htm" />
+      <HelpTOCNode Title="Read all TIFF tags" Url="html/01d0b300-5deb-4e14-a534-c1a91fac0c2a.htm" />
+      <HelpTOCNode Title="Read EXIF metadata" Url="html/1af6fd13-f108-4935-a6d8-0e6db6d11b8f.htm" />
+      <HelpTOCNode Title="Detect corrupted page" Url="html/9adabd62-5bd5-45f9-ab3e-5394fb59b8d5.htm" />
+      <HelpTOCNode Title="Convert System.Drawing.Bitmap to a black and white TIFF" Url="html/075f57db-d779-48f7-9fd7-4ca075a01599.htm" />
+      <HelpTOCNode Title="Convert System.Drawing.Bitmap to a 32-bit color TIFF" Url="html/753aa95f-9715-4b89-9a78-2982756d0a2c.htm" />
+      <HelpTOCNode Title="Convert System.Drawing.Bitmap to a 24-bit color TIFF" Url="html/b98882ca-a191-4a27-880c-f4959161d890.htm" />
+      <HelpTOCNode Title="Convert black-and-white TIFF to a System.Drawing.Bitmap" Url="html/fc9f330d-e6eb-4dc9-af00-06f111ffc860.htm" />
+      <HelpTOCNode Title="Convert color TIFF to a 32-bit System.Drawing.Bitmap" Url="html/dd8f94ce-2292-4504-8f32-242dfc34dfb1.htm" />
+      <HelpTOCNode Title="Convert color TIFF to a 24-bit System.Drawing.Bitmap" Url="html/4f1836a4-ed48-48f0-9c2d-5cf81ffb9303.htm" />
+      <HelpTOCNode Title="Create 16-bit grayscale TIFF" Url="html/4bceb00d-9b22-4a5a-a912-f9319c1e80ef.htm" />
+      <HelpTOCNode Title="Convert 16-bit grayscale TIFF to a 8-bit System.Drawing.Bitmap" Url="html/be3a882e-080a-4520-b2df-b3d99e9e81aa.htm" />
+      <HelpTOCNode Title="Process 16-bit TIFF (increase brightness)" Url="html/91d736ff-8648-4c2f-a87a-9d8d215416b8.htm" />
+      <HelpTOCNode Title="Convert a multi-strip TIFF image to a single-strip one" Url="html/a917f97b-3b03-422b-ba9b-5cb672f8617a.htm" />
+      <HelpTOCNode Title="Convert bytes of a multi-strip TIFF image to bytes of a single-strip one" Url="html/a4e19121-9974-4755-83f1-d4d8b09f5ecf.htm" />
+      <HelpTOCNode Title="Print formatted description of a TIFF file contents" Url="html/4870e3fc-867f-41b0-af72-c48e0f5f7a96.htm" />
+      <HelpTOCNode Title="How to write TIFF tags before data (like in Cisco TIFF files)" Url="html/95e4c191-ff3e-4e11-8a10-1257a95e91f2.htm" />
+      <HelpTOCNode Title="How to read TIFF scanlines in a random fashion" Url="html/6a59b98d-3a27-4f99-9f18-4f898cc74f75.htm" />
+      <HelpTOCNode Title="How to use a custom TiffStream to read or write TIFF images" Url="html/79c178e6-79a9-42df-b04a-c2b1f6b67595.htm" />
+      <HelpTOCNode Title="How to use a System.IO.Stream to read or write TIFF images" Url="html/90904127-73c2-4c17-99e4-1d5d94f4315f.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="8fc7ecdc-bdd8-4711-9f35-3de53d3c2554" Title="Using utilities" Url="html/b1138f67-2dd5-4bf7-b59b-b1c611865e26.htm">
+      <HelpTOCNode Title="Merge several TIFF images to single multipage TIFF" Url="html/0664189f-7442-4bef-8f2f-1ee6ce82cd87.htm" />
+      <HelpTOCNode Title="Extract a page from a multi-page TIFF image" Url="html/65159b6b-0f22-41a8-bbcf-fd1df1b2aa9e.htm" />
+      <HelpTOCNode Title="Convert TIFF image to PDF document" Url="html/11e05b16-d3ea-4a41-9a70-f02404c56bc6.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="c5334cd1-94d6-462e-9bc2-2f5c7d0f6712" Title="BitMiracle.LibTiff.Classic Namespace" Url="html/9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm">
+    <HelpTOCNode Title="CleanFaxData Enumeration" Url="html/470116a5-e961-c50c-988b-7e8dfbe3b5cb.htm" />
+    <HelpTOCNode Title="ColorResponseUnit Enumeration" Url="html/0f629c9d-c09f-7a70-21dd-7342559a714f.htm" />
+    <HelpTOCNode Title="Compression Enumeration" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+    <HelpTOCNode Title="ExtraSample Enumeration" Url="html/edceb228-3508-d66e-d73c-200bdecdfe42.htm" />
+    <HelpTOCNode Title="FaxMode Enumeration" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+    <HelpTOCNode Id="a499772e-297c-4064-9ab8-2ebd3d893180" Title="FieldBit Class" Url="html/34021cc8-8b3f-1c36-ec59-bcee082d3aaa.htm">
+      <HelpTOCNode Title="FieldBit Members" Url="html/5c667b77-8a85-91a8-ea26-a7e45b0664dd.htm" />
+      <HelpTOCNode Id="5d29b7ec-c7f6-4aa4-ab2b-2bcec0a7b187" Title="FieldBit Fields" Url="html/380e3fd3-809a-6207-20fd-1f3dd1d6b17c.htm">
+        <HelpTOCNode Title="Codec Field" Url="html/47a4a4fe-699b-c375-abcd-a58b99077da1.htm" />
+        <HelpTOCNode Title="Custom Field" Url="html/96714e16-bf79-dd3f-2d2c-7ff62f43c339.htm" />
+        <HelpTOCNode Title="Ignore Field" Url="html/5cbba3e3-b201-69b1-2f8d-6ba8ec33d51b.htm" />
+        <HelpTOCNode Title="Last Field" Url="html/77fc2f82-d679-a2df-a7bc-9e526ffcc81d.htm" />
+        <HelpTOCNode Title="Pseudo Field" Url="html/79d9f2c9-d1a3-3772-8c0b-e387d4d564df.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6f3bd1c2-1ca6-40c6-b419-1c57be84db0d" Title="FieldValue Structure" Url="html/0967a036-4800-ebd2-d23d-95356a377826.htm">
+      <HelpTOCNode Title="FieldValue Members" Url="html/546c0cac-4a0a-984b-ee18-2e6b02701b54.htm" />
+      <HelpTOCNode Id="dc6fe0d4-46b6-4124-9a59-e9e148bfdf93" Title="FieldValue Methods" Url="html/890c6583-408a-a934-90ce-4cbb1bc11d67.htm">
+        <HelpTOCNode Title="GetBytes Method " Url="html/477e5c61-8c98-5232-f916-0d070750c2f3.htm" />
+        <HelpTOCNode Title="ToByte Method " Url="html/b68fa8ae-d3d3-e1b7-c26b-a5ed7d963122.htm" />
+        <HelpTOCNode Title="ToByteArray Method " Url="html/9f799d5b-7856-1e95-851e-85035cb5250f.htm" />
+        <HelpTOCNode Title="ToDouble Method " Url="html/5ab7d24e-ba27-faa6-a94c-2c2b61f577c9.htm" />
+        <HelpTOCNode Title="ToDoubleArray Method " Url="html/01ba5789-7449-409d-79a2-e419cbec0694.htm" />
+        <HelpTOCNode Title="ToFloat Method " Url="html/450fcb04-da76-4068-2119-7a9993f6d6d1.htm" />
+        <HelpTOCNode Title="ToFloatArray Method " Url="html/55b3feae-b877-6a77-7fb9-f8812dc53b71.htm" />
+        <HelpTOCNode Title="ToInt Method " Url="html/2a329be7-533a-8b6c-5a61-5b22c492d5f4.htm" />
+        <HelpTOCNode Title="ToIntArray Method " Url="html/b41088f1-9ec6-296b-4216-6b7525262b68.htm" />
+        <HelpTOCNode Title="ToShort Method " Url="html/e4eae8d2-688f-64b6-f0be-892ecc0eb08a.htm" />
+        <HelpTOCNode Title="ToShortArray Method " Url="html/c8cd428c-c2cc-5ea8-3ec6-13f6f8f8aaa2.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/30acdbe8-dd45-91eb-7655-76e755074864.htm" />
+        <HelpTOCNode Title="ToUInt Method " Url="html/ed4aedbc-e87e-5f6b-5142-b4dc47526118.htm" />
+        <HelpTOCNode Title="ToUIntArray Method " Url="html/8db3e73e-e550-4fd0-baa3-e97f08e6d2a7.htm" />
+        <HelpTOCNode Title="ToUShort Method " Url="html/108f29c7-b0ae-3bd8-cd96-d43f3b851f5b.htm" />
+        <HelpTOCNode Title="ToUShortArray Method " Url="html/99f8ed8e-f4ab-2da5-36a3-9baffe115dc4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="116fa58d-4711-403c-bb32-a6c8d318d66e" Title="FieldValue Properties" Url="html/d9d5ed22-88bb-a25f-cc9e-b44aab8aefb9.htm">
+        <HelpTOCNode Title="Value Property " Url="html/4104feff-c429-6a7f-eabc-b46da7a541ef.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="FileType Enumeration" Url="html/09cacae0-cba1-e059-0899-13e5a4001db3.htm" />
+    <HelpTOCNode Title="FillOrder Enumeration" Url="html/65279396-524c-fcee-60dc-bf29d27ea836.htm" />
+    <HelpTOCNode Title="GrayResponseUnit Enumeration" Url="html/a711564a-497c-098c-df92-22e73b235fb2.htm" />
+    <HelpTOCNode Title="Group3Opt Enumeration" Url="html/e00d6851-cf09-287f-638b-fc62c498351a.htm" />
+    <HelpTOCNode Title="InkSet Enumeration" Url="html/0dd445ac-30cc-2c32-1dcc-5b48d2e644f4.htm" />
+    <HelpTOCNode Title="JpegColorMode Enumeration" Url="html/0839bb36-3896-39ff-cb13-f4601b4e20ae.htm" />
+    <HelpTOCNode Title="JpegProc Enumeration" Url="html/5fa3fdfe-5a31-bf03-2463-662f6bbee378.htm" />
+    <HelpTOCNode Title="JpegTablesMode Enumeration" Url="html/84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" />
+    <HelpTOCNode Title="OFileType Enumeration" Url="html/ef0eb2f9-7686-0a09-2ecc-9b6d6a124f35.htm" />
+    <HelpTOCNode Title="Orientation Enumeration" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+    <HelpTOCNode Title="Photometric Enumeration" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+    <HelpTOCNode Title="PlanarConfig Enumeration" Url="html/d2e12021-da72-b32f-b558-dc23d914d698.htm" />
+    <HelpTOCNode Title="Predictor Enumeration" Url="html/fa1b7e9c-678e-7328-2a3f-be1fe8578cbc.htm" />
+    <HelpTOCNode Title="ResUnit Enumeration" Url="html/5137d019-fa06-e573-99cd-8d4a5900e1c6.htm" />
+    <HelpTOCNode Title="SampleFormat Enumeration" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+    <HelpTOCNode Title="Threshold Enumeration" Url="html/98e0e69a-3705-662e-ed72-952340aad2f0.htm" />
+    <HelpTOCNode Id="7bacbbb8-cde4-4297-a7d0-081db2f71d72" Title="Tiff Class" Url="html/f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm">
+      <HelpTOCNode Title="Tiff Members" Url="html/7371583f-43ad-c57e-08e4-439c740f29fa.htm" />
+      <HelpTOCNode Id="db5c8c07-c0af-473d-9bf0-95debe558ec4" Title="Tiff Methods" Url="html/35f5ef9a-dfb0-d436-0039-09ce93aecb8e.htm">
+        <HelpTOCNode Title="ByteArrayToInts Method " Url="html/21dff95c-1644-29de-f31c-30effdb4f514.htm" />
+        <HelpTOCNode Title="ByteArrayToShorts Method " Url="html/1fd3ce5c-e33a-d146-e719-5226f8f61745.htm" />
+        <HelpTOCNode Title="CheckpointDirectory Method " Url="html/2cf5f3bc-3f0d-76f4-84ae-83000e9e2d54.htm" />
+        <HelpTOCNode Title="CheckTile Method " Url="html/0a96fe04-da43-0904-6136-e3646cbc6793.htm" />
+        <HelpTOCNode Title="Clientdata Method " Url="html/f79a82c8-205f-cde0-3ce8-d361c0da700c.htm" />
+        <HelpTOCNode Title="ClientOpen Method " Url="html/c0b67436-6949-cd3a-e092-a82a20e393c9.htm" />
+        <HelpTOCNode Title="Close Method " Url="html/9bc26d59-9084-795c-2325-9d29069f7db2.htm" />
+        <HelpTOCNode Title="Compare Method " Url="html/2a65db00-c5db-ac53-cc67-07f8917d66b6.htm" />
+        <HelpTOCNode Title="ComputeStrip Method " Url="html/dc784122-da09-6cd4-ced2-863e9af1b829.htm" />
+        <HelpTOCNode Title="ComputeTile Method " Url="html/4b2d529d-76c3-991e-0c92-d4a054758831.htm" />
+        <HelpTOCNode Title="CreateDirectory Method " Url="html/b51071ed-0da2-583e-5a99-4c092900646f.htm" />
+        <HelpTOCNode Title="CurrentDirectory Method " Url="html/09316c3d-c073-4306-7579-4e237d8232e1.htm" />
+        <HelpTOCNode Title="CurrentDirOffset Method " Url="html/209cd5bf-9c19-b50f-aff7-0a2c1d5c0989.htm" />
+        <HelpTOCNode Title="CurrentRow Method " Url="html/260a19de-789c-d18b-4049-7413ba758474.htm" />
+        <HelpTOCNode Title="CurrentStrip Method " Url="html/d041c94e-fc55-406f-45d3-2d261b1bd244.htm" />
+        <HelpTOCNode Title="CurrentTile Method " Url="html/baa97aff-b269-43ba-d580-dce0aa32014c.htm" />
+        <HelpTOCNode Title="DataWidth Method " Url="html/5a89ec7c-84d8-72d2-220b-2ccfc89594df.htm" />
+        <HelpTOCNode Title="DefaultStripSize Method " Url="html/02d9c67e-0341-e407-59de-7cdeb347c337.htm" />
+        <HelpTOCNode Title="DefaultTileSize Method " Url="html/c21ee1b4-0467-20be-ebd3-50f26d460ef3.htm" />
+        <HelpTOCNode Title="Dispose Method " Url="html/7755ac80-49ba-f2e5-1de5-1dd3f589ce7b.htm" />
+        <HelpTOCNode Id="4cd67942-d148-4bb1-af32-956ee454b7d0" Title="Error Method " Url="html/00716f8b-15fe-91f0-e2f2-4385844330ff.htm">
+          <HelpTOCNode Title="Error Method (String, String, Object[])" Url="html/ca3be540-4e35-5f34-d952-d8374fec723f.htm" />
+          <HelpTOCNode Title="Error Method (Tiff, String, String, Object[])" Url="html/5e874fa4-c74c-67d4-4892-70a18ab9ddc8.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="58794187-17c6-43c1-99ab-7f1c2846fdc5" Title="ErrorExt Method " Url="html/f73a13d6-1f8a-1725-3ecf-0948c26b46ad.htm">
+          <HelpTOCNode Title="ErrorExt Method (Object, String, String, Object[])" Url="html/baddbf14-02c0-7931-3f2f-bbd7d4721255.htm" />
+          <HelpTOCNode Title="ErrorExt Method (Tiff, Object, String, String, Object[])" Url="html/f630e6fb-2d3c-4dc9-34d9-a8987d4fe543.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="FieldWithName Method " Url="html/f6fb8bc1-b9c1-d54a-a66e-ecaf016de6a8.htm" />
+        <HelpTOCNode Title="FieldWithTag Method " Url="html/3faa7711-d06a-a442-ed29-cf86c720655d.htm" />
+        <HelpTOCNode Title="FileName Method " Url="html/6850d0d1-eb4d-6ab8-36bf-789f915bd38a.htm" />
+        <HelpTOCNode Title="FindCodec Method " Url="html/d8d19ede-212b-a319-8bfa-75add07df448.htm" />
+        <HelpTOCNode Title="FindFieldInfo Method " Url="html/83de3c26-ae91-6d67-2998-2217a7338952.htm" />
+        <HelpTOCNode Title="FindFieldInfoByName Method " Url="html/b66be4cb-5a81-bd39-efd1-17f777d33f6c.htm" />
+        <HelpTOCNode Title="Flush Method " Url="html/14b42cfd-08c7-7725-c289-9b077621410e.htm" />
+        <HelpTOCNode Title="FlushData Method " Url="html/22761731-896e-93e4-1619-42e1c31d1b59.htm" />
+        <HelpTOCNode Title="FreeDirectory Method " Url="html/eb14ea47-71e6-3afc-6ece-0f809653ea1d.htm" />
+        <HelpTOCNode Title="GetA Method " Url="html/2adc84e6-ff6c-7ec9-9f68-b0c36a44bdbc.htm" />
+        <HelpTOCNode Title="GetB Method " Url="html/f581cfa4-0f1f-b881-d615-b84dd42e11b3.htm" />
+        <HelpTOCNode Title="GetBitRevTable Method " Url="html/4a335206-8caa-ea2a-5bf9-fb12614cc3a0.htm" />
+        <HelpTOCNode Title="GetClientInfo Method " Url="html/7fb74f1e-3ef1-1522-b9c4-26e7819ac56a.htm" />
+        <HelpTOCNode Title="GetConfiguredCodecs Method " Url="html/cc13a735-04b8-978d-bb92-e0d5a4040d86.htm" />
+        <HelpTOCNode Title="GetField Method " Url="html/1bd1b3b8-a2ea-9d24-66ef-38ffdd33b984.htm" />
+        <HelpTOCNode Title="GetFieldDefaulted Method " Url="html/9f3018bf-0470-6c36-2299-fd8ceff56062.htm" />
+        <HelpTOCNode Title="GetG Method " Url="html/89382ff7-5f1e-4ec0-5f69-bb16355d3ac3.htm" />
+        <HelpTOCNode Title="GetMode Method " Url="html/716bb83c-682d-aff4-90c2-2c88174aee75.htm" />
+        <HelpTOCNode Title="GetR Method " Url="html/d1c0e4a4-fb7a-8343-3bbc-744efe2c4d65.htm" />
+        <HelpTOCNode Title="GetStream Method " Url="html/b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" />
+        <HelpTOCNode Title="GetTagListCount Method " Url="html/5d64aad3-863c-b268-198b-07ddd24fbfad.htm" />
+        <HelpTOCNode Title="GetTagListEntry Method " Url="html/f5cff1b5-ce07-e55e-ab1c-7827d91f711e.htm" />
+        <HelpTOCNode Title="GetTagMethods Method " Url="html/483694ce-3a8e-159f-8e4f-94ad64da2edc.htm" />
+        <HelpTOCNode Title="GetVersion Method " Url="html/0d9caba0-bb41-b09a-beeb-bd0314195078.htm" />
+        <HelpTOCNode Title="IntsToByteArray Method " Url="html/8371d58d-9351-3bf0-14ea-b43d64cf806c.htm" />
+        <HelpTOCNode Title="IsBigEndian Method " Url="html/f00cb90b-0c20-9a77-0e49-79c00e4af782.htm" />
+        <HelpTOCNode Title="IsByteSwapped Method " Url="html/2ee23e7c-3bdf-3dcf-c22e-909bf9a5cd01.htm" />
+        <HelpTOCNode Title="IsCodecConfigured Method " Url="html/b4544171-4ee8-400d-3342-637b8e6b9f26.htm" />
+        <HelpTOCNode Title="IsMSB2LSB Method " Url="html/a3d28fcf-75f2-e630-9ad2-fc7f02410b03.htm" />
+        <HelpTOCNode Title="IsTiled Method " Url="html/7f0867f0-eb03-ca74-96de-742d16df1021.htm" />
+        <HelpTOCNode Title="IsUpSampled Method " Url="html/59876a4a-28d0-c1c2-4ba5-648cf57af121.htm" />
+        <HelpTOCNode Title="LastDirectory Method " Url="html/d59e2fe0-0610-bddc-8e58-00e1a19fda32.htm" />
+        <HelpTOCNode Title="MergeFieldInfo Method " Url="html/2b1434fe-fc0b-35bd-4a95-0931349b23a9.htm" />
+        <HelpTOCNode Title="NumberOfDirectories Method " Url="html/41cb7264-20ec-7429-bb0a-82341116afc9.htm" />
+        <HelpTOCNode Title="NumberOfStrips Method " Url="html/325ce2db-9094-7128-9744-00fc33367a38.htm" />
+        <HelpTOCNode Title="NumberOfTiles Method " Url="html/5858c623-1e50-cffc-c584-e7963f36a2a4.htm" />
+        <HelpTOCNode Title="Open Method " Url="html/915344e3-3d06-7d40-fac7-26cad5880e74.htm" />
+        <HelpTOCNode Id="02bba41d-96f0-4678-abb4-a73e3fa3c694" Title="PrintDirectory Method " Url="html/7132cc6b-fd05-1337-ece3-c266b92b270c.htm">
+          <HelpTOCNode Title="PrintDirectory Method (Stream)" Url="html/5509d038-8348-002b-c226-182ee04704e6.htm" />
+          <HelpTOCNode Title="PrintDirectory Method (Stream, TiffPrintFlags)" Url="html/9279a2ee-ec5b-4209-df0c-f1f9617fac88.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="RasterScanlineSize Method " Url="html/5cebaf51-e954-db5e-70cb-5fcaeb973ba2.htm" />
+        <HelpTOCNode Title="RawStripSize Method " Url="html/415812d8-7ad2-0e0a-fee2-8813e031872e.htm" />
+        <HelpTOCNode Title="RawTileSize Method " Url="html/5c31ec0d-9525-f824-d488-803f42c3cf33.htm" />
+        <HelpTOCNode Title="ReadBufferSetup Method " Url="html/5aedf257-d3b8-47eb-0249-28575847deff.htm" />
+        <HelpTOCNode Title="ReadCustomDirectory Method " Url="html/d8e658ef-6db8-4bf9-95cf-aca6b909d143.htm" />
+        <HelpTOCNode Title="ReadDirectory Method " Url="html/32d714d8-3e76-b61c-7c29-cd5dc08141bd.htm" />
+        <HelpTOCNode Title="ReadEncodedStrip Method " Url="html/2d0ecc5f-7777-71d3-f4c2-d0bfad681c5e.htm" />
+        <HelpTOCNode Title="ReadEncodedTile Method " Url="html/44229155-25ca-5d8c-0058-0aa6e35a0b55.htm" />
+        <HelpTOCNode Title="ReadEXIFDirectory Method " Url="html/0723e393-5697-10fa-d1d4-fc304359043b.htm" />
+        <HelpTOCNode Title="ReadRawStrip Method " Url="html/d0b7f303-ed33-2f9e-e897-8d73816419a7.htm" />
+        <HelpTOCNode Title="ReadRawTile Method " Url="html/ea790cce-fa51-f9b3-6cc8-ff5feacc6e1d.htm" />
+        <HelpTOCNode Id="4e0889f0-9d08-4098-ac88-37342c512ca3" Title="ReadRGBAImage Method " Url="html/a36a7f7d-899e-9956-745a-25adf1c7f9ac.htm">
+          <HelpTOCNode Title="ReadRGBAImage Method (Int32, Int32, Int32[])" Url="html/02d50610-40ef-3328-cb5c-cf5a81e866fa.htm" />
+          <HelpTOCNode Title="ReadRGBAImage Method (Int32, Int32, Int32[], Boolean)" Url="html/6be76c43-a5ec-33c1-9e02-d23ba20d83b1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="138dd75c-e035-48c3-b115-a68e1478656b" Title="ReadRGBAImageOriented Method " Url="html/93087c97-6d28-7886-75da-1611cc78d023.htm">
+          <HelpTOCNode Title="ReadRGBAImageOriented Method (Int32, Int32, Int32[], Orientation)" Url="html/07236304-f43a-8d89-09d5-01fe92721dd4.htm" />
+          <HelpTOCNode Title="ReadRGBAImageOriented Method (Int32, Int32, Int32[], Orientation, Boolean)" Url="html/3d36e5c1-7926-2319-07cb-1f2454b48439.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ReadRGBAStrip Method " Url="html/92668f86-933d-ef44-02e8-88ed5acc4efa.htm" />
+        <HelpTOCNode Title="ReadRGBATile Method " Url="html/1e447b83-017d-9a5c-2ac0-9c4fd0ed91e1.htm" />
+        <HelpTOCNode Id="1bae28f0-1083-4690-a882-0088f8375ce8" Title="ReadScanline Method " Url="html/af6c32ae-4afb-888c-fde0-aa19085a3002.htm">
+          <HelpTOCNode Title="ReadScanline Method (Byte[], Int32)" Url="html/93ee616a-a69d-864b-fee7-f6c886a93bd6.htm" />
+          <HelpTOCNode Title="ReadScanline Method (Byte[], Int32, Int16)" Url="html/447bfa83-ce61-cf78-b811-fb1e429127bc.htm" />
+          <HelpTOCNode Title="ReadScanline Method (Byte[], Int32, Int32, Int16)" Url="html/01589d80-4632-f1fb-147c-cf3ebfdeb5d1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ReadTile Method " Url="html/c33e99a3-6e9a-dfd7-75d9-d3b5072555ab.htm" />
+        <HelpTOCNode Id="65b6f4a8-d48b-48f9-af3e-a4c40bb69d75" Title="Realloc Method " Url="html/dbb47233-c980-a143-bcf1-940e3157a3e2.htm">
+          <HelpTOCNode Title="Realloc Method (Byte[], Int32)" Url="html/0e389fdd-1f2b-0008-6844-9191920677da.htm" />
+          <HelpTOCNode Title="Realloc Method (Int32[], Int32)" Url="html/1bf34a35-3263-3afe-3698-a75fac0771c4.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="RegisterCodec Method " Url="html/40ee20a0-64de-2854-a14c-8664db9ecff8.htm" />
+        <HelpTOCNode Id="eb262571-a755-4033-8b52-191d35c481d3" Title="ReverseBits Method " Url="html/5a8d0a2f-8ad2-b0c3-8905-26102f38d402.htm">
+          <HelpTOCNode Title="ReverseBits Method (Byte[], Int32)" Url="html/36b45114-2e13-e2cf-7006-f53da6b79adb.htm" />
+          <HelpTOCNode Title="ReverseBits Method (Byte[], Int32, Int32)" Url="html/89fdd4cf-adaf-17d8-e377-32f21f3c759a.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="RewriteDirectory Method " Url="html/5674fb3f-754d-706b-574a-ff8f63145c5a.htm" />
+        <HelpTOCNode Title="RGBAImageOK Method " Url="html/3fff539c-69e9-5983-048b-c1111dc8994e.htm" />
+        <HelpTOCNode Title="ScanlineSize Method " Url="html/e40cc5fe-b2f4-39e5-abc8-835346507d18.htm" />
+        <HelpTOCNode Title="SetClientdata Method " Url="html/be4bb019-ebb9-a858-1e34-44f09f92aeb9.htm" />
+        <HelpTOCNode Title="SetClientInfo Method " Url="html/72b5621c-7b56-7de2-b16c-8d90362dd3b2.htm" />
+        <HelpTOCNode Title="SetDirectory Method " Url="html/29e2caf0-871a-b2e3-3c8f-3d365627d047.htm" />
+        <HelpTOCNode Title="SetErrorHandler Method " Url="html/1cc52bda-c37c-3653-427e-18ec3fc51bae.htm" />
+        <HelpTOCNode Title="SetField Method " Url="html/87815022-38e5-9d3e-2ab5-01af3c9077ae.htm" />
+        <HelpTOCNode Title="SetFileName Method " Url="html/9e617b90-c34d-63de-5853-0a0b0bd3f4d5.htm" />
+        <HelpTOCNode Title="SetMode Method " Url="html/eb233c02-7cd6-c516-f538-f1a1d1353538.htm" />
+        <HelpTOCNode Title="SetSubDirectory Method " Url="html/4516f9b3-4167-c276-4f2c-8f696ea768c5.htm" />
+        <HelpTOCNode Title="SetTagExtender Method " Url="html/45515aaa-f023-9079-2250-af4381d5dc31.htm" />
+        <HelpTOCNode Title="SetTagMethods Method " Url="html/8a8b26fb-b82c-c173-97ff-7cf43bcd9ea1.htm" />
+        <HelpTOCNode Title="SetupStrips Method " Url="html/9c329dc2-9366-8b36-39f3-add2a63057c8.htm" />
+        <HelpTOCNode Title="SetWriteOffset Method " Url="html/9a8bfc02-bf62-1716-b334-c0e3da1e34b5.htm" />
+        <HelpTOCNode Title="ShortsToByteArray Method " Url="html/8c4e96a8-d969-e0a4-24ff-05d11051cebc.htm" />
+        <HelpTOCNode Title="StripSize Method " Url="html/b8ab7c05-d5de-e99c-3d61-9ce63ecf3ab1.htm" />
+        <HelpTOCNode Id="849bed94-cee3-4b45-8353-96c62418b1df" Title="SwabArrayOfDouble Method " Url="html/494ca665-5d2e-418c-3793-2014cd056c66.htm">
+          <HelpTOCNode Title="SwabArrayOfDouble Method (Double[], Int32)" Url="html/613d7c8d-55dc-9d11-a0d0-63ade6a3c760.htm" />
+          <HelpTOCNode Title="SwabArrayOfDouble Method (Double[], Int32, Int32)" Url="html/9ce74133-a659-d978-4386-d60b19f51f73.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="3629b625-68ae-441b-9066-58301f4c8995" Title="SwabArrayOfLong Method " Url="html/0155fd2e-b1db-d021-1ac6-8e83a3061836.htm">
+          <HelpTOCNode Title="SwabArrayOfLong Method (Int32[], Int32)" Url="html/ddd08655-d14b-0b3a-7571-27bb5c7cfcb3.htm" />
+          <HelpTOCNode Title="SwabArrayOfLong Method (Int32[], Int32, Int32)" Url="html/3d386870-b3a5-476e-ed83-da11a2901d31.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="a4b1a550-0dac-4100-9e14-cbf51aeb4abf" Title="SwabArrayOfShort Method " Url="html/c07ccdb1-18d7-1b93-542f-c359cf28fc09.htm">
+          <HelpTOCNode Title="SwabArrayOfShort Method (Int16[], Int32)" Url="html/fdf157b3-2de2-29e1-1986-44a993fee193.htm" />
+          <HelpTOCNode Title="SwabArrayOfShort Method (Int16[], Int32, Int32)" Url="html/5d0b7906-338a-44ed-1b6e-3e70180469e7.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="defe12c0-f168-44bb-b8a2-28dd18b73f50" Title="SwabArrayOfTriples Method " Url="html/bd17be91-7097-eeec-773c-4e0c94e43a66.htm">
+          <HelpTOCNode Title="SwabArrayOfTriples Method (Byte[], Int32)" Url="html/e2f906af-9726-4c14-82ef-c0b4f57230b7.htm" />
+          <HelpTOCNode Title="SwabArrayOfTriples Method (Byte[], Int32, Int32)" Url="html/2b9c98cd-9fb3-3e01-e5e8-77c7d9dbb401.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="SwabDouble Method " Url="html/8468877c-2e12-87c4-49ac-0414d2b7f38f.htm" />
+        <HelpTOCNode Title="SwabLong Method " Url="html/298cf704-d0a0-7628-0c38-300334a3b7bc.htm" />
+        <HelpTOCNode Title="SwabShort Method " Url="html/7214e72c-807b-e3e4-6dab-b5a8fbca09c7.htm" />
+        <HelpTOCNode Title="TileRowSize Method " Url="html/a5c71919-11a8-cc07-15b8-62b313f07a01.htm" />
+        <HelpTOCNode Title="TileSize Method " Url="html/07058663-1c98-9f73-88f6-d990ec96bdd3.htm" />
+        <HelpTOCNode Title="UnlinkDirectory Method " Url="html/960b2644-d100-0f19-cacb-d2835096b7a5.htm" />
+        <HelpTOCNode Title="UnRegisterCodec Method " Url="html/84adbea5-217e-9823-abf8-0c839fa69f50.htm" />
+        <HelpTOCNode Title="VStripSize Method " Url="html/5aba7308-0e50-aa8f-1e16-7a30c3fa1865.htm" />
+        <HelpTOCNode Title="VTileSize Method " Url="html/e09be500-c612-fafe-f38d-33880816c3e1.htm" />
+        <HelpTOCNode Id="3a45f534-1341-4d22-adb2-cf0e2d7e33bd" Title="Warning Method " Url="html/e55961d3-03e4-ab43-bf89-28d8a8a5da19.htm">
+          <HelpTOCNode Title="Warning Method (String, String, Object[])" Url="html/cb2896a6-c077-898b-8362-7828b396fd80.htm" />
+          <HelpTOCNode Title="Warning Method (Tiff, String, String, Object[])" Url="html/21a3d01e-d9c7-f368-6100-9e3a155c3bdf.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="2498934d-3962-40f9-8a85-52b5cf528fbe" Title="WarningExt Method " Url="html/7ec1c845-5a90-476a-8df0-0646b88b16ba.htm">
+          <HelpTOCNode Title="WarningExt Method (Object, String, String, Object[])" Url="html/c4cf7506-1921-8c20-bb07-3800c12b0ad4.htm" />
+          <HelpTOCNode Title="WarningExt Method (Tiff, Object, String, String, Object[])" Url="html/46aa49bd-d3fc-8c84-b30d-f75fc152671c.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="WriteBufferSetup Method " Url="html/61054a96-45d5-9234-5180-0389a1142771.htm" />
+        <HelpTOCNode Title="WriteCheck Method " Url="html/7c482b59-ec7a-d43f-bad7-1a1fd15b8a86.htm" />
+        <HelpTOCNode Title="WriteDirectory Method " Url="html/20b69324-919e-ce8c-763a-d0c935708789.htm" />
+        <HelpTOCNode Id="a5c077c5-ddd8-4b8c-b3cc-83e06cb56ea4" Title="WriteEncodedStrip Method " Url="html/303c7c76-4bbc-64f0-d262-509978754367.htm">
+          <HelpTOCNode Title="WriteEncodedStrip Method (Int32, Byte[], Int32)" Url="html/8cc31ad9-a219-d7b6-ea05-2c6552ead1f5.htm" />
+          <HelpTOCNode Title="WriteEncodedStrip Method (Int32, Byte[], Int32, Int32)" Url="html/1a917f75-3fc4-d3c8-9e10-85216f90f22d.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="8cf8badf-dcd0-4cdc-9bd6-3a1f8f155eae" Title="WriteEncodedTile Method " Url="html/6f378a2a-bf2b-f83b-4798-7d2e5181bed7.htm">
+          <HelpTOCNode Title="WriteEncodedTile Method (Int32, Byte[], Int32)" Url="html/55a85980-f7e4-337a-3f81-5d85aaf7deaf.htm" />
+          <HelpTOCNode Title="WriteEncodedTile Method (Int32, Byte[], Int32, Int32)" Url="html/4bee2e96-def3-1db4-3b19-0849f4d50bae.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="ef08cf55-3a4a-4fa3-bf41-a53a4503e2a7" Title="WriteRawStrip Method " Url="html/cf9d637e-1b03-f632-a32b-d42af63ca6ef.htm">
+          <HelpTOCNode Title="WriteRawStrip Method (Int32, Byte[], Int32)" Url="html/0e3271dc-8eae-e1b6-7091-916204b72f8f.htm" />
+          <HelpTOCNode Title="WriteRawStrip Method (Int32, Byte[], Int32, Int32)" Url="html/52170d95-48e8-d87f-5f3c-9a5ac2fe4ea7.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="7feb7c27-50b2-43a9-9cbf-49bffbb8b677" Title="WriteRawTile Method " Url="html/e7803430-0f05-b8cf-c2d0-f5b1c5ab39bf.htm">
+          <HelpTOCNode Title="WriteRawTile Method (Int32, Byte[], Int32)" Url="html/dbd558fd-814e-56da-bc95-c7adeadb71ee.htm" />
+          <HelpTOCNode Title="WriteRawTile Method (Int32, Byte[], Int32, Int32)" Url="html/c842bd11-a7e6-0770-c446-f4a67380d80d.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="136ee9ed-edc3-4543-a061-30c249d4c4d2" Title="WriteScanline Method " Url="html/db0aa987-8e75-5a3e-5fec-1af1e2749968.htm">
+          <HelpTOCNode Title="WriteScanline Method (Byte[], Int32)" Url="html/37160766-6a04-9273-dc94-18ff5f6fb70a.htm" />
+          <HelpTOCNode Title="WriteScanline Method (Byte[], Int32, Int16)" Url="html/56aa8458-ef67-de76-4566-4aec76342ecc.htm" />
+          <HelpTOCNode Title="WriteScanline Method (Byte[], Int32, Int32, Int16)" Url="html/ba300b53-066a-2239-27bf-af4d6a184868.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="17cac781-d4f1-402f-87a1-589d3939b952" Title="WriteTile Method " Url="html/b175a081-3be0-b4f8-f39b-d99be1ce5b27.htm">
+          <HelpTOCNode Title="WriteTile Method (Byte[], Int32, Int32, Int32, Int16)" Url="html/9527936d-9875-9c5b-2882-0e2f51f3cc4d.htm" />
+          <HelpTOCNode Title="WriteTile Method (Byte[], Int32, Int32, Int32, Int32, Int16)" Url="html/d7812501-6a8f-07cc-df22-34c87661abb6.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="fb57c8fe-64b1-4cf6-addf-d885fc942fef" Title="Tiff Properties" Url="html/db1fb227-c339-107f-f88c-cc66a953c5cf.htm">
+        <HelpTOCNode Title="AssemblyVersion Property " Url="html/167d27c2-4929-590d-529d-61a27f841009.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Tiff.FaxFillFunc Delegate" Url="html/ffa7079c-626d-b5e6-c7dc-becc0e609ab1.htm" />
+    <HelpTOCNode Title="Tiff.TiffExtendProc Delegate" Url="html/785cdf77-02a7-8576-eb17-1425fb97e976.htm" />
+    <HelpTOCNode Id="6f5e032f-25d4-4828-b71f-451d22cc33b9" Title="TiffCodec Class" Url="html/c89dab2a-f4ba-5a37-7535-3c6314b12b62.htm">
+      <HelpTOCNode Title="TiffCodec Members" Url="html/cb5ef4c7-b141-0fb3-e04b-ad4bb93513f3.htm" />
+      <HelpTOCNode Title="TiffCodec Constructor " Url="html/258bf22c-9e1b-8600-878a-a78e8b9a53c5.htm" />
+      <HelpTOCNode Id="5c972a4d-21c8-4108-9b8e-e6aaa277a349" Title="TiffCodec Fields" Url="html/1531bcd8-f411-1b06-647f-01199759c799.htm">
+        <HelpTOCNode Title="m_name Field" Url="html/62b6e23d-0a65-9c7a-9776-fbad32b82538.htm" />
+        <HelpTOCNode Title="m_scheme Field" Url="html/7b1648a2-5639-0890-fbf0-6efc8c1327aa.htm" />
+        <HelpTOCNode Title="m_tif Field" Url="html/9ac9e832-3fb6-e50c-21a0-be6d17c85019.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1e8b35b9-5ee8-4d46-b1f8-43bcf1c78e40" Title="TiffCodec Methods" Url="html/4ec0d93d-87bc-7b11-a2aa-5fdb413995dc.htm">
+        <HelpTOCNode Title="Cleanup Method " Url="html/f5ccf8aa-4ef4-d604-0f12-4133be17e83f.htm" />
+        <HelpTOCNode Title="Close Method " Url="html/a668de41-40b8-d531-f82c-74b2c50173aa.htm" />
+        <HelpTOCNode Title="DecodeRow Method " Url="html/bfb0b224-4f0a-b64c-f725-732eba237452.htm" />
+        <HelpTOCNode Title="DecodeStrip Method " Url="html/df38a3c3-90f6-7528-86ca-8ccb1ec1dea3.htm" />
+        <HelpTOCNode Title="DecodeTile Method " Url="html/7cd5debf-d2a0-1e7a-c552-3563415f7d86.htm" />
+        <HelpTOCNode Title="DefStripSize Method " Url="html/e10d55a9-4f64-1796-bff3-ba86b598a864.htm" />
+        <HelpTOCNode Title="DefTileSize Method " Url="html/5e4c0c92-8f74-7aa7-4f34-10612f8440bf.htm" />
+        <HelpTOCNode Title="EncodeRow Method " Url="html/3b70fc4d-c1a3-7dd1-60e7-bc0db93705fd.htm" />
+        <HelpTOCNode Title="EncodeStrip Method " Url="html/c0d79fd1-fcb9-2248-fd5d-6be957c6eb2b.htm" />
+        <HelpTOCNode Title="EncodeTile Method " Url="html/1f0dd20a-fe18-77aa-66bd-8ce012eb2ad2.htm" />
+        <HelpTOCNode Title="Init Method " Url="html/9b6b73b0-fce0-466e-615a-36c60583fb28.htm" />
+        <HelpTOCNode Title="PostEncode Method " Url="html/f2ed5399-5077-3077-6945-d05ef6d27da2.htm" />
+        <HelpTOCNode Title="PreDecode Method " Url="html/428b7ff1-ff04-2474-b4ec-69bf14010f29.htm" />
+        <HelpTOCNode Title="PreEncode Method " Url="html/e349edd5-177c-4a34-c13b-6a0f03ac8f3b.htm" />
+        <HelpTOCNode Title="Seek Method " Url="html/7a992634-6be4-ed19-7491-f314bafc5817.htm" />
+        <HelpTOCNode Title="SetupDecode Method " Url="html/c88a1a3c-f13e-d84d-fbdc-0cba359bd3bf.htm" />
+        <HelpTOCNode Title="SetupEncode Method " Url="html/d60ef536-2049-bf85-1e43-27707bfcf4d2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3034fb40-5510-4594-8727-4c6977aad51a" Title="TiffCodec Properties" Url="html/797e1257-a632-c048-253b-4394e15d11ca.htm">
+        <HelpTOCNode Title="CanDecode Property " Url="html/31055b81-efa1-c87b-d939-d71c3acb079a.htm" />
+        <HelpTOCNode Title="CanEncode Property " Url="html/fd777f10-7fb1-3d73-27c7-23608c453a6c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="af36c4cd-b854-43e1-9242-2133be75733c" Title="TiffErrorHandler Class" Url="html/d6570178-f923-4185-9f1b-f11b94e4d0f0.htm">
+      <HelpTOCNode Title="TiffErrorHandler Members" Url="html/b37a37f6-107f-4f89-a69a-f263154f0e5b.htm" />
+      <HelpTOCNode Title="TiffErrorHandler Constructor " Url="html/05d3cddd-4180-1325-a28e-7b6a826355bc.htm" />
+      <HelpTOCNode Id="a70f1480-71de-403e-b10e-d1a39b07b9f9" Title="TiffErrorHandler Methods" Url="html/392e0c48-eef3-cd57-6b08-3b8ac4f5f3c8.htm">
+        <HelpTOCNode Title="ErrorHandler Method " Url="html/31f27246-9097-8565-5634-a58cff5c36cf.htm" />
+        <HelpTOCNode Title="ErrorHandlerExt Method " Url="html/4e86c93e-f9f0-e8ba-1a2f-19c7e72b7a0a.htm" />
+        <HelpTOCNode Title="WarningHandler Method " Url="html/ee1f1238-bd75-74bc-254f-bab52709fce2.htm" />
+        <HelpTOCNode Title="WarningHandlerExt Method " Url="html/4e3f0012-4e4f-9e8c-6eef-92f5cce1e0c1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="12e4986a-a6cd-4b90-836a-10de5ef60e46" Title="TiffFieldInfo Class" Url="html/32cda987-0aca-8e33-71f0-7dd91ffe4763.htm">
+      <HelpTOCNode Title="TiffFieldInfo Members" Url="html/dc9890f2-5f47-f5da-8dee-8fdb416f49f6.htm" />
+      <HelpTOCNode Title="TiffFieldInfo Constructor " Url="html/518d63dd-40e2-b3f6-a64d-57684abc9cd6.htm" />
+      <HelpTOCNode Id="c47cb531-522c-47eb-9f73-ec9dbd05d334" Title="TiffFieldInfo Fields" Url="html/af813d01-d8b2-74c0-4283-0b1e988efd5b.htm">
+        <HelpTOCNode Title="Spp Field" Url="html/fa4e7432-a3db-0bbd-fb55-e41d0265646c.htm" />
+        <HelpTOCNode Title="Variable Field" Url="html/812daffb-c05f-b0db-0d43-5dd2577f9dc3.htm" />
+        <HelpTOCNode Title="Variable2 Field" Url="html/54726a19-65fd-a556-82e5-69492e8afd0a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ec12b947-cb4c-4f27-8d99-360a8ae38f6a" Title="TiffFieldInfo Methods" Url="html/e3447897-f98c-c04b-4f05-b50209d643df.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/acc93017-bcb3-c544-6a1e-c65cbe81ab22.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="18029525-d38d-40e0-8dfa-437486313c2e" Title="TiffFieldInfo Properties" Url="html/773c7578-3d81-516f-7de2-5a4b87e6c596.htm">
+        <HelpTOCNode Title="Bit Property " Url="html/6d13f9e2-7910-cce5-ca47-ab548ec1378d.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/08817275-30a5-d50e-d6ca-edffd4a7e618.htm" />
+        <HelpTOCNode Title="OkToChange Property " Url="html/d4879ef1-0ddc-55d3-c204-0be23159b566.htm" />
+        <HelpTOCNode Title="PassCount Property " Url="html/aaa90240-9610-a674-b16f-567a815f7328.htm" />
+        <HelpTOCNode Title="ReadCount Property " Url="html/13b2715c-a6e0-ff1a-f129-2cacf7ad346b.htm" />
+        <HelpTOCNode Title="Tag Property " Url="html/cda1446f-cd4b-abe4-94c6-fdb10cb8f1b0.htm" />
+        <HelpTOCNode Title="Type Property " Url="html/5bc28b49-1ec0-a89e-9144-ef31c846aab4.htm" />
+        <HelpTOCNode Title="WriteCount Property " Url="html/97bf1749-ad05-451f-c8da-1973852453c7.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="TiffPrintFlags Enumeration" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+    <HelpTOCNode Id="d95c974a-e10c-4a08-ab11-a21469a2afd1" Title="TiffRgbaImage Class" Url="html/979c75ee-8f71-5601-3830-ed93ec51174d.htm">
+      <HelpTOCNode Title="TiffRgbaImage Members" Url="html/f60dd9f9-660c-fb65-7eeb-f7b06d150d92.htm" />
+      <HelpTOCNode Id="b67dfb26-b20b-4561-b51d-e06c518c7b8f" Title="TiffRgbaImage Methods" Url="html/fb63ec59-7474-5bbb-8d48-6949b5fc7f91.htm">
+        <HelpTOCNode Title="Create Method " Url="html/503b7ce1-e6d5-8d04-5719-b4de86e6dfb3.htm" />
+        <HelpTOCNode Title="GetRaster Method " Url="html/572688ab-9a51-9e83-f850-d9910a35b9a1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5d9a902a-d612-48f3-a23b-7683a216f7e1" Title="TiffRgbaImage Properties" Url="html/4deedfde-a78e-4bfb-4361-604b85599b51.htm">
+        <HelpTOCNode Title="Alpha Property " Url="html/68a22632-527e-8621-8b99-649d66c9a3ab.htm" />
+        <HelpTOCNode Title="BitsPerSample Property " Url="html/e599b734-f76f-42f4-be65-eb9981eea87b.htm" />
+        <HelpTOCNode Title="Get Property " Url="html/0eca0e83-2ab9-1a91-66fc-9f19b5d5af71.htm" />
+        <HelpTOCNode Title="Height Property " Url="html/1b0e2a77-be1d-899b-b893-2dc21f74942b.htm" />
+        <HelpTOCNode Title="IsContig Property " Url="html/25e5e223-c176-4c0c-4faf-6920faabe106.htm" />
+        <HelpTOCNode Title="Orientation Property " Url="html/10b6992b-7ff2-1eb8-f8dc-639144b8bcde.htm" />
+        <HelpTOCNode Title="Photometric Property " Url="html/a7b78368-3faf-fed7-b9e9-9fa6a0984fe3.htm" />
+        <HelpTOCNode Title="PutContig Property " Url="html/2941cecb-ffb1-865a-551c-8ca4985885fc.htm" />
+        <HelpTOCNode Title="PutSeparate Property " Url="html/1d1db6ae-9df9-1f42-0d7f-57fcf959f339.htm" />
+        <HelpTOCNode Title="ReqOrientation Property " Url="html/843141fe-9b95-0cf9-03b0-c3a26ee2f879.htm" />
+        <HelpTOCNode Title="SamplesPerPixel Property " Url="html/ef8decaa-60ee-5b27-2a8d-4c625f41b500.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/7674b71c-923c-a6d8-533e-e1b30ab99bcf.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="TiffRgbaImage.GetDelegate Delegate" Url="html/1dcf60c6-37a6-e966-850e-4607b07d645c.htm" />
+    <HelpTOCNode Title="TiffRgbaImage.PutContigDelegate Delegate" Url="html/e5760445-5d38-fe03-13b1-6f744ff40d22.htm" />
+    <HelpTOCNode Title="TiffRgbaImage.PutSeparateDelegate Delegate" Url="html/3b7f9d58-c51c-88b2-5711-22804449cd99.htm" />
+    <HelpTOCNode Id="5caa33f2-48f5-4c70-9b5e-5f0421a2e102" Title="TiffStream Class" Url="html/441a1bd6-5612-b060-4d63-b7c2f4895136.htm">
+      <HelpTOCNode Title="TiffStream Members" Url="html/c631ed3b-7b23-3686-c9e4-29dac682c6d0.htm" />
+      <HelpTOCNode Title="TiffStream Constructor " Url="html/a46ce3e5-5d76-2bf8-8528-23099b753023.htm" />
+      <HelpTOCNode Id="59dd105d-c8b9-465d-9046-d999af300dd5" Title="TiffStream Methods" Url="html/420e717a-be2c-57b4-8a5e-02ac6227c899.htm">
+        <HelpTOCNode Title="Close Method " Url="html/ae01b00d-5c47-40d1-9fe5-d740c52c37dc.htm" />
+        <HelpTOCNode Title="Read Method " Url="html/bf5722ab-eef2-e9f6-e876-7cb098301d94.htm" />
+        <HelpTOCNode Title="Seek Method " Url="html/be71dd9c-4b93-eb3f-eb05-9c97f7ac9534.htm" />
+        <HelpTOCNode Title="Size Method " Url="html/d2778a5c-8297-5539-b017-9090785fb72e.htm" />
+        <HelpTOCNode Title="Write Method " Url="html/863d6088-507c-08bd-b62b-763feaef4d9f.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="TiffTag Enumeration" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+    <HelpTOCNode Id="b3089980-668a-4f73-994e-49854e533596" Title="TiffTagMethods Class" Url="html/5eaf91df-51ac-3841-7d1c-d1e77a33370f.htm">
+      <HelpTOCNode Title="TiffTagMethods Members" Url="html/c2b9fd25-b5a8-975d-9b04-0aa0b7248527.htm" />
+      <HelpTOCNode Title="TiffTagMethods Constructor " Url="html/94a6d6dd-248b-2a20-9b70-af9bcc42c756.htm" />
+      <HelpTOCNode Id="9dbb4fbc-b453-4bf0-89eb-24794e85713a" Title="TiffTagMethods Methods" Url="html/11e56002-7ebc-359a-6b51-821cbfa2bc8a.htm">
+        <HelpTOCNode Title="GetField Method " Url="html/1466b00a-85b4-9ec3-bf2c-fdb29d7431d1.htm" />
+        <HelpTOCNode Title="PrintDir Method " Url="html/7b5a5628-1583-5ec5-ad4f-5336f84f9327.htm" />
+        <HelpTOCNode Title="SetField Method " Url="html/4bf85153-1b2c-377a-42ba-c0b6eb37a79d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="TiffType Enumeration" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+    <HelpTOCNode Title="YCbCrPosition Enumeration" Url="html/e41b4d87-aa80-6c0b-a755-4a058a73c576.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Title="Differences between LibTiff and LibTiff.Net" Url="html/dc0ab65b-e9a8-44f9-aec9-82b15a5d14fb.htm" />
+  <HelpTOCNode Title="Acknowledgements" Url="html/609bf177-82ad-4b3f-8a2a-04d0aded0be5.htm" />
+  <HelpTOCNode Title="Version History" Url="html/5200b425-c5b7-4675-b138-b055935bb221.htm" />
+  <HelpTOCNode Title="Links to Resources" Url="html/b104b853-026c-4369-b748-4810c886edfc.htm" />
+</HelpTOC>

@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="ACTIVEAREA enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ADOBE_DEFLATE enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="Alpha property" Url="html/68a22632-527e-8621-8b99-649d66c9a3ab.htm" />
+  <HelpKINode Title="ANALOGBALANCE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ANTIALIASSTRENGTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ANY enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="ARTIST enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ASCII enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="AssemblyVersion property" Url="html/167d27c2-4929-590d-529d-61a27f841009.htm" />
+  <HelpKINode Title="ASSHOTICCPROFILE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ASSHOTNEUTRAL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ASSHOTPREPROFILEMATRIX enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ASSHOTWHITEXY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ASSOCALPHA enumeration member" Url="html/edceb228-3508-d66e-d73c-200bdecdfe42.htm" />
+  <HelpKINode Title="BADFAXLINES enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BASELINE enumeration member" Url="html/5fa3fdfe-5a31-bf03-2463-662f6bbee378.htm" />
+  <HelpKINode Title="BASELINEEXPOSURE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BASELINENOISE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BASELINESHARPNESS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BAYERGREENSPLIT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BESTQUALITYSCALE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BILEVEL enumeration member" Url="html/98e0e69a-3705-662e-ed72-952340aad2f0.htm" />
+  <HelpKINode Title="Bit property" Url="html/6d13f9e2-7910-cce5-ca47-ab548ec1378d.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic namespace" Url="html/9a802d7c-b4bd-1a66-2eb6-26d7595822dd.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.CleanFaxData enumeration" Url="html/470116a5-e961-c50c-988b-7e8dfbe3b5cb.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.ColorResponseUnit enumeration" Url="html/0f629c9d-c09f-7a70-21dd-7342559a714f.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Compression enumeration" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.ExtraSample enumeration" Url="html/edceb228-3508-d66e-d73c-200bdecdfe42.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.FaxMode enumeration" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.FieldBit class">
+    <HelpKINode Title="FieldBit Class" Url="html/34021cc8-8b3f-1c36-ec59-bcee082d3aaa.htm" />
+    <HelpKINode Title="FieldBit Members" Url="html/5c667b77-8a85-91a8-ea26-a7e45b0664dd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.FieldValue structure">
+    <HelpKINode Title="FieldValue Members" Url="html/546c0cac-4a0a-984b-ee18-2e6b02701b54.htm" />
+    <HelpKINode Title="FieldValue Structure" Url="html/0967a036-4800-ebd2-d23d-95356a377826.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.FileType enumeration" Url="html/09cacae0-cba1-e059-0899-13e5a4001db3.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.FillOrder enumeration" Url="html/65279396-524c-fcee-60dc-bf29d27ea836.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.GrayResponseUnit enumeration" Url="html/a711564a-497c-098c-df92-22e73b235fb2.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Group3Opt enumeration" Url="html/e00d6851-cf09-287f-638b-fc62c498351a.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.InkSet enumeration" Url="html/0dd445ac-30cc-2c32-1dcc-5b48d2e644f4.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.JpegColorMode enumeration" Url="html/0839bb36-3896-39ff-cb13-f4601b4e20ae.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.JpegProc enumeration" Url="html/5fa3fdfe-5a31-bf03-2463-662f6bbee378.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.JpegTablesMode enumeration" Url="html/84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.OFileType enumeration" Url="html/ef0eb2f9-7686-0a09-2ecc-9b6d6a124f35.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Orientation enumeration" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Photometric enumeration" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.PlanarConfig enumeration" Url="html/d2e12021-da72-b32f-b558-dc23d914d698.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Predictor enumeration" Url="html/fa1b7e9c-678e-7328-2a3f-be1fe8578cbc.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.ResUnit enumeration" Url="html/5137d019-fa06-e573-99cd-8d4a5900e1c6.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.SampleFormat enumeration" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Threshold enumeration" Url="html/98e0e69a-3705-662e-ed72-952340aad2f0.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Tiff class">
+    <HelpKINode Title="Tiff Class" Url="html/f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" />
+    <HelpKINode Title="Tiff Members" Url="html/7371583f-43ad-c57e-08e4-439c740f29fa.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Tiff.FaxFillFunc delegate" Url="html/ffa7079c-626d-b5e6-c7dc-becc0e609ab1.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.Tiff.TiffExtendProc delegate" Url="html/785cdf77-02a7-8576-eb17-1425fb97e976.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffCodec class">
+    <HelpKINode Title="TiffCodec Class" Url="html/c89dab2a-f4ba-5a37-7535-3c6314b12b62.htm" />
+    <HelpKINode Title="TiffCodec Members" Url="html/cb5ef4c7-b141-0fb3-e04b-ad4bb93513f3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffErrorHandler class">
+    <HelpKINode Title="TiffErrorHandler Class" Url="html/d6570178-f923-4185-9f1b-f11b94e4d0f0.htm" />
+    <HelpKINode Title="TiffErrorHandler Members" Url="html/b37a37f6-107f-4f89-a69a-f263154f0e5b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffFieldInfo class">
+    <HelpKINode Title="TiffFieldInfo Class" Url="html/32cda987-0aca-8e33-71f0-7dd91ffe4763.htm" />
+    <HelpKINode Title="TiffFieldInfo Members" Url="html/dc9890f2-5f47-f5da-8dee-8fdb416f49f6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffPrintFlags enumeration" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffRgbaImage class">
+    <HelpKINode Title="TiffRgbaImage Class" Url="html/979c75ee-8f71-5601-3830-ed93ec51174d.htm" />
+    <HelpKINode Title="TiffRgbaImage Members" Url="html/f60dd9f9-660c-fb65-7eeb-f7b06d150d92.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffRgbaImage.GetDelegate delegate" Url="html/1dcf60c6-37a6-e966-850e-4607b07d645c.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffRgbaImage.PutContigDelegate delegate" Url="html/e5760445-5d38-fe03-13b1-6f744ff40d22.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffRgbaImage.PutSeparateDelegate delegate" Url="html/3b7f9d58-c51c-88b2-5711-22804449cd99.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffStream class">
+    <HelpKINode Title="TiffStream Class" Url="html/441a1bd6-5612-b060-4d63-b7c2f4895136.htm" />
+    <HelpKINode Title="TiffStream Members" Url="html/c631ed3b-7b23-3686-c9e4-29dac682c6d0.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffTag enumeration" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffTagMethods class">
+    <HelpKINode Title="TiffTagMethods Class" Url="html/5eaf91df-51ac-3841-7d1c-d1e77a33370f.htm" />
+    <HelpKINode Title="TiffTagMethods Members" Url="html/c2b9fd25-b5a8-975d-9b04-0aa0b7248527.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.TiffType enumeration" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="BitMiracle.LibTiff.Classic.YCbCrPosition enumeration" Url="html/e41b4d87-aa80-6c0b-a755-4a058a73c576.htm" />
+  <HelpKINode Title="BITSPERSAMPLE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BitsPerSample property" Url="html/e599b734-f76f-42f4-be65-eb9981eea87b.htm" />
+  <HelpKINode Title="BLACKLEVEL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BLACKLEVELDELTAH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BLACKLEVELDELTAV enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BLACKLEVELREPEATDIM enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="BOTLEFT enumeration member" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="BOTRIGHT enumeration member" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="BYTE enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="BYTEALIGN enumeration member" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+  <HelpKINode Title="ByteArrayToInts method" Url="html/21dff95c-1644-29de-f31c-30effdb4f514.htm" />
+  <HelpKINode Title="ByteArrayToShorts method" Url="html/1fd3ce5c-e33a-d146-e719-5226f8f61745.htm" />
+  <HelpKINode Title="CALIBRATIONILLUMINANT1 enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CALIBRATIONILLUMINANT2 enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CAMERACALIBRATION1 enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CAMERACALIBRATION2 enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CAMERASERIALNUMBER enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CanDecode property" Url="html/31055b81-efa1-c87b-d939-d71c3acb079a.htm" />
+  <HelpKINode Title="CanEncode property" Url="html/fd777f10-7fb1-3d73-27c7-23608c453a6c.htm" />
+  <HelpKINode Title="CCITTFAX3 enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="CCITTFAX4 enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="CCITTRLE enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="CCITTRLEW enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="CCITT_T4 enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="CCITT_T6 enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="CELLLENGTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CELLWIDTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CENTERED enumeration member" Url="html/e41b4d87-aa80-6c0b-a755-4a058a73c576.htm" />
+  <HelpKINode Title="CENTIMETER enumeration member" Url="html/5137d019-fa06-e573-99cd-8d4a5900e1c6.htm" />
+  <HelpKINode Title="CFALAYOUT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CFAPLANECOLOR enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CheckpointDirectory method" Url="html/2cf5f3bc-3f0d-76f4-84ae-83000e9e2d54.htm" />
+  <HelpKINode Title="CheckTile method" Url="html/0a96fe04-da43-0904-6136-e3646cbc6793.htm" />
+  <HelpKINode Title="CHROMABLURRADIUS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CIELAB enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="CLASSF enumeration member" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+  <HelpKINode Title="CLASSIC enumeration member" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+  <HelpKINode Title="CLEAN enumeration member" Url="html/470116a5-e961-c50c-988b-7e8dfbe3b5cb.htm" />
+  <HelpKINode Title="CleanFaxData enumeration" Url="html/470116a5-e961-c50c-988b-7e8dfbe3b5cb.htm" />
+  <HelpKINode Title="CLEANFAXDATA enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Cleanup method" Url="html/f5ccf8aa-4ef4-d604-0f12-4133be17e83f.htm" />
+  <HelpKINode Title="Clientdata method" Url="html/f79a82c8-205f-cde0-3ce8-d361c0da700c.htm" />
+  <HelpKINode Title="ClientOpen method" Url="html/c0b67436-6949-cd3a-e092-a82a20e393c9.htm" />
+  <HelpKINode Title="CLIPPATH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Close method">
+    <HelpKINode Title="Tiff.Close Method " Url="html/9bc26d59-9084-795c-2325-9d29069f7db2.htm" />
+    <HelpKINode Title="TiffCodec.Close Method " Url="html/a668de41-40b8-d531-f82c-74b2c50173aa.htm" />
+    <HelpKINode Title="TiffStream.Close Method " Url="html/ae01b00d-5c47-40d1-9fe5-d740c52c37dc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CMYK enumeration member" Url="html/0dd445ac-30cc-2c32-1dcc-5b48d2e644f4.htm" />
+  <HelpKINode Title="Codec field" Url="html/47a4a4fe-699b-c375-abcd-a58b99077da1.htm" />
+  <HelpKINode Title="COLORMAP enumeration member">
+    <HelpKINode Title="TiffPrintFlags Enumeration" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+    <HelpKINode Title="TiffTag Enumeration" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  </HelpKINode>
+  <HelpKINode Title="COLORMATRIX1 enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="COLORMATRIX2 enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ColorResponseUnit enumeration" Url="html/0f629c9d-c09f-7a70-21dd-7342559a714f.htm" />
+  <HelpKINode Title="COLORRESPONSEUNIT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Compare method" Url="html/2a65db00-c5db-ac53-cc67-07f8917d66b6.htm" />
+  <HelpKINode Title="COMPLEXIEEEFP enumeration member" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+  <HelpKINode Title="COMPLEXINT enumeration member" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+  <HelpKINode Title="Compression enumeration" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="COMPRESSION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ComputeStrip method" Url="html/dc784122-da09-6cd4-ced2-863e9af1b829.htm" />
+  <HelpKINode Title="ComputeTile method" Url="html/4b2d529d-76c3-991e-0c92-d4a054758831.htm" />
+  <HelpKINode Title="CONSECUTIVEBADFAXLINES enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CONTIG enumeration member" Url="html/d2e12021-da72-b32f-b558-dc23d914d698.htm" />
+  <HelpKINode Title="COPYRIGHT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="COSITED enumeration member" Url="html/e41b4d87-aa80-6c0b-a755-4a058a73c576.htm" />
+  <HelpKINode Title="Create method" Url="html/503b7ce1-e6d5-8d04-5719-b4de86e6dfb3.htm" />
+  <HelpKINode Title="CreateDirectory method" Url="html/b51071ed-0da2-583e-5a99-4c092900646f.htm" />
+  <HelpKINode Title="CRU100000S enumeration member" Url="html/0f629c9d-c09f-7a70-21dd-7342559a714f.htm" />
+  <HelpKINode Title="CRU10000S enumeration member" Url="html/0f629c9d-c09f-7a70-21dd-7342559a714f.htm" />
+  <HelpKINode Title="CRU1000S enumeration member" Url="html/0f629c9d-c09f-7a70-21dd-7342559a714f.htm" />
+  <HelpKINode Title="CRU100S enumeration member" Url="html/0f629c9d-c09f-7a70-21dd-7342559a714f.htm" />
+  <HelpKINode Title="CRU10S enumeration member" Url="html/0f629c9d-c09f-7a70-21dd-7342559a714f.htm" />
+  <HelpKINode Title="CurrentDirectory method" Url="html/09316c3d-c073-4306-7579-4e237d8232e1.htm" />
+  <HelpKINode Title="CurrentDirOffset method" Url="html/209cd5bf-9c19-b50f-aff7-0a2c1d5c0989.htm" />
+  <HelpKINode Title="CURRENTICCPROFILE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CURRENTPREPROFILEMATRIX enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="CurrentRow method" Url="html/260a19de-789c-d18b-4049-7413ba758474.htm" />
+  <HelpKINode Title="CurrentStrip method" Url="html/d041c94e-fc55-406f-45d3-2d261b1bd244.htm" />
+  <HelpKINode Title="CurrentTile method" Url="html/baa97aff-b269-43ba-d580-dce0aa32014c.htm" />
+  <HelpKINode Title="CURVES enumeration member" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+  <HelpKINode Title="Custom field" Url="html/96714e16-bf79-dd3f-2d2c-7ff62f43c339.htm" />
+  <HelpKINode Title="DATATYPE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DataWidth method" Url="html/5a89ec7c-84d8-72d2-220b-2ccfc89594df.htm" />
+  <HelpKINode Title="DATETIME enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCS enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="DCSBALANCEARRAY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCSCALIBRATIONFD enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCSCLIPRECTANGLE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCSCORRECTMATRIX enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCSGAMMA enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCSHUESHIFTVALUES enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCSIMAGERTYPE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCSINTERPMODE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DCSTOESHOULDERPTS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DecodeRow method" Url="html/bfb0b224-4f0a-b64c-f725-732eba237452.htm" />
+  <HelpKINode Title="DecodeStrip method" Url="html/df38a3c3-90f6-7528-86ca-8ccb1ec1dea3.htm" />
+  <HelpKINode Title="DecodeTile method" Url="html/7cd5debf-d2a0-1e7a-c552-3563415f7d86.htm" />
+  <HelpKINode Title="DEFAULTCROPORIGIN enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DEFAULTCROPSIZE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DEFAULTSCALE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DefaultStripSize method" Url="html/02d9c67e-0341-e407-59de-7cdeb347c337.htm" />
+  <HelpKINode Title="DefaultTileSize method" Url="html/c21ee1b4-0467-20be-ebd3-50f26d460ef3.htm" />
+  <HelpKINode Title="DEFLATE enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="DefStripSize method" Url="html/e10d55a9-4f64-1796-bff3-ba86b598a864.htm" />
+  <HelpKINode Title="DefTileSize method" Url="html/5e4c0c92-8f74-7aa7-4f34-10612f8440bf.htm" />
+  <HelpKINode Title="Dispose method" Url="html/7755ac80-49ba-f2e5-1de5-1dd3f589ce7b.htm" />
+  <HelpKINode Title="DNGBACKWARDVERSION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DNGPRIVATEDATA enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DNGVERSION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DOCUMENTNAME enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DOTRANGE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="DOUBLE enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="EncodeRow method" Url="html/3b70fc4d-c1a3-7dd1-60e7-bc0db93705fd.htm" />
+  <HelpKINode Title="EncodeStrip method" Url="html/c0d79fd1-fcb9-2248-fd5d-6be957c6eb2b.htm" />
+  <HelpKINode Title="EncodeTile method" Url="html/1f0dd20a-fe18-77aa-66bd-8ce012eb2ad2.htm" />
+  <HelpKINode Title="ENCODING2D enumeration member" Url="html/e00d6851-cf09-287f-638b-fc62c498351a.htm" />
+  <HelpKINode Title="Error method" Url="html/00716f8b-15fe-91f0-e2f2-4385844330ff.htm" />
+  <HelpKINode Title="ERRORDIFFUSE enumeration member" Url="html/98e0e69a-3705-662e-ed72-952340aad2f0.htm" />
+  <HelpKINode Title="ErrorExt method" Url="html/f73a13d6-1f8a-1725-3ecf-0948c26b46ad.htm" />
+  <HelpKINode Title="ErrorHandler method" Url="html/31f27246-9097-8565-5634-a58cff5c36cf.htm" />
+  <HelpKINode Title="ErrorHandlerExt method" Url="html/4e86c93e-f9f0-e8ba-1a2f-19c7e72b7a0a.htm" />
+  <HelpKINode Title="EXIFIFD enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_APERTUREVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_BRIGHTNESSVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_CFAPATTERN enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_COLORSPACE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_COMPONENTSCONFIGURATION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_COMPRESSEDBITSPERPIXEL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_CONTRAST enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_CUSTOMRENDERED enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_DATETIMEDIGITIZED enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_DATETIMEORIGINAL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_DEVICESETTINGDESCRIPTION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_DIGITALZOOMRATIO enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_EXIFVERSION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_EXPOSUREBIASVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_EXPOSUREINDEX enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_EXPOSUREMODE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_EXPOSUREPROGRAM enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_EXPOSURETIME enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FILESOURCE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FLASH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FLASHENERGY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FLASHPIXVERSION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FNUMBER enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FOCALLENGTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FOCALLENGTHIN35MMFILM enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FOCALPLANERESOLUTIONUNIT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FOCALPLANEXRESOLUTION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_FOCALPLANEYRESOLUTION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_GAINCONTROL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_IMAGEUNIQUEID enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_ISOSPEEDRATINGS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_LIGHTSOURCE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_MAKERNOTE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_MAXAPERTUREVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_METERINGMODE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_OECF enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_PIXELXDIMENSION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_PIXELYDIMENSION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_RELATEDSOUNDFILE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SATURATION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SCENECAPTURETYPE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SCENETYPE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SENSINGMETHOD enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SHARPNESS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SHUTTERSPEEDVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SPATIALFREQUENCYRESPONSE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SPECTRALSENSITIVITY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SUBJECTAREA enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SUBJECTDISTANCE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SUBJECTDISTANCERANGE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SUBJECTLOCATION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SUBSECTIME enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SUBSECTIMEDIGITIZED enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_SUBSECTIMEORIGINAL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_USERCOMMENT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="EXIF_WHITEBALANCE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ExtraSample enumeration" Url="html/edceb228-3508-d66e-d73c-200bdecdfe42.htm" />
+  <HelpKINode Title="EXTRASAMPLES enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FAXDCS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FAXFILLFUNC enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FaxMode enumeration" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+  <HelpKINode Title="FAXMODE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FAXRECVPARAMS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FAXRECVTIME enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FAXSUBADDRESS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FEDEX_EDR enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FieldBit class">
+    <HelpKINode Title="FieldBit Class" Url="html/34021cc8-8b3f-1c36-ec59-bcee082d3aaa.htm" />
+    <HelpKINode Title="FieldBit Members" Url="html/5c667b77-8a85-91a8-ea26-a7e45b0664dd.htm" />
+    <HelpKINode Title="about FieldBit class" Url="html/34021cc8-8b3f-1c36-ec59-bcee082d3aaa.htm" />
+    <HelpKINode Title="all members" Url="html/5c667b77-8a85-91a8-ea26-a7e45b0664dd.htm" />
+    <HelpKINode Title="fields" Url="html/380e3fd3-809a-6207-20fd-1f3dd1d6b17c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FieldBit.Codec field" Url="html/47a4a4fe-699b-c375-abcd-a58b99077da1.htm" />
+  <HelpKINode Title="FieldBit.Custom field" Url="html/96714e16-bf79-dd3f-2d2c-7ff62f43c339.htm" />
+  <HelpKINode Title="FieldBit.Ignore field" Url="html/5cbba3e3-b201-69b1-2f8d-6ba8ec33d51b.htm" />
+  <HelpKINode Title="FieldBit.Last field" Url="html/77fc2f82-d679-a2df-a7bc-9e526ffcc81d.htm" />
+  <HelpKINode Title="FieldBit.Pseudo field" Url="html/79d9f2c9-d1a3-3772-8c0b-e387d4d564df.htm" />
+  <HelpKINode Title="FieldValue structure">
+    <HelpKINode Title="FieldValue Members" Url="html/546c0cac-4a0a-984b-ee18-2e6b02701b54.htm" />
+    <HelpKINode Title="FieldValue Structure" Url="html/0967a036-4800-ebd2-d23d-95356a377826.htm" />
+    <HelpKINode Title="about FieldValue structure" Url="html/0967a036-4800-ebd2-d23d-95356a377826.htm" />
+    <HelpKINode Title="all members" Url="html/546c0cac-4a0a-984b-ee18-2e6b02701b54.htm" />
+    <HelpKINode Title="methods" Url="html/890c6583-408a-a934-90ce-4cbb1bc11d67.htm" />
+    <HelpKINode Title="properties" Url="html/d9d5ed22-88bb-a25f-cc9e-b44aab8aefb9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FieldValue.GetBytes method" Url="html/477e5c61-8c98-5232-f916-0d070750c2f3.htm" />
+  <HelpKINode Title="FieldValue.ToByte method" Url="html/b68fa8ae-d3d3-e1b7-c26b-a5ed7d963122.htm" />
+  <HelpKINode Title="FieldValue.ToByteArray method" Url="html/9f799d5b-7856-1e95-851e-85035cb5250f.htm" />
+  <HelpKINode Title="FieldValue.ToDouble method" Url="html/5ab7d24e-ba27-faa6-a94c-2c2b61f577c9.htm" />
+  <HelpKINode Title="FieldValue.ToDoubleArray method" Url="html/01ba5789-7449-409d-79a2-e419cbec0694.htm" />
+  <HelpKINode Title="FieldValue.ToFloat method" Url="html/450fcb04-da76-4068-2119-7a9993f6d6d1.htm" />
+  <HelpKINode Title="FieldValue.ToFloatArray method" Url="html/55b3feae-b877-6a77-7fb9-f8812dc53b71.htm" />
+  <HelpKINode Title="FieldValue.ToInt method" Url="html/2a329be7-533a-8b6c-5a61-5b22c492d5f4.htm" />
+  <HelpKINode Title="FieldValue.ToIntArray method" Url="html/b41088f1-9ec6-296b-4216-6b7525262b68.htm" />
+  <HelpKINode Title="FieldValue.ToShort method" Url="html/e4eae8d2-688f-64b6-f0be-892ecc0eb08a.htm" />
+  <HelpKINode Title="FieldValue.ToShortArray method" Url="html/c8cd428c-c2cc-5ea8-3ec6-13f6f8f8aaa2.htm" />
+  <HelpKINode Title="FieldValue.ToString method" Url="html/30acdbe8-dd45-91eb-7655-76e755074864.htm" />
+  <HelpKINode Title="FieldValue.ToUInt method" Url="html/ed4aedbc-e87e-5f6b-5142-b4dc47526118.htm" />
+  <HelpKINode Title="FieldValue.ToUIntArray method" Url="html/8db3e73e-e550-4fd0-baa3-e97f08e6d2a7.htm" />
+  <HelpKINode Title="FieldValue.ToUShort method" Url="html/108f29c7-b0ae-3bd8-cd96-d43f3b851f5b.htm" />
+  <HelpKINode Title="FieldValue.ToUShortArray method" Url="html/99f8ed8e-f4ab-2da5-36a3-9baffe115dc4.htm" />
+  <HelpKINode Title="FieldValue.Value property" Url="html/4104feff-c429-6a7f-eabc-b46da7a541ef.htm" />
+  <HelpKINode Title="FieldWithName method" Url="html/f6fb8bc1-b9c1-d54a-a66e-ecaf016de6a8.htm" />
+  <HelpKINode Title="FieldWithTag method" Url="html/3faa7711-d06a-a442-ed29-cf86c720655d.htm" />
+  <HelpKINode Title="FileName method" Url="html/6850d0d1-eb4d-6ab8-36bf-789f915bd38a.htm" />
+  <HelpKINode Title="FileType enumeration" Url="html/09cacae0-cba1-e059-0899-13e5a4001db3.htm" />
+  <HelpKINode Title="FILLBITS enumeration member" Url="html/e00d6851-cf09-287f-638b-fc62c498351a.htm" />
+  <HelpKINode Title="FillOrder enumeration" Url="html/65279396-524c-fcee-60dc-bf29d27ea836.htm" />
+  <HelpKINode Title="FILLORDER enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FindCodec method" Url="html/d8d19ede-212b-a319-8bfa-75add07df448.htm" />
+  <HelpKINode Title="FindFieldInfo method" Url="html/83de3c26-ae91-6d67-2998-2217a7338952.htm" />
+  <HelpKINode Title="FindFieldInfoByName method" Url="html/b66be4cb-5a81-bd39-efd1-17f777d33f6c.htm" />
+  <HelpKINode Title="FLOAT enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="FLOATINGPOINT enumeration member" Url="html/fa1b7e9c-678e-7328-2a3f-be1fe8578cbc.htm" />
+  <HelpKINode Title="Flush method" Url="html/14b42cfd-08c7-7725-c289-9b077621410e.htm" />
+  <HelpKINode Title="FlushData method" Url="html/22761731-896e-93e4-1619-42e1c31d1b59.htm" />
+  <HelpKINode Title="FRAMECOUNT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FREEBYTECOUNTS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="FreeDirectory method" Url="html/eb14ea47-71e6-3afc-6ece-0f809653ea1d.htm" />
+  <HelpKINode Title="FREEOFFSETS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Get property" Url="html/0eca0e83-2ab9-1a91-66fc-9f19b5d5af71.htm" />
+  <HelpKINode Title="GetA method" Url="html/2adc84e6-ff6c-7ec9-9f68-b0c36a44bdbc.htm" />
+  <HelpKINode Title="GetB method" Url="html/f581cfa4-0f1f-b881-d615-b84dd42e11b3.htm" />
+  <HelpKINode Title="GetBitRevTable method" Url="html/4a335206-8caa-ea2a-5bf9-fb12614cc3a0.htm" />
+  <HelpKINode Title="GetBytes method" Url="html/477e5c61-8c98-5232-f916-0d070750c2f3.htm" />
+  <HelpKINode Title="GetClientInfo method" Url="html/7fb74f1e-3ef1-1522-b9c4-26e7819ac56a.htm" />
+  <HelpKINode Title="GetConfiguredCodecs method" Url="html/cc13a735-04b8-978d-bb92-e0d5a4040d86.htm" />
+  <HelpKINode Title="GetField method">
+    <HelpKINode Title="Tiff.GetField Method " Url="html/1bd1b3b8-a2ea-9d24-66ef-38ffdd33b984.htm" />
+    <HelpKINode Title="TiffTagMethods.GetField Method " Url="html/1466b00a-85b4-9ec3-bf2c-fdb29d7431d1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetFieldDefaulted method" Url="html/9f3018bf-0470-6c36-2299-fd8ceff56062.htm" />
+  <HelpKINode Title="GetG method" Url="html/89382ff7-5f1e-4ec0-5f69-bb16355d3ac3.htm" />
+  <HelpKINode Title="GetMode method" Url="html/716bb83c-682d-aff4-90c2-2c88174aee75.htm" />
+  <HelpKINode Title="GetR method" Url="html/d1c0e4a4-fb7a-8343-3bbc-744efe2c4d65.htm" />
+  <HelpKINode Title="GetRaster method" Url="html/572688ab-9a51-9e83-f850-d9910a35b9a1.htm" />
+  <HelpKINode Title="GetStream method" Url="html/b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" />
+  <HelpKINode Title="GetTagListCount method" Url="html/5d64aad3-863c-b268-198b-07ddd24fbfad.htm" />
+  <HelpKINode Title="GetTagListEntry method" Url="html/f5cff1b5-ce07-e55e-ab1c-7827d91f711e.htm" />
+  <HelpKINode Title="GetTagMethods method" Url="html/483694ce-3a8e-159f-8e4f-94ad64da2edc.htm" />
+  <HelpKINode Title="GetVersion method" Url="html/0d9caba0-bb41-b09a-beeb-bd0314195078.htm" />
+  <HelpKINode Title="GPSIFD enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="GRAYRESPONSECURVE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="GrayResponseUnit enumeration" Url="html/a711564a-497c-098c-df92-22e73b235fb2.htm" />
+  <HelpKINode Title="GRAYRESPONSEUNIT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Group3Opt enumeration" Url="html/e00d6851-cf09-287f-638b-fc62c498351a.htm" />
+  <HelpKINode Title="GROUP3OPTIONS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="GROUP4OPTIONS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="GRU100000S enumeration member" Url="html/a711564a-497c-098c-df92-22e73b235fb2.htm" />
+  <HelpKINode Title="GRU10000S enumeration member" Url="html/a711564a-497c-098c-df92-22e73b235fb2.htm" />
+  <HelpKINode Title="GRU1000S enumeration member" Url="html/a711564a-497c-098c-df92-22e73b235fb2.htm" />
+  <HelpKINode Title="GRU100S enumeration member" Url="html/a711564a-497c-098c-df92-22e73b235fb2.htm" />
+  <HelpKINode Title="GRU10S enumeration member" Url="html/a711564a-497c-098c-df92-22e73b235fb2.htm" />
+  <HelpKINode Title="HALFTONE enumeration member" Url="html/98e0e69a-3705-662e-ed72-952340aad2f0.htm" />
+  <HelpKINode Title="HALFTONEHINTS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Height property" Url="html/1b0e2a77-be1d-899b-b893-2dc21f74942b.htm" />
+  <HelpKINode Title="HORIZONTAL enumeration member" Url="html/fa1b7e9c-678e-7328-2a3f-be1fe8578cbc.htm" />
+  <HelpKINode Title="HOSTCOMPUTER enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="HUFF enumeration member" Url="html/84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" />
+  <HelpKINode Title="ICCLAB enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="ICCPROFILE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IEEEFP enumeration member" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+  <HelpKINode Title="IFD enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="IGNORE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Ignore field" Url="html/5cbba3e3-b201-69b1-2f8d-6ba8ec33d51b.htm" />
+  <HelpKINode Title="IMAGE enumeration member" Url="html/ef0eb2f9-7686-0a09-2ecc-9b6d6a124f35.htm" />
+  <HelpKINode Title="IMAGEDEPTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IMAGEDESCRIPTION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IMAGELENGTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IMAGEWIDTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="INCH enumeration member" Url="html/5137d019-fa06-e573-99cd-8d4a5900e1c6.htm" />
+  <HelpKINode Title="INDEXED enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Init method" Url="html/9b6b73b0-fce0-466e-615a-36c60583fb28.htm" />
+  <HelpKINode Title="INKNAMES enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="InkSet enumeration" Url="html/0dd445ac-30cc-2c32-1dcc-5b48d2e644f4.htm" />
+  <HelpKINode Title="INKSET enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="INT enumeration member" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+  <HelpKINode Title="INTEROPERABILITYIFD enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IntsToByteArray method" Url="html/8371d58d-9351-3bf0-14ea-b43d64cf806c.htm" />
+  <HelpKINode Title="IsBigEndian method" Url="html/f00cb90b-0c20-9a77-0e49-79c00e4af782.htm" />
+  <HelpKINode Title="IsByteSwapped method" Url="html/2ee23e7c-3bdf-3dcf-c22e-909bf9a5cd01.htm" />
+  <HelpKINode Title="IsCodecConfigured method" Url="html/b4544171-4ee8-400d-3342-637b8e6b9f26.htm" />
+  <HelpKINode Title="IsContig property" Url="html/25e5e223-c176-4c0c-4faf-6920faabe106.htm" />
+  <HelpKINode Title="IsMSB2LSB method" Url="html/a3d28fcf-75f2-e630-9ad2-fc7f02410b03.htm" />
+  <HelpKINode Title="IsTiled method" Url="html/7f0867f0-eb03-ca74-96de-742d16df1021.htm" />
+  <HelpKINode Title="IsUpSampled method" Url="html/59876a4a-28d0-c1c2-4ba5-648cf57af121.htm" />
+  <HelpKINode Title="IT8BITSPEREXTENDEDRUNLENGTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8BITSPERRUNLENGTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8BKGCOLORINDICATOR enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8BKGCOLORVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8BL enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="IT8CMYKEQUIVALENT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8COLORCHARACTERIZATION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8COLORSEQUENCE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8COLORTABLE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8CTPAD enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="IT8HCUSAGE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8HEADER enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8IMAGECOLORINDICATOR enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8IMAGECOLORVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8LW enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="IT8MP enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="IT8PIXELINTENSITYRANGE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8RASTERPADDING enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8SITE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8TRANSPARENCYINDICATOR enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="IT8TRAPINDICATOR enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ITULAB enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="JBIG enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="JBIGOPTIONS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JP2000 enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="JPEG enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="JPEGACTABLES enumeration member">
+    <HelpKINode Title="TiffPrintFlags Enumeration" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+    <HelpKINode Title="TiffTag Enumeration" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  </HelpKINode>
+  <HelpKINode Title="JpegColorMode enumeration" Url="html/0839bb36-3896-39ff-cb13-f4601b4e20ae.htm" />
+  <HelpKINode Title="JPEGCOLORMODE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JPEGDCTABLES enumeration member">
+    <HelpKINode Title="TiffPrintFlags Enumeration" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+    <HelpKINode Title="TiffTag Enumeration" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  </HelpKINode>
+  <HelpKINode Title="JPEGIFBYTECOUNT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JPEGIFOFFSET enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JPEGLOSSLESSPREDICTORS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JPEGPOINTTRANSFORM enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JpegProc enumeration" Url="html/5fa3fdfe-5a31-bf03-2463-662f6bbee378.htm" />
+  <HelpKINode Title="JPEGPROC enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JPEGQTABLES enumeration member">
+    <HelpKINode Title="TiffPrintFlags Enumeration" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+    <HelpKINode Title="TiffTag Enumeration" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  </HelpKINode>
+  <HelpKINode Title="JPEGQUALITY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JPEGRESTARTINTERVAL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JPEGTABLES enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="JpegTablesMode enumeration" Url="html/84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" />
+  <HelpKINode Title="JPEGTABLESMODE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Last field" Url="html/77fc2f82-d679-a2df-a7bc-9e526ffcc81d.htm" />
+  <HelpKINode Title="LastDirectory method" Url="html/d59e2fe0-0610-bddc-8e58-00e1a19fda32.htm" />
+  <HelpKINode Title="LEFTBOT enumeration member" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="LEFTTOP enumeration member" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="LENSINFO enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="LINEARIZATIONTABLE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="LINEARRESPONSELIMIT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="LOCALIZEDCAMERAMODEL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="LOGL enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="LOGLUV enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="LONG enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="LOSSLESS enumeration member" Url="html/5fa3fdfe-5a31-bf03-2463-662f6bbee378.htm" />
+  <HelpKINode Title="LSB2MSB enumeration member" Url="html/65279396-524c-fcee-60dc-bf29d27ea836.htm" />
+  <HelpKINode Title="LZW enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="MAKE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="MAKERNOTESAFETY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="MASK enumeration member">
+    <HelpKINode Title="FileType Enumeration" Url="html/09cacae0-cba1-e059-0899-13e5a4001db3.htm" />
+    <HelpKINode Title="Photometric Enumeration" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MASKEDAREAS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="MATTEING enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="MAXSAMPLEVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="MergeFieldInfo method" Url="html/2b1434fe-fc0b-35bd-4a95-0931349b23a9.htm" />
+  <HelpKINode Title="MINISBLACK enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="MINISWHITE enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="MINSAMPLEVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="MODEL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="MSB2LSB enumeration member" Url="html/65279396-524c-fcee-60dc-bf29d27ea836.htm" />
+  <HelpKINode Title="MULTIINK enumeration member" Url="html/0dd445ac-30cc-2c32-1dcc-5b48d2e644f4.htm" />
+  <HelpKINode Title="m_name field" Url="html/62b6e23d-0a65-9c7a-9776-fbad32b82538.htm" />
+  <HelpKINode Title="m_scheme field" Url="html/7b1648a2-5639-0890-fbf0-6efc8c1327aa.htm" />
+  <HelpKINode Title="m_tif field" Url="html/9ac9e832-3fb6-e50c-21a0-be6d17c85019.htm" />
+  <HelpKINode Title="Name property" Url="html/08817275-30a5-d50e-d6ca-edffd4a7e618.htm" />
+  <HelpKINode Title="NEXT enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="NOEOL enumeration member" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+  <HelpKINode Title="NONE enumeration member">
+    <HelpKINode Title="Compression Enumeration" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+    <HelpKINode Title="JpegTablesMode Enumeration" Url="html/84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" />
+    <HelpKINode Title="Predictor Enumeration" Url="html/fa1b7e9c-678e-7328-2a3f-be1fe8578cbc.htm" />
+    <HelpKINode Title="ResUnit Enumeration" Url="html/5137d019-fa06-e573-99cd-8d4a5900e1c6.htm" />
+    <HelpKINode Title="TiffPrintFlags Enumeration" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NORTC enumeration member" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+  <HelpKINode Title="NOTYPE enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="NumberOfDirectories method" Url="html/41cb7264-20ec-7429-bb0a-82341116afc9.htm" />
+  <HelpKINode Title="NUMBEROFINKS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="NumberOfStrips method" Url="html/325ce2db-9094-7128-9744-00fc33367a38.htm" />
+  <HelpKINode Title="NumberOfTiles method" Url="html/5858c623-1e50-cffc-c584-e7963f36a2a4.htm" />
+  <HelpKINode Title="OFileType enumeration" Url="html/ef0eb2f9-7686-0a09-2ecc-9b6d6a124f35.htm" />
+  <HelpKINode Title="OJPEG enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="OkToChange property" Url="html/d4879ef1-0ddc-55d3-c204-0be23159b566.htm" />
+  <HelpKINode Title="Open method" Url="html/915344e3-3d06-7d40-fac7-26cad5880e74.htm" />
+  <HelpKINode Title="OPIIMAGEID enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="OPIPROXY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Orientation enumeration" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="ORIENTATION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Orientation property" Url="html/10b6992b-7ff2-1eb8-f8dc-639144b8bcde.htm" />
+  <HelpKINode Title="ORIGINALRAWFILEDATA enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ORIGINALRAWFILENAME enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="OSUBFILETYPE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PACKBITS enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="PAGE enumeration member">
+    <HelpKINode Title="FileType Enumeration" Url="html/09cacae0-cba1-e059-0899-13e5a4001db3.htm" />
+    <HelpKINode Title="OFileType Enumeration" Url="html/ef0eb2f9-7686-0a09-2ecc-9b6d6a124f35.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PAGENAME enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PAGENUMBER enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PALETTE enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="PassCount property" Url="html/aaa90240-9610-a674-b16f-567a815f7328.htm" />
+  <HelpKINode Title="Photometric enumeration" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="PHOTOMETRIC enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Photometric property" Url="html/a7b78368-3faf-fed7-b9e9-9fa6a0984fe3.htm" />
+  <HelpKINode Title="PHOTOSHOP enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXARFILM enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="PIXARLOG enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="PIXARLOGDATAFMT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXARLOGQUALITY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXAR_FOVCOT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXAR_IMAGEFULLLENGTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXAR_IMAGEFULLWIDTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXAR_MATRIX_WORLDTOCAMERA enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXAR_MATRIX_WORLDTOSCREEN enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXAR_TEXTUREFORMAT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PIXAR_WRAPMODES enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PlanarConfig enumeration" Url="html/d2e12021-da72-b32f-b558-dc23d914d698.htm" />
+  <HelpKINode Title="PLANARCONFIG enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PostEncode method" Url="html/f2ed5399-5077-3077-6945-d05ef6d27da2.htm" />
+  <HelpKINode Title="PreDecode method" Url="html/428b7ff1-ff04-2474-b4ec-69bf14010f29.htm" />
+  <HelpKINode Title="Predictor enumeration" Url="html/fa1b7e9c-678e-7328-2a3f-be1fe8578cbc.htm" />
+  <HelpKINode Title="PREDICTOR enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PreEncode method" Url="html/e349edd5-177c-4a34-c13b-6a0f03ac8f3b.htm" />
+  <HelpKINode Title="PRIMARYCHROMATICITIES enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="PrintDir method" Url="html/7b5a5628-1583-5ec5-ad4f-5336f84f9327.htm" />
+  <HelpKINode Title="PrintDirectory method" Url="html/7132cc6b-fd05-1337-ece3-c266b92b270c.htm" />
+  <HelpKINode Title="Pseudo field" Url="html/79d9f2c9-d1a3-3772-8c0b-e387d4d564df.htm" />
+  <HelpKINode Title="PutContig property" Url="html/2941cecb-ffb1-865a-551c-8ca4985885fc.htm" />
+  <HelpKINode Title="PutSeparate property" Url="html/1d1db6ae-9df9-1f42-0d7f-57fcf959f339.htm" />
+  <HelpKINode Title="QUANT enumeration member" Url="html/84c75715-a6e2-02cf-7262-8dbd454ee5a4.htm" />
+  <HelpKINode Title="RasterScanlineSize method" Url="html/5cebaf51-e954-db5e-70cb-5fcaeb973ba2.htm" />
+  <HelpKINode Title="RATIONAL enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="RAW enumeration member" Url="html/0839bb36-3896-39ff-cb13-f4601b4e20ae.htm" />
+  <HelpKINode Title="RAWDATAUNIQUEID enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="RawStripSize method" Url="html/415812d8-7ad2-0e0a-fee2-8813e031872e.htm" />
+  <HelpKINode Title="RawTileSize method" Url="html/5c31ec0d-9525-f824-d488-803f42c3cf33.htm" />
+  <HelpKINode Title="Read method" Url="html/bf5722ab-eef2-e9f6-e876-7cb098301d94.htm" />
+  <HelpKINode Title="ReadBufferSetup method" Url="html/5aedf257-d3b8-47eb-0249-28575847deff.htm" />
+  <HelpKINode Title="ReadCount property" Url="html/13b2715c-a6e0-ff1a-f129-2cacf7ad346b.htm" />
+  <HelpKINode Title="ReadCustomDirectory method" Url="html/d8e658ef-6db8-4bf9-95cf-aca6b909d143.htm" />
+  <HelpKINode Title="ReadDirectory method" Url="html/32d714d8-3e76-b61c-7c29-cd5dc08141bd.htm" />
+  <HelpKINode Title="ReadEncodedStrip method" Url="html/2d0ecc5f-7777-71d3-f4c2-d0bfad681c5e.htm" />
+  <HelpKINode Title="ReadEncodedTile method" Url="html/44229155-25ca-5d8c-0058-0aa6e35a0b55.htm" />
+  <HelpKINode Title="ReadEXIFDirectory method" Url="html/0723e393-5697-10fa-d1d4-fc304359043b.htm" />
+  <HelpKINode Title="ReadRawStrip method" Url="html/d0b7f303-ed33-2f9e-e897-8d73816419a7.htm" />
+  <HelpKINode Title="ReadRawTile method" Url="html/ea790cce-fa51-f9b3-6cc8-ff5feacc6e1d.htm" />
+  <HelpKINode Title="ReadRGBAImage method" Url="html/a36a7f7d-899e-9956-745a-25adf1c7f9ac.htm" />
+  <HelpKINode Title="ReadRGBAImageOriented method" Url="html/93087c97-6d28-7886-75da-1611cc78d023.htm" />
+  <HelpKINode Title="ReadRGBAStrip method" Url="html/92668f86-933d-ef44-02e8-88ed5acc4efa.htm" />
+  <HelpKINode Title="ReadRGBATile method" Url="html/1e447b83-017d-9a5c-2ac0-9c4fd0ed91e1.htm" />
+  <HelpKINode Title="ReadScanline method" Url="html/af6c32ae-4afb-888c-fde0-aa19085a3002.htm" />
+  <HelpKINode Title="ReadTile method" Url="html/c33e99a3-6e9a-dfd7-75d9-d3b5072555ab.htm" />
+  <HelpKINode Title="Realloc method" Url="html/dbb47233-c980-a143-bcf1-940e3157a3e2.htm" />
+  <HelpKINode Title="REDUCEDIMAGE enumeration member">
+    <HelpKINode Title="FileType Enumeration" Url="html/09cacae0-cba1-e059-0899-13e5a4001db3.htm" />
+    <HelpKINode Title="OFileType Enumeration" Url="html/ef0eb2f9-7686-0a09-2ecc-9b6d6a124f35.htm" />
+  </HelpKINode>
+  <HelpKINode Title="REDUCTIONMATRIX1 enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="REDUCTIONMATRIX2 enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="REFERENCEBLACKWHITE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="REFPTS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="REGENERATED enumeration member" Url="html/470116a5-e961-c50c-988b-7e8dfbe3b5cb.htm" />
+  <HelpKINode Title="REGIONAFFINE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="REGIONTACKPOINT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="REGIONWARPCORNERS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="RegisterCodec method" Url="html/40ee20a0-64de-2854-a14c-8664db9ecff8.htm" />
+  <HelpKINode Title="ReqOrientation property" Url="html/843141fe-9b95-0cf9-03b0-c3a26ee2f879.htm" />
+  <HelpKINode Title="RESOLUTIONUNIT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ResUnit enumeration" Url="html/5137d019-fa06-e573-99cd-8d4a5900e1c6.htm" />
+  <HelpKINode Title="ReverseBits method" Url="html/5a8d0a2f-8ad2-b0c3-8905-26102f38d402.htm" />
+  <HelpKINode Title="RewriteDirectory method" Url="html/5674fb3f-754d-706b-574a-ff8f63145c5a.htm" />
+  <HelpKINode Title="RGB enumeration member">
+    <HelpKINode Title="JpegColorMode Enumeration" Url="html/0839bb36-3896-39ff-cb13-f4601b4e20ae.htm" />
+    <HelpKINode Title="Photometric Enumeration" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RGBAImageOK method" Url="html/3fff539c-69e9-5983-048b-c1111dc8994e.htm" />
+  <HelpKINode Title="RICHTIFFIPTC enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="RIGHTBOT enumeration member" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="RIGHTTOP enumeration member" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="ROWSPERSTRIP enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SampleFormat enumeration" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+  <HelpKINode Title="SAMPLEFORMAT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SAMPLESPERPIXEL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SamplesPerPixel property" Url="html/ef8decaa-60ee-5b27-2a8d-4c625f41b500.htm" />
+  <HelpKINode Title="SBYTE enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="ScanlineSize method" Url="html/e40cc5fe-b2f4-39e5-abc8-835346507d18.htm" />
+  <HelpKINode Title="Seek method">
+    <HelpKINode Title="TiffCodec.Seek Method " Url="html/7a992634-6be4-ed19-7491-f314bafc5817.htm" />
+    <HelpKINode Title="TiffStream.Seek Method " Url="html/be71dd9c-4b93-eb3f-eb05-9c97f7ac9534.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SEPARATE enumeration member" Url="html/d2e12021-da72-b32f-b558-dc23d914d698.htm" />
+  <HelpKINode Title="SEPARATED enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="SetClientdata method" Url="html/be4bb019-ebb9-a858-1e34-44f09f92aeb9.htm" />
+  <HelpKINode Title="SetClientInfo method" Url="html/72b5621c-7b56-7de2-b16c-8d90362dd3b2.htm" />
+  <HelpKINode Title="SetDirectory method" Url="html/29e2caf0-871a-b2e3-3c8f-3d365627d047.htm" />
+  <HelpKINode Title="SetErrorHandler method" Url="html/1cc52bda-c37c-3653-427e-18ec3fc51bae.htm" />
+  <HelpKINode Title="SetField method">
+    <HelpKINode Title="Tiff.SetField Method " Url="html/87815022-38e5-9d3e-2ab5-01af3c9077ae.htm" />
+    <HelpKINode Title="TiffTagMethods.SetField Method " Url="html/4bf85153-1b2c-377a-42ba-c0b6eb37a79d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetFileName method" Url="html/9e617b90-c34d-63de-5853-0a0b0bd3f4d5.htm" />
+  <HelpKINode Title="SetMode method" Url="html/eb233c02-7cd6-c516-f538-f1a1d1353538.htm" />
+  <HelpKINode Title="SetSubDirectory method" Url="html/4516f9b3-4167-c276-4f2c-8f696ea768c5.htm" />
+  <HelpKINode Title="SetTagExtender method" Url="html/45515aaa-f023-9079-2250-af4381d5dc31.htm" />
+  <HelpKINode Title="SetTagMethods method" Url="html/8a8b26fb-b82c-c173-97ff-7cf43bcd9ea1.htm" />
+  <HelpKINode Title="SetupDecode method" Url="html/c88a1a3c-f13e-d84d-fbdc-0cba359bd3bf.htm" />
+  <HelpKINode Title="SetupEncode method" Url="html/d60ef536-2049-bf85-1e43-27707bfcf4d2.htm" />
+  <HelpKINode Title="SetupStrips method" Url="html/9c329dc2-9366-8b36-39f3-add2a63057c8.htm" />
+  <HelpKINode Title="SetWriteOffset method" Url="html/9a8bfc02-bf62-1716-b334-c0e3da1e34b5.htm" />
+  <HelpKINode Title="SGILOG enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="SGILOG24 enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="SGILOGDATAFMT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SGILOGENCODE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SHADOWSCALE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SHORT enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="ShortsToByteArray method" Url="html/8c4e96a8-d969-e0a4-24ff-05d11051cebc.htm" />
+  <HelpKINode Title="Size method" Url="html/d2778a5c-8297-5539-b017-9090785fb72e.htm" />
+  <HelpKINode Title="SLONG enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="SMAXSAMPLEVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SMINSAMPLEVALUE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SOFTWARE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Spp field" Url="html/fa4e7432-a3db-0bbd-fb55-e41d0265646c.htm" />
+  <HelpKINode Title="SRATIONAL enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="SSHORT enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="STONITS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="STRIPBYTECOUNTS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="STRIPOFFSETS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="STRIPS enumeration member" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+  <HelpKINode Title="StripSize method" Url="html/b8ab7c05-d5de-e99c-3d61-9ce63ecf3ab1.htm" />
+  <HelpKINode Title="SUBFILETYPE enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SUBIFD enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="SwabArrayOfDouble method" Url="html/494ca665-5d2e-418c-3793-2014cd056c66.htm" />
+  <HelpKINode Title="SwabArrayOfLong method" Url="html/0155fd2e-b1db-d021-1ac6-8e83a3061836.htm" />
+  <HelpKINode Title="SwabArrayOfShort method" Url="html/c07ccdb1-18d7-1b93-542f-c359cf28fc09.htm" />
+  <HelpKINode Title="SwabArrayOfTriples method" Url="html/bd17be91-7097-eeec-773c-4e0c94e43a66.htm" />
+  <HelpKINode Title="SwabDouble method" Url="html/8468877c-2e12-87c4-49ac-0414d2b7f38f.htm" />
+  <HelpKINode Title="SwabLong method" Url="html/298cf704-d0a0-7628-0c38-300334a3b7bc.htm" />
+  <HelpKINode Title="SwabShort method" Url="html/7214e72c-807b-e3e4-6dab-b5a8fbca09c7.htm" />
+  <HelpKINode Title="T4OPTIONS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="T6OPTIONS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Tag property" Url="html/cda1446f-cd4b-abe4-94c6-fdb10cb8f1b0.htm" />
+  <HelpKINode Title="TARGETPRINTER enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="THRESHHOLDING enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Threshold enumeration" Url="html/98e0e69a-3705-662e-ed72-952340aad2f0.htm" />
+  <HelpKINode Title="THUNDERSCAN enumeration member" Url="html/ce8d3df9-34e8-ec94-528a-aa310689459b.htm" />
+  <HelpKINode Title="Tiff class">
+    <HelpKINode Title="Tiff Class" Url="html/f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" />
+    <HelpKINode Title="Tiff Members" Url="html/7371583f-43ad-c57e-08e4-439c740f29fa.htm" />
+    <HelpKINode Title="about Tiff class" Url="html/f7e0a767-6f44-b6cb-1239-6a309ddf9ae7.htm" />
+    <HelpKINode Title="all members" Url="html/7371583f-43ad-c57e-08e4-439c740f29fa.htm" />
+    <HelpKINode Title="methods" Url="html/35f5ef9a-dfb0-d436-0039-09ce93aecb8e.htm" />
+    <HelpKINode Title="properties" Url="html/db1fb227-c339-107f-f88c-cc66a953c5cf.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Tiff.AssemblyVersion property" Url="html/167d27c2-4929-590d-529d-61a27f841009.htm" />
+  <HelpKINode Title="Tiff.ByteArrayToInts method" Url="html/21dff95c-1644-29de-f31c-30effdb4f514.htm" />
+  <HelpKINode Title="Tiff.ByteArrayToShorts method" Url="html/1fd3ce5c-e33a-d146-e719-5226f8f61745.htm" />
+  <HelpKINode Title="Tiff.CheckpointDirectory method" Url="html/2cf5f3bc-3f0d-76f4-84ae-83000e9e2d54.htm" />
+  <HelpKINode Title="Tiff.CheckTile method" Url="html/0a96fe04-da43-0904-6136-e3646cbc6793.htm" />
+  <HelpKINode Title="Tiff.Clientdata method" Url="html/f79a82c8-205f-cde0-3ce8-d361c0da700c.htm" />
+  <HelpKINode Title="Tiff.ClientOpen method" Url="html/c0b67436-6949-cd3a-e092-a82a20e393c9.htm" />
+  <HelpKINode Title="Tiff.Close method" Url="html/9bc26d59-9084-795c-2325-9d29069f7db2.htm" />
+  <HelpKINode Title="Tiff.Compare method" Url="html/2a65db00-c5db-ac53-cc67-07f8917d66b6.htm" />
+  <HelpKINode Title="Tiff.ComputeStrip method" Url="html/dc784122-da09-6cd4-ced2-863e9af1b829.htm" />
+  <HelpKINode Title="Tiff.ComputeTile method" Url="html/4b2d529d-76c3-991e-0c92-d4a054758831.htm" />
+  <HelpKINode Title="Tiff.CreateDirectory method" Url="html/b51071ed-0da2-583e-5a99-4c092900646f.htm" />
+  <HelpKINode Title="Tiff.CurrentDirectory method" Url="html/09316c3d-c073-4306-7579-4e237d8232e1.htm" />
+  <HelpKINode Title="Tiff.CurrentDirOffset method" Url="html/209cd5bf-9c19-b50f-aff7-0a2c1d5c0989.htm" />
+  <HelpKINode Title="Tiff.CurrentRow method" Url="html/260a19de-789c-d18b-4049-7413ba758474.htm" />
+  <HelpKINode Title="Tiff.CurrentStrip method" Url="html/d041c94e-fc55-406f-45d3-2d261b1bd244.htm" />
+  <HelpKINode Title="Tiff.CurrentTile method" Url="html/baa97aff-b269-43ba-d580-dce0aa32014c.htm" />
+  <HelpKINode Title="Tiff.DataWidth method" Url="html/5a89ec7c-84d8-72d2-220b-2ccfc89594df.htm" />
+  <HelpKINode Title="Tiff.DefaultStripSize method" Url="html/02d9c67e-0341-e407-59de-7cdeb347c337.htm" />
+  <HelpKINode Title="Tiff.DefaultTileSize method" Url="html/c21ee1b4-0467-20be-ebd3-50f26d460ef3.htm" />
+  <HelpKINode Title="Tiff.Dispose method" Url="html/7755ac80-49ba-f2e5-1de5-1dd3f589ce7b.htm" />
+  <HelpKINode Title="Tiff.Error method" Url="html/00716f8b-15fe-91f0-e2f2-4385844330ff.htm" />
+  <HelpKINode Title="Tiff.ErrorExt method" Url="html/f73a13d6-1f8a-1725-3ecf-0948c26b46ad.htm" />
+  <HelpKINode Title="Tiff.FaxFillFunc delegate" Url="html/ffa7079c-626d-b5e6-c7dc-becc0e609ab1.htm" />
+  <HelpKINode Title="Tiff.FieldWithName method" Url="html/f6fb8bc1-b9c1-d54a-a66e-ecaf016de6a8.htm" />
+  <HelpKINode Title="Tiff.FieldWithTag method" Url="html/3faa7711-d06a-a442-ed29-cf86c720655d.htm" />
+  <HelpKINode Title="Tiff.FileName method" Url="html/6850d0d1-eb4d-6ab8-36bf-789f915bd38a.htm" />
+  <HelpKINode Title="Tiff.FindCodec method" Url="html/d8d19ede-212b-a319-8bfa-75add07df448.htm" />
+  <HelpKINode Title="Tiff.FindFieldInfo method" Url="html/83de3c26-ae91-6d67-2998-2217a7338952.htm" />
+  <HelpKINode Title="Tiff.FindFieldInfoByName method" Url="html/b66be4cb-5a81-bd39-efd1-17f777d33f6c.htm" />
+  <HelpKINode Title="Tiff.Flush method" Url="html/14b42cfd-08c7-7725-c289-9b077621410e.htm" />
+  <HelpKINode Title="Tiff.FlushData method" Url="html/22761731-896e-93e4-1619-42e1c31d1b59.htm" />
+  <HelpKINode Title="Tiff.FreeDirectory method" Url="html/eb14ea47-71e6-3afc-6ece-0f809653ea1d.htm" />
+  <HelpKINode Title="Tiff.GetA method" Url="html/2adc84e6-ff6c-7ec9-9f68-b0c36a44bdbc.htm" />
+  <HelpKINode Title="Tiff.GetB method" Url="html/f581cfa4-0f1f-b881-d615-b84dd42e11b3.htm" />
+  <HelpKINode Title="Tiff.GetBitRevTable method" Url="html/4a335206-8caa-ea2a-5bf9-fb12614cc3a0.htm" />
+  <HelpKINode Title="Tiff.GetClientInfo method" Url="html/7fb74f1e-3ef1-1522-b9c4-26e7819ac56a.htm" />
+  <HelpKINode Title="Tiff.GetConfiguredCodecs method" Url="html/cc13a735-04b8-978d-bb92-e0d5a4040d86.htm" />
+  <HelpKINode Title="Tiff.GetField method" Url="html/1bd1b3b8-a2ea-9d24-66ef-38ffdd33b984.htm" />
+  <HelpKINode Title="Tiff.GetFieldDefaulted method" Url="html/9f3018bf-0470-6c36-2299-fd8ceff56062.htm" />
+  <HelpKINode Title="Tiff.GetG method" Url="html/89382ff7-5f1e-4ec0-5f69-bb16355d3ac3.htm" />
+  <HelpKINode Title="Tiff.GetMode method" Url="html/716bb83c-682d-aff4-90c2-2c88174aee75.htm" />
+  <HelpKINode Title="Tiff.GetR method" Url="html/d1c0e4a4-fb7a-8343-3bbc-744efe2c4d65.htm" />
+  <HelpKINode Title="Tiff.GetStream method" Url="html/b3b38ae3-9a40-a098-4d98-ec17f67d6bdd.htm" />
+  <HelpKINode Title="Tiff.GetTagListCount method" Url="html/5d64aad3-863c-b268-198b-07ddd24fbfad.htm" />
+  <HelpKINode Title="Tiff.GetTagListEntry method" Url="html/f5cff1b5-ce07-e55e-ab1c-7827d91f711e.htm" />
+  <HelpKINode Title="Tiff.GetTagMethods method" Url="html/483694ce-3a8e-159f-8e4f-94ad64da2edc.htm" />
+  <HelpKINode Title="Tiff.GetVersion method" Url="html/0d9caba0-bb41-b09a-beeb-bd0314195078.htm" />
+  <HelpKINode Title="Tiff.IntsToByteArray method" Url="html/8371d58d-9351-3bf0-14ea-b43d64cf806c.htm" />
+  <HelpKINode Title="Tiff.IsBigEndian method" Url="html/f00cb90b-0c20-9a77-0e49-79c00e4af782.htm" />
+  <HelpKINode Title="Tiff.IsByteSwapped method" Url="html/2ee23e7c-3bdf-3dcf-c22e-909bf9a5cd01.htm" />
+  <HelpKINode Title="Tiff.IsCodecConfigured method" Url="html/b4544171-4ee8-400d-3342-637b8e6b9f26.htm" />
+  <HelpKINode Title="Tiff.IsMSB2LSB method" Url="html/a3d28fcf-75f2-e630-9ad2-fc7f02410b03.htm" />
+  <HelpKINode Title="Tiff.IsTiled method" Url="html/7f0867f0-eb03-ca74-96de-742d16df1021.htm" />
+  <HelpKINode Title="Tiff.IsUpSampled method" Url="html/59876a4a-28d0-c1c2-4ba5-648cf57af121.htm" />
+  <HelpKINode Title="Tiff.LastDirectory method" Url="html/d59e2fe0-0610-bddc-8e58-00e1a19fda32.htm" />
+  <HelpKINode Title="Tiff.MergeFieldInfo method" Url="html/2b1434fe-fc0b-35bd-4a95-0931349b23a9.htm" />
+  <HelpKINode Title="Tiff.NumberOfDirectories method" Url="html/41cb7264-20ec-7429-bb0a-82341116afc9.htm" />
+  <HelpKINode Title="Tiff.NumberOfStrips method" Url="html/325ce2db-9094-7128-9744-00fc33367a38.htm" />
+  <HelpKINode Title="Tiff.NumberOfTiles method" Url="html/5858c623-1e50-cffc-c584-e7963f36a2a4.htm" />
+  <HelpKINode Title="Tiff.Open method" Url="html/915344e3-3d06-7d40-fac7-26cad5880e74.htm" />
+  <HelpKINode Title="Tiff.PrintDirectory method" Url="html/7132cc6b-fd05-1337-ece3-c266b92b270c.htm" />
+  <HelpKINode Title="Tiff.RasterScanlineSize method" Url="html/5cebaf51-e954-db5e-70cb-5fcaeb973ba2.htm" />
+  <HelpKINode Title="Tiff.RawStripSize method" Url="html/415812d8-7ad2-0e0a-fee2-8813e031872e.htm" />
+  <HelpKINode Title="Tiff.RawTileSize method" Url="html/5c31ec0d-9525-f824-d488-803f42c3cf33.htm" />
+  <HelpKINode Title="Tiff.ReadBufferSetup method" Url="html/5aedf257-d3b8-47eb-0249-28575847deff.htm" />
+  <HelpKINode Title="Tiff.ReadCustomDirectory method" Url="html/d8e658ef-6db8-4bf9-95cf-aca6b909d143.htm" />
+  <HelpKINode Title="Tiff.ReadDirectory method" Url="html/32d714d8-3e76-b61c-7c29-cd5dc08141bd.htm" />
+  <HelpKINode Title="Tiff.ReadEncodedStrip method" Url="html/2d0ecc5f-7777-71d3-f4c2-d0bfad681c5e.htm" />
+  <HelpKINode Title="Tiff.ReadEncodedTile method" Url="html/44229155-25ca-5d8c-0058-0aa6e35a0b55.htm" />
+  <HelpKINode Title="Tiff.ReadEXIFDirectory method" Url="html/0723e393-5697-10fa-d1d4-fc304359043b.htm" />
+  <HelpKINode Title="Tiff.ReadRawStrip method" Url="html/d0b7f303-ed33-2f9e-e897-8d73816419a7.htm" />
+  <HelpKINode Title="Tiff.ReadRawTile method" Url="html/ea790cce-fa51-f9b3-6cc8-ff5feacc6e1d.htm" />
+  <HelpKINode Title="Tiff.ReadRGBAImage method" Url="html/a36a7f7d-899e-9956-745a-25adf1c7f9ac.htm" />
+  <HelpKINode Title="Tiff.ReadRGBAImageOriented method" Url="html/93087c97-6d28-7886-75da-1611cc78d023.htm" />
+  <HelpKINode Title="Tiff.ReadRGBAStrip method" Url="html/92668f86-933d-ef44-02e8-88ed5acc4efa.htm" />
+  <HelpKINode Title="Tiff.ReadRGBATile method" Url="html/1e447b83-017d-9a5c-2ac0-9c4fd0ed91e1.htm" />
+  <HelpKINode Title="Tiff.ReadScanline method" Url="html/af6c32ae-4afb-888c-fde0-aa19085a3002.htm" />
+  <HelpKINode Title="Tiff.ReadTile method" Url="html/c33e99a3-6e9a-dfd7-75d9-d3b5072555ab.htm" />
+  <HelpKINode Title="Tiff.Realloc method" Url="html/dbb47233-c980-a143-bcf1-940e3157a3e2.htm" />
+  <HelpKINode Title="Tiff.RegisterCodec method" Url="html/40ee20a0-64de-2854-a14c-8664db9ecff8.htm" />
+  <HelpKINode Title="Tiff.ReverseBits method" Url="html/5a8d0a2f-8ad2-b0c3-8905-26102f38d402.htm" />
+  <HelpKINode Title="Tiff.RewriteDirectory method" Url="html/5674fb3f-754d-706b-574a-ff8f63145c5a.htm" />
+  <HelpKINode Title="Tiff.RGBAImageOK method" Url="html/3fff539c-69e9-5983-048b-c1111dc8994e.htm" />
+  <HelpKINode Title="Tiff.ScanlineSize method" Url="html/e40cc5fe-b2f4-39e5-abc8-835346507d18.htm" />
+  <HelpKINode Title="Tiff.SetClientdata method" Url="html/be4bb019-ebb9-a858-1e34-44f09f92aeb9.htm" />
+  <HelpKINode Title="Tiff.SetClientInfo method" Url="html/72b5621c-7b56-7de2-b16c-8d90362dd3b2.htm" />
+  <HelpKINode Title="Tiff.SetDirectory method" Url="html/29e2caf0-871a-b2e3-3c8f-3d365627d047.htm" />
+  <HelpKINode Title="Tiff.SetErrorHandler method" Url="html/1cc52bda-c37c-3653-427e-18ec3fc51bae.htm" />
+  <HelpKINode Title="Tiff.SetField method" Url="html/87815022-38e5-9d3e-2ab5-01af3c9077ae.htm" />
+  <HelpKINode Title="Tiff.SetFileName method" Url="html/9e617b90-c34d-63de-5853-0a0b0bd3f4d5.htm" />
+  <HelpKINode Title="Tiff.SetMode method" Url="html/eb233c02-7cd6-c516-f538-f1a1d1353538.htm" />
+  <HelpKINode Title="Tiff.SetSubDirectory method" Url="html/4516f9b3-4167-c276-4f2c-8f696ea768c5.htm" />
+  <HelpKINode Title="Tiff.SetTagExtender method" Url="html/45515aaa-f023-9079-2250-af4381d5dc31.htm" />
+  <HelpKINode Title="Tiff.SetTagMethods method" Url="html/8a8b26fb-b82c-c173-97ff-7cf43bcd9ea1.htm" />
+  <HelpKINode Title="Tiff.SetupStrips method" Url="html/9c329dc2-9366-8b36-39f3-add2a63057c8.htm" />
+  <HelpKINode Title="Tiff.SetWriteOffset method" Url="html/9a8bfc02-bf62-1716-b334-c0e3da1e34b5.htm" />
+  <HelpKINode Title="Tiff.ShortsToByteArray method" Url="html/8c4e96a8-d969-e0a4-24ff-05d11051cebc.htm" />
+  <HelpKINode Title="Tiff.StripSize method" Url="html/b8ab7c05-d5de-e99c-3d61-9ce63ecf3ab1.htm" />
+  <HelpKINode Title="Tiff.SwabArrayOfDouble method" Url="html/494ca665-5d2e-418c-3793-2014cd056c66.htm" />
+  <HelpKINode Title="Tiff.SwabArrayOfLong method" Url="html/0155fd2e-b1db-d021-1ac6-8e83a3061836.htm" />
+  <HelpKINode Title="Tiff.SwabArrayOfShort method" Url="html/c07ccdb1-18d7-1b93-542f-c359cf28fc09.htm" />
+  <HelpKINode Title="Tiff.SwabArrayOfTriples method" Url="html/bd17be91-7097-eeec-773c-4e0c94e43a66.htm" />
+  <HelpKINode Title="Tiff.SwabDouble method" Url="html/8468877c-2e12-87c4-49ac-0414d2b7f38f.htm" />
+  <HelpKINode Title="Tiff.SwabLong method" Url="html/298cf704-d0a0-7628-0c38-300334a3b7bc.htm" />
+  <HelpKINode Title="Tiff.SwabShort method" Url="html/7214e72c-807b-e3e4-6dab-b5a8fbca09c7.htm" />
+  <HelpKINode Title="Tiff.TiffExtendProc delegate" Url="html/785cdf77-02a7-8576-eb17-1425fb97e976.htm" />
+  <HelpKINode Title="Tiff.TileRowSize method" Url="html/a5c71919-11a8-cc07-15b8-62b313f07a01.htm" />
+  <HelpKINode Title="Tiff.TileSize method" Url="html/07058663-1c98-9f73-88f6-d990ec96bdd3.htm" />
+  <HelpKINode Title="Tiff.UnlinkDirectory method" Url="html/960b2644-d100-0f19-cacb-d2835096b7a5.htm" />
+  <HelpKINode Title="Tiff.UnRegisterCodec method" Url="html/84adbea5-217e-9823-abf8-0c839fa69f50.htm" />
+  <HelpKINode Title="Tiff.VStripSize method" Url="html/5aba7308-0e50-aa8f-1e16-7a30c3fa1865.htm" />
+  <HelpKINode Title="Tiff.VTileSize method" Url="html/e09be500-c612-fafe-f38d-33880816c3e1.htm" />
+  <HelpKINode Title="Tiff.Warning method" Url="html/e55961d3-03e4-ab43-bf89-28d8a8a5da19.htm" />
+  <HelpKINode Title="Tiff.WarningExt method" Url="html/7ec1c845-5a90-476a-8df0-0646b88b16ba.htm" />
+  <HelpKINode Title="Tiff.WriteBufferSetup method" Url="html/61054a96-45d5-9234-5180-0389a1142771.htm" />
+  <HelpKINode Title="Tiff.WriteCheck method" Url="html/7c482b59-ec7a-d43f-bad7-1a1fd15b8a86.htm" />
+  <HelpKINode Title="Tiff.WriteDirectory method" Url="html/20b69324-919e-ce8c-763a-d0c935708789.htm" />
+  <HelpKINode Title="Tiff.WriteEncodedStrip method" Url="html/303c7c76-4bbc-64f0-d262-509978754367.htm" />
+  <HelpKINode Title="Tiff.WriteEncodedTile method" Url="html/6f378a2a-bf2b-f83b-4798-7d2e5181bed7.htm" />
+  <HelpKINode Title="Tiff.WriteRawStrip method" Url="html/cf9d637e-1b03-f632-a32b-d42af63ca6ef.htm" />
+  <HelpKINode Title="Tiff.WriteRawTile method" Url="html/e7803430-0f05-b8cf-c2d0-f5b1c5ab39bf.htm" />
+  <HelpKINode Title="Tiff.WriteScanline method" Url="html/db0aa987-8e75-5a3e-5fec-1af1e2749968.htm" />
+  <HelpKINode Title="Tiff.WriteTile method" Url="html/b175a081-3be0-b4f8-f39b-d99be1ce5b27.htm" />
+  <HelpKINode Title="TiffCodec class">
+    <HelpKINode Title="TiffCodec Class" Url="html/c89dab2a-f4ba-5a37-7535-3c6314b12b62.htm" />
+    <HelpKINode Title="TiffCodec Members" Url="html/cb5ef4c7-b141-0fb3-e04b-ad4bb93513f3.htm" />
+    <HelpKINode Title="about TiffCodec class" Url="html/c89dab2a-f4ba-5a37-7535-3c6314b12b62.htm" />
+    <HelpKINode Title="all members" Url="html/cb5ef4c7-b141-0fb3-e04b-ad4bb93513f3.htm" />
+    <HelpKINode Title="constructor" Url="html/258bf22c-9e1b-8600-878a-a78e8b9a53c5.htm" />
+    <HelpKINode Title="fields" Url="html/1531bcd8-f411-1b06-647f-01199759c799.htm" />
+    <HelpKINode Title="methods" Url="html/4ec0d93d-87bc-7b11-a2aa-5fdb413995dc.htm" />
+    <HelpKINode Title="properties" Url="html/797e1257-a632-c048-253b-4394e15d11ca.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TiffCodec.CanDecode property" Url="html/31055b81-efa1-c87b-d939-d71c3acb079a.htm" />
+  <HelpKINode Title="TiffCodec.CanEncode property" Url="html/fd777f10-7fb1-3d73-27c7-23608c453a6c.htm" />
+  <HelpKINode Title="TiffCodec.Cleanup method" Url="html/f5ccf8aa-4ef4-d604-0f12-4133be17e83f.htm" />
+  <HelpKINode Title="TiffCodec.Close method" Url="html/a668de41-40b8-d531-f82c-74b2c50173aa.htm" />
+  <HelpKINode Title="TiffCodec.DecodeRow method" Url="html/bfb0b224-4f0a-b64c-f725-732eba237452.htm" />
+  <HelpKINode Title="TiffCodec.DecodeStrip method" Url="html/df38a3c3-90f6-7528-86ca-8ccb1ec1dea3.htm" />
+  <HelpKINode Title="TiffCodec.DecodeTile method" Url="html/7cd5debf-d2a0-1e7a-c552-3563415f7d86.htm" />
+  <HelpKINode Title="TiffCodec.DefStripSize method" Url="html/e10d55a9-4f64-1796-bff3-ba86b598a864.htm" />
+  <HelpKINode Title="TiffCodec.DefTileSize method" Url="html/5e4c0c92-8f74-7aa7-4f34-10612f8440bf.htm" />
+  <HelpKINode Title="TiffCodec.EncodeRow method" Url="html/3b70fc4d-c1a3-7dd1-60e7-bc0db93705fd.htm" />
+  <HelpKINode Title="TiffCodec.EncodeStrip method" Url="html/c0d79fd1-fcb9-2248-fd5d-6be957c6eb2b.htm" />
+  <HelpKINode Title="TiffCodec.EncodeTile method" Url="html/1f0dd20a-fe18-77aa-66bd-8ce012eb2ad2.htm" />
+  <HelpKINode Title="TiffCodec.Init method" Url="html/9b6b73b0-fce0-466e-615a-36c60583fb28.htm" />
+  <HelpKINode Title="TiffCodec.m_name field" Url="html/62b6e23d-0a65-9c7a-9776-fbad32b82538.htm" />
+  <HelpKINode Title="TiffCodec.m_scheme field" Url="html/7b1648a2-5639-0890-fbf0-6efc8c1327aa.htm" />
+  <HelpKINode Title="TiffCodec.m_tif field" Url="html/9ac9e832-3fb6-e50c-21a0-be6d17c85019.htm" />
+  <HelpKINode Title="TiffCodec.PostEncode method" Url="html/f2ed5399-5077-3077-6945-d05ef6d27da2.htm" />
+  <HelpKINode Title="TiffCodec.PreDecode method" Url="html/428b7ff1-ff04-2474-b4ec-69bf14010f29.htm" />
+  <HelpKINode Title="TiffCodec.PreEncode method" Url="html/e349edd5-177c-4a34-c13b-6a0f03ac8f3b.htm" />
+  <HelpKINode Title="TiffCodec.Seek method" Url="html/7a992634-6be4-ed19-7491-f314bafc5817.htm" />
+  <HelpKINode Title="TiffCodec.SetupDecode method" Url="html/c88a1a3c-f13e-d84d-fbdc-0cba359bd3bf.htm" />
+  <HelpKINode Title="TiffCodec.SetupEncode method" Url="html/d60ef536-2049-bf85-1e43-27707bfcf4d2.htm" />
+  <HelpKINode Title="TiffCodec.TiffCodec constructor" Url="html/258bf22c-9e1b-8600-878a-a78e8b9a53c5.htm" />
+  <HelpKINode Title="TiffErrorHandler class">
+    <HelpKINode Title="TiffErrorHandler Class" Url="html/d6570178-f923-4185-9f1b-f11b94e4d0f0.htm" />
+    <HelpKINode Title="TiffErrorHandler Members" Url="html/b37a37f6-107f-4f89-a69a-f263154f0e5b.htm" />
+    <HelpKINode Title="about TiffErrorHandler class" Url="html/d6570178-f923-4185-9f1b-f11b94e4d0f0.htm" />
+    <HelpKINode Title="all members" Url="html/b37a37f6-107f-4f89-a69a-f263154f0e5b.htm" />
+    <HelpKINode Title="constructor" Url="html/05d3cddd-4180-1325-a28e-7b6a826355bc.htm" />
+    <HelpKINode Title="methods" Url="html/392e0c48-eef3-cd57-6b08-3b8ac4f5f3c8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TiffErrorHandler.ErrorHandler method" Url="html/31f27246-9097-8565-5634-a58cff5c36cf.htm" />
+  <HelpKINode Title="TiffErrorHandler.ErrorHandlerExt method" Url="html/4e86c93e-f9f0-e8ba-1a2f-19c7e72b7a0a.htm" />
+  <HelpKINode Title="TiffErrorHandler.TiffErrorHandler constructor" Url="html/05d3cddd-4180-1325-a28e-7b6a826355bc.htm" />
+  <HelpKINode Title="TiffErrorHandler.WarningHandler method" Url="html/ee1f1238-bd75-74bc-254f-bab52709fce2.htm" />
+  <HelpKINode Title="TiffErrorHandler.WarningHandlerExt method" Url="html/4e3f0012-4e4f-9e8c-6eef-92f5cce1e0c1.htm" />
+  <HelpKINode Title="TiffFieldInfo class">
+    <HelpKINode Title="TiffFieldInfo Class" Url="html/32cda987-0aca-8e33-71f0-7dd91ffe4763.htm" />
+    <HelpKINode Title="TiffFieldInfo Members" Url="html/dc9890f2-5f47-f5da-8dee-8fdb416f49f6.htm" />
+    <HelpKINode Title="about TiffFieldInfo class" Url="html/32cda987-0aca-8e33-71f0-7dd91ffe4763.htm" />
+    <HelpKINode Title="all members" Url="html/dc9890f2-5f47-f5da-8dee-8fdb416f49f6.htm" />
+    <HelpKINode Title="constructor" Url="html/518d63dd-40e2-b3f6-a64d-57684abc9cd6.htm" />
+    <HelpKINode Title="fields" Url="html/af813d01-d8b2-74c0-4283-0b1e988efd5b.htm" />
+    <HelpKINode Title="methods" Url="html/e3447897-f98c-c04b-4f05-b50209d643df.htm" />
+    <HelpKINode Title="properties" Url="html/773c7578-3d81-516f-7de2-5a4b87e6c596.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TiffFieldInfo.Bit property" Url="html/6d13f9e2-7910-cce5-ca47-ab548ec1378d.htm" />
+  <HelpKINode Title="TiffFieldInfo.Name property" Url="html/08817275-30a5-d50e-d6ca-edffd4a7e618.htm" />
+  <HelpKINode Title="TiffFieldInfo.OkToChange property" Url="html/d4879ef1-0ddc-55d3-c204-0be23159b566.htm" />
+  <HelpKINode Title="TiffFieldInfo.PassCount property" Url="html/aaa90240-9610-a674-b16f-567a815f7328.htm" />
+  <HelpKINode Title="TiffFieldInfo.ReadCount property" Url="html/13b2715c-a6e0-ff1a-f129-2cacf7ad346b.htm" />
+  <HelpKINode Title="TiffFieldInfo.Spp field" Url="html/fa4e7432-a3db-0bbd-fb55-e41d0265646c.htm" />
+  <HelpKINode Title="TiffFieldInfo.Tag property" Url="html/cda1446f-cd4b-abe4-94c6-fdb10cb8f1b0.htm" />
+  <HelpKINode Title="TiffFieldInfo.TiffFieldInfo constructor" Url="html/518d63dd-40e2-b3f6-a64d-57684abc9cd6.htm" />
+  <HelpKINode Title="TiffFieldInfo.ToString method" Url="html/acc93017-bcb3-c544-6a1e-c65cbe81ab22.htm" />
+  <HelpKINode Title="TiffFieldInfo.Type property" Url="html/5bc28b49-1ec0-a89e-9144-ef31c846aab4.htm" />
+  <HelpKINode Title="TiffFieldInfo.Variable field" Url="html/812daffb-c05f-b0db-0d43-5dd2577f9dc3.htm" />
+  <HelpKINode Title="TiffFieldInfo.Variable2 field" Url="html/54726a19-65fd-a556-82e5-69492e8afd0a.htm" />
+  <HelpKINode Title="TiffFieldInfo.WriteCount property" Url="html/97bf1749-ad05-451f-c8da-1973852453c7.htm" />
+  <HelpKINode Title="TiffPrintFlags enumeration" Url="html/a240b3eb-7681-0121-bb45-56cfbeedbab8.htm" />
+  <HelpKINode Title="TiffRgbaImage class">
+    <HelpKINode Title="TiffRgbaImage Class" Url="html/979c75ee-8f71-5601-3830-ed93ec51174d.htm" />
+    <HelpKINode Title="TiffRgbaImage Members" Url="html/f60dd9f9-660c-fb65-7eeb-f7b06d150d92.htm" />
+    <HelpKINode Title="about TiffRgbaImage class" Url="html/979c75ee-8f71-5601-3830-ed93ec51174d.htm" />
+    <HelpKINode Title="all members" Url="html/f60dd9f9-660c-fb65-7eeb-f7b06d150d92.htm" />
+    <HelpKINode Title="methods" Url="html/fb63ec59-7474-5bbb-8d48-6949b5fc7f91.htm" />
+    <HelpKINode Title="properties" Url="html/4deedfde-a78e-4bfb-4361-604b85599b51.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TiffRgbaImage.Alpha property" Url="html/68a22632-527e-8621-8b99-649d66c9a3ab.htm" />
+  <HelpKINode Title="TiffRgbaImage.BitsPerSample property" Url="html/e599b734-f76f-42f4-be65-eb9981eea87b.htm" />
+  <HelpKINode Title="TiffRgbaImage.Create method" Url="html/503b7ce1-e6d5-8d04-5719-b4de86e6dfb3.htm" />
+  <HelpKINode Title="TiffRgbaImage.Get property" Url="html/0eca0e83-2ab9-1a91-66fc-9f19b5d5af71.htm" />
+  <HelpKINode Title="TiffRgbaImage.GetDelegate delegate" Url="html/1dcf60c6-37a6-e966-850e-4607b07d645c.htm" />
+  <HelpKINode Title="TiffRgbaImage.GetRaster method" Url="html/572688ab-9a51-9e83-f850-d9910a35b9a1.htm" />
+  <HelpKINode Title="TiffRgbaImage.Height property" Url="html/1b0e2a77-be1d-899b-b893-2dc21f74942b.htm" />
+  <HelpKINode Title="TiffRgbaImage.IsContig property" Url="html/25e5e223-c176-4c0c-4faf-6920faabe106.htm" />
+  <HelpKINode Title="TiffRgbaImage.Orientation property" Url="html/10b6992b-7ff2-1eb8-f8dc-639144b8bcde.htm" />
+  <HelpKINode Title="TiffRgbaImage.Photometric property" Url="html/a7b78368-3faf-fed7-b9e9-9fa6a0984fe3.htm" />
+  <HelpKINode Title="TiffRgbaImage.PutContig property" Url="html/2941cecb-ffb1-865a-551c-8ca4985885fc.htm" />
+  <HelpKINode Title="TiffRgbaImage.PutContigDelegate delegate" Url="html/e5760445-5d38-fe03-13b1-6f744ff40d22.htm" />
+  <HelpKINode Title="TiffRgbaImage.PutSeparate property" Url="html/1d1db6ae-9df9-1f42-0d7f-57fcf959f339.htm" />
+  <HelpKINode Title="TiffRgbaImage.PutSeparateDelegate delegate" Url="html/3b7f9d58-c51c-88b2-5711-22804449cd99.htm" />
+  <HelpKINode Title="TiffRgbaImage.ReqOrientation property" Url="html/843141fe-9b95-0cf9-03b0-c3a26ee2f879.htm" />
+  <HelpKINode Title="TiffRgbaImage.SamplesPerPixel property" Url="html/ef8decaa-60ee-5b27-2a8d-4c625f41b500.htm" />
+  <HelpKINode Title="TiffRgbaImage.Width property" Url="html/7674b71c-923c-a6d8-533e-e1b30ab99bcf.htm" />
+  <HelpKINode Title="TiffStream class">
+    <HelpKINode Title="TiffStream Class" Url="html/441a1bd6-5612-b060-4d63-b7c2f4895136.htm" />
+    <HelpKINode Title="TiffStream Members" Url="html/c631ed3b-7b23-3686-c9e4-29dac682c6d0.htm" />
+    <HelpKINode Title="about TiffStream class" Url="html/441a1bd6-5612-b060-4d63-b7c2f4895136.htm" />
+    <HelpKINode Title="all members" Url="html/c631ed3b-7b23-3686-c9e4-29dac682c6d0.htm" />
+    <HelpKINode Title="constructor" Url="html/a46ce3e5-5d76-2bf8-8528-23099b753023.htm" />
+    <HelpKINode Title="methods" Url="html/420e717a-be2c-57b4-8a5e-02ac6227c899.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TiffStream.Close method" Url="html/ae01b00d-5c47-40d1-9fe5-d740c52c37dc.htm" />
+  <HelpKINode Title="TiffStream.Read method" Url="html/bf5722ab-eef2-e9f6-e876-7cb098301d94.htm" />
+  <HelpKINode Title="TiffStream.Seek method" Url="html/be71dd9c-4b93-eb3f-eb05-9c97f7ac9534.htm" />
+  <HelpKINode Title="TiffStream.Size method" Url="html/d2778a5c-8297-5539-b017-9090785fb72e.htm" />
+  <HelpKINode Title="TiffStream.TiffStream constructor" Url="html/a46ce3e5-5d76-2bf8-8528-23099b753023.htm" />
+  <HelpKINode Title="TiffStream.Write method" Url="html/863d6088-507c-08bd-b62b-763feaef4d9f.htm" />
+  <HelpKINode Title="TiffTag enumeration" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="TiffTagMethods class">
+    <HelpKINode Title="TiffTagMethods Class" Url="html/5eaf91df-51ac-3841-7d1c-d1e77a33370f.htm" />
+    <HelpKINode Title="TiffTagMethods Members" Url="html/c2b9fd25-b5a8-975d-9b04-0aa0b7248527.htm" />
+    <HelpKINode Title="about TiffTagMethods class" Url="html/5eaf91df-51ac-3841-7d1c-d1e77a33370f.htm" />
+    <HelpKINode Title="all members" Url="html/c2b9fd25-b5a8-975d-9b04-0aa0b7248527.htm" />
+    <HelpKINode Title="constructor" Url="html/94a6d6dd-248b-2a20-9b70-af9bcc42c756.htm" />
+    <HelpKINode Title="methods" Url="html/11e56002-7ebc-359a-6b51-821cbfa2bc8a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TiffTagMethods.GetField method" Url="html/1466b00a-85b4-9ec3-bf2c-fdb29d7431d1.htm" />
+  <HelpKINode Title="TiffTagMethods.PrintDir method" Url="html/7b5a5628-1583-5ec5-ad4f-5336f84f9327.htm" />
+  <HelpKINode Title="TiffTagMethods.SetField method" Url="html/4bf85153-1b2c-377a-42ba-c0b6eb37a79d.htm" />
+  <HelpKINode Title="TiffTagMethods.TiffTagMethods constructor" Url="html/94a6d6dd-248b-2a20-9b70-af9bcc42c756.htm" />
+  <HelpKINode Title="TiffType enumeration" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="TILEBYTECOUNTS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="TILEDEPTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="TILELENGTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="TILEOFFSETS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="TileRowSize method" Url="html/a5c71919-11a8-cc07-15b8-62b313f07a01.htm" />
+  <HelpKINode Title="TileSize method" Url="html/07058663-1c98-9f73-88f6-d990ec96bdd3.htm" />
+  <HelpKINode Title="TILEWIDTH enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ToByte method" Url="html/b68fa8ae-d3d3-e1b7-c26b-a5ed7d963122.htm" />
+  <HelpKINode Title="ToByteArray method" Url="html/9f799d5b-7856-1e95-851e-85035cb5250f.htm" />
+  <HelpKINode Title="ToDouble method" Url="html/5ab7d24e-ba27-faa6-a94c-2c2b61f577c9.htm" />
+  <HelpKINode Title="ToDoubleArray method" Url="html/01ba5789-7449-409d-79a2-e419cbec0694.htm" />
+  <HelpKINode Title="ToFloat method" Url="html/450fcb04-da76-4068-2119-7a9993f6d6d1.htm" />
+  <HelpKINode Title="ToFloatArray method" Url="html/55b3feae-b877-6a77-7fb9-f8812dc53b71.htm" />
+  <HelpKINode Title="ToInt method" Url="html/2a329be7-533a-8b6c-5a61-5b22c492d5f4.htm" />
+  <HelpKINode Title="ToIntArray method" Url="html/b41088f1-9ec6-296b-4216-6b7525262b68.htm" />
+  <HelpKINode Title="TOPLEFT enumeration member" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="TOPRIGHT enumeration member" Url="html/16194fbd-bea3-5e59-c196-8ac9d8533a78.htm" />
+  <HelpKINode Title="ToShort method" Url="html/e4eae8d2-688f-64b6-f0be-892ecc0eb08a.htm" />
+  <HelpKINode Title="ToShortArray method" Url="html/c8cd428c-c2cc-5ea8-3ec6-13f6f8f8aaa2.htm" />
+  <HelpKINode Title="ToString method">
+    <HelpKINode Title="FieldValue.ToString Method " Url="html/30acdbe8-dd45-91eb-7655-76e755074864.htm" />
+    <HelpKINode Title="TiffFieldInfo.ToString Method " Url="html/acc93017-bcb3-c544-6a1e-c65cbe81ab22.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ToUInt method" Url="html/ed4aedbc-e87e-5f6b-5142-b4dc47526118.htm" />
+  <HelpKINode Title="ToUIntArray method" Url="html/8db3e73e-e550-4fd0-baa3-e97f08e6d2a7.htm" />
+  <HelpKINode Title="ToUShort method" Url="html/108f29c7-b0ae-3bd8-cd96-d43f3b851f5b.htm" />
+  <HelpKINode Title="ToUShortArray method" Url="html/99f8ed8e-f4ab-2da5-36a3-9baffe115dc4.htm" />
+  <HelpKINode Title="TRANSFERFUNCTION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Type property" Url="html/5bc28b49-1ec0-a89e-9144-ef31c846aab4.htm" />
+  <HelpKINode Title="UINT enumeration member" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+  <HelpKINode Title="UNASSALPHA enumeration member" Url="html/edceb228-3508-d66e-d73c-200bdecdfe42.htm" />
+  <HelpKINode Title="UNCLEAN enumeration member" Url="html/470116a5-e961-c50c-988b-7e8dfbe3b5cb.htm" />
+  <HelpKINode Title="UNCOMPRESSED enumeration member" Url="html/e00d6851-cf09-287f-638b-fc62c498351a.htm" />
+  <HelpKINode Title="UNDEFINED enumeration member" Url="html/f66b7b47-23b6-2531-85fb-620e31342a07.htm" />
+  <HelpKINode Title="UNIQUECAMERAMODEL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="UNKNOWN enumeration member">
+    <HelpKINode Title="Group3Opt Enumeration" Url="html/e00d6851-cf09-287f-638b-fc62c498351a.htm" />
+    <HelpKINode Title="PlanarConfig Enumeration" Url="html/d2e12021-da72-b32f-b558-dc23d914d698.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UnlinkDirectory method" Url="html/960b2644-d100-0f19-cacb-d2835096b7a5.htm" />
+  <HelpKINode Title="UnRegisterCodec method" Url="html/84adbea5-217e-9823-abf8-0c839fa69f50.htm" />
+  <HelpKINode Title="UNSPECIFIED enumeration member" Url="html/edceb228-3508-d66e-d73c-200bdecdfe42.htm" />
+  <HelpKINode Title="Value property" Url="html/4104feff-c429-6a7f-eabc-b46da7a541ef.htm" />
+  <HelpKINode Title="Variable field" Url="html/812daffb-c05f-b0db-0d43-5dd2577f9dc3.htm" />
+  <HelpKINode Title="Variable2 field" Url="html/54726a19-65fd-a556-82e5-69492e8afd0a.htm" />
+  <HelpKINode Title="VOID enumeration member" Url="html/2d79449a-302f-ba62-142d-0d9204a1012e.htm" />
+  <HelpKINode Title="VStripSize method" Url="html/5aba7308-0e50-aa8f-1e16-7a30c3fa1865.htm" />
+  <HelpKINode Title="VTileSize method" Url="html/e09be500-c612-fafe-f38d-33880816c3e1.htm" />
+  <HelpKINode Title="Warning method" Url="html/e55961d3-03e4-ab43-bf89-28d8a8a5da19.htm" />
+  <HelpKINode Title="WarningExt method" Url="html/7ec1c845-5a90-476a-8df0-0646b88b16ba.htm" />
+  <HelpKINode Title="WarningHandler method" Url="html/ee1f1238-bd75-74bc-254f-bab52709fce2.htm" />
+  <HelpKINode Title="WarningHandlerExt method" Url="html/4e3f0012-4e4f-9e8c-6eef-92f5cce1e0c1.htm" />
+  <HelpKINode Title="WHITELEVEL enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="WHITEPOINT enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="Width property" Url="html/7674b71c-923c-a6d8-533e-e1b30ab99bcf.htm" />
+  <HelpKINode Title="WORDALIGN enumeration member" Url="html/4efb5f05-d0ef-b429-615a-7b3451f1d443.htm" />
+  <HelpKINode Title="Write method" Url="html/863d6088-507c-08bd-b62b-763feaef4d9f.htm" />
+  <HelpKINode Title="WriteBufferSetup method" Url="html/61054a96-45d5-9234-5180-0389a1142771.htm" />
+  <HelpKINode Title="WriteCheck method" Url="html/7c482b59-ec7a-d43f-bad7-1a1fd15b8a86.htm" />
+  <HelpKINode Title="WriteCount property" Url="html/97bf1749-ad05-451f-c8da-1973852453c7.htm" />
+  <HelpKINode Title="WriteDirectory method" Url="html/20b69324-919e-ce8c-763a-d0c935708789.htm" />
+  <HelpKINode Title="WriteEncodedStrip method" Url="html/303c7c76-4bbc-64f0-d262-509978754367.htm" />
+  <HelpKINode Title="WriteEncodedTile method" Url="html/6f378a2a-bf2b-f83b-4798-7d2e5181bed7.htm" />
+  <HelpKINode Title="WriteRawStrip method" Url="html/cf9d637e-1b03-f632-a32b-d42af63ca6ef.htm" />
+  <HelpKINode Title="WriteRawTile method" Url="html/e7803430-0f05-b8cf-c2d0-f5b1c5ab39bf.htm" />
+  <HelpKINode Title="WRITERSERIALNUMBER enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="WriteScanline method" Url="html/db0aa987-8e75-5a3e-5fec-1af1e2749968.htm" />
+  <HelpKINode Title="WriteTile method" Url="html/b175a081-3be0-b4f8-f39b-d99be1ce5b27.htm" />
+  <HelpKINode Title="XCLIPPATHUNITS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="XMLPACKET enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="XPOSITION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="XRESOLUTION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="YCBCR enumeration member" Url="html/762c8b34-c03a-e82d-facc-7c5a951666c6.htm" />
+  <HelpKINode Title="YCBCRCOEFFICIENTS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="YCbCrPosition enumeration" Url="html/e41b4d87-aa80-6c0b-a755-4a058a73c576.htm" />
+  <HelpKINode Title="YCBCRPOSITIONING enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="YCBCRSUBSAMPLING enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="YCLIPPATHUNITS enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="YPOSITION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="YRESOLUTION enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+  <HelpKINode Title="ZIPQUALITY enumeration member" Url="html/004b29cb-3828-19ac-b924-95671b477f08.htm" />
+</HelpKI>
