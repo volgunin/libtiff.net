@@ -339,11 +339,93 @@ namespace BitMiracle.LibTiff.Classic
         }
 
         /// <summary>
+        /// Retrieves value converted to array of sbyte values.
+        /// </summary>
+        /// <returns>Value converted to array of sbyte values.</returns>
+        /// <remarks><para>If value is array of sbyte values then it retrieved unaltered.</para>
+        /// <para>If value is array of byte, short, ushort, int or uint values then each element of
+        /// field value gets converted to sbyte and added to resulting array.</para>
+        /// <para>If value is string then it gets converted to sbyte[] using Latin1 encoding
+        /// encoder.</para><para>
+        /// If value is of any other type then null is returned.</para></remarks>
+#if EXPOSE_LIBTIFF
+        [CLSCompliant(false)]
+#endif
+        public sbyte[] ToSByteArray()
+        {
+            if (m_value == null)
+                return null;
+
+            Type t = m_value.GetType();
+            if (t.IsArray)
+            {
+                if (m_value is sbyte[])
+                    return m_value as sbyte[];
+                else if (m_value is byte[])
+                {
+                    byte[] temp = m_value as byte[];
+                    sbyte[] result = new sbyte[temp.Length];
+                    for (int i = 0; i < temp.Length; i++)
+                        result[i] = (sbyte)temp[i];
+
+                    return result;
+                }
+                else if (m_value is short[])
+                {
+                    short[] temp = m_value as short[];
+                    sbyte[] result = new sbyte[temp.Length];
+                    for (int i = 0; i < temp.Length; i++)
+                        result[i] = (sbyte)temp[i];
+
+                    return result;
+                }
+                else if (m_value is ushort[])
+                {
+                    ushort[] temp = m_value as ushort[];
+                    sbyte[] result = new sbyte[temp.Length];
+                    for (int i = 0; i < temp.Length; i++)
+                        result[i] = (sbyte)temp[i];
+
+                    return result;
+                }
+                else if (m_value is int[])
+                {
+                    int[] temp = m_value as int[];
+                    sbyte[] result = new sbyte[temp.Length];
+                    for (int i = 0; i < temp.Length; i++)
+                        result[i] = (sbyte)temp[i];
+
+                    return result;
+                }
+                else if (m_value is uint[])
+                {
+                    uint[] temp = m_value as uint[];
+                    sbyte[] result = new sbyte[temp.Length];
+                    for (int i = 0; i < temp.Length; i++)
+                        result[i] = (sbyte)temp[i];
+
+                    return result;
+                }
+            }
+            else if (m_value is string)
+            {
+                byte[] temp = Tiff.Latin1Encoding.GetBytes(m_value as string);
+                sbyte[] result = new sbyte[temp.Length];
+                for (int i = 0; i < temp.Length; i++)
+                    result[i] = (sbyte)temp[i];
+
+                return result;
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Retrieves value converted to array of bytes.
         /// </summary>
         /// <returns>Value converted to array of bytes.</returns>
         /// <remarks><para>If value is array of bytes then it retrieved unaltered.</para>
-        /// <para>If value is array of short, ushort, int or uint values then each element of
+        /// <para>If value is array of sbyte, short, ushort, int or uint values then each element of
         /// field value gets converted to byte and added to resulting array.</para>
         /// <para>If value is string then it gets converted to byte[] using Latin1 encoding
         /// encoder.</para><para>
@@ -358,6 +440,15 @@ namespace BitMiracle.LibTiff.Classic
             {
                 if (m_value is byte[])
                     return m_value as byte[];
+                else if (m_value is sbyte[])
+                {
+                    sbyte[] temp = m_value as sbyte[];
+                    byte[] result = new byte[temp.Length];
+                    for (int i = 0; i < temp.Length; i++)
+                        result[i] = (byte)temp[i];
+
+                    return result;
+                }
                 else if (m_value is short[])
                 {
                     short[] temp = m_value as short[];
