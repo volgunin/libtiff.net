@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -554,6 +555,28 @@ namespace BitMiracle.LibTiff.Classic
             // Sort the field info by tag number
             IComparer myComparer = new TagCompare();
             Array.Sort(m_fieldinfo, 0, m_nfields, myComparer);
+        }
+
+        /// <summary>
+        /// Enumerates field information for all set tags.
+        /// </summary>
+        /// <param name="type">The tiff data type to use us additional filter.</param>
+        /// <returns>The collection of field information for all set tags with specified type.</returns>
+        public IEnumerable<TiffFieldInfo> EnumFieldInfo(TiffType type)
+        {
+            // If we are invoked with no field information, then just return.
+            if (m_fieldinfo == null)
+            {
+                yield break;
+            }
+
+            foreach (TiffFieldInfo info in m_fieldinfo)
+            {
+                if (info != null && fieldSet(info.Bit) && (type == TiffType.ANY || type == info.Type))
+                {
+                    yield return info;
+                }
+            }
         }
 
         /// <summary>
