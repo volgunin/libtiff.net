@@ -53,6 +53,18 @@ namespace BitMiracle.LibTiff.Classic
         }
 
         /// <summary>
+        /// Retrieves value converted to sbyte.
+        /// </summary>
+        /// <returns>The value converted to sbyte.</returns>
+#if EXPOSE_LIBTIFF
+        [CLSCompliant(false)]
+#endif
+        public sbyte ToSByte()
+        {
+            return Convert.ToSByte(m_value);
+        }
+
+        /// <summary>
         /// Retrieves value converted to byte.
         /// </summary>
         /// <returns>The value converted to byte.</returns>
