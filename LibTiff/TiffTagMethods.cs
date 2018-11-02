@@ -377,8 +377,16 @@ namespace BitMiracle.LibTiff.Classic
                     }
                     break;
                 case TiffTag.REFERENCEBLACKWHITE:
-                    // XXX should check for null range
-                    Tiff.setFloatArray(out td.td_refblackwhite, value[0].ToFloatArray(), 6);
+                    {
+                        float[] fa = value[0].ToFloatArray();
+                        if (fa == null)
+                        {
+                            badvalue = true;
+                            break;
+                        }
+
+                        Tiff.setFloatArray(out td.td_refblackwhite, fa, 6);
+                    }
                     break;
                 case TiffTag.INKNAMES:
                     v = value[0].ToInt();
@@ -514,22 +522,24 @@ namespace BitMiracle.LibTiff.Classic
                             {
                                 switch (fip.Type)
                                 {
-                                    case TiffType.BYTE:
                                     case TiffType.UNDEFINED:
                                         val[valPos] = value[paramIndex + i].GetBytes()[0];
                                         break;
-                                    case TiffType.SBYTE:
+                                    case TiffType.BYTE:
                                         val[valPos] = value[paramIndex + i].ToByte();
                                         break;
+                                    case TiffType.SBYTE:
+                                        val[valPos] = (byte)value[paramIndex + i].ToSByte();
+                                        break;
                                     case TiffType.SHORT:
-                                        Buffer.BlockCopy(BitConverter.GetBytes(value[paramIndex + i].ToShort()), 0, val, valPos, tv_size);
+                                        Buffer.BlockCopy(BitConverter.GetBytes(value[paramIndex + i].ToUShort()), 0, val, valPos, tv_size);
                                         break;
                                     case TiffType.SSHORT:
                                         Buffer.BlockCopy(BitConverter.GetBytes(value[paramIndex + i].ToShort()), 0, val, valPos, tv_size);
                                         break;
                                     case TiffType.LONG:
                                     case TiffType.IFD:
-                                        Buffer.BlockCopy(BitConverter.GetBytes(value[paramIndex + i].ToInt()), 0, val, valPos, tv_size);
+                                        Buffer.BlockCopy(BitConverter.GetBytes(value[paramIndex + i].ToUInt()), 0, val, valPos, tv_size);
                                         break;
                                     case TiffType.SLONG:
                                         Buffer.BlockCopy(BitConverter.GetBytes(value[paramIndex + i].ToInt()), 0, val, valPos, tv_size);
