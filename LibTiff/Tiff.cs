@@ -69,7 +69,7 @@ namespace BitMiracle.LibTiff.Classic
         public static string GetVersion()
         {
             return string.Format(CultureInfo.InvariantCulture,
-                "LibTiff.Net, Version {0}\nCopyright (C) 2008-2015, Bit Miracle.", AssemblyVersion);
+                "LibTiff.Net, Version {0}\nCopyright (C) 2008-2020, Bit Miracle.", AssemblyVersion);
         }
 
         /// <summary>
@@ -80,11 +80,7 @@ namespace BitMiracle.LibTiff.Classic
         {
             get
             {
-#if !NETSTANDARD
                 Assembly assembly = Assembly.GetExecutingAssembly();
-#else
-                Assembly assembly = typeof(Tiff).GetTypeInfo().Assembly;
-#endif
                 string assemblyVersion = assembly.FullName.Split(',')[1];
                 return assemblyVersion.Split('=')[1];
             }
@@ -184,7 +180,7 @@ namespace BitMiracle.LibTiff.Classic
         public void RegisterCodec(TiffCodec codec)
         {
             if (codec == null)
-                throw new ArgumentNullException("codec");
+                throw new ArgumentNullException(nameof(codec));
 
             codecList list = new codecList();
             list.codec = codec;
@@ -411,7 +407,11 @@ namespace BitMiracle.LibTiff.Classic
         /// <item><term>h</term>
         /// <description>Read TIFF header only, do not load the first image directory. That could
         /// be useful in case of the broken first directory. We can open the file and proceed to
-        /// the other directories.</description></item></list>
+        /// the other directories.</description></item>
+        /// <item><term>4</term>
+        /// <description>Create classic TIFF file</description></item>
+        /// <item><term>8</term>
+        /// <description>Create BigTIFF file</description></item></list>
         /// <para>
         /// By default the library will create new files with the native byte-order of the CPU on
         /// which the application is run. This ensures optimal performance and is portable to any
@@ -487,13 +487,7 @@ namespace BitMiracle.LibTiff.Classic
             m_stream.Close(m_clientdata);
 
             if (m_fileStream != null)
-            {
-#if !NETSTANDARD
                 m_fileStream.Close();
-#else
-                m_fileStream.Dispose();
-#endif
-            }
         }
 
         /// <summary>
@@ -815,7 +809,7 @@ namespace BitMiracle.LibTiff.Classic
         /// current directory of the opened TIFF file. The tag is identified by
         /// <paramref name="tag"/>. The type and number of values returned is dependent on the
         /// tag being requested. You may want to consult
-        /// <a href = "54cbd23d-dc55-44b9-921f-3a06efc2f6ce.htm">"Well-known tags and their
+        /// <a href = "../articles/KB/well-known-tags.html">"Well-known tags and their
         /// value(s) data types"</a> to become familiar with exact data types and calling
         /// conventions required for each tag supported by the library.
         /// </para>
@@ -851,7 +845,7 @@ namespace BitMiracle.LibTiff.Classic
         /// tag is not defined in the current directory and it has a default value(s). The tag is
         /// identified by <paramref name="tag"/>. The type and number of values returned is
         /// dependent on the tag being requested. You may want to consult
-        /// <a href="54cbd23d-dc55-44b9-921f-3a06efc2f6ce.htm">"Well-known tags and their
+        /// <a href="../articles/KB/well-known-tags.html">"Well-known tags and their
         /// value(s) data types"</a> to become familiar with exact data types and calling
         /// conventions required for each tag supported by the library.
         /// </para>
@@ -2471,8 +2465,16 @@ namespace BitMiracle.LibTiff.Classic
             ulong nextdir = m_header.tiff_diroff;
             short n = 0;
             long dummyOff;
+            var seen = new HashSet<ulong>();
+            seen.Add(nextdir);
             while (nextdir != 0 && advanceDirectory(ref nextdir, out dummyOff))
+            {
+                if (seen.Contains(nextdir))
+                    throw new InvalidDataException("Loop detected while getting number of directories");
+
+                seen.Add(nextdir);
                 n++;
+            }
 
             return n;
         }
@@ -2892,7 +2894,7 @@ namespace BitMiracle.LibTiff.Classic
         /// reading or writing. The tag is identified by <paramref name="tag"/>.
         /// The type and number of values in <paramref name="value"/> is dependent on the tag
         /// being set. You may want to consult
-        /// <a href = "54cbd23d-dc55-44b9-921f-3a06efc2f6ce.htm">"Well-known tags and their
+        /// <a href = "../articles/KB/well-known-tags.html">"Well-known tags and their
         /// value(s) data types"</a> to become familiar with exact data types and calling
         /// conventions required for each tag supported by the library.
         /// </para><para>
@@ -3673,7 +3675,7 @@ namespace BitMiracle.LibTiff.Classic
         /// </para><para>
         /// Once data are written to a file/stream for the current directory, the values of
         /// certain tags may not be altered; see
-        /// <a href="54cbd23d-dc55-44b9-921f-3a06efc2f6ce.htm">"Well-known tags and their
+        /// <a href="../articles/KB/well-known-tags.html">"Well-known tags and their
         /// value(s) data types"</a> for more information.
         /// </para><para>
         /// It is not possible to write scanlines to a file/stream that uses a tiled organization.
@@ -3722,7 +3724,7 @@ namespace BitMiracle.LibTiff.Classic
         /// </para><para>
         /// Once data are written to a file/stream for the current directory, the values of
         /// certain tags may not be altered; see
-        /// <a href="54cbd23d-dc55-44b9-921f-3a06efc2f6ce.htm">"Well-known tags and their
+        /// <a href="../articles/KB/well-known-tags.html">"Well-known tags and their
         /// value(s) data types"</a> for more information.
         /// </para><para>
         /// It is not possible to write scanlines to a file/stream that uses a tiled organization.
@@ -3773,7 +3775,7 @@ namespace BitMiracle.LibTiff.Classic
         /// </para><para>
         /// Once data are written to a file/stream for the current directory, the values of
         /// certain tags may not be altered; see 
-        /// <a href = "54cbd23d-dc55-44b9-921f-3a06efc2f6ce.htm">"Well-known tags and their
+        /// <a href = "../articles/KB/well-known-tags.html">"Well-known tags and their
         /// value(s) data types"</a> for more information.
         /// </para><para>
         /// It is not possible to write scanlines to a file/stream that uses a tiled organization.

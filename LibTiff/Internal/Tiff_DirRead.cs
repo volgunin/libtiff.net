@@ -462,10 +462,10 @@ namespace BitMiracle.LibTiff.Classic
         {
             if (m_header.tiff_version == TIFF_BIGTIFF_VERSION)
             {
-                int[] l = new int[2];
+                uint[] l = new uint[2];
                 int count = dir.tdir_count;
                 dir.tdir_count = 2;
-                if (fetchLongArray(dir, l))
+                if (fetchULongArray(dir, l))
                 {
                     dir.tdir_count = count;
                     float v;
@@ -580,7 +580,7 @@ namespace BitMiracle.LibTiff.Classic
                     if (count >= 5)
                         v[4] = (byte)((dir.tdir_offset >> 24) & 0xff);
 
-                    if (count == 4)
+                    if (count >= 4)
                         v[3] = (byte)((dir.tdir_offset >> 32) & 0xff);
 
                     if (count >= 3)
@@ -606,7 +606,7 @@ namespace BitMiracle.LibTiff.Classic
                     if (count >= 5)
                         v[4] = (byte)((dir.tdir_offset >> 32) & 0xff);
 
-                    if (count == 4)
+                    if (count >= 4)
                         v[3] = (byte)((dir.tdir_offset >> 24) & 0xff);
 
                     if (count >= 3)
@@ -733,6 +733,48 @@ namespace BitMiracle.LibTiff.Classic
         }
 
         /// <summary>
+        /// Fetches an array of ULONG values.
+        /// </summary>
+        private bool fetchULongArray(TiffDirEntry dir, uint[] v)
+        {
+            if (m_header.tiff_version != TIFF_BIGTIFF_VERSION && dir.tdir_count == 1)
+            {
+                v[0] = (uint)dir.tdir_offset;
+                return true;
+            }
+
+            if (m_header.tiff_version == TIFF_BIGTIFF_VERSION && dir.tdir_count <= 2)
+            {
+                int count = dir.tdir_count;
+                if (m_header.tiff_magic == TIFF_BIGENDIAN)
+                {
+                    if (count == 2)
+                        v[1] = (uint)(dir.tdir_offset & 0xffffffff);
+
+                    if (count >= 1)
+                        v[0] = (uint)(dir.tdir_offset >> 32);
+                }
+                else
+                {
+                    if (count == 2)
+                        v[1] = (uint)(dir.tdir_offset >> 32);
+
+                    if (count >= 1)
+                        v[0] = (uint)(dir.tdir_offset & 0xffffffff);
+                }
+                return true;
+            }
+
+            int cc = dir.tdir_count * sizeof(int);
+            byte[] b = new byte[cc];
+            int read = fetchData(dir, b);
+            if (read != 0)
+                Buffer.BlockCopy(b, 0, v, 0, b.Length);
+
+            return (read != 0);
+        }
+
+        /// <summary>
         /// Fetches an array of LONG or SLONG values.
         /// </summary>
         private bool fetchLongArray(TiffDirEntry dir, int[] v)
@@ -813,7 +855,11 @@ namespace BitMiracle.LibTiff.Classic
                     pair[1] = readInt(l, offset);
                     offset += sizeof(int);
 
-                    ok = cvtRational(dir, pair[0], pair[1], out v[i]);
+                    if (dir.tdir_type == TiffType.SRATIONAL)
+                        ok = cvtRational(dir, pair[0], pair[1], out v[i]);
+                    else
+                        ok = cvtRational(dir, (uint)pair[0], (uint)pair[1], out v[i]);
+
                     if (!ok)
                         break;
                 }

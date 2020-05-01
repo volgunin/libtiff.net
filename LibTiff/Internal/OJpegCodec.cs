@@ -12,7 +12,7 @@
 
    Please read the file called "TIFF Technical Note #2" if you need to be
    convinced this compression scheme is bad and breaks TIFF. That document
-   is linked to from the LibTiff site <http://www.remotesensing.org/libtiff/>
+   is linked to from the LibTiff site <http://www.simplesystems.org/libtiff/>
    and from AWare Systems' TIFF section
    <http://www.awaresystems.be/imaging/tiff.html>. It is also absorbed
    in Adobe's specification supplements, marked "draft" up to this day, but
@@ -106,24 +106,24 @@
 
 /* Configuration defines here are:
  * JPEG_ENCAP_EXTERNAL: The normal way to call libjpeg, uses longjump. In some environments,
- * 	like eg LibTiffDelphi, this is not possible. For this reason, the actual calls to
- * 	libjpeg, with longjump stuff, are encapsulated in dedicated functions. When
- * 	JPEG_ENCAP_EXTERNAL is defined, these encapsulating functions are declared external
- * 	to this unit, and can be defined elsewhere to use stuff other then longjump.
- * 	The default mode, without JPEG_ENCAP_EXTERNAL, implements the call encapsulators
- * 	here, internally, with normal longjump.
+ *  like eg LibTiffDelphi, this is not possible. For this reason, the actual calls to
+ *  libjpeg, with longjump stuff, are encapsulated in dedicated functions. When
+ *  JPEG_ENCAP_EXTERNAL is defined, these encapsulating functions are declared external
+ *  to this unit, and can be defined elsewhere to use stuff other then longjump.
+ *  The default mode, without JPEG_ENCAP_EXTERNAL, implements the call encapsulators
+ *  here, internally, with normal longjump.
  * SETJMP, LONGJMP, JMP_BUF: On some machines/environments a longjump equivalent is
- * 	conviniently available, but still it may be worthwhile to use _setjmp or sigsetjmp
- * 	in place of plain setjmp. These macros will make it easier. It is useless
- * 	to fiddle with these if you define JPEG_ENCAP_EXTERNAL.
+ *  conviniently available, but still it may be worthwhile to use _setjmp or sigsetjmp
+ *  in place of plain setjmp. These macros will make it easier. It is useless
+ *  to fiddle with these if you define JPEG_ENCAP_EXTERNAL.
  * OJPEG_BUFFER: Define the size of the desired buffer here. Should be small enough so as to guarantee
- * 	instant processing, optimal streaming and optimal use of processor cache, but also big
- * 	enough so as to not result in significant call overhead. It should be at least a few
- * 	bytes to accomodate some structures (this is verified in asserts), but it would not be
- * 	sensible to make it this small anyway, and it should be at most 64K since it is indexed
- * 	with ushort. We recommend 2K.
+ *  instant processing, optimal streaming and optimal use of processor cache, but also big
+ *  enough so as to not result in significant call overhead. It should be at least a few
+ *  bytes to accomodate some structures (this is verified in asserts), but it would not be
+ *  sensible to make it this small anyway, and it should be at most 64K since it is indexed
+ *  with ushort. We recommend 2K.
  * EGYPTIANWALK: You could also define EGYPTIANWALK here, but it is not used anywhere and has
- * 	absolutely no effect. That is why most people insist the EGYPTIANWALK is a bit silly.
+ *  absolutely no effect. That is why most people insist the EGYPTIANWALK is a bit silly.
  */
 
 using System;
@@ -2303,7 +2303,9 @@ namespace BitMiracle.LibTiff.Classic.Internal
             {
                 m_libjpeg_jpeg_decompress_struct = new jpeg_decompress_struct(m_libjpeg_jpeg_error_mgr);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return false;
             }
@@ -2318,7 +2320,9 @@ namespace BitMiracle.LibTiff.Classic.Internal
             {
                 res = m_libjpeg_jpeg_decompress_struct.jpeg_read_header(require_image);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return ReadResult.JPEG_SUSPENDED;
             }
@@ -2332,7 +2336,9 @@ namespace BitMiracle.LibTiff.Classic.Internal
             {
                 m_libjpeg_jpeg_decompress_struct.jpeg_start_decompress();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return false;
             }
@@ -2349,7 +2355,9 @@ namespace BitMiracle.LibTiff.Classic.Internal
                 temp[0] = scanlines;
                 n = m_libjpeg_jpeg_decompress_struct.jpeg_read_scanlines(temp, max_lines);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return 0;
             }
@@ -2364,7 +2372,9 @@ namespace BitMiracle.LibTiff.Classic.Internal
             {
                 n = m_libjpeg_jpeg_decompress_struct.jpeg_read_raw_data(m_subsampling_convert_ycbcrimage, max_lines);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return 0;
             }

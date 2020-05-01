@@ -53,12 +53,16 @@ namespace BitMiracle.LibTiff.Classic
                     stream = File.Open(fileName, fileMode, fileAccess);
             }
 #if THREAD_SAFE_LIBTIFF
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return null;
             }
 #else
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 Error(module, "Failed to open '{0}'. {1}", fileName, e.Message);
                 return null;
@@ -181,7 +185,7 @@ namespace BitMiracle.LibTiff.Classic
 
             // Read in TIFF header.
 
-            if ((tif.m_mode & O_TRUNC) != 0 || !tif.readHeaderOk(ref tif.m_header))
+            if ((tif.m_mode & O_TRUNC) != 0 || !tif.readHeaderOkWithoutExceptions(ref tif.m_header))
             {
                 if (tif.m_mode == O_RDONLY)
                 {

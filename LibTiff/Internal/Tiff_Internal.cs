@@ -45,12 +45,7 @@ namespace BitMiracle.LibTiff.Classic
         /// </summary>
         internal const bool CHECK_JPEG_YCBCR_SUBSAMPLING = true;
 
-#if !SILVERLIGHT
         internal static readonly Encoding Latin1Encoding = Encoding.GetEncoding("Latin1");
-#else
-        // Encoding.GetEncoding("Latin1") is not supported in Silverlight. Will throw exceptions at runtime.
-        internal static readonly Enc28591 Latin1Encoding = new Enc28591();
-#endif
 
         internal enum PostDecodeMethodType
         {
@@ -544,7 +539,7 @@ namespace BitMiracle.LibTiff.Classic
         }
 
 #if FIX_JPEG_IS_OJPEG
-        private bool checkJpegIsOJpeg(ref int v, TiffDirEntry[] dir, ulong dircount)
+        private static bool checkJpegIsOJpeg(ref int v, TiffDirEntry[] dir, ulong dircount)
         {
             // detect a bug in some older JPEG-IN-TIFF formats (emitted by (unknown) scanner software)
             // where the Compression field reports new-style JPEG (7) but the JPEG encoded data
