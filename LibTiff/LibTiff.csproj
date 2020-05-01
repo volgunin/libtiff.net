@@ -34,12 +34,6 @@
     <DocumentationFile>bin\Release\BitMiracle.LibTiff.NET.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>LibTiff.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -201,9 +195,6 @@
     <Compile Include="zLib\ZOutputStream.cs" />
     <Compile Include="zLib\ZStream.cs" />
     <Compile Include="zLib\ZStreamException.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LibTiff.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
