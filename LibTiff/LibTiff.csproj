@@ -6,7 +6,7 @@
     <RootNamespace>BitMiracle.LibTiff.Classic</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Configurations>Debug;Release</Configurations>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -39,6 +39,7 @@ update_version_info.bat "$(ProjectDir)AssemblyVersion.cs"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)replace.vbs" O: Overload: "$(TargetDir)BitMiracle.LibTiff.NET.xml"</PostBuildEvent>
+    <AssemblyOriginatorKeyFile>LibTiff.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <Optimize>true</Optimize>
