@@ -14,6 +14,31 @@ namespace BitMiracle.LibTiff.Classic
 #endif
     partial class Tiff
     {
+        // When appending an image directory to the linked list of IFDs in a tiff byte stream
+        // writeDirectory() calls linkDirectory(). linkDirectory() needs to find the end of the
+        // directory chain to append the new image directory. The original C library does this by
+        // a linear search starting from m_header.tiff_diroff. That is safe, but takes time
+        // proportional to the number of IFDs
+        //
+        // This implementation saves offset to penultimate directory reached in the linear search.
+        // The next time linkDirectory() is called, it can take a shortcut almost to the end of
+        // the chain of IFDs
+        //
+        // A library user may call functions which invalidate the directory chain inbetween calls
+        // to WriteDirectory(). Luckily that is not hard to fix, by invalidating the shortcut
+        // (it will be recalculated on the next call to linkDirectory())
+        //
+        // We invalidate the stored shortcut by calling resetPenultimateDirectoryOffset()
+        // in the following methods:
+        // writeHeaderOK(), called if converting to BigTiff
+        // UnlinkDirectory()
+        // WriteCustomDirectory()
+        // RewriteDirectory()
+        //
+        // The shortcut is used in WriteDirectory/ CheckpointDirectory() cases only. It could be
+        // extended to RewriteDirectory() etc.
+        private ulong PenultimateDirectoryOffset { get; set; }
+
         private ulong insertData(TiffType type, int v)
         {
             int t = (int)type;
@@ -61,6 +86,7 @@ namespace BitMiracle.LibTiff.Classic
         /// <summary>
         /// Writes the contents of the current directory to the specified file.
         /// </summary>
+        /// <param name="done">call PostEncode() first, and FreeDirectory() after writing</param>
         /// <remarks>This routine doesn't handle overwriting a directory with
         /// auxiliary storage that's been changed.</remarks>
         private bool writeDirectory(bool done)
@@ -111,6 +137,7 @@ namespace BitMiracle.LibTiff.Classic
                 // and link it into the existing directory structure.
                 if (m_diroff == 0 && !linkDirectory())
                     return false;
+                
                 // Size the directory so that we can calculate offsets for the data
                 // items that aren't kept in-place in each field.
                 nfields = 0;
@@ -310,7 +337,7 @@ namespace BitMiracle.LibTiff.Classic
                                 {
                                     if ((m_flags & TiffFlags.ISBIGTIFF) == TiffFlags.ISBIGTIFF)
                                     {
-                                        m_subifdoff = m_diroff + sizeof(long) + 
+                                        m_subifdoff = m_diroff + sizeof(long) +
                                             (ulong)dir * (ulong)TiffDirEntry.SizeInBytes(m_header.tiff_version == TIFF_BIGTIFF_VERSION) +
                                             sizeof(short) * 2 + sizeof(long);
                                     }
@@ -1726,6 +1753,11 @@ namespace BitMiracle.LibTiff.Classic
             return writeData(ref dir, bytes, count * sizeof(double));
         }
 
+        private void resetPenultimateDirectoryOffset()
+        {
+            PenultimateDirectoryOffset = 0;
+        }
+
         /// <summary>
         /// Link the current directory into the directory chain for the file.
         /// </summary>
@@ -1799,9 +1831,14 @@ namespace BitMiracle.LibTiff.Classic
 
             // Not the first directory, search to the last and append.
 
-            ulong nextdir = m_header.tiff_diroff;
+            // This is the point at which the original code walking the linked list of IFDs is
+            // quadratically slow. We can jump over the linear search by saving a "shortcut" to an
+            // IFD near the end. The shortcut is the directory reached by the previous scan before
+            // adding anything therefore "penultimate"
+            ulong nextdir = Math.Max(PenultimateDirectoryOffset, m_header.tiff_diroff);
             do
             {
+                PenultimateDirectoryOffset = nextdir;
                 ulong dircount;
                 if (!seekOK((long)nextdir) || !readDirCountOK(out dircount, m_header.tiff_version == TIFF_BIGTIFF_VERSION))
                 {

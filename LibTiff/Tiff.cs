@@ -2725,7 +2725,7 @@ namespace BitMiracle.LibTiff.Classic
         /// Creates a new directory within file/stream.
         /// </summary>
         /// <remarks>The newly created directory will not exist on the file/stream till
-        /// <see cref="WriteDirectory"/>, <see cref="CheckpointDirectory"/>, <see cref="Flush"/>
+        /// <see cref="WriteDirectory()"/>, <see cref="CheckpointDirectory()"/>, <see cref="Flush"/>
         /// or <see cref="Close"/> is called.</remarks>
         public void CreateDirectory()
         {
@@ -2814,6 +2814,10 @@ namespace BitMiracle.LibTiff.Classic
         public bool UnlinkDirectory(short number)
         {
             const string module = "UnlinkDirectory";
+
+            // Unlinking a directory changes the linked list. While we could handle this, 
+            // the simple choice is to invalidate the stored shortcut for linkDirectory() here 
+            resetPenultimateDirectoryOffset();
 
             if (m_mode == O_RDONLY)
             {
@@ -2932,12 +2936,12 @@ namespace BitMiracle.LibTiff.Classic
         /// </summary>
         /// <returns><c>true</c> if the current directory was rewritten successfully;
         /// otherwise, <c>false</c></returns>
-        /// <remarks>Unlike <see cref="WriteDirectory"/>, <b>CheckpointDirectory</b> does not free
+        /// <remarks>Unlike <see cref="WriteDirectory()"/>, <b>CheckpointDirectory</b> does not free
         /// up the directory data structures in memory, so they can be updated (as strips/tiles
         /// are written) and written again. Reading such a partial file you will at worst get a
         /// TIFF read error for the first strip/tile encountered that is incomplete, but you will
         /// at least get all the valid data in the file before that. When the file is complete,
-        /// just use <see cref="WriteDirectory"/> as usual to finish it off cleanly.</remarks>
+        /// just use <see cref="WriteDirectory()"/> as usual to finish it off cleanly.</remarks>
         public bool CheckpointDirectory()
         {
             // Setup the strips arrays, if they haven't already been.
@@ -2955,10 +2959,10 @@ namespace BitMiracle.LibTiff.Classic
         /// </summary>        
         /// <returns><c>true</c> if the current directory was rewritten successfully;
         /// otherwise, <c>false</c></returns>
-        /// <remarks>The <b>RewriteDirectory</b> operates similarly to <see cref="WriteDirectory"/>,
+        /// <remarks>The <b>RewriteDirectory</b> operates similarly to <see cref="WriteDirectory()"/>,
         /// but can be called with directories previously read or written that already have an
         /// established location in the file. It will rewrite the directory, but instead of place
-        /// it at it's old location (as <see cref="WriteDirectory"/> would) it will place them at
+        /// it at it's old location (as <see cref="WriteDirectory()"/> would) it will place them at
         /// the end of the file, correcting the pointer from the preceeding directory or file
         /// header to point to it's new location. This is particularly important in cases where
         /// the size of the directory and pointed to data has grown, so it won’t fit in the space
@@ -2971,6 +2975,10 @@ namespace BitMiracle.LibTiff.Classic
             // We don't need to do anything special if it hasn't been written.
             if (m_diroff == 0)
                 return WriteDirectory();
+
+            // If we get here, the IFD linked list is about to change. While we could handle this, 
+            // the simple choice is to invalidate the stored shortcut for linkDirectory() here 
+            resetPenultimateDirectoryOffset();
 
             // Find and zero the pointer to this directory, so that linkDirectory will cause it to
             // be added after this directories current pre-link.
@@ -5920,7 +5928,7 @@ namespace BitMiracle.LibTiff.Classic
         {
             SwabArrayOfLong(array, 0, count);
         }
-        
+
         /// <summary>
         /// Swaps the bytes in specified number of values in the array of 64-bit items.
         /// </summary>
@@ -5967,7 +5975,7 @@ namespace BitMiracle.LibTiff.Classic
                 array[offset] += bytes[3] << 24;
             }
         }
-        
+
         /// <summary>
         /// Swaps the bytes in specified number of values in the array of 64-bit items
         /// starting at specified offset.
